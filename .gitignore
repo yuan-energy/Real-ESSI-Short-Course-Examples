@@ -1,0 +1,49 @@
+**/M5.5_ESSI_Earthquake.drminput
+**/petsc_log.txt
+**/essi*.log
+**/RealESSI_VERSION_INFO.txt
+
+# Readme Preview
+**/*.html
+
+
+
+
+# Executables
+**/*.exe
+**/*.out
+**/*.app
+
+# Prerequisites
+**/*.d
+
+# Compiled Object files
+**/*.slo
+**/*.lo
+**/*.o
+**/*.obj
+
+# Precompiled Headers
+**/*.gch
+**/*.pch
+
+# Compiled Dynamic libraries
+**/*.so
+**/*.dylib
+**/*.dll
+
+# Fortran module files
+**/*.mod
+**/*.smod
+
+# Compiled Static libraries
+**/*.lai
+**/*.la
+**/*.a
+**/*.lib
+
+
+
+
+
+
