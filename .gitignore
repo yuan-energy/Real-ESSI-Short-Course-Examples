@@ -1,13 +1,19 @@
 **/M5.5_ESSI_Earthquake.drminput
 **/petsc_log.txt
-**/essi*.log
 **/RealESSI_VERSION_INFO.txt
 **/*.feioutput
 **/vtk_errors.txt
 **/*.jpg
 **/gmon.out
 
+**/*.h5.*.feioutput 
+**/essi_*.log 
+**/log 
+**/*.pyc 
+**/*_RESTART.essi
 
+**/*.swp
+**/*.csv
 
 # Readme Preview
 **/*.html
