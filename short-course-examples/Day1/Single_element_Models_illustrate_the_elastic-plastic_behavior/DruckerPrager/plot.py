@@ -18,10 +18,18 @@ strain  = np.concatenate((strain_load,strain_unload,strain_reload))
 
 # plt.plot(strain, stress)
 # plt.show()
+import matplotlib.pylab as pylab
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (10, 8),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+pylab.rcParams.update(params)
 
-plt.plot(strain, stress)
-plt.xlabel('Strain / (unitless)')
-plt.ylabel('Stress / (Pa)')
+plt.plot(strain, stress, 'k', linewidth=3)
+plt.xlabel('Strain [unitless]')
+plt.ylabel('Stress [Pa]')
 plt.title('Material Behavior: Stress-Strain')
 plt.grid()
 plt.box()

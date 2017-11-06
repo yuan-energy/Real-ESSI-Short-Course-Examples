@@ -27,9 +27,9 @@ params = {'legend.fontsize': 'x-large',
          'ytick.labelsize':'x-large'}
 pylab.rcParams.update(params)
 
-plt.plot(strain, stress, linewidth=2)
-plt.xlabel('Strain / (unitless)')
-plt.ylabel('Stress / (Pa)')
+plt.plot(strain, stress, 'k', linewidth=3)
+plt.xlabel('Strain [unitless]')
+plt.ylabel('Stress [Pa]')
 plt.title('Material Behavior: Stress-Strain')
 plt.grid()
 plt.box()
