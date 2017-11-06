@@ -1,0 +1,75 @@
+model name "t" ;
+
+// Eshell  = 1e8*N/m^2; 
+// nu    = 0.3;        // Poisson's ratio
+// rho   = 1e2*kg/m^3;     // Mass density
+
+// // add material # 1 type linear_elastic_isotropic_3d
+// //   mass_density = rho
+// //   elastic_modulus = Eshell
+// //   poisson_ratio = nu;
+
+
+// add material # 1 type VonMisesArmstrongFrederick 
+//     mass_density =  140.0*kg/m^3
+//     elastic_modulus =  3E7 *Pa
+//     poisson_ratio =  0.0
+//     von_mises_radius =  1E4*Pa
+//     armstrong_frederick_ha =  3E7*Pa
+//     armstrong_frederick_cr =  5E2
+//     isotropic_hardening_rate = 0.0*Pa ;
+
+
+
+// include "node.fei";
+// include "element.fei";
+// include "constraint.fei"';
+
+
+
+// define NDMaterial constitutive integration algorithm Backward_Euler
+//     yield_function_relative_tolerance =  1E-6
+//     stress_relative_tolerance =  1E-6
+//     maximum_iterations = 100
+//     ;
+
+restart model using file "t_1_at_load_factor_0.5_RESTART.essi"; 
+new loading stage "1_restart";
+include "load2.fei";
+    
+// define convergence test <Norm_Displacement_Increment|Energy_Increment|Norm_Unbalance|Relative_Norm_Displacement_Increment|Relative_Energy_Increment|Relative_Norm_Unbalance> tolerance = <.> maximum_iterations = <.> verbose_level = <0|1|2>;
+define convergence test Relative_Norm_Unbalanced_Force
+    tolerance =  1E-4
+    maximum_iterations =  10 ; 
+
+// define algorithm <With_no_convergence_check|Newton|Modified_Newton>;
+define algorithm Newton;
+
+// define algorithm With_no_convergence_check ;
+
+if(IS_PARALLEL==0)
+{define solver UMFPack;}
+else
+{define solver parallel;}
+
+define load factor increment 0.5;
+simulate 1 steps using static algorithm;
+
+
+
+// new loading stage "2";
+// // define algorithm With_no_convergence_check ;
+// define convergence test Relative_Norm_Unbalanced_Force
+//     tolerance =  0.01
+//     maximum_iterations =  10 ; 
+// // define algorithm modified_newton;
+// define algorithm Newton;
+
+// if(IS_PARALLEL==0)
+// {define solver UMFPack;}
+// else
+// {define solver parallel;}
+// define load factor increment 1;
+// simulate 1 steps using static algorithm;
+
+bye;

@@ -1,0 +1,136 @@
+############################################################################################################################
+##                                                                                                                         #
+##  GMESSI :: Translator for The Real ESSI (Real Earthquake-Soil-Structure Interaction) Simulator                          #
+##  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                                      #
+##                                                                                                                         #
+##  Example_5 : Modeling of a embedded shells and beam in Solids                                                           #
+##                                                                                                                         #
+##  *** gmessi file  for this example ***                                                                                  #
+##  *** gmessi (.gmessi) file can be located as Example_5.gmessi ***                                                       #
+##                                                                                                                         #
+##  Sumeet Kumar Sinha (July,2017)                                                                                         #
+##  Computational Geomechanics Group                                                                                       #
+##  University of California, Davis                                                                                        #
+##  s u m e e t k s i n h a . c o m                                                                                        #
+############################################################################################################################ 
+
+### Physical Groups defined in the msh file.
+#0 7 "Top_Of_Beam"
+#0 8 "Bottom_Of_Beam"
+#1 5 "Embedded_Beam"
+#1 6 "Exposed_Beam"
+#1 9 "Beam"
+#1 12 "Top_Of_Shell"
+#1 13 "Bottom_Of_Shell"
+#2 2 "Base"
+#2 3 "Lateral_X"
+#2 4 "Lateral_Y"
+#2 10 "Embedded_Shell"
+#2 11 "Exposed_Shell"
+#2 14 "Shell"
+#3 1 "Soil"
+
+### loading the gmsh file
+gmESSI.loadGmshFile("Example_5.msh")
+
+#### Defining the Simulation Directory and node, element, load and main file
+#### Its important to define the directory and these files at the beginning of any gmESSI command conversion
+#### 1 refers as overwrite mode ( will overwrite the directory if present) --- 0 would not overwrite
+gmESSI.setSimulationDir("./Example_5_ESSI_Simulation",1)
+gmESSI.setMainFile(gmESSI.SimulationDir+ "main.fei")
+gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
+gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")
+gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
+
+##### // is used to provide commands and gets translated in the main.fei file
+##### Also, the commands followed by exclamation '!' get directly copied to the main.fei file
+##### Usually, the user would write Real ESSI DSL against the exclamation mark.
+
+#### Defining New model name with acceleration field
+! model name "Solids_With_Beam_And_Shells" ;
+! add acceleration field # 1 ax =  0*g ay =  0*g 	az =  - g;
+
+
+##### Adding soil (3 dof) and shells (6 dof) Nodes to the model 
+[Add_Node{Physical_Group#Soil, Unit:= m, NumDofs:= 3}]
+[Add_Node{Physical_Group#Beam, Unit:= m, NumDofs:= 6}]
+[Add_Node{Physical_Group#Shell, Unit:= m, NumDofs:= 6}]
+
+
+#### Defining some variabbles 
+! h     = 1*m;       
+! Eshell  = 1e8*N/m^2; 
+! nu    = 0.0;        
+! rho   = 10*kg/m^3; 
+
+
+############ Connect Commands are used to create 2-noded physical contact element groups 
+############ Since, there will be three contacts in 3-directions (x,y,z) for each node pair 
+############ corresponding 3 physical groups rae created
+[Connect{Physical_Group#Embedded_Beam, Physical_Group#Soil, Physical_Group#Soil, dv1:= 0 \ 0 \1, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "Beam_ContactX"}]
+[Connect{Physical_Group#Embedded_Beam, Physical_Group#Soil, Physical_Group#Soil, dv1:= 0 \ 0 \1, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "Beam_ContactY"}]
+[Connect{Physical_Group#Embedded_Beam, Physical_Group#Soil, Physical_Group#Soil, dv1:= 0 \ 0 \1, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "Beam_ContactZ"}]
+[Connect{Physical_Group#Embedded_Shell, Physical_Group#Soil, Physical_Group#Soil, dv1:= 0 \ 0 \1, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "Shell_ContactX"}]
+[Connect{Physical_Group#Embedded_Shell, Physical_Group#Soil, Physical_Group#Soil, dv1:= 0 \ 0 \1, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "Shell_ContactY"}]
+[Connect{Physical_Group#Embedded_Shell, Physical_Group#Soil, Physical_Group#Soil, dv1:= 0 \ 0 \1, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "Shell_ContactZ"}]
+
+!add material # 1 type linear_elastic_isotropic_3d
+!  mass_density = rho
+!  elastic_modulus = Eshell
+!  poisson_ratio = nu;
+
+!add material # 2 type linear_elastic_isotropic_3d
+!  mass_density = rho
+!  elastic_modulus = Eshell
+!  poisson_ratio = nu;
+
+
+########### Adding Splids, Beas and Shells #########
+[Add_8NodeBrick{Physical_Group#Soil, MaterialNo:= 1}]
+[Add_4NodeShell_Andes{Physical_Group#Shell, MaterialNo:= 2, Thickness:= 1*m}]
+[Add_Beam_Elastic{Physical_Group#Beam, CrossSection:= 1*m^2, ElasticModulus:= 200e9*Pa, ShearModulus:= 20e9*Pa, Jx:= 1*m^4, Iy:= 1*m^4, Iz:= 1*m^4, Density:= 2000*kg/m^3, XZPlnVect_x:= 1, XZPlnVect_y:= 1, XZPlnVect_z:= 1, J1_x:= 0*m, J1_y:= 0*m, J1_z:= 0*m, J2_x:= 0*m, J2_y:= 0*m, J2_z:= 0*m}]
+
+########## Fixing the soil base and bottom of beam and shell as well 
+[Fix_Dofs{Physical_Group#Base, DofTypes:= all}]
+[Fix_Dofs{Physical_Group#Bottom_Of_Beam, DofTypes:= all}]
+[Fix_Dofs{Physical_Group#Bottom_Of_Shell, DofTypes:= all}]
+
+//Contact Parameters 
+! Kn = 1e9*N/m;
+! Sr = 1000/m;
+! Kn_max = 1e12*N/m;
+! Kt = 1e7*N/m;
+! Cn = 0*N/m*s;
+! Ct = 0*N/m*s;
+! Fr = 0.3;
+
+// Adding Soft Contacts 
+[Add_SoftContact{Physical_Group#Beam_ContactX, InitialNormalStiffness:= Kn,Stiffningrate:= Sr, max_normal_stiffness:= Kn_max, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}]
+[Add_SoftContact{Physical_Group#Beam_ContactY, InitialNormalStiffness:= Kn,Stiffningrate:= Sr, max_normal_stiffness:= Kn_max, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 1, NormVect_z:= 0}]
+[Add_SoftContact{Physical_Group#Beam_ContactZ, InitialNormalStiffness:= Kn,Stiffningrate:= Sr, max_normal_stiffness:= Kn_max, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 1, NormVect_y:= 0, NormVect_z:= 0}]
+[Add_SoftContact{Physical_Group#Shell_ContactZ, InitialNormalStiffness:= Kn,Stiffningrate:= Sr, max_normal_stiffness:= Kn_max, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 1, NormVect_y:= 0, NormVect_z:= 0}]
+[Add_SoftContact{Physical_Group#Shell_ContactY, InitialNormalStiffness:= Kn,Stiffningrate:= Sr, max_normal_stiffness:= Kn_max, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 1, NormVect_z:= 0}]
+[Add_SoftContact{Physical_Group#Shell_ContactX, InitialNormalStiffness:= Kn,Stiffningrate:= Sr, max_normal_stiffness:= Kn_max, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}]
+
+
+! include "node.fei";
+! include "element.fei";
+
+! new loading stage "Nodal_Load";
+
+! P = 10*kN;
+
+[Add_Node_Load_Linear{Physical_Group#Top_Of_Beam, ForceType:= Fx, Mag:= 1000*P}]
+[Add_Node_Load_Linear{Physical_Group#Top_Of_Shell, ForceType:= Fx, Mag:= P/100}]
+
+
+! include "load.fei";
+
+! define algorithm With_no_convergence_check ;
+! define solver UMFPack;
+! define load factor increment 0.1;
+! simulate 10 steps using static algorithm;
+! bye;
+
+
+

@@ -1,0 +1,74 @@
+
+###########################################################################################################################
+#                                                                                                                         #
+#  GMESSI :: Translator for The Real ESSI (Real Earthquake-Soil-Structure Interaction) Simulator                          #
+#  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                                      #
+#                                                                                                                         #
+#  Example_1 : Modeling of Cantilever Beam With Uniformly Distributed Load                                               #
+#                                                                                                                         #
+#  *** gmessi file  for this example ***                                                                                  #
+#  *** gemetry (.geo) file can be located as Example_2.geo ***                                                            #
+#                                                                                                                         #
+#  Sumeet Kumar Sinha (July,2017)                                                                                         #
+#  Computational Geomechanics Group                                                                                       #
+#  University of California, Davis                                                                                        #
+#  s u m e e t k s i n h a . c o m                                                                                        #
+########################################################################################################################### 
+
+### Physical Groups defined in the msh file.
+#0 1 "All_Points"
+#1 3 "All_Lines"
+#2 2 "All_Surfaces"
+#2 5 "ApplySurfaceLoad"
+#2 6 "SurfaceToBeFixed"
+#3 4 "All_Volumes"
+
+### loading the gmsh file
+gmESSI.loadGmshFile("Example_2.msh")
+
+### Defining the Simulation Directory and node, element, load and main file
+### Its important to define the directory and these files at the beginning of any gmESSI command conversion
+# 1 refers as overwrite mode ( will overwrite the directory if present) --- 0 would not overwrite
+gmESSI.setSimulationDir("./Example_2_ESSI_Simulation",1) 
+gmESSI.setMainFile(gmESSI.SimulationDir+ "main.fei")
+gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
+gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")
+gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
+
+#### // is used to provide commands and gets translated in the main.fei file
+#### Also, the commands followed by exclamation '!' get directly copied to the main.fei file
+#### Usually, the user would write Real ESSI DSL against the exclamation mark.
+
+// My new model
+! model name "Cantilever_Analysis"; 
+
+### Adding all the nodes in the model
+[Add_All_Node{Unit:= m, NumDofs:= 3}]
+
+// Adding Material
+! add material #1 type linear_elastic_isotropic_3d mass_density = 2000*kg/m^3 elastic_modulus = 200*MPa poisson_ratio = 0.2;
+
+
+[Add_8NodeBrick{Physical_Group#All_Volumes, material_no:= 1}]
+[Fix_Dofs{Physical_Group#SurfaceToBeFixed, all}]
+
+
+! include "node.fei"; 
+! include "element.fei"; 
+
+! new loading stage "Stage1_Uniform_Surface_Load"; 
+
+
+# Adding Surface Load
+[Add_8NodeBrick_SurfaceLoad{Physical_Group#All_Volumes,Physical_Group#ApplySurfaceLoad,-10*Pa}]
+#[Add_Node_Load_Linear{Physical_Group#ApplySurfaceLoad, ForceType:= Fz, Mag:= -10*kN}]
+
+! include "load.fei";
+! 	define algorithm With_no_convergence_check; 
+! 	define solver UMFPack; 
+! 	define load factor increment 1; 
+! 	simulate 10 steps using static algorithm; 
+! bye; 
+
+
+

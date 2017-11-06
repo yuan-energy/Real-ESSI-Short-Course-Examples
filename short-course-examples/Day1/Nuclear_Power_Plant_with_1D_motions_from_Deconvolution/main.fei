@@ -1,0 +1,178 @@
+model name "NPPModel"; 
+
+add acceleration field # 1 ax = 0*g ay = 0*g az = -1*g ; 
+
+
+
+// Adding Material
+
+Soil_Elastic_Modulus = 1.3e9*Pa;
+Soil_Density = 2140*kg/m^3;
+Soil_Poisons_ratio = 0.25;
+
+
+// Adding Material
+add material # 1 type linear_elastic_isotropic_3d mass_density = 2400*kg/m^3 elastic_modulus = 20e9*Pa poisson_ratio = 0.21; //Containment_Buildin; 
+add material # 2 type linear_elastic_isotropic_3d mass_density = 2400*kg/m^3 elastic_modulus = 20e9*Pa poisson_ratio = 0.21; //Auxiliary_Building_Floor; 
+add material # 3 type linear_elastic_isotropic_3d mass_density = 2400*kg/m^3 elastic_modulus = 20e9*Pa poisson_ratio = 0.21; //Auxiliary_Building_Ceilin; 
+add material # 4 type linear_elastic_isotropic_3d mass_density = 2400*kg/m^3 elastic_modulus = 20e9*Pa poisson_ratio = 0.21; //Auxiliary_Building_Exterior_Wall; 
+add material # 5 type linear_elastic_isotropic_3d mass_density = 2400*kg/m^3 elastic_modulus = 20e9*Pa poisson_ratio = 0.21; //Auxiliary_Building_Interior_Wall; 
+add material # 6 type linear_elastic_isotropic_3d mass_density = 2400*kg/m^3 elastic_modulus = 20e9*Pa poisson_ratio = 0.21; //Foundation_Volum; 
+add material # 7 type linear_elastic_isotropic_3d mass_density = Soil_Density elastic_modulus = Soil_Elastic_Modulus poisson_ratio = Soil_Poisons_ratio; //Soil_Volum; 
+add material # 8 type linear_elastic_isotropic_3d mass_density = Soil_Density elastic_modulus = Soil_Elastic_Modulus poisson_ratio = Soil_Poisons_ratio; //DRM_Layer_Volum; 
+add material # 9 type linear_elastic_isotropic_3d mass_density = Soil_Density elastic_modulus = Soil_Elastic_Modulus poisson_ratio = Soil_Poisons_ratio; //Damping_Layer_Volum; 
+
+
+// add material # <.> type VonMisesArmstrongFrederick mass_density = <M/L^3> elastic_modulus = <F/L^2> poisson_ratio = <.> von_mises_radius = <> armstrong_frederick_ha = <F/L^2> armstrong_frederick_cr = <F/L^2> isotropic_hardening_rate = <F/L^2> ;
+// add material #7  type VonMisesArmstrongFrederick 
+// 	mass_density =  2140*kg/m^3
+// 	elastic_modulus = Soil_Elastic_Modulus
+// 	poisson_ratio =  Soil_Poisons_ratio
+// 	von_mises_radius = 60*kPa  
+// 	armstrong_frederick_ha =  3e7*Pa
+// 	armstrong_frederick_cr =  25
+// 	isotropic_hardening_rate =  0*Pa;
+
+add wave field # 1 with
+  acceleration_filename = "scaled_northridge_acc.dat"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "scaled_northridge_dis.dat"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.5 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
+	
+
+
+
+// define NDMaterial constitutive integration algorithm < Forward_Euler | Forward_Euler_Subincrement | Backward_Euler | Backward_Euler_ddlambda | Backward_Euler_ddlambda_Subincrement > yield_function_relative_tolerance  = <.> stress_relative_tolerance = <.> maximum_iterations = <.>;
+define NDMaterial constitutive integration algorithm  Backward_Euler 
+	yield_function_relative_tolerance =  1e-6
+	stress_relative_tolerance =  1e-6
+	maximum_iterations = 100;
+
+
+	
+//Thickness of Auxiliary and Containment Building Walls
+ Containment_Building_Thickness = 1.6*m; 
+ Auxiliary_Building_Floors_Thickness = 0.6*m; 
+ Auxiliary_Building_Ceiling_Thickness = 1.0*m; 
+ Auxiliary_Building_Exterior_Walls_Thickness = 1.6*m; 
+ Auxiliary_Building_Interior_Walls_Thickness = 0.4*m; 
+
+
+//Contact Parameters (ForceBased)
+Kn = 1e9*N/m; 
+Sr = 1000/m; 
+Kn_max = 1e12*N/m; 
+Kt = 1e7*N/m; 
+Cn = 100*N/m*s; 
+Ct = 100*N/m*s; 
+Fr = 0.25; 
+
+//Contact Parameters (StressBased)
+Kn = 100*MPa; 
+Sr = 100; 
+Kn_max = 500*MPa; 
+Kt = 400*kPa; 
+Cn = 100*Pa*s; 
+Ct = 100*Pa*s; 
+Fr = 0.8; 
+Kp = 1e12*N/m;
+Shear_Zone  = 5e-3*m;
+mu_p_no = 0.9;
+mu_p_k  = 0.1;
+Softening_rate = 40;
+Pleateau_Size = 8;
+
+// Adding Damping Variables
+ DRM_Layer_Damping = 0.60; 
+ Soil_Layer_Damping = 0.30; 
+ Concrete_Damping = 0.05; 
+
+// Rayleigh Damping Parameters
+ f_1 = 0.5*Hz; 
+ f_2 = 5.0*Hz; 
+ xi_1 = 1; 
+ xi_2 = 1; 
+ a_0 = 4*pi*f_1*f_2*(f_1*xi_2 - f_2*xi_1)/(f_1^2 - f_2^2); 
+ a_1 = (f_1*xi_1 - f_2*xi_2)/(pi*(f_1^2 - f_2^2)); 
+
+
+// Defining Damping
+add damping # 1 type Rayleigh with a0 = a_0*Soil_Layer_Damping a1 = a_1*Soil_Layer_Damping stiffness_to_use = Initial_Stiffness; // Soil Dampin; 
+add damping # 2 type Rayleigh with a0 = a_0*DRM_Layer_Damping a1 = a_1*DRM_Layer_Damping stiffness_to_use = Initial_Stiffness; // DRM Dampin; 
+add damping # 3 type Rayleigh with a0 = a_0*Concrete_Damping a1 = a_1*Concrete_Damping stiffness_to_use = Initial_Stiffness; // Concrete Dampin; 
+
+
+// Including the files
+ // Including The files; 
+
+include "geometry.fei"; 
+// include "StressBasedSoftContact_ElPPlShear.fei";
+include "StressBasedHardContact_ElPPlShear.fei";
+
+
+new loading stage "Self_Weight_Stress_Based"; 
+
+add load # 1 to all elements type self_weight use acceleration field # 1; 
+
+include "load.fei"; 
+
+NumSteps = 30; 
+
+// Carrying out the simulation
+// define convergence test Norm_Unbalance tolerance = 100 maximum_iterations = 300 verbose_level = 1; 
+
+enable sub-stepping with minimum_time_step = 0.0001;
+
+tol = 5e-3;
+
+define convergence test Relative_Norm_Unbalanced_Force tolerance = tol minimum_absolute_tolerance = 5e5 maximum_iterations = 50 ;
+define load factor increment 1/NumSteps; 
+define algorithm NewtonLineSearch ;
+define solver parallel petsc "-pc_type lu -pc_factor_mat_solver_package mumps" ;
+
+simulate NumSteps steps using static algorithm; 
+
+// new loading stage <string>;
+new loading stage "DRM_Motion";
+
+// add domain reduction method loading # 2 hdf5_file = "../M5.5_ESSI_Earthquake.drminput" scale_factor = 1;
+add load # 2 type DRM from wave field # 1 
+    in direction ux 
+    soil_surface at z = 0 * m 
+    hdf5_file = "DRMinfo.drminput" ; 
+
+TotalTime= 40*s;
+TimeStep = 10*0.001938*s;
+NumSteps = TotalTime/TimeStep;
+
+
+// Carrying out the simulation
+// define convergence test Norm_Unbalance tolerance = 100 maximum_iterations = 300 verbose_level = 1; 
+enable sub-stepping with minimum_time_step = 0.0001;
+tol = 5e-3;
+define convergence test Relative_Norm_Unbalanced_Force tolerance = tol minimum_absolute_tolerance = 5e5 maximum_iterations = 50 ;
+// define load factor increment 1/NumSteps; 
+
+// define algorithm <With_no_convergence_check|Newton|Modified_Newton>;
+define algorithm NewtonLineSearch ;
+define solver Parallel ; 
+
+gam = 0.7;
+bet = 0.25*(gam + 0.5)^2;
+define dynamic integrator Newmark with 
+	gamma = gam 
+	beta = bet;
+
+simulate NumSteps steps using transient algorithm 
+	time_step = TimeStep;
+
+bye; 
