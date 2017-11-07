@@ -1,8 +1,8 @@
 #****************************************************************
 # DRM 2D Example
 #****************************************************************
-gmESSI.loadGmshFile("model2.msh")
-gmESSI.setSimulationDir("./model2_fei",1)
+gmESSI.loadGmshFile("DRM2D.msh")
+gmESSI.setSimulationDir("./DRM2D_fei",1)
 gmESSI.setMainFile(gmESSI.SimulationDir+ "main.fei")
 gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
 gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")

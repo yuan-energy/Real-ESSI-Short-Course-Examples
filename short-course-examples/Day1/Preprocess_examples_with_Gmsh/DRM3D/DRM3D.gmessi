@@ -2,8 +2,8 @@
 # DRM 3D Example 
 #****************************************************************
 
-gmESSI.loadGmshFile("Example_6.msh")
-gmESSI.setSimulationDir("./Example_6_fei",1)
+gmESSI.loadGmshFile("DRM3D.msh")
+gmESSI.setSimulationDir("./DRM3D_fei",1)
 gmESSI.setMainFile(gmESSI.SimulationDir+ "main.fei")
 gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
 gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")
