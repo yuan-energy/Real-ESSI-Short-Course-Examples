@@ -1,0 +1,188 @@
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#all_volume, DofTypes:= uy}Starts
+//*************************************************************************************************************************
+
+fix node # 1 dofs uy; 
+fix node # 2 dofs uy; 
+fix node # 3 dofs uy; 
+fix node # 4 dofs uy; 
+fix node # 5 dofs uy; 
+fix node # 6 dofs uy; 
+fix node # 7 dofs uy; 
+fix node # 8 dofs uy; 
+fix node # 9 dofs uy; 
+fix node # 10 dofs uy; 
+fix node # 11 dofs uy; 
+fix node # 12 dofs uy; 
+fix node # 13 dofs uy; 
+fix node # 14 dofs uy; 
+fix node # 15 dofs uy; 
+fix node # 16 dofs uy; 
+fix node # 17 dofs uy; 
+fix node # 18 dofs uy; 
+fix node # 19 dofs uy; 
+fix node # 20 dofs uy; 
+fix node # 21 dofs uy; 
+fix node # 22 dofs uy; 
+fix node # 23 dofs uy; 
+fix node # 24 dofs uy; 
+fix node # 25 dofs uy; 
+fix node # 26 dofs uy; 
+fix node # 27 dofs uy; 
+fix node # 28 dofs uy; 
+fix node # 29 dofs uy; 
+fix node # 30 dofs uy; 
+fix node # 31 dofs uy; 
+fix node # 32 dofs uy; 
+fix node # 33 dofs uy; 
+fix node # 34 dofs uy; 
+fix node # 35 dofs uy; 
+fix node # 36 dofs uy; 
+fix node # 37 dofs uy; 
+fix node # 38 dofs uy; 
+fix node # 39 dofs uy; 
+fix node # 40 dofs uy; 
+fix node # 41 dofs uy; 
+fix node # 42 dofs uy; 
+fix node # 43 dofs uy; 
+fix node # 44 dofs uy; 
+fix node # 45 dofs uy; 
+fix node # 46 dofs uy; 
+fix node # 47 dofs uy; 
+fix node # 48 dofs uy; 
+fix node # 49 dofs uy; 
+fix node # 50 dofs uy; 
+fix node # 51 dofs uy; 
+fix node # 52 dofs uy; 
+fix node # 53 dofs uy; 
+fix node # 54 dofs uy; 
+fix node # 55 dofs uy; 
+fix node # 56 dofs uy; 
+fix node # 57 dofs uy; 
+fix node # 58 dofs uy; 
+fix node # 59 dofs uy; 
+fix node # 60 dofs uy; 
+fix node # 61 dofs uy; 
+fix node # 62 dofs uy; 
+fix node # 63 dofs uy; 
+fix node # 64 dofs uy; 
+fix node # 65 dofs uy; 
+fix node # 66 dofs uy; 
+fix node # 67 dofs uy; 
+fix node # 68 dofs uy; 
+fix node # 69 dofs uy; 
+fix node # 70 dofs uy; 
+fix node # 71 dofs uy; 
+fix node # 72 dofs uy; 
+fix node # 73 dofs uy; 
+fix node # 74 dofs uy; 
+fix node # 75 dofs uy; 
+fix node # 76 dofs uy; 
+fix node # 77 dofs uy; 
+fix node # 78 dofs uy; 
+fix node # 79 dofs uy; 
+fix node # 80 dofs uy; 
+fix node # 81 dofs uy; 
+fix node # 82 dofs uy; 
+fix node # 83 dofs uy; 
+fix node # 84 dofs uy; 
+fix node # 85 dofs uy; 
+fix node # 86 dofs uy; 
+fix node # 87 dofs uy; 
+fix node # 88 dofs uy; 
+fix node # 89 dofs uy; 
+fix node # 90 dofs uy; 
+fix node # 91 dofs uy; 
+fix node # 92 dofs uy; 
+fix node # 93 dofs uy; 
+fix node # 94 dofs uy; 
+fix node # 95 dofs uy; 
+fix node # 96 dofs uy; 
+fix node # 97 dofs uy; 
+fix node # 98 dofs uy; 
+fix node # 99 dofs uy; 
+fix node # 100 dofs uy; 
+fix node # 101 dofs uy; 
+fix node # 102 dofs uy; 
+fix node # 103 dofs uy; 
+fix node # 104 dofs uy; 
+fix node # 105 dofs uy; 
+fix node # 106 dofs uy; 
+fix node # 107 dofs uy; 
+fix node # 108 dofs uy; 
+fix node # 109 dofs uy; 
+fix node # 110 dofs uy; 
+fix node # 111 dofs uy; 
+fix node # 112 dofs uy; 
+fix node # 113 dofs uy; 
+fix node # 114 dofs uy; 
+fix node # 115 dofs uy; 
+fix node # 116 dofs uy; 
+fix node # 117 dofs uy; 
+fix node # 118 dofs uy; 
+fix node # 119 dofs uy; 
+fix node # 120 dofs uy; 
+fix node # 121 dofs uy; 
+fix node # 122 dofs uy; 
+fix node # 123 dofs uy; 
+fix node # 124 dofs uy; 
+fix node # 125 dofs uy; 
+fix node # 126 dofs uy; 
+fix node # 127 dofs uy; 
+fix node # 128 dofs uy; 
+fix node # 129 dofs uy; 
+fix node # 130 dofs uy; 
+fix node # 131 dofs uy; 
+fix node # 132 dofs uy; 
+fix node # 133 dofs uy; 
+fix node # 134 dofs uy; 
+fix node # 135 dofs uy; 
+fix node # 136 dofs uy; 
+fix node # 137 dofs uy; 
+fix node # 138 dofs uy; 
+fix node # 139 dofs uy; 
+fix node # 140 dofs uy; 
+fix node # 141 dofs uy; 
+fix node # 142 dofs uy; 
+fix node # 143 dofs uy; 
+fix node # 144 dofs uy; 
+fix node # 145 dofs uy; 
+fix node # 146 dofs uy; 
+fix node # 147 dofs uy; 
+fix node # 148 dofs uy; 
+fix node # 149 dofs uy; 
+fix node # 150 dofs uy; 
+fix node # 151 dofs uy; 
+fix node # 152 dofs uy; 
+fix node # 153 dofs uy; 
+fix node # 154 dofs uy; 
+fix node # 155 dofs uy; 
+fix node # 156 dofs uy; 
+fix node # 157 dofs uy; 
+fix node # 158 dofs uy; 
+fix node # 159 dofs uy; 
+fix node # 160 dofs uy; 
+fix node # 161 dofs uy; 
+fix node # 162 dofs uy; 
+fix node # 163 dofs uy; 
+fix node # 164 dofs uy; 
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#all_volume, DofTypes:= uy}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Add_Node_Load_Imposed_Motion_Series{Physical_Group#bottom_surface, DofType:= ux, DispScale:= 1*m, DispFile:= "../ormsby_dis.dat" , VelScale:= 1*m/s , VelFile:= "../ormsby_vel.dat", AccScale:= 1*m/s^2, AccFile:= "../ormsby_acc.dat"}Starts
+//*************************************************************************************************************************
+
+add imposed motion # 1 to node # 1 dof ux displacement_scale_unit = 1*m displacement_file = "../ormsby_dis.dat" velocity_scale_unit = 1*m/s velocity_file = "../ormsby_vel.dat" acceleration_scale_unit = 1*m/s^2 acceleration_file = "../ormsby_acc.dat"; 
+add imposed motion # 2 to node # 2 dof ux displacement_scale_unit = 1*m displacement_file = "../ormsby_dis.dat" velocity_scale_unit = 1*m/s velocity_file = "../ormsby_vel.dat" acceleration_scale_unit = 1*m/s^2 acceleration_file = "../ormsby_acc.dat"; 
+add imposed motion # 3 to node # 3 dof ux displacement_scale_unit = 1*m displacement_file = "../ormsby_dis.dat" velocity_scale_unit = 1*m/s velocity_file = "../ormsby_vel.dat" acceleration_scale_unit = 1*m/s^2 acceleration_file = "../ormsby_acc.dat"; 
+add imposed motion # 4 to node # 4 dof ux displacement_scale_unit = 1*m displacement_file = "../ormsby_dis.dat" velocity_scale_unit = 1*m/s velocity_file = "../ormsby_vel.dat" acceleration_scale_unit = 1*m/s^2 acceleration_file = "../ormsby_acc.dat"; 
+
+//*************************************************************************************************************************
+//							Add_Node_Load_Imposed_Motion_Series{Physical_Group#bottom_surface, DofType:= ux, DispScale:= 1*m, DispFile:= "../ormsby_dis.dat" , VelScale:= 1*m/s , VelFile:= "../ormsby_vel.dat", AccScale:= 1*m/s^2, AccFile:= "../ormsby_acc.dat"}Ends
+//*************************************************************************************************************************
+

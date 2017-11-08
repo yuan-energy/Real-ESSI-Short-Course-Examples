@@ -1,0 +1,54 @@
+
+//*************************************************************************************************************************
+//							Add_All_Node{ unit:= m, nof_dofs:= 3}Starts
+//*************************************************************************************************************************
+
+add node # 1 at (0*m,0*m,0*m) with 3 dofs; 
+add node # 2 at (20*m,0*m,0*m) with 3 dofs; 
+add node # 3 at (0*m,20*m,0*m) with 3 dofs; 
+add node # 4 at (20*m,20*m,0*m) with 3 dofs; 
+add node # 5 at (0*m,0*m,200*m) with 3 dofs; 
+add node # 6 at (20*m,0*m,200*m) with 3 dofs; 
+add node # 7 at (20*m,20*m,200*m) with 3 dofs; 
+add node # 8 at (0*m,20*m,200*m) with 3 dofs; 
+add node # 9 at (0*m,0*m,20*m) with 3 dofs; 
+add node # 10 at (0*m,0*m,40*m) with 3 dofs; 
+add node # 11 at (0*m,0*m,60*m) with 3 dofs; 
+add node # 12 at (0*m,0*m,80*m) with 3 dofs; 
+add node # 13 at (0*m,0*m,100*m) with 3 dofs; 
+add node # 14 at (0*m,0*m,120*m) with 3 dofs; 
+add node # 15 at (0*m,0*m,140*m) with 3 dofs; 
+add node # 16 at (0*m,0*m,160*m) with 3 dofs; 
+add node # 17 at (0*m,0*m,180*m) with 3 dofs; 
+add node # 18 at (20*m,0*m,20*m) with 3 dofs; 
+add node # 19 at (20*m,0*m,40*m) with 3 dofs; 
+add node # 20 at (20*m,0*m,60*m) with 3 dofs; 
+add node # 21 at (20*m,0*m,80*m) with 3 dofs; 
+add node # 22 at (20*m,0*m,100*m) with 3 dofs; 
+add node # 23 at (20*m,0*m,120*m) with 3 dofs; 
+add node # 24 at (20*m,0*m,140*m) with 3 dofs; 
+add node # 25 at (20*m,0*m,160*m) with 3 dofs; 
+add node # 26 at (20*m,0*m,180*m) with 3 dofs; 
+add node # 27 at (20*m,20*m,20*m) with 3 dofs; 
+add node # 28 at (20*m,20*m,40*m) with 3 dofs; 
+add node # 29 at (20*m,20*m,60*m) with 3 dofs; 
+add node # 30 at (20*m,20*m,80*m) with 3 dofs; 
+add node # 31 at (20*m,20*m,100*m) with 3 dofs; 
+add node # 32 at (20*m,20*m,120*m) with 3 dofs; 
+add node # 33 at (20*m,20*m,140*m) with 3 dofs; 
+add node # 34 at (20*m,20*m,160*m) with 3 dofs; 
+add node # 35 at (20*m,20*m,180*m) with 3 dofs; 
+add node # 36 at (0*m,20*m,20*m) with 3 dofs; 
+add node # 37 at (0*m,20*m,40*m) with 3 dofs; 
+add node # 38 at (0*m,20*m,60*m) with 3 dofs; 
+add node # 39 at (0*m,20*m,80*m) with 3 dofs; 
+add node # 40 at (0*m,20*m,100*m) with 3 dofs; 
+add node # 41 at (0*m,20*m,120*m) with 3 dofs; 
+add node # 42 at (0*m,20*m,140*m) with 3 dofs; 
+add node # 43 at (0*m,20*m,160*m) with 3 dofs; 
+add node # 44 at (0*m,20*m,180*m) with 3 dofs; 
+
+//*************************************************************************************************************************
+//							Add_All_Node{ unit:= m, nof_dofs:= 3}Ends
+//*************************************************************************************************************************
+

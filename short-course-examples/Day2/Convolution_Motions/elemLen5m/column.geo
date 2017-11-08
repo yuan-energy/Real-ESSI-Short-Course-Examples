@@ -7,14 +7,14 @@
 //****************************************************************
 // Predefined Parameters
 //****************************************************************
-height_of_column = 50 ;
+height_of_column = 200 ;
 width_of_column = 5  ;
 
 Ox = 0;
 Oy = 0;
 Oz = 0;
 
-mesh_size = 5 ;
+mesh_size = width_of_column ;
 
 
 
