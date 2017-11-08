@@ -103,7 +103,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
     stress_relative_tolerance =  1E-7
     maximum_iterations = 100;
 Nsteps = 100;
-define static integrator displacement_control using node # 1 dof ux increment 1E-3*m ;
+define static integrator displacement_control using node # 1 dof ux increment 5E-4*m ;
 simulate Nsteps steps using static algorithm;
 new loading stage "3unloading";
 add load # 105 to node # 1 type linear Fx =  -400 * N;
@@ -121,7 +121,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
     stress_relative_tolerance =  1E-7
     maximum_iterations = 100;
 Nsteps = 100;
-define static integrator displacement_control using node # 1 dof ux increment -1E-3*m ;
+define static integrator displacement_control using node # 1 dof ux increment -5E-4*m ;
 simulate 2*Nsteps steps using static algorithm;
 new loading stage "4reloading" ;
 add load # 115 to node # 1 type linear Fx =  400 * N;
@@ -139,7 +139,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
     stress_relative_tolerance =  1E-7
     maximum_iterations = 100;
 Nsteps = 100;
-define static integrator displacement_control using node # 1 dof ux increment 1E-3*m ;
+define static integrator displacement_control using node # 1 dof ux increment 5E-4*m ;
 simulate 2*Nsteps steps using static algorithm;
 bye;  
     
