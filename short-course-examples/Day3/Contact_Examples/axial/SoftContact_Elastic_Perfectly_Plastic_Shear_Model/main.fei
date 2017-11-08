@@ -90,7 +90,7 @@ add element  #3 type truss with nodes (9,11) use material # 2 cross_section = 1*
 
 // Soft Contact With elastic_perfectly_plastic_shear_model
 add element #4  type StressBasedSoftContact_ElPPlShear with nodes (7,9)
-	initial_axial_stiffness =200*MPa
+	initial_axial_stiffness =2*MPa
 	stiffening_rate          = 100
 	max_axial_stiffness = 20*GPa
 	initial_shear_stiffness =  800*kPa 

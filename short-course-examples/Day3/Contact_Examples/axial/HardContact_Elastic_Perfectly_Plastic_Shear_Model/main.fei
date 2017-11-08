@@ -130,7 +130,7 @@ add element #4  type StressBasedHardContact_ElPPlShear with nodes (7,9)
 
 new loading stage "Adding_Normal_Load";
 
-add load #1 to node #9  type linear Fz=-1.5e5*N;
+add load #1 to node #9  type linear Fz=-1.5e5*kN;
 
 Nsteps = 100;
 tol = 1e-3;
