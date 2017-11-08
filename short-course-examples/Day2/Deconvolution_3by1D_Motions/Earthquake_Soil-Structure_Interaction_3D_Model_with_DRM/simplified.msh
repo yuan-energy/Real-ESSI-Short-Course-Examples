@@ -3,11 +3,11 @@ $MeshFormat
 $EndMeshFormat
 $PhysicalNames
 22
-2 3 "soil_left_surface"
-2 4 "soil_right_surface"
-2 5 "soil_up_surface"
-2 6 "soil_down_surface"
-2 7 "soil_bottom_surface"
+2 3 "soil_x_minus_surface"
+2 4 "soil_x_plus_surface"
+2 5 "soil_y_plus_surface"
+2 6 "soil_y_minus_surface"
+2 7 "soil_z_top_surface"
 2 9 "soils_bottom_most"
 2 11 "foundation_top_surface"
 2 12 "foundation_bottom_surface"

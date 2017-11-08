@@ -50,21 +50,21 @@ ans[] = Extrude{0, 0, -depth_of_soil}{Surface{7,11,15,19,23,27,31,35,39}; Layers
 ans[] = Extrude{0, 0, depth_of_foundation}{Surface{7,11,15,19,27,31,35,39}; Layers{depth_of_foundation/mesh_size};Recombine;};
 soils_under_zero[] = {1, 2, 3, 4, 5, 6, 7, 8, 9} ; 
 soils_around_foundation[] = {10, 11, 12, 13, 14, 15, 16, 17} ; 
-soil_left_surface = 316;
-soil_right_surface = 346;
-soil_up_surface = 378;
-soil_down_surface = 276;
-soil_bottom_surface = 23;
+soil_x_minus_surface = 316;
+soil_x_plus_surface = 346;
+soil_y_plus_surface = 378;
+soil_y_minus_surface = 276;
+soil_z_top_surface = 23;
 
 Physical Volume("soils_under_zero") = soils_under_zero[] ; 
 Physical Volume("soils_around_foundation") = soils_around_foundation[] ; 
 
-Physical Surface("soil_left_surface") = soil_left_surface ; 
-Physical Surface("soil_right_surface") = soil_right_surface ; 
-Physical Surface("soil_up_surface") = soil_up_surface ; 
-Physical Surface("soil_down_surface") = soil_down_surface ; 
+Physical Surface("soil_x_minus_surface") = soil_x_minus_surface ; 
+Physical Surface("soil_x_plus_surface") = soil_x_plus_surface ; 
+Physical Surface("soil_y_plus_surface") = soil_y_plus_surface ; 
+Physical Surface("soil_y_minus_surface") = soil_y_minus_surface ; 
 
-Physical Surface("soil_bottom_surface") = soil_bottom_surface ; 
+Physical Surface("soil_z_top_surface") = soil_z_top_surface ; 
 
 all_soils[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17} ;
 Physical Volume("all_soils") = all_soils[] ; 
