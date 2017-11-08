@@ -1,6 +1,6 @@
 
 
-model name "DRM1D" ;
+model name "Solid_structure_DRM3D" ;
 Elastic = 2e8*N/m^2; 
 nu    = 0.1;        
 rho   = 2000*kg/m^3;     
@@ -36,6 +36,50 @@ include "node.fei";
 include "element.fei";
 include "load.fei";
 
+add wave field # 1 with
+  acceleration_filename = "scaled_NORTHR_x_A.txt"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "scaled_NORTHR_x_D.txt"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.5 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
+  
+add wave field # 2 with
+  acceleration_filename = "scaled_NORTHR_y_A.txt"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "scaled_NORTHR_y_D.txt"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.5 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
+
+add wave field # 3 with
+  acceleration_filename = "scaled_NORTHR_z_A.txt"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "scaled_NORTHR_z_D.txt"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.5 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile_Vp.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
 
 // check model;
 new loading stage "Self_weight";
@@ -55,27 +99,19 @@ simulate 1 steps using static algorithm;
 
 new loading stage "motion";
 
-add wave field # 1 with
-  acceleration_filename = "scaled_northridge_acc.dat"
-  unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "scaled_northridge_dis.dat"
-  unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
-  acceleration_depth = 0 * m
-  monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile.txt"
-  unit_of_Vs = 1 * m/s
-  unit_of_rho = 1 * kg/m^3
-  unit_of_damping = absolute
-  unit_of_thickness = 1*m 
-  ;
+
 enable acceleration output; 
-//add load # 2 type domain reduction method 
-  //  hdf5_file = "DRM_Input.hdf5" ; 
-add load # 2 type DRM from wave field # 1 
-    in direction ux 
+add load # 2 type DRM from wave field 
+    # 1 in direction ux 
+    # 2 in direction uy
+    # 3 in direction uz
     soil_surface at z = 10 * m 
     hdf5_file = "DRMinput.hdf5" ; 
+// add load # 2 type DRM from wave field # 1 
+//     in direction ux 
+//     soil_surface at z = 10 * m 
+//     hdf5_file = "DRMinput.hdf5" ; 
+
 define algorithm With_no_convergence_check ;
 // define convergence test Norm_Unbalance tolerance = 1E-2 maximum_iterations = 20 verbose_level = 1; 
 // define algorithm Newton; 
