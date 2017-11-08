@@ -67,7 +67,7 @@ def calc_damping(stress_, strain_):
 # ******************************************
 def start_simulation(Nstep_):
 	strain_incre_ = 1E-5
-	max_strain = 1E-2
+	max_strain = 1E-3
 	[start, end] = np.log10([strain_incre_, max_strain])
 	the_max_strain_size = np.logspace(start, end, Nstep_)
 	print the_max_strain_size
@@ -101,7 +101,7 @@ label_size = fontSIZE
 mpl.rcParams['xtick.labelsize'] = label_size 
 mpl.rcParams['ytick.labelsize'] = label_size 
 
-plt.semilogx(ESSIStrain, ESSIDamping,  'b-', label=' ESSI',  linewidth = 5.0 )
+plt.semilogx(ESSIStrain, ESSIDamping,  'k-', label=' ESSI',  linewidth = 5.0 )
 plt.semilogx(InputStrain, InputDamping,'r--', label='Input',  linewidth = 5.0 )
 plt.legend(loc=2, prop={'size':fontSIZE})
 plt.xlabel('Strain / (unitless)',fontsize=fontSIZE)

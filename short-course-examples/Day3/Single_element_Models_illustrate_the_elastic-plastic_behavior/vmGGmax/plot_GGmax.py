@@ -2,8 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt  
 
 # target
-userInput1= [0,1E-6,1E-5,5E-5,1E-4, 0.0005, 0.001, 0.005, 0.01];  
-userInput2= [1,0.99563892,0.96674888,0.87318337,0.78735192,0.46719464,0.32043423,0.10940113,0.06347752];
+# userInput1= [0,1E-6,1E-5,5E-5,1E-4, 0.0005, 0.001, 0.005, 0.01];  
+# userInput2= [1,0.99563892,0.96674888,0.87318337,0.78735192,0.46719464,0.32043423,0.10940113,0.06347752];
+userInput1= [0,1E-6,1E-5,5E-5,1E-4, 0.0005, 0.001];  
+userInput2= [1,0.99563892,0.96674888,0.87318337,0.78735192,0.46719464,0.32043423];
 Gmax = 3E8;
 poisson = 0.0;
 # #################################
@@ -60,7 +62,7 @@ essiGGmax = [item/Gmax for item in essiG]
 
 # strain_plot = [100* x for x in strain]
 # stress_plot = [1./1000* x for x in stress]
-plt.semilogx(essiGamma, essiGGmax, 'b-', label='ESSI', linewidth = 5.0 )
+plt.semilogx(essiGamma, essiGGmax, 'k-', label='ESSI', linewidth = 5.0 )
 plt.semilogx(gamma , GGmax , 'r--', label='Input', linewidth = 5.0 )
 
 # plt.legend(loc=3)

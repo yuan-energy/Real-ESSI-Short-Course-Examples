@@ -23,7 +23,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
     maximum_iterations = 30
     ;
 incr_size = 0.000001  ;
-max_strain=  0.005      ; 
+max_strain=  0.0005      ; 
 num_of_increm =  max_strain/incr_size -1 ;
 simulate constitutive testing strain control pure shear use material # 1
  confinement_strain = 0.0
