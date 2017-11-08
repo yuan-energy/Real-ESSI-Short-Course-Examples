@@ -18,8 +18,8 @@ Ox = 0;
 Oy = 0;
 Oz = 0;
 
-//epsilon =0.001 ;
-epsilon = 2 ;
+epsilon =0.001 ;
+//epsilon = 2 ;
 
 mesh_size = 5;
 
@@ -96,13 +96,16 @@ ans[] = Extrude{0,0,height_of_structure}{Surface{box_bottom_surface} ;Layers{hei
 box_top_surface                        = ans[0] ;
 
 box_volume                             = ans[1] ;
+Delete {
+  Volume{box_volume};
+}
 
 box_x_minus_surface                    = ans[2]  ;
 box_y_plus_surface                     = ans[3]  ;
 box_x_plus_surface                     = ans[4]  ;
 box_y_minus_surface                    = ans[5]  ;
 
-Physical Volume("box_volume")          = box_volume;
+//Physical Volume("box_volume")          = box_volume;
 
 Physical Surface("box_top_surface")    = box_top_surface ;
 Physical Surface("box_bottom_surface") = box_bottom_surface ;
@@ -111,6 +114,8 @@ Physical Surface("box_x_minus_surface") = box_x_minus_surface ;
 Physical Surface("box_y_plus_surface")  = box_y_plus_surface ;
 Physical Surface("box_x_plus_surface")  = box_x_plus_surface ;
 Physical Surface("box_y_minus_surface") = box_y_minus_surface ;
+
+Physical Surface("all_box_surfaces") = {box_top_surface, box_bottom_surface, box_x_minus_surface, box_y_plus_surface, box_x_plus_surface, box_y_minus_surface} ;
 
 
 ////////**************************************************************************************************

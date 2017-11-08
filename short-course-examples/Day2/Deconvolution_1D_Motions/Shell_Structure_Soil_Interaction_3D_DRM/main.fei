@@ -1,9 +1,11 @@
 
 
-model name "DRM1D" ;
+model name "shell_structure" ;
+
 Elastic = 2e8*N/m^2; 
 nu    = 0.1;        
 rho   = 2000*kg/m^3;     
+
 add material # 1 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
@@ -19,18 +21,18 @@ add material # 3 type linear_elastic_isotropic_3d
   elastic_modulus = Elastic
   poisson_ratio = nu;
 
-add material # 4 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
+shell_Elastic = 2.48e11*N/m^2; 
+shell_v    = 0.1;        
+shell_rho   = 2000*kg/m^3;    
 
-add material # 5 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
+add material # 4 type linear_elastic_isotropic_3d
+  mass_density = shell_rho
+  elastic_modulus = shell_Elastic
+  poisson_ratio = shell_v;
+
 
 // bonded Contact penalty_stiffness. 
-Kn = 1e11 * kg /s^2 ; 
+Kn = 1e12 * kg /s^2 ; 
 
 include "node.fei";
 include "element.fei";
