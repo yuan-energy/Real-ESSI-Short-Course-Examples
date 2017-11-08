@@ -1,62 +1,195 @@
-// 
-// Real ESSI Simulator
-// Modeling and Simulation Examples
-// for more information, see: http://real-essi.info
-// 
+model name "Numerical_Damping";
+
+vs = 1000*m/s;
+rho = 2000*kg/m^3;
+nu = 0.3;
+E = 2*vs*vs*rho*(1+nu);
+
+// Define the material:
+
+add material # 1 type linear_elastic_isotropic_3d 
+	mass_density = rho
+	elastic_modulus = E 
+	poisson_ratio = nu;
+
+add material # 2 type VonMises
+    mass_density = rho
+    elastic_modulus = E
+    poisson_ratio = nu
+    von_mises_radius = 5e6*Pa
+    kinematic_hardening_rate = E/10
+    isotropic_hardening_rate = 0e6*Pa;
+
+
+// define the node:
+b = 10;
+dz = 10;
+
+add node # 1 at ((b+0.1)*m, b*m , 0*m) with 6 dofs;
+add node # 2 at (-0.1*m, b*m , 0*m) with 6 dofs;
+add node # 3 at (-0.1*m, 0*m , 0*m) with 6 dofs;
+add node # 4 at ((b+0.1)*m, 0*m , 0*m) with 6 dofs;
+
+add node # 5 at (b*m, b*m , 0*m) with 6 dofs;
+add node # 6 at (0*m, b*m , 0*m) with 6 dofs;
+add node # 7 at (0*m, 0*m , 0*m) with 6 dofs;
+add node # 8 at (b*m, 0*m , 0*m) with 6 dofs;
+
+fix node # 1 dofs uy uz rx ry rz;
+fix node # 2 dofs uy uz rx ry rz;
+fix node # 3 dofs uy uz rx ry rz;
+fix node # 4 dofs uy uz rx ry rz;
+fix node # 5 dofs uy uz rx ry rz;
+fix node # 6 dofs uy uz rx ry rz;
+fix node # 7 dofs uy uz rx ry rz;
+fix node # 8 dofs uy uz rx ry rz;
+
+
+elastic_beam_b = 0.2*m;
+elastic_beam_h = 0.2*m;
+elastic_beam_stiffness  = E*1e3;
+elastic_beam_poisson_ratio = 0.0;
+elastic_beam_rho = 000*kg/m^3;
+
+add element # 1 type beam_elastic with nodes ( 1, 5 ) 
+	cross_section =   elastic_beam_b * elastic_beam_h
+	elastic_modulus =  elastic_beam_stiffness
+	shear_modulus =  elastic_beam_stiffness/2.0/(1.0+elastic_beam_poisson_ratio)
+	torsion_Jx =  0.33*elastic_beam_b*elastic_beam_h^3
+	bending_Iy =  elastic_beam_b*elastic_beam_h^3/12.0
+	bending_Iz =  elastic_beam_b*elastic_beam_h^3/12.0
+	mass_density = elastic_beam_rho
+	xz_plane_vector = ( 0, 0, 1 ) 
+	joint_1_offset = (0*m, 0*m, 0*m) 
+	joint_2_offset = (0*m, 0*m, 0*m);
+add element # 2 type beam_elastic with nodes ( 2, 6 ) 
+	cross_section =   elastic_beam_b * elastic_beam_h
+	elastic_modulus =  elastic_beam_stiffness
+	shear_modulus =  elastic_beam_stiffness/2.0/(1.0+elastic_beam_poisson_ratio)
+	torsion_Jx =  0.33*elastic_beam_b*elastic_beam_h^3
+	bending_Iy =  elastic_beam_b*elastic_beam_h^3/12.0
+	bending_Iz =  elastic_beam_b*elastic_beam_h^3/12.0
+	mass_density = elastic_beam_rho
+	xz_plane_vector = ( 0, 0, 1 ) 
+	joint_1_offset = (0*m, 0*m, 0*m) 
+	joint_2_offset = (0*m, 0*m, 0*m);
+add element # 3 type beam_elastic with nodes ( 3, 7 ) 
+	cross_section =   elastic_beam_b * elastic_beam_h
+	elastic_modulus =  elastic_beam_stiffness
+	shear_modulus =  elastic_beam_stiffness/2.0/(1.0+elastic_beam_poisson_ratio)
+	torsion_Jx =  0.33*elastic_beam_b*elastic_beam_h^3
+	bending_Iy =  elastic_beam_b*elastic_beam_h^3/12.0
+	bending_Iz =  elastic_beam_b*elastic_beam_h^3/12.0
+	mass_density = elastic_beam_rho
+	xz_plane_vector = ( 0, 0, 1 ) 
+	joint_1_offset = (0*m, 0*m, 0*m) 
+	joint_2_offset = (0*m, 0*m, 0*m);
+add element # 4 type beam_elastic with nodes ( 4, 8 ) 
+	cross_section =   elastic_beam_b * elastic_beam_h
+	elastic_modulus =  elastic_beam_stiffness
+	shear_modulus =  elastic_beam_stiffness/2.0/(1.0+elastic_beam_poisson_ratio)
+	torsion_Jx =  0.33*elastic_beam_b*elastic_beam_h^3
+	bending_Iy =  elastic_beam_b*elastic_beam_h^3/12.0
+	bending_Iz =  elastic_beam_b*elastic_beam_h^3/12.0
+	mass_density = elastic_beam_rho
+	xz_plane_vector = ( 0, 0, 1 ) 
+	joint_1_offset = (0*m, 0*m, 0*m) 
+	joint_2_offset = (0*m, 0*m, 0*m);
+
+
+num_el_ele = 250;
+num_total_ele = 300;
+
+e = 1;
+while (e < (num_el_ele+1))
+{
+	add node # (5+4*e) at (b*m, b*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (6+4*e) at (0*m, b*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (7+4*e) at (0*m, 0*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (8+4*e) at (b*m, 0*m , (e+1)*dz*m) with 3 dofs; 
+
+	fix node # (5+4*e) dofs uy uz;
+	fix node # (6+4*e) dofs uy uz;
+	fix node # (7+4*e) dofs uy uz;
+	fix node # (8+4*e) dofs uy uz;
+
+	add element # e+4 type 8NodeBrick with nodes 
+		(4*e+5, 4*e+6,
+		 4*e+7, 4*e+8,
+		 4*e+1, 4*e+2,
+		 4*e+3, 4*e+4) 
+		use material # 1;
+
+	e += 1;
+};
+while (e < (num_total_ele+1))
+{
+	add node # (5+4*e) at (b*m, b*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (6+4*e) at (0*m, b*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (7+4*e) at (0*m, 0*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (8+4*e) at (b*m, 0*m , (e+1)*dz*m) with 3 dofs; 
+
+	fix node # (5+4*e) dofs uy uz;
+	fix node # (6+4*e) dofs uy uz;
+	fix node # (7+4*e) dofs uy uz;
+	fix node # (8+4*e) dofs uy uz;
+
+	add element # e+4 type 8NodeBrick with nodes 
+		(4*e+5, 4*e+6,
+		 4*e+7, 4*e+8,
+		 4*e+1, 4*e+2,
+		 4*e+3, 4*e+4) 
+		use material # 1;
+
+	e += 1;
+};
 
 
 
-model name "veri_newmark";
-dt=0.01*s;
-TargetPeriod  = 1*s;
-d0     = 0.1*m;
-L     = 1*m;
-m_add    = 10E3*N*s^2/m;
-nu     = 0.0;
-Abeam    = 1*m^2;
-Ibeam    = 1*m^4;
-Jbeam    = 1*m^4;
-rho_beam   = 0*kg/m^3;
-Ebeam    = (2*pi/TargetPeriod)^2*m_add*L^3 / (12 * Ibeam);
-Gbeam    = Ebeam/2/(1+nu);
-stiffness_   = 12*Ebeam*Ibeam/(L^3);
-Force    = stiffness_*d0;
-xi=0.0;
-wn=2*pi/TargetPeriod;
-wd = wn*sqrt(1 - xi^2);
-c = 2*xi*wn*m_add;
-add node # 1  at (0*m, 0*m ,  0*m) with 6 dofs;      
-add node # 2  at (0*m, 0*m ,  L) with 6 dofs;
-add node # 3  at (1*m, 0*m ,  L) with 6 dofs;
-fix node # 1 dofs all;
-fix node # 2 dofs uy uz rx ry rz ;
-fix node # 3 dofs all;
-add element # 1 type beam_elastic with nodes  (1, 2)
-    cross_section = Abeam
-    elastic_modulus =    Ebeam
-    shear_modulus = Gbeam
-    torsion_Jx = Jbeam
-    bending_Iy = Ibeam
-    bending_Iz = Ibeam
-    mass_density = rho_beam
-    xz_plane_vector = (1, 0, 1 ) 
-    joint_1_offset = (0*m, 0*m, 0*m) 
-    joint_2_offset = (0*m, 0*m, 0*m);
-add mass to node # 2  mx = m_add my = 0*kg  mz = 0*kg Imx = 0*kg*m^2  Imy = m_add*L^2  Imz = 0*kg*m^2;
-new loading stage "static";
-add load # 1 to node # 2 type linear 
-  Fx = Force ;
-define load factor increment 1;
-define algorithm With_no_convergence_check;
+
+new loading stage "Loading";
+
+scale = 1.0;
+add imposed motion # 101 to node # 1 dof ux
+displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+add imposed motion # 102 to node # 2 dof ux
+displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+add imposed motion # 103 to node # 3 dof ux
+displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+add imposed motion # 104 to node # 4 dof ux
+displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+
+
 define solver UMFPack;
-simulate 1 steps using static algorithm;
-remove load # 1;
-new loading stage "dynamic";
-gamma_val=0.6;
-beta_val= 0.25*(0.5 + gamma_val)^2;
-define dynamic integrator Newmark with  gamma =  gamma_val beta = beta_val ;
-define algorithm With_no_convergence_check;
-define solver UMFPack;
-Nsteps = ceil(10*s/dt);
-simulate 30*(Nsteps) steps using transient algorithm time_step = dt;
-bye;
+define convergence test Norm_Unbalance 
+      tolerance =  1e-4
+      maximum_iterations = 100 
+      verbose_level = 4;
+define algorithm Newton;
+
+// Multistep_Forward_Euler
+define NDMaterial constitutive integration algorithm Forward_Euler 
+  yield_function_relative_tolerance =  1e-6
+  stress_relative_tolerance =  1e-6
+  maximum_iterations = 100;
+
+Newmark_gamma = 1.0;
+Newmark_beta = 1.0/4.0*(Newmark_gamma+0.5)^2;
+
+define dynamic integrator Newmark with gamma = Newmark_gamma beta = Newmark_beta;
+
+simulate 900 steps using transient algorithm 
+  time_step = 0.01*s;
+
+bye;  
+
+
+

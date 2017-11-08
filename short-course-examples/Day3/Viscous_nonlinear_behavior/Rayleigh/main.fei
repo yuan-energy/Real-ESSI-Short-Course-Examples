@@ -1,139 +1,213 @@
-// 
-// Real ESSI Simulator
-// Modeling and Simulation Examples
-// for more information, see: http://real-essi.info
-// 
+model name "Rayleigh_Damping";
+
+vs = 1000*m/s;
+rho = 2000*kg/m^3;
+nu = 0.3;
+E = 2*vs*vs*rho*(1+nu);
+
+// Define the material:
+
+add material # 1 type linear_elastic_isotropic_3d 
+	mass_density = rho
+	elastic_modulus = E 
+	poisson_ratio = nu;
+
+add material # 2 type VonMises
+    mass_density = rho
+    elastic_modulus = E
+    poisson_ratio = nu
+    von_mises_radius = 5e6*Pa
+    kinematic_hardening_rate = E/10
+    isotropic_hardening_rate = 0e6*Pa;
 
 
+// define the node:
+b = 10;
+dz = 10;
 
-model name "brick_5element" ;
-b=0.2*m;
-h=0.2*m;
-natural_period    = 1*s;    
-natural_frequency  = 2*pi/natural_period;
-elastic_constant  = 1e9*N/m^2; 
-I=b*h^3/12.0;
-A=b*h;
-L=1*m;
-rho  = (1.8751)^4*elastic_constant*I/(natural_frequency^2*L^4*A);
-possion_ratio=0.3;
-add material # 1 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = elastic_constant
-  poisson_ratio = possion_ratio;
-add node # 1 at (0.0*m, 0.0*m , 0.0*m) with 3 dofs;
-add node # 2 at (0.1*m, 0.0*m , 0.0*m) with 3 dofs;
-add node # 3 at (0.2*m, 0.0*m , 0.0*m) with 3 dofs;
-add node # 4 at (0.0*m, 0.1*m , 0.0*m) with 3 dofs;
-add node # 5 at (0.1*m, 0.1*m , 0.0*m) with 3 dofs;
-add node # 6 at (0.2*m, 0.1*m , 0.0*m) with 3 dofs;
-add node # 7 at (0.0*m, 0.2*m , 0.0*m) with 3 dofs;
-add node # 8 at (0.1*m, 0.2*m , 0.0*m) with 3 dofs;
-add node # 9 at (0.2*m, 0.2*m , 0.0*m) with 3 dofs;
-fix node No 1 dofs ux uy uz;
-fix node No 2 dofs ux uy uz;
-fix node No 3 dofs ux uy uz;
-fix node No 4 dofs ux uy uz;
-fix node No 5 dofs ux uy uz;
-fix node No 6 dofs ux uy uz;
-fix node No 7 dofs ux uy uz;
-fix node No 8 dofs ux uy uz;
-fix node No 9 dofs ux uy uz;
-e = 0;
-hh = 0*m;
-NBricks=5;
-dz = 0.2*m;
-while ( e < NBricks)
+add node # 1 at ((b+0.1)*m, b*m , 0*m) with 6 dofs;
+add node # 2 at (-0.1*m, b*m , 0*m) with 6 dofs;
+add node # 3 at (-0.1*m, 0*m , 0*m) with 6 dofs;
+add node # 4 at ((b+0.1)*m, 0*m , 0*m) with 6 dofs;
+
+add node # 5 at (b*m, b*m , 0*m) with 6 dofs;
+add node # 6 at (0*m, b*m , 0*m) with 6 dofs;
+add node # 7 at (0*m, 0*m , 0*m) with 6 dofs;
+add node # 8 at (b*m, 0*m , 0*m) with 6 dofs;
+
+fix node # 1 dofs uy uz rx ry rz;
+fix node # 2 dofs uy uz rx ry rz;
+fix node # 3 dofs uy uz rx ry rz;
+fix node # 4 dofs uy uz rx ry rz;
+fix node # 5 dofs uy uz rx ry rz;
+fix node # 6 dofs uy uz rx ry rz;
+fix node # 7 dofs uy uz rx ry rz;
+fix node # 8 dofs uy uz rx ry rz;
+
+
+elastic_beam_b = 0.2*m;
+elastic_beam_h = 0.2*m;
+elastic_beam_stiffness  = E*1e3;
+elastic_beam_poisson_ratio = 0.0;
+elastic_beam_rho = 000*kg/m^3;
+
+add element # 1 type beam_elastic with nodes ( 1, 5 ) 
+	cross_section =   elastic_beam_b * elastic_beam_h
+	elastic_modulus =  elastic_beam_stiffness
+	shear_modulus =  elastic_beam_stiffness/2.0/(1.0+elastic_beam_poisson_ratio)
+	torsion_Jx =  0.33*elastic_beam_b*elastic_beam_h^3
+	bending_Iy =  elastic_beam_b*elastic_beam_h^3/12.0
+	bending_Iz =  elastic_beam_b*elastic_beam_h^3/12.0
+	mass_density = elastic_beam_rho
+	xz_plane_vector = ( 0, 0, 1 ) 
+	joint_1_offset = (0*m, 0*m, 0*m) 
+	joint_2_offset = (0*m, 0*m, 0*m);
+add element # 2 type beam_elastic with nodes ( 2, 6 ) 
+	cross_section =   elastic_beam_b * elastic_beam_h
+	elastic_modulus =  elastic_beam_stiffness
+	shear_modulus =  elastic_beam_stiffness/2.0/(1.0+elastic_beam_poisson_ratio)
+	torsion_Jx =  0.33*elastic_beam_b*elastic_beam_h^3
+	bending_Iy =  elastic_beam_b*elastic_beam_h^3/12.0
+	bending_Iz =  elastic_beam_b*elastic_beam_h^3/12.0
+	mass_density = elastic_beam_rho
+	xz_plane_vector = ( 0, 0, 1 ) 
+	joint_1_offset = (0*m, 0*m, 0*m) 
+	joint_2_offset = (0*m, 0*m, 0*m);
+add element # 3 type beam_elastic with nodes ( 3, 7 ) 
+	cross_section =   elastic_beam_b * elastic_beam_h
+	elastic_modulus =  elastic_beam_stiffness
+	shear_modulus =  elastic_beam_stiffness/2.0/(1.0+elastic_beam_poisson_ratio)
+	torsion_Jx =  0.33*elastic_beam_b*elastic_beam_h^3
+	bending_Iy =  elastic_beam_b*elastic_beam_h^3/12.0
+	bending_Iz =  elastic_beam_b*elastic_beam_h^3/12.0
+	mass_density = elastic_beam_rho
+	xz_plane_vector = ( 0, 0, 1 ) 
+	joint_1_offset = (0*m, 0*m, 0*m) 
+	joint_2_offset = (0*m, 0*m, 0*m);
+add element # 4 type beam_elastic with nodes ( 4, 8 ) 
+	cross_section =   elastic_beam_b * elastic_beam_h
+	elastic_modulus =  elastic_beam_stiffness
+	shear_modulus =  elastic_beam_stiffness/2.0/(1.0+elastic_beam_poisson_ratio)
+	torsion_Jx =  0.33*elastic_beam_b*elastic_beam_h^3
+	bending_Iy =  elastic_beam_b*elastic_beam_h^3/12.0
+	bending_Iz =  elastic_beam_b*elastic_beam_h^3/12.0
+	mass_density = elastic_beam_rho
+	xz_plane_vector = ( 0, 0, 1 ) 
+	joint_1_offset = (0*m, 0*m, 0*m) 
+	joint_2_offset = (0*m, 0*m, 0*m);
+
+
+// Rayleigh Damping
+f_1 = 1.0;
+f_2 = 3.0;
+omega_hat = 2*pi*f_1;
+R = f_2/f_1;
+xi = 0.020;
+a_0 = 2*xi*omega_hat*2*R/(1+R+2*R^0.5);
+a_1 = 2*xi/omega_hat*2/(1+R+2*R^0.5);
+
+print a_0;
+
+add damping # 1 type Rayleigh with a0 = a_0*s^-1 a1 = a_1*s stiffness_to_use = Initial_Stiffness;
+
+
+num_el_ele = 250;
+num_total_ele = 300;
+
+e = 1;
+while (e < (num_el_ele+1))
 {
- hh += dz;
- add node # 10+18*e at (0.0*m, 0.0*m , hh - 0.5*dz) with 3 dofs;
- add node # 11+18*e at (0.1*m, 0.0*m , hh - 0.5*dz) with 3 dofs;
- add node # 12+18*e at (0.2*m, 0.0*m , hh - 0.5*dz) with 3 dofs;
- add node # 13+18*e at (0.0*m, 0.1*m , hh - 0.5*dz) with 3 dofs;
- add node # 14+18*e at (0.1*m, 0.1*m , hh - 0.5*dz) with 3 dofs;
- add node # 15+18*e at (0.2*m, 0.1*m , hh - 0.5*dz) with 3 dofs;
- add node # 16+18*e at (0.0*m, 0.2*m , hh - 0.5*dz) with 3 dofs;
- add node # 17+18*e at (0.1*m, 0.2*m , hh - 0.5*dz) with 3 dofs;
- add node # 18+18*e at (0.2*m, 0.2*m , hh - 0.5*dz) with 3 dofs;
- add node # 19+18*e at (0.0*m, 0.0*m , hh) with 3 dofs;
- add node # 20+18*e at (0.1*m, 0.0*m , hh) with 3 dofs;
- add node # 21+18*e at (0.2*m, 0.0*m , hh) with 3 dofs;
- add node # 22+18*e at (0.0*m, 0.1*m , hh) with 3 dofs;
- add node # 23+18*e at (0.1*m, 0.1*m , hh) with 3 dofs;
- add node # 24+18*e at (0.2*m, 0.1*m , hh) with 3 dofs;
- add node # 25+18*e at (0.0*m, 0.2*m , hh) with 3 dofs;
- add node # 26+18*e at (0.1*m, 0.2*m , hh) with 3 dofs;
- add node # 27+18*e at (0.2*m, 0.2*m , hh) with 3 dofs;
- add element # e+1 type 27NodeBrick using 3 Gauss points each direction with nodes 
-  (
-   21+18*e,
-   27+18*e,
-   25+18*e,
-   19+18*e,
-    3+18*e,
-    9+18*e,
-    7+18*e,
-    1+18*e,
-   24+18*e,
-   26+18*e,
-   22+18*e,
-   20+18*e,
-    6+18*e,
-    8+18*e,
-    4+18*e,
-    2+18*e,
-   12+18*e,
-   18+18*e,
-   16+18*e,
-   10+18*e,
-   14+18*e,
-   15+18*e,
-   17+18*e,
-   13+18*e,
-   11+18*e,
-   23+18*e,
-    5+18*e
-  ) 
-  use material # 1;
- e += 1;
+	add node # (5+4*e) at (b*m, b*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (6+4*e) at (0*m, b*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (7+4*e) at (0*m, 0*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (8+4*e) at (b*m, 0*m , (e+1)*dz*m) with 3 dofs; 
+
+	fix node # (5+4*e) dofs uy uz;
+	fix node # (6+4*e) dofs uy uz;
+	fix node # (7+4*e) dofs uy uz;
+	fix node # (8+4*e) dofs uy uz;
+
+	add element # e+4 type 8NodeBrick with nodes 
+		(4*e+5, 4*e+6,
+		 4*e+7, 4*e+8,
+		 4*e+1, 4*e+2,
+		 4*e+3, 4*e+4) 
+		use material # 1;
+
+	add damping # 1 to element # e+4;
+
+	e += 1;
 };
-e = e -1;
-new loading stage "freeVibration";
-add load # 201 to node # (19+18*e) type path_time_series Fx=1/36.0*kN series_file = "freeVibration.txt" ; 
-add load # 202 to node # (20+18*e) type path_time_series Fx=1/9.0*kN series_file = "freeVibration.txt" ; 
-add load # 203 to node # (21+18*e) type path_time_series Fx=1/36.0*kN series_file = "freeVibration.txt" ; 
-add load # 204 to node # (22+18*e) type path_time_series Fx=1/9.0*kN series_file = "freeVibration.txt" ; 
-add load # 205 to node # (23+18*e) type path_time_series Fx=4/9.0*kN series_file = "freeVibration.txt" ; 
-add load # 206 to node # (24+18*e) type path_time_series Fx=1/9.0*kN series_file = "freeVibration.txt" ; 
-add load # 207 to node # (25+18*e) type path_time_series Fx=1/36.0*kN series_file = "freeVibration.txt" ; 
-add load # 208 to node # (26+18*e) type path_time_series Fx=1/9.0*kN series_file = "freeVibration.txt" ; 
-add load # 209 to node # (27+18*e) type path_time_series Fx=1/36.0*kN series_file = "freeVibration.txt" ; 
-simulate using eigen algorithm 
- number_of_modes = 4;
-f1=0.9900282/s;
-f2=0.9900282/s;
-w1 = 2*pi*f1;
-w2 = 2*pi*f2;
-xi=0.02;
-rayl_a1 = 2*xi/(w1 + w2);
-rayl_a0 = rayl_a1*w1*w2;
-add damping # 1 type Rayleigh with 
- a0 =  rayl_a0
- a1 =  rayl_a1
- stiffness_to_use = Initial_Stiffness;
-jj=1;
-while (jj<6) {
- add damping # 1 to element # jj;
- jj+=1;
-}
-define dynamic integrator Newmark with gamma = 0.5 beta = 0.25;
-define convergence test  Absolute_Norm_Unbalanced_Force
- tolerance =  5
- maximum_iterations =  20
- ;
-define algorithm Newton ;
+while (e < (num_total_ele+1))
+{
+	add node # (5+4*e) at (b*m, b*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (6+4*e) at (0*m, b*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (7+4*e) at (0*m, 0*m , (e+1)*dz*m) with 3 dofs;      
+	add node # (8+4*e) at (b*m, 0*m , (e+1)*dz*m) with 3 dofs; 
+
+	fix node # (5+4*e) dofs uy uz;
+	fix node # (6+4*e) dofs uy uz;
+	fix node # (7+4*e) dofs uy uz;
+	fix node # (8+4*e) dofs uy uz;
+
+	add element # e+4 type 8NodeBrick with nodes 
+		(4*e+5, 4*e+6,
+		 4*e+7, 4*e+8,
+		 4*e+1, 4*e+2,
+		 4*e+3, 4*e+4) 
+		use material # 1;
+
+	add damping # 1 to element # e+4;
+
+	e += 1;
+};
+
+
+
+
+new loading stage "Loading";
+
+scale = 1.0;
+add imposed motion # 101 to node # 1 dof ux
+displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+add imposed motion # 102 to node # 2 dof ux
+displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+add imposed motion # 103 to node # 3 dof ux
+displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+add imposed motion # 104 to node # 4 dof ux
+displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+
+
 define solver UMFPack;
-NN = 1000 ;
-simulate 6*NN steps using transient algorithm 
- time_step = 10/NN *s;
-bye;
+define convergence test Norm_Unbalance 
+      tolerance =  1e-4
+      maximum_iterations = 100 
+      verbose_level = 4;
+define algorithm Newton;
+
+// Multistep_Forward_Euler
+define NDMaterial constitutive integration algorithm Forward_Euler 
+  yield_function_relative_tolerance =  1e-6
+  stress_relative_tolerance =  1e-6
+  maximum_iterations = 100;
+
+Newmark_gamma = 0.5;
+Newmark_beta = 1.0/4.0*(Newmark_gamma+0.5)^2;
+
+define dynamic integrator Newmark with gamma = Newmark_gamma beta = Newmark_beta;
+
+simulate 900 steps using transient algorithm 
+  time_step = 0.01*s;
+
+bye;  
+
+
+
