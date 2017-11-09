@@ -7,19 +7,22 @@
 //****************************************************************
 // Predefined Parameters
 //****************************************************************
+width_of_out_foundation = 5; 
 
-height_of_structure = 80 ;
+height_of_structure = 60 ;
 depth_of_foundation = 10 ;
-width_of_structure = 30  ;
+raw_width_of_structure = 30 ;
+width_of_structure = raw_width_of_structure + 2 * width_of_out_foundation ;
 depth_of_soil = 40;
-width_of_field = width_of_structure * 3 ;
+width_of_field = width_of_structure * 3 - width_of_out_foundation ;
+
 
 Ox = 0;
 Oy = 0;
 Oz = 0;
 
-epsilon =0.001 ;
-//epsilon = 2 ;
+//epsilon =0.001 ;
+epsilon = 2 ;
 
 mesh_size = 5;
 
@@ -73,7 +76,7 @@ soils_bottom_most[] = {61, 83, 105, 127, 149, 171, 193, 215, 237} ;
 Physical Surface("soils_bottom_most") = soils_bottom_most[] ; 
 
 //**************************************************************************************************
-// Part B: box  
+// Part B: foundation  
 //**************************************************************************************************
 
 x_minus_y_minus = newp;  Point(x_minus_y_minus) = {Ox + width_of_field + epsilon, Oy + width_of_field + epsilon, Oz +  epsilon}; 
@@ -90,36 +93,33 @@ Transfinite Line(y_plus_line) = (width_of_structure/mesh_size) + 1 ;
 Transfinite Line(x_minus_line) = (width_of_structure/mesh_size) + 1 ; 
 Transfinite Line(x_plus_line) = (width_of_structure/mesh_size) + 1 ; 
 loop1 = newreg; Line Loop(loop1) = {x_minus_line,y_plus_line,x_plus_line,-y_minus_line} ;
-box_bottom_surface = news; Plane Surface(box_bottom_surface) = {loop1};
-ans[] = Extrude{0,0,height_of_structure}{Surface{box_bottom_surface} ;Layers{height_of_structure/mesh_size};Recombine;};
+foundation_bottom_surface = news; Plane Surface(foundation_bottom_surface) = {loop1};
+ans[] = Extrude{0,0,depth_of_foundation}{Surface{foundation_bottom_surface} ;Layers{depth_of_foundation/mesh_size};Recombine;};
 
-box_top_surface                        = ans[0] ;
+foundation_top_surface                        = ans[0] ;
 
-box_volume                             = ans[1] ;
-Delete {
-  Volume{box_volume};
-}
+foundation_volume                             = ans[1] ;
 
-box_x_minus_surface                    = ans[2]  ;
-box_y_plus_surface                     = ans[3]  ;
-box_x_plus_surface                     = ans[4]  ;
-box_y_minus_surface                    = ans[5]  ;
+foundation_x_minus_surface                    = ans[2]  ;
+foundation_y_plus_surface                     = ans[3]  ;
+foundation_x_plus_surface                     = ans[4]  ;
+foundation_y_minus_surface                    = ans[5]  ;
 
-//Physical Volume("box_volume")          = box_volume;
+Physical Volume("foundation_volume")          = foundation_volume;
 
-Physical Surface("box_top_surface")    = box_top_surface ;
-Physical Surface("box_bottom_surface") = box_bottom_surface ;
+Physical Surface("foundation_top_surface")    = foundation_top_surface ;
+Physical Surface("foundation_bottom_surface") = foundation_bottom_surface ;
 
-Physical Surface("box_x_minus_surface") = box_x_minus_surface ;
-Physical Surface("box_y_plus_surface")  = box_y_plus_surface ;
-Physical Surface("box_x_plus_surface")  = box_x_plus_surface ;
-Physical Surface("box_y_minus_surface") = box_y_minus_surface ;
+Physical Surface("foundation_x_minus_surface") = foundation_x_minus_surface ;
+Physical Surface("foundation_y_plus_surface")  = foundation_y_plus_surface ;
+Physical Surface("foundation_x_plus_surface")  = foundation_x_plus_surface ;
+Physical Surface("foundation_y_minus_surface") = foundation_y_minus_surface ;
 
-Physical Surface("all_box_surfaces") = {box_top_surface, box_bottom_surface, box_x_minus_surface, box_y_plus_surface, box_x_plus_surface, box_y_minus_surface} ;
+Physical Surface("all_foundation_surfaces") = {foundation_top_surface, foundation_bottom_surface, foundation_x_minus_surface, foundation_y_plus_surface, foundation_x_plus_surface, foundation_y_minus_surface} ;
 
 
 ////////**************************************************************************************************
-//////// Part C: Structure
+//////// Part C: Shell
 ////////**************************************************************************************************
 //ans[] = Extrude{0,0,height_of_structure}{Surface{foundation_top_surface} ;Layers{height_of_structure/mesh_size};Recombine;};
 //structure_volume = ans[1] ; 
