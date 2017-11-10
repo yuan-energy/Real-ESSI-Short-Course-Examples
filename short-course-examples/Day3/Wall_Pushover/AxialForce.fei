@@ -1,0 +1,16 @@
+add load # 209 to node # 209 type linear Fy = -41620.56192*N;
+add load # 210 to node # 210 type linear Fy = -41620.56192*N;
+add load # 211 to node # 211 type linear Fy = -41620.56192*N;
+add load # 212 to node # 212 type linear Fy = -41620.56192*N;
+add load # 213 to node # 213 type linear Fy = -41620.56192*N;
+add load # 214 to node # 214 type linear Fy = -41620.56192*N;
+add load # 215 to node # 215 type linear Fy = -41620.56192*N;
+add load # 216 to node # 216 type linear Fy = -41620.56192*N;
+add load # 217 to node # 217 type linear Fy = -41620.56192*N;
+add load # 218 to node # 218 type linear Fy = -41620.56192*N;
+add load # 219 to node # 219 type linear Fy = -41620.56192*N;
+add load # 220 to node # 220 type linear Fy = -41620.56192*N;
+add load # 221 to node # 221 type linear Fy = -41620.56192*N;
+add load # 222 to node # 222 type linear Fy = -41620.56192*N;
+add load # 223 to node # 223 type linear Fy = -41620.56192*N;
+add load # 224 to node # 224 type linear Fy = -41620.56192*N;

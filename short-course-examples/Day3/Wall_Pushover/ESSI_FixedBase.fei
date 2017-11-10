@@ -1,0 +1,16 @@
+fix node # 1 dofs ux uy;
+fix node # 2 dofs ux uy;
+fix node # 3 dofs ux uy;
+fix node # 4 dofs ux uy;
+fix node # 5 dofs ux uy;
+fix node # 6 dofs ux uy;
+fix node # 7 dofs ux uy;
+fix node # 8 dofs ux uy;
+fix node # 9 dofs ux uy;
+fix node # 10 dofs ux uy;
+fix node # 11 dofs ux uy;
+fix node # 12 dofs ux uy;
+fix node # 13 dofs ux uy;
+fix node # 14 dofs ux uy;
+fix node # 15 dofs ux uy;
+fix node # 16 dofs ux uy;

@@ -1,0 +1,123 @@
+// -----------------------------------------
+// Quad - Nonlinear Concrete and Steel
+// Experimental Test 1
+// Code by Floriana PETRONE, September 2017
+// -----------------------------------------
+
+model name "Experiment 1";
+
+// Units: kN,m,sec
+
+include "ESSInodes.fei"
+include "ESSI_FixedBase.fei"
+include "ESSI_OutofPlane.fei"
+
+// Boundary Concrete
+add material # 10 type PlasticDamageConcretePlaneStress
+        elastic_modulus = 36900e6*Pa
+        poisson_ratio = 0.2
+        tensile_yield_strength = 5.0e6*Pa
+        compressive_yield_strength = 56.0e6*Pa
+        plastic_deformation_rate = 0.4
+        damage_parameter_Ap = 0.1
+        damage_parameter_An = 1.5
+        damage_parameter_Bn = 0.75 ;
+	
+// Web Concrete	
+add material # 11 type PlasticDamageConcretePlaneStress
+        elastic_modulus = 36900e6*Pa
+        poisson_ratio = 0.2
+        tensile_yield_strength = 5.0e6*Pa
+        compressive_yield_strength = 56.0e6*Pa
+        plastic_deformation_rate = 0.4
+        damage_parameter_Ap = 0.1
+        damage_parameter_An = 1.5
+        damage_parameter_Bn = 0.75 ;
+		
+// Uniaxial Steel		
+add material # 101 type uniaxial_steel01
+    yield_strength = 457.5e+6*Pa
+	elastic_modulus = 200000e+6*Pa
+	strain_hardening_ratio = 0.011042
+	a1 = 0. a2 = 55. a3 = 0. a4 =55. ;
+
+// Steel 0deg	
+add material # 12 type PlaneStressRebarMaterial
+        with uniaxial_material # 101
+        angle = 0 ;
+// Steel 90deg
+add material # 13 type PlaneStressRebarMaterial
+        with uniaxial_material # 101
+        angle = 90 ;
+
+// Layered Section - Boundary Elements		
+add material # 1 type PlaneStressLayeredMaterial
+                number_of_layers = 3
+                thickness_array = "0.9473312, .02633581, .02633581"
+                thickness_scale_unit = 0.160873 * m
+                with material # "10,12,13" ;
+
+// Layered Section - Web Elements
+add material # 2 type PlaneStressLayeredMaterial
+    	     number_of_layers = 3
+                thickness_array = "0.992711, .0036432, .0036432"
+                thickness_scale_unit = 0.153519 * m
+                with material # "11,12,13" ;
+				
+include "BoundaryElements.fei"
+include "WebElements.fei"
+
+new loading stage "Gravity";
+include "AxialForce.fei"
+
+define convergence test Absolute_Norm_Displacement_Increment
+    tolerance = 1e-12
+    maximum_iterations = 30;
+
+define algorithm Newton;
+define solver ProfileSPD;
+define load factor increment 0.1;
+simulate 10 steps using static algorithm;	
+
+print node # 1;
+print node # 209;
+print node # 210;
+print node # 223;
+print node # 224;
+
+print element #1;
+
+new loading stage "StaticPushover";
+
+// FORCE CONTROLLED
+
+add load # 1001 to node # 209 type linear Fx=53125*N;
+add load # 1002 to node # 210 type linear Fx=53125*N;
+add load # 1003 to node # 211 type linear Fx=53125*N;
+add load # 1004 to node # 212 type linear Fx=53125*N;
+add load # 1005 to node # 213 type linear Fx=53125*N;
+add load # 1006 to node # 214 type linear Fx=53125*N;
+add load # 1007 to node # 215 type linear Fx=53125*N;
+add load # 1008 to node # 216 type linear Fx=53125*N;
+add load # 1009 to node # 217 type linear Fx=53125*N;
+add load # 1010 to node # 218 type linear Fx=53125*N;
+add load # 1011 to node # 219 type linear Fx=53125*N;
+add load # 1012 to node # 220 type linear Fx=53125*N;
+add load # 1013 to node # 221 type linear Fx=53125*N;
+add load # 1014 to node # 222 type linear Fx=53125*N;
+add load # 1015 to node # 223 type linear Fx=53125*N;
+add load # 1016 to node # 224 type linear Fx=53125*N;
+
+define convergence test Norm_Displacement_Increment
+    tolerance = 1e-3
+    maximum_iterations = 1000
+    verbose_level = 4;	
+
+
+define algorithm Newton;
+define solver UMFPack;
+define load factor increment 0.0001;
+simulate 10000 steps using static algorithm;
+
+bye;		
+	

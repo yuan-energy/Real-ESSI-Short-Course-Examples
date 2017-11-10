@@ -1,0 +1,195 @@
+add element # 6 type FourNodeQuad with nodes (6, 7, 23, 22)
+							use material # 2
+							thickness = 1.0*m;
+add element # 7 type FourNodeQuad with nodes (7, 8, 24, 23)
+							use material # 2
+							thickness = 1.0*m;
+add element # 8 type FourNodeQuad with nodes (8, 9, 25, 24)
+							use material # 2
+							thickness = 1.0*m;
+add element # 9 type FourNodeQuad with nodes (9, 10, 26, 25)
+							use material # 2
+							thickness = 1.0*m;
+add element # 10 type FourNodeQuad with nodes (10, 11, 27, 26)
+							use material # 2
+							thickness = 1.0*m;
+add element # 21 type FourNodeQuad with nodes (22, 23, 39, 38)
+							use material # 2
+							thickness = 1.0*m;
+add element # 22 type FourNodeQuad with nodes (23, 24, 40, 39)
+							use material # 2
+							thickness = 1.0*m;
+add element # 23 type FourNodeQuad with nodes (24, 25, 41, 40)
+							use material # 2
+							thickness = 1.0*m;
+add element # 24 type FourNodeQuad with nodes (25, 26, 42, 41)
+							use material # 2
+							thickness = 1.0*m;
+add element # 25 type FourNodeQuad with nodes (26, 27, 43, 42)
+							use material # 2
+							thickness = 1.0*m;
+add element # 36 type FourNodeQuad with nodes (38, 39, 55, 54)
+							use material # 2
+							thickness = 1.0*m;
+add element # 37 type FourNodeQuad with nodes (39, 40, 56, 55)
+							use material # 2
+							thickness = 1.0*m;
+add element # 38 type FourNodeQuad with nodes (40, 41, 57, 56)
+							use material # 2
+							thickness = 1.0*m;
+add element # 39 type FourNodeQuad with nodes (41, 42, 58, 57)
+							use material # 2
+							thickness = 1.0*m;
+add element # 40 type FourNodeQuad with nodes (42, 43, 59, 58)
+							use material # 2
+							thickness = 1.0*m;
+add element # 51 type FourNodeQuad with nodes (54, 55, 71, 70)
+							use material # 2
+							thickness = 1.0*m;
+add element # 52 type FourNodeQuad with nodes (55, 56, 72, 71)
+							use material # 2
+							thickness = 1.0*m;
+add element # 53 type FourNodeQuad with nodes (56, 57, 73, 72)
+							use material # 2
+							thickness = 1.0*m;
+add element # 54 type FourNodeQuad with nodes (57, 58, 74, 73)
+							use material # 2
+							thickness = 1.0*m;
+add element # 55 type FourNodeQuad with nodes (58, 59, 75, 74)
+							use material # 2
+							thickness = 1.0*m;
+add element # 66 type FourNodeQuad with nodes (70, 71, 87, 86)
+							use material # 2
+							thickness = 1.0*m;
+add element # 67 type FourNodeQuad with nodes (71, 72, 88, 87)
+							use material # 2
+							thickness = 1.0*m;
+add element # 68 type FourNodeQuad with nodes (72, 73, 89, 88)
+							use material # 2
+							thickness = 1.0*m;
+add element # 69 type FourNodeQuad with nodes (73, 74, 90, 89)
+							use material # 2
+							thickness = 1.0*m;
+add element # 70 type FourNodeQuad with nodes (74, 75, 91, 90)
+							use material # 2
+							thickness = 1.0*m;
+add element # 81 type FourNodeQuad with nodes (86, 87, 103, 102)
+							use material # 2
+							thickness = 1.0*m;
+add element # 82 type FourNodeQuad with nodes (87, 88, 104, 103)
+							use material # 2
+							thickness = 1.0*m;
+add element # 83 type FourNodeQuad with nodes (88, 89, 105, 104)
+							use material # 2
+							thickness = 1.0*m;
+add element # 84 type FourNodeQuad with nodes (89, 90, 106, 105)
+							use material # 2
+							thickness = 1.0*m;
+add element # 85 type FourNodeQuad with nodes (90, 91, 107, 106)
+							use material # 2
+							thickness = 1.0*m;
+add element # 96 type FourNodeQuad with nodes (102, 103, 119, 118)
+							use material # 2
+							thickness = 1.0*m;
+add element # 97 type FourNodeQuad with nodes (103, 104, 120, 119)
+							use material # 2
+							thickness = 1.0*m;
+add element # 98 type FourNodeQuad with nodes (104, 105, 121, 120)
+							use material # 2
+							thickness = 1.0*m;
+add element # 99 type FourNodeQuad with nodes (105, 106, 122, 121)
+							use material # 2
+							thickness = 1.0*m;
+add element # 100 type FourNodeQuad with nodes (106, 107, 123, 122)
+							use material # 2
+							thickness = 1.0*m;
+add element # 111 type FourNodeQuad with nodes (118, 119, 135, 134)
+							use material # 2
+							thickness = 1.0*m;
+add element # 112 type FourNodeQuad with nodes (119, 120, 136, 135)
+							use material # 2
+							thickness = 1.0*m;
+add element # 113 type FourNodeQuad with nodes (120, 121, 137, 136)
+							use material # 2
+							thickness = 1.0*m;
+add element # 114 type FourNodeQuad with nodes (121, 122, 138, 137)
+							use material # 2
+							thickness = 1.0*m;
+add element # 115 type FourNodeQuad with nodes (122, 123, 139, 138)
+							use material # 2
+							thickness = 1.0*m;
+add element # 126 type FourNodeQuad with nodes (134, 135, 151, 150)
+							use material # 2
+							thickness = 1.0*m;
+add element # 127 type FourNodeQuad with nodes (135, 136, 152, 151)
+							use material # 2
+							thickness = 1.0*m;
+add element # 128 type FourNodeQuad with nodes (136, 137, 153, 152)
+							use material # 2
+							thickness = 1.0*m;
+add element # 129 type FourNodeQuad with nodes (137, 138, 154, 153)
+							use material # 2
+							thickness = 1.0*m;
+add element # 130 type FourNodeQuad with nodes (138, 139, 155, 154)
+							use material # 2
+							thickness = 1.0*m;
+add element # 141 type FourNodeQuad with nodes (150, 151, 167, 166)
+							use material # 2
+							thickness = 1.0*m;
+add element # 142 type FourNodeQuad with nodes (151, 152, 168, 167)
+							use material # 2
+							thickness = 1.0*m;
+add element # 143 type FourNodeQuad with nodes (152, 153, 169, 168)
+							use material # 2
+							thickness = 1.0*m;
+add element # 144 type FourNodeQuad with nodes (153, 154, 170, 169)
+							use material # 2
+							thickness = 1.0*m;
+add element # 145 type FourNodeQuad with nodes (154, 155, 171, 170)
+							use material # 2
+							thickness = 1.0*m;
+add element # 156 type FourNodeQuad with nodes (166, 167, 183, 182)
+							use material # 2
+							thickness = 1.0*m;
+add element # 157 type FourNodeQuad with nodes (167, 168, 184, 183)
+							use material # 2
+							thickness = 1.0*m;
+add element # 158 type FourNodeQuad with nodes (168, 169, 185, 184)
+							use material # 2
+							thickness = 1.0*m;
+add element # 159 type FourNodeQuad with nodes (169, 170, 186, 185)
+							use material # 2
+							thickness = 1.0*m;
+add element # 160 type FourNodeQuad with nodes (170, 171, 187, 186)
+							use material # 2
+							thickness = 1.0*m;
+add element # 171 type FourNodeQuad with nodes (182, 183, 199, 198)
+							use material # 2
+							thickness = 1.0*m;
+add element # 172 type FourNodeQuad with nodes (183, 184, 200, 199)
+							use material # 2
+							thickness = 1.0*m;
+add element # 173 type FourNodeQuad with nodes (184, 185, 201, 200)
+							use material # 2
+							thickness = 1.0*m;
+add element # 174 type FourNodeQuad with nodes (185, 186, 202, 201)
+							use material # 2
+							thickness = 1.0*m;
+add element # 175 type FourNodeQuad with nodes (186, 187, 203, 202)
+							use material # 2
+							thickness = 1.0*m;
+add element # 186 type FourNodeQuad with nodes (198, 199, 215, 214)
+							use material # 2
+							thickness = 1.0*m;
+add element # 187 type FourNodeQuad with nodes (199, 200, 216, 215)
+							use material # 2
+							thickness = 1.0*m;
+add element # 188 type FourNodeQuad with nodes (200, 201, 217, 216)
+							use material # 2
+							thickness = 1.0*m;
+add element # 189 type FourNodeQuad with nodes (201, 202, 218, 217)
+							use material # 2
+							thickness = 1.0*m;
+add element # 190 type FourNodeQuad with nodes (202, 203, 219, 218)
+							use material # 2
+							thickness = 1.0*m;
