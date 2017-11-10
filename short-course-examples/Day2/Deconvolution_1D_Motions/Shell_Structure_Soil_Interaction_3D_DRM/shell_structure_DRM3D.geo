@@ -7,9 +7,11 @@
 //****************************************************************
 // Predefined Parameters
 //****************************************************************
-width_of_out_foundation = 5; 
+width_of_out_foundation = 1; 
 
 height_of_structure = 60 ;
+sub_height = 20;
+
 depth_of_foundation = 10 ;
 raw_width_of_structure = 30 ;
 width_of_structure = raw_width_of_structure + 2 * width_of_out_foundation ;
@@ -21,8 +23,8 @@ Ox = 0;
 Oy = 0;
 Oz = 0;
 
-//epsilon =0.001 ;
-epsilon = 2 ;
+epsilon =0.001 ;
+//epsilon = 2 ;
 
 mesh_size = 5;
 
@@ -118,26 +120,97 @@ Physical Surface("foundation_y_minus_surface") = foundation_y_minus_surface ;
 Physical Surface("all_foundation_surfaces") = {foundation_top_surface, foundation_bottom_surface, foundation_x_minus_surface, foundation_y_plus_surface, foundation_x_plus_surface, foundation_y_minus_surface} ;
 
 
-////////**************************************************************************************************
-//////// Part C: Shell
-////////**************************************************************************************************
-//ans[] = Extrude{0,0,height_of_structure}{Surface{foundation_top_surface} ;Layers{height_of_structure/mesh_size};Recombine;};
-//structure_volume = ans[1] ; 
-//structure_top_surface = ans[0] ; 
+//**************************************************************************************************
+// Part C.1 : Shell super-structure
+//**************************************************************************************************
+x_minus_y_minus = newp;  Point(x_minus_y_minus) = {Ox + width_of_field + width_of_out_foundation + epsilon, Oy + width_of_field + width_of_out_foundation + epsilon, Oz + depth_of_foundation + epsilon}; 
+x_plus_y_minus = newp; Point(x_plus_y_minus) = {Ox + width_of_field + width_of_structure - width_of_out_foundation - epsilon, Oy + width_of_field + width_of_out_foundation + epsilon, Oz + depth_of_foundation + epsilon}; 
+x_minus_y_plus = newp; Point(x_minus_y_plus) = {Ox + width_of_field + width_of_out_foundation + epsilon, Oy + width_of_field + width_of_structure - width_of_out_foundation - epsilon, Oz + depth_of_foundation + epsilon}; 
+x_plus_y_plus = newp; Point(x_plus_y_plus) = {Ox + width_of_field + width_of_structure - width_of_out_foundation - epsilon, Oy + width_of_field + width_of_structure - width_of_out_foundation - epsilon, Oz + depth_of_foundation + epsilon}; 
 
-//structure_x_minus_surface                     = ans[2]  ;
-//structure_y_plus_surface                      = ans[3]  ;
-//structure_x_plus_surface                      = ans[4]  ;
-//structure_y_minus_surface                     = ans[5]  ;
+y_minus_line = newl; Line(y_minus_line) = {x_minus_y_minus, x_plus_y_minus};
+y_plus_line = newl; Line(y_plus_line) = {x_minus_y_plus, x_plus_y_plus};
+x_minus_line = newl; Line(x_minus_line) = {x_minus_y_minus, x_minus_y_plus};
+x_plus_line = newl; Line(x_plus_line) = {x_plus_y_plus, x_plus_y_minus};
 
-//Physical Volume("structure_volume") = structure_volume;
+Transfinite Line(y_minus_line) = (width_of_structure/mesh_size) + 1 ; 
+Transfinite Line(y_plus_line) = (width_of_structure/mesh_size) + 1 ; 
+Transfinite Line(x_minus_line) = (width_of_structure/mesh_size) + 1 ; 
+Transfinite Line(x_plus_line) = (width_of_structure/mesh_size) + 1 ; 
 
-//Physical Surface("structure_top_surface") = structure_top_surface ; 
+// Select by GUI
+Line Loop(473) = {442, -445, -443, -444};
+shell_bottom_surface = newl; Plane Surface(shell_bottom_surface) = {473};
+embedded_shell_top_surface[] = {shell_bottom_surface} ;
 
-//Physical Surface("structure_x_minus_surface") = structure_x_minus_surface ;
-//Physical Surface("structure_y_plus_surface")  = structure_y_plus_surface ;
-//Physical Surface("structure_x_plus_surface")  = structure_x_plus_surface ;
-//Physical Surface("structure_y_minus_surface") = structure_y_minus_surface ;
+// extrude shell structure up
+N_extrude = 3 ; 
+shell_super_around_surfaces[] = {};
+For z_direction In {1 : N_extrude}
+	ans[] = Extrude{0,0,sub_height}{Surface{shell_bottom_surface} ;Layers{sub_height/mesh_size};Recombine;};
+	shell_bottom_surface = ans[0];
+	Delete{
+		Volume{ans[1]};
+	}
+	shell_super_around_surfaces[] = { shell_super_around_surfaces[], ans[0] } ; 
+	shell_super_around_surfaces[] = { shell_super_around_surfaces[], ans[2] } ; 
+	shell_super_around_surfaces[] = { shell_super_around_surfaces[], ans[3] } ; 
+	shell_super_around_surfaces[] = { shell_super_around_surfaces[], ans[4] } ; 
+	shell_super_around_surfaces[] = { shell_super_around_surfaces[], ans[5] } ; 
+EndFor
+shell_super_around_surfaces[] = { shell_super_around_surfaces[], shell_bottom_surface } ; 
+
+// Internal shell surfaces.
+x_minus_mid = newp;  Point(x_minus_mid) = {Ox + width_of_field + width_of_out_foundation + epsilon, Oy + width_of_field  + width_of_structure/2 , Oz + depth_of_foundation + epsilon}; 
+x_plus_mid = newp; Point(x_plus_mid) = {Ox + width_of_field + width_of_structure - width_of_out_foundation - epsilon, Oy + width_of_field + width_of_structure/2 , Oz + depth_of_foundation + epsilon}; 
+y_minus_mid = newp; Point(y_minus_mid) = {Ox + width_of_field + width_of_structure/2 , Oy + width_of_field + width_of_out_foundation + epsilon, Oz + depth_of_foundation + epsilon}; 
+y_plus_mid = newp; Point(y_plus_mid) = {Ox + width_of_field  + width_of_structure/2 , Oy + width_of_field + width_of_structure - width_of_out_foundation - epsilon, Oz + depth_of_foundation + epsilon}; 
+
+x_mid = newl; Line(x_mid) = {x_minus_mid, x_plus_mid} ;
+y_mid = newl; Line(y_mid) = {y_minus_mid, y_plus_mid} ;
+Transfinite Line(x_mid) = (width_of_structure/mesh_size) + 1 ; 
+Transfinite Line(y_mid) = (width_of_structure/mesh_size) + 1 ; 
+
+ans[] = Extrude{0,0,height_of_structure}{Line{x_mid,y_mid};Layers{height_of_structure/mesh_size};Recombine;} ; 
+shell_super_mid_surfaces = {ans[1], ans[5]} ;
+shell_super_all_surfaces[] = { shell_super_around_surfaces[], shell_super_mid_surfaces[] } ; 	
+
+Physical Surface("shell_super_around_surfaces") = shell_super_around_surfaces[];
+Physical Surface("shell_super_mid_surfaces") = shell_super_mid_surfaces[];
+Physical Surface("shell_super_all_surfaces") = shell_super_all_surfaces[];
+
+
+//**************************************************************************************************
+// Part C.2 : Shell embedded-structure
+//**************************************************************************************************
+// extrude down the embedded_shell 
+// (1) around the foundation
+shell_embed_around_surfaces = {} ; 
+ans[] = Extrude{0,0, - depth_of_foundation }{Surface{embedded_shell_top_surface} ;Layers{depth_of_foundation/mesh_size};Recombine;};
+shell_bottommost_surface = ans[0];
+Delete{
+	Volume{ans[1]};
+}
+shell_embed_around_surfaces[] = { shell_embed_around_surfaces[], ans[2] } ; 
+shell_embed_around_surfaces[] = { shell_embed_around_surfaces[], ans[3] } ; 
+shell_embed_around_surfaces[] = { shell_embed_around_surfaces[], ans[4] } ; 
+shell_embed_around_surfaces[] = { shell_embed_around_surfaces[], ans[5] } ; 
+Physical Surface("shell_embed_around_surfaces") = shell_embed_around_surfaces[];
+
+// (2) in the middle of the foundation
+ans[] = Extrude{0,0, -depth_of_foundation}{Line{x_mid,y_mid};Layers{depth_of_foundation/mesh_size};Recombine;} ; 
+shell_embed_mid_surfaces = {ans[1], ans[5]} ; 
+Physical Surface("shell_embed_mid_surfaces") = shell_embed_mid_surfaces[];
+Delete{
+	Surface{embedded_shell_top_surface};
+	Surface{shell_bottommost_surface};
+}
+shell_embed_all_surfaces = {shell_embed_around_surfaces[], shell_embed_mid_surfaces[]};
+shell_all_surfaces = {shell_super_all_surfaces[], shell_embed_all_surfaces[]};
+
+Physical Surface("shell_embed_all_surfaces") = shell_embed_all_surfaces[];
+Physical Surface("shell_all_surfaces") = shell_all_surfaces[];
+
 
 
 ////********************************************************************
@@ -147,17 +220,6 @@ Physical Surface("all_foundation_surfaces") = {foundation_top_surface, foundatio
 
 Transfinite Surface "*";
 Recombine Surface "*";
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -183,3 +245,4 @@ EndFor
 
 
 
+Physical Line(472) = {449, 469, 448, 450, 465, 464, 466, 456, 468, 453, 452, 460, 470, 454};
