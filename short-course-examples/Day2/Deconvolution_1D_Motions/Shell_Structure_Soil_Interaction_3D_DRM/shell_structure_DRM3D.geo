@@ -119,10 +119,11 @@ Physical Surface("foundation_y_minus_surface") = foundation_y_minus_surface ;
 
 Physical Surface("all_foundation_surfaces") = {foundation_top_surface, foundation_bottom_surface, foundation_x_minus_surface, foundation_y_plus_surface, foundation_x_plus_surface, foundation_y_minus_surface} ;
 
+Physical Volume("soil_and_foundation_vol")          = {foundation_volume, all_soils} ;
 
-//**************************************************************************************************
-// Part C.1 : Shell super-structure
-//**************************************************************************************************
+////**************************************************************************************************
+//// Part C.1 : Shell super-structure
+////**************************************************************************************************
 x_minus_y_minus = newp;  Point(x_minus_y_minus) = {Ox + width_of_field + width_of_out_foundation + epsilon, Oy + width_of_field + width_of_out_foundation + epsilon, Oz + depth_of_foundation + epsilon}; 
 x_plus_y_minus = newp; Point(x_plus_y_minus) = {Ox + width_of_field + width_of_structure - width_of_out_foundation - epsilon, Oy + width_of_field + width_of_out_foundation + epsilon, Oz + depth_of_foundation + epsilon}; 
 x_minus_y_plus = newp; Point(x_minus_y_plus) = {Ox + width_of_field + width_of_out_foundation + epsilon, Oy + width_of_field + width_of_structure - width_of_out_foundation - epsilon, Oz + depth_of_foundation + epsilon}; 

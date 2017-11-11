@@ -34,6 +34,8 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 #3 8 "all_soils"
 #3 10 "foundation_volume"
 
+[Add_Node{Physical_Group#shell_all_surfaces, Unit:= m, NumDofs:= 6}]
+[Add_Node{Physical_Group#soil_and_foundation_vol, Unit:= m, NumDofs:= 3}]
 #[Add_All_Node{Unit:= m, NumDofs:= 3}]
 
 #[Add_Node{Physical_Group#box_top_surface, Unit:= m, NumDofs:= 6}]
@@ -43,7 +45,8 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 #[Add_Node{Physical_Group#box_x_plus_surface, Unit:= m, NumDofs:= 6}]
 #[Add_Node{Physical_Group#box_y_minus_surface, Unit:= m, NumDofs:= 6}]
 
-[Add_Node{Physical_Group#all_soils, Unit:= m, NumDofs:= 3}]
+#[Add_Node{Physical_Group#all_soils, Unit:= m, NumDofs:= 3}]
+#[Add_Node{Physical_Group#foundation_volume, Unit:= m, NumDofs:= 3}]
 ## Soil 
 [Fix_All_Dofs{Physical_Group#soils_bottom_most}]
 
@@ -56,26 +59,21 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 [Generate_DRM_HDF5_3D{Physical_Group#DRM, Surface_Normal:= z, Node_Coordinate_Tol:= 0.00001 , FileName:= DRMinput.hdf5}]
 
 
-### Box
-#[Add_Node{Physical_Group#all_box_surfaces, Unit:= m, NumDofs:= 6}]
-#[Add_4NodeShell_Andes{Physical_Group#all_box_surfaces, MaterialNo:= 4, Thickness:= 2*m}]
+#### ======================================================
+#### Foudantion
+#### ======================================================
 
-##[Add_4NodeShell_Andes{Physical_Group#box_top_surface, MaterialNo:= 4, Thickness:= 2*m}]
-##[Add_4NodeShell_Andes{Physical_Group#box_bottom_surface, MaterialNo:= 4, Thickness:= 2*m}]
-##[Add_4NodeShell_Andes{Physical_Group#box_x_minus_surface, MaterialNo:= 4, Thickness:= 2*m}]
-##[Add_4NodeShell_Andes{Physical_Group#box_y_plus_surface, MaterialNo:= 4, Thickness:= 2*m}]
-##[Add_4NodeShell_Andes{Physical_Group#box_x_plus_surface, MaterialNo:= 4, Thickness:= 2*m}]
-##[Add_4NodeShell_Andes{Physical_Group#box_y_minus_surface, MaterialNo:= 4, Thickness:= 2*m}]
+[Add_8NodeBrick{Physical_Group#foundation_volume, MaterialNo:= 4}]
 
-### Connect 
-#[Connect{Physical_Group#soil_x_minus_surface, Physical_Group#box_x_minus_surface, Physical_Group#box_x_minus_surface, dv1:= 1 \ 0 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_x_minus"}]
-#[Connect{Physical_Group#soil_x_plus_surface, Physical_Group#box_x_plus_surface, Physical_Group#box_x_plus_surface, dv1:= -1 \ 0 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_x_plus"}]
-#[Connect{Physical_Group#soil_y_minus_surface, Physical_Group#box_y_minus_surface, Physical_Group#box_y_minus_surface, dv1:= 0 \ 1 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_y_minus"}]
-#[Connect{Physical_Group#soil_y_plus_surface, Physical_Group#box_y_plus_surface, Physical_Group#box_y_plus_surface, dv1:= 0 \ -1 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_y_plus"}]
-#[Connect{Physical_Group#soil_z_top_surface, Physical_Group#box_bottom_surface, Physical_Group#box_bottom_surface, dv1:= 0 \ 0 \ 1, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_z"}]
+### Connect Foundation to Soil
+[Connect{Physical_Group#soil_x_minus_surface, Physical_Group#foundation_x_minus_surface, Physical_Group#foundation_x_minus_surface, dv1:= 1 \ 0 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_x_minus"}]
+[Connect{Physical_Group#soil_x_plus_surface, Physical_Group#foundation_x_plus_surface, Physical_Group#foundation_x_plus_surface, dv1:= -1 \ 0 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_x_plus"}]
+[Connect{Physical_Group#soil_y_minus_surface, Physical_Group#foundation_y_minus_surface, Physical_Group#foundation_y_minus_surface, dv1:= 0 \ 1 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_y_minus"}]
+[Connect{Physical_Group#soil_y_plus_surface, Physical_Group#foundation_y_plus_surface, Physical_Group#foundation_y_plus_surface, dv1:= 0 \ -1 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_y_plus"}]
+[Connect{Physical_Group#soil_z_top_surface, Physical_Group#foundation_bottom_surface, Physical_Group#foundation_bottom_surface, dv1:= 0 \ 0 \ 1, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_z"}]
 
 #//Contact Parameters 
-#! Kn = 1e9*N/m;
+! Kn = 1e10*N/m;
 #! Sr = 1000/m;
 #! Kn_max = 1e12*N/m;
 #! Kt = 1e7*N/m;
@@ -83,9 +81,24 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 #! Ct = 0*N/m*s;
 #! Fr = 0.3;
 
-#[Add_HardContact{Physical_Group#soil_contact_x_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 1, NormVect_y:= 0, NormVect_z:= 0}]
-#[Add_HardContact{Physical_Group#soil_contact_x_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= -1, NormVect_y:= 0, NormVect_z:= 0}]
-#[Add_HardContact{Physical_Group#soil_contact_y_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 1, NormVect_z:= 0}]
-#[Add_HardContact{Physical_Group#soil_contact_y_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= -1, NormVect_z:= 0}]
-#[Add_HardContact{Physical_Group#soil_contact_z, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}]
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_x_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 1, NormVect_y:= 0, NormVect_z:= 0}]
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_x_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= -1, NormVect_y:= 0, NormVect_z:= 0}]
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_y_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 1, NormVect_z:= 0}]
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_y_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= -1, NormVect_z:= 0}]
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_z, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}]
+
+[Add_BondedContact{Physical_Group#soil_contact_x_minus, Penalty_Stiffness:= Kn }]
+[Add_BondedContact{Physical_Group#soil_contact_x_plus, Penalty_Stiffness:= Kn }]
+[Add_BondedContact{Physical_Group#soil_contact_y_minus, Penalty_Stiffness:= Kn }]
+[Add_BondedContact{Physical_Group#soil_contact_y_plus, Penalty_Stiffness:= Kn }]
+[Add_BondedContact{Physical_Group#soil_contact_z, Penalty_Stiffness:= Kn }]
+
+
+
+
+
+### ======================================================
+### Box
+### ======================================================
+[Add_4NodeShell_Andes{Physical_Group#shell_all_surfaces, MaterialNo:= 5, Thickness:= 2*m}]
 
