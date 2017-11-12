@@ -4,41 +4,43 @@ model name "shell_structure" ;
 
 Elastic = 2e8*N/m^2; 
 nu    = 0.1;        
-rho   = 2000*kg/m^3;     
+rho   = 1800*kg/m^3;     
 
+// Inside Soil
 add material # 1 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
   poisson_ratio = nu;
- 
+
+// DRM
 add material # 2 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
   poisson_ratio = nu;
 
+// Damping
 add material # 3 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
   poisson_ratio = nu;
 
+// Foundation.
 add material # 4 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
+    mass_density = 2500*kg/m^3
+    elastic_modulus = Elastic
+    poisson_ratio = nu ;
 
-add material # 5 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
-
-shell_Elastic = 2.48e11*N/m^2; 
+shell_Elastic = 3e10*N/m^2; 
 shell_v    = 0.1;        
-shell_rho   = 2000*kg/m^3;    
+shell_rho   = 2500*kg/m^3;    
 
-add material # 4 type linear_elastic_isotropic_3d
+// Shell
+add material # 5 type linear_elastic_isotropic_3d
   mass_density = shell_rho
   elastic_modulus = shell_Elastic
   poisson_ratio = shell_v;
+
+
 
 
 // bonded Contact penalty_stiffness. 
@@ -58,14 +60,23 @@ add acceleration field # 1
 add load # 1 to all elements type self_weight use acceleration field # 1;
 
 // define algorithm With_no_convergence_check ;
-define convergence test Norm_Unbalance tolerance = 10 maximum_iterations = 20 verbose_level = 1; 
+// define convergence test Norm_Unbalance tolerance = 10 maximum_iterations = 20 verbose_level = 1; 
+// define convergence test Relative_Norm_Unbalanced_Force 
+//   tolerance =  1E-3
+//   minimum_absolute_tolerance = 100
+//   maximum_iterations = 20 ;
+define convergence test Relative_Norm_Displacement_Increment 
+  tolerance =  1E-3
+  minimum_absolute_tolerance = 0.05
+  maximum_iterations = 20 ;
+
 define algorithm Newton; 
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
 {define solver parallel;}
-define load factor increment 1;
-simulate 1 steps using static algorithm;
+define load factor increment 0.1;
+simulate 10 steps using static algorithm;
 
 new loading stage "motion";
 
@@ -91,7 +102,17 @@ add load # 2 type DRM from wave field # 1
     soil_surface at z = 10 * m 
     hdf5_file = "DRMinput.hdf5" ; 
 // define algorithm With_no_convergence_check ;
-define convergence test Norm_Unbalance tolerance = 10 maximum_iterations = 20 verbose_level = 1; 
+// define convergence test Norm_Unbalance tolerance = 100 maximum_iterations = 20 verbose_level = 1; 
+// define convergence test Norm_Displacement_Increment / Energy_Increment / Norm_Unbalance / Relative_Norm_Displacement_Increment / Relative_Energy_Increment / Relative_Norm_Unbalance tolerance = <.> maximum_iterations = <.> verbose_level = <0>|<1>|<2>;
+// define convergence test Relative_Norm_Unbalanced_Force 
+//   tolerance =  1E-2
+//   minimum_absolute_tolerance = 100
+//   maximum_iterations = 20 ;
+define convergence test Relative_Norm_Displacement_Increment 
+  tolerance =  1E-3
+  minimum_absolute_tolerance = 0.05
+  maximum_iterations = 20 ;
+
 define algorithm Newton; 
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
@@ -104,7 +125,7 @@ else
 define dynamic integrator Newmark with 
    gamma = 0.50
    beta = 0.25;
-simulate 300 steps using transient algorithm 
+simulate 90 steps using transient algorithm 
     time_step = 0.01*s ;
 
 bye;

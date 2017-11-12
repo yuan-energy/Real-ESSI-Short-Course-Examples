@@ -91,22 +91,22 @@ new loading stage "StaticPushover";
 
 // FORCE CONTROLLED
 
-add load # 1001 to node # 209 type linear Fx=53125*N;
-add load # 1002 to node # 210 type linear Fx=53125*N;
-add load # 1003 to node # 211 type linear Fx=53125*N;
-add load # 1004 to node # 212 type linear Fx=53125*N;
-add load # 1005 to node # 213 type linear Fx=53125*N;
-add load # 1006 to node # 214 type linear Fx=53125*N;
-add load # 1007 to node # 215 type linear Fx=53125*N;
-add load # 1008 to node # 216 type linear Fx=53125*N;
-add load # 1009 to node # 217 type linear Fx=53125*N;
-add load # 1010 to node # 218 type linear Fx=53125*N;
-add load # 1011 to node # 219 type linear Fx=53125*N;
-add load # 1012 to node # 220 type linear Fx=53125*N;
-add load # 1013 to node # 221 type linear Fx=53125*N;
-add load # 1014 to node # 222 type linear Fx=53125*N;
-add load # 1015 to node # 223 type linear Fx=53125*N;
-add load # 1016 to node # 224 type linear Fx=53125*N;
+add load # 1001 to node # 209 type linear Fx=43125*N;
+add load # 1002 to node # 210 type linear Fx=43125*N;
+add load # 1003 to node # 211 type linear Fx=43125*N;
+add load # 1004 to node # 212 type linear Fx=43125*N;
+add load # 1005 to node # 213 type linear Fx=43125*N;
+add load # 1006 to node # 214 type linear Fx=43125*N;
+add load # 1007 to node # 215 type linear Fx=43125*N;
+add load # 1008 to node # 216 type linear Fx=43125*N;
+add load # 1009 to node # 217 type linear Fx=43125*N;
+add load # 1010 to node # 218 type linear Fx=43125*N;
+add load # 1011 to node # 219 type linear Fx=43125*N;
+add load # 1012 to node # 220 type linear Fx=43125*N;
+add load # 1013 to node # 221 type linear Fx=43125*N;
+add load # 1014 to node # 222 type linear Fx=43125*N;
+add load # 1015 to node # 223 type linear Fx=43125*N;
+add load # 1016 to node # 224 type linear Fx=43125*N;
 
 define convergence test Norm_Displacement_Increment
     tolerance = 1e-3
