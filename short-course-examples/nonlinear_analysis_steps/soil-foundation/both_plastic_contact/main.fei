@@ -6,34 +6,36 @@ Elastic = 2e8*N/m^2;
 nu    = 0.1;        
 rho   = 1500*kg/m^3;     
 
-add material # 1 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
+
+Soil_Elastic_Modulus = 1.3e9*Pa;
+Soil_Density = 2140*kg/m^3;
+Soil_Poisons_ratio = 0.25;
+
+add material # 1  type VonMisesArmstrongFrederick 
+  mass_density =  Soil_Density
+  elastic_modulus = Soil_Elastic_Modulus
+  poisson_ratio =  Soil_Poisons_ratio
+  von_mises_radius = 60*kPa  
+  armstrong_frederick_ha =  3e7*Pa
+  armstrong_frederick_cr =  25
+  isotropic_hardening_rate =  0*Pa;
  
 add material # 2 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
+  mass_density =  Soil_Density
+  elastic_modulus = Soil_Elastic_Modulus
+  poisson_ratio =  Soil_Poisons_ratio;
 
 add material # 3 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
+  mass_density =  Soil_Density
+  elastic_modulus = Soil_Elastic_Modulus
+  poisson_ratio =  Soil_Poisons_ratio;
 
-shell_Elastic = 2.48e11*N/m^2; 
-shell_v    = 0.1;        
-shell_rho   = 2000*kg/m^3;    
-
+// foundation
 add material # 4 type linear_elastic_isotropic_3d
   mass_density = 3000*kg/m^3
-  elastic_modulus = shell_Elastic
-  poisson_ratio = shell_v;
+  elastic_modulus = 3e10*N/m^2
+  poisson_ratio = 0.1;
 
-add material # 5 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
 // bonded Contact penalty_stiffness. 
 Kn = 1e11 * kg /s^2 ; 
 

@@ -169,7 +169,7 @@ Physical Surface("foundation_x_minus_surface")  = foundation_x_minus_surface[] ;
 Physical Surface("foundation_y_minus_surface") = foundation_y_minus_surface[] ;
 
 embed_around_surfaces[] = {670, 696, 718, 714, 626, 542, 520, 582} ; 
-embed_mid_surfaces[] = {604, 608, 692, 630} ; 3
+embed_mid_surfaces[] = {604, 608, 692, 630} ; 
 embed_surfaces[] = {embed_around_surfaces[], embed_mid_surfaces[]} ; 
 Physical Surface("embed_around_surfaces") = embed_around_surfaces[];
 Physical Surface("embed_mid_surfaces") = embed_mid_surfaces[];

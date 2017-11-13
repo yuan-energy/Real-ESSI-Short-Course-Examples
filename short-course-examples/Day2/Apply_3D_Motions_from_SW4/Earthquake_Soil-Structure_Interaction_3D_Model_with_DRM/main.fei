@@ -1,0 +1,93 @@
+
+
+model name "Solid_structure_DRM3D" ;
+Elastic = 2e8*N/m^2; 
+nu    = 0.1;        
+rho   = 2000*kg/m^3;     
+add material # 1 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Elastic
+  poisson_ratio = nu;
+ 
+add material # 2 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Elastic
+  poisson_ratio = nu;
+
+add material # 3 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Elastic
+  poisson_ratio = nu;
+
+add material # 4 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Elastic
+  poisson_ratio = nu;
+
+add material # 5 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Elastic
+  poisson_ratio = nu;
+
+// bonded Contact penalty_stiffness. 
+Kn = 1e11 * kg /s^2 ; 
+
+include "node.fei";
+include "element.fei";
+include "load.fei";
+
+
+// check model;
+new loading stage "Self_weight";
+add acceleration field # 1 
+  ax =  0*g
+  ay =  0*g
+  az =  -g ;
+add load # 1 to all elements type self_weight use acceleration field # 1;
+
+define algorithm With_no_convergence_check ;
+if(IS_PARALLEL==0)
+{define solver UMFPack;}
+else
+{define solver parallel;}
+define load factor increment 1;
+simulate 1 steps using static algorithm;
+
+new loading stage "motion";
+
+add load # 2 type domain reduction method 
+   hdf5_file = "DRM3Dmotion_fromSW4.hdf5" ;
+
+define convergence test Norm_Unbalance tolerance = 10 maximum_iterations = 20 verbose_level = 1; 
+
+define algorithm Newton; 
+
+if(IS_PARALLEL==0)
+{define solver UMFPack;}
+else
+{define solver parallel;}
+
+// define dynamic integrator Newmark with 
+   // gamma = 0.5050 
+   // beta = 0.2525;
+
+define dynamic integrator Newmark with 
+   gamma = 0.50
+   beta = 0.25;
+
+simulate 357 steps using transient algorithm 
+    time_step = 0.02516309430752952*s ;
+
+bye;
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,31 +3,31 @@
 model name "DRM1D" ;
 Elastic = 2e8*N/m^2; 
 nu    = 0.1;        
-rho   = 2000*kg/m^3;     
-add material # 1 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
+rho   = 2000*kg/m^3;  
+
+Soil_Elastic_Modulus = 1.3e9*Pa;
+Soil_Density = 2140*kg/m^3;
+Soil_Poisons_ratio = 0.25;
+
+add material # 1  type VonMisesArmstrongFrederick 
+  mass_density =  Soil_Density
+  elastic_modulus = Soil_Elastic_Modulus
+  poisson_ratio =  Soil_Poisons_ratio
+  von_mises_radius = 60*kPa  
+  armstrong_frederick_ha =  3e7*Pa
+  armstrong_frederick_cr =  25
+  isotropic_hardening_rate =  0*Pa;
  
 add material # 2 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
+  mass_density =  Soil_Density
+  elastic_modulus = Soil_Elastic_Modulus
+  poisson_ratio =  Soil_Poisons_ratio;
 
 add material # 3 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
+  mass_density =  Soil_Density
+  elastic_modulus = Soil_Elastic_Modulus
+  poisson_ratio =  Soil_Poisons_ratio;
 
-add material # 4 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
-
-add material # 5 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
 
 include "node.fei";
 include "element.fei";
