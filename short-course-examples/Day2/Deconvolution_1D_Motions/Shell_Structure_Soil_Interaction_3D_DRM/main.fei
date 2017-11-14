@@ -75,8 +75,8 @@ if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
 {define solver parallel;}
-define load factor increment 0.1;
-simulate 10 steps using static algorithm;
+define load factor increment 1;
+simulate 1 steps using static algorithm;
 
 new loading stage "motion";
 

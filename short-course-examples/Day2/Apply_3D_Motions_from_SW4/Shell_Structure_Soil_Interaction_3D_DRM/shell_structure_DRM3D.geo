@@ -7,12 +7,13 @@
 //****************************************************************
 // Predefined Parameters
 //****************************************************************
-width_of_out_foundation = 1; 
+mesh_size = 5;
+width_of_out_foundation = mesh_size; 
 
 height_of_structure = 60 ;
 sub_height = 20;
 
-depth_of_foundation = 10 ;
+depth_of_foundation = 5 ;
 raw_width_of_structure = 30 ;
 width_of_structure = raw_width_of_structure + 2 * width_of_out_foundation ;
 depth_of_soil = 40;
@@ -21,12 +22,11 @@ width_of_field = width_of_structure * 3 - width_of_out_foundation ;
 
 Ox = 0;
 Oy = 0;
-Oz = -10;
+Oz = -depth_of_foundation;
 
 epsilon =0.001 ;
 //epsilon = 2 ;
 
-mesh_size = 5;
 
 
 
