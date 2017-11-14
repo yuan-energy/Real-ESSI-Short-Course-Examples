@@ -6,36 +6,45 @@ Elastic = 2e8*N/m^2;
 nu    = 0.1;        
 rho   = 2000*kg/m^3;     
 
+// Soil layers
 add material # 1 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
   poisson_ratio = nu;
- 
+
+// DRM layers
 add material # 2 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
   poisson_ratio = nu;
 
+// Damping layers
 add material # 3 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
   poisson_ratio = nu;
 
-shell_Elastic = 2.48e11*N/m^2; 
-shell_v    = 0.1;        
-shell_rho   = 2000*kg/m^3;    
-
+// Foudnation
 add material # 4 type linear_elastic_isotropic_3d
+  mass_density = 2500*kg/m^3
+  elastic_modulus = 3e10*N/m^2
+  poisson_ratio =  0.2 ;
+
+// Structure
+shell_Elastic = 3e10*N/m^2; 
+shell_v    = 0.2;        
+shell_rho   = 2500*kg/m^3;    
+add material # 5 type linear_elastic_isotropic_3d
   mass_density = shell_rho
   elastic_modulus = shell_Elastic
   poisson_ratio = shell_v;
 
-add material # 5 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
-// bonded Contact penalty_stiffness. 
+  // Contact paramters
 Kn = 1e11 * kg /s^2 ; 
+Kt = 1e7*N/m;
+Cn = 0*N/m*s;
+Ct = 0*N/m*s;
+Fr = 0.3;
 
 include "node.fei";
 include "element.fei";

@@ -7,12 +7,13 @@
 //****************************************************************
 // Predefined Parameters
 //****************************************************************
-width_of_out_foundation = 1; 
+mesh_size = 5;
+width_of_out_foundation = mesh_size; 
 
 height_of_structure = 60 ;
 sub_height = 20;
 
-depth_of_foundation = 10 ;
+depth_of_foundation = 5 ;
 raw_width_of_structure = 30 ;
 width_of_structure = raw_width_of_structure + 2 * width_of_out_foundation ;
 depth_of_soil = 40;
@@ -21,12 +22,11 @@ width_of_field = width_of_structure * 3 - width_of_out_foundation ;
 
 Ox = 0;
 Oy = 0;
-Oz = 0;
+Oz = -depth_of_foundation;
 
 epsilon =0.001 ;
 //epsilon = 2 ;
 
-mesh_size = 5;
 
 
 
@@ -169,7 +169,7 @@ Physical Surface("foundation_x_minus_surface")  = foundation_x_minus_surface[] ;
 Physical Surface("foundation_y_minus_surface") = foundation_y_minus_surface[] ;
 
 embed_around_surfaces[] = {670, 696, 718, 714, 626, 542, 520, 582} ; 
-embed_mid_surfaces[] = {604, 608, 692, 630} ; 3
+embed_mid_surfaces[] = {604, 608, 692, 630} ; 
 embed_surfaces[] = {embed_around_surfaces[], embed_mid_surfaces[]} ; 
 Physical Surface("embed_around_surfaces") = embed_around_surfaces[];
 Physical Surface("embed_mid_surfaces") = embed_mid_surfaces[];

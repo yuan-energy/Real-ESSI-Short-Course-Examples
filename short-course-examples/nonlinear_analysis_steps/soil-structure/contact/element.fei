@@ -19456,97 +19456,97 @@ add element # 19416 type 8NodeBrick with nodes (22743, 22742, 9, 22738, 22824, 2
 
 
 //*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_x_minus, Penalty_Stiffness:= Kn }Starts
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_x_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 1, NormVect_y:= 0, NormVect_z:= 0}Starts
 //*************************************************************************************************************************
 
-add element # 19417 type BondedContact with nodes (483, 22703) penalty_stiffness = Kn; 
-add element # 19418 type BondedContact with nodes (487, 22723) penalty_stiffness = Kn; 
-add element # 19419 type BondedContact with nodes (512, 22728) penalty_stiffness = Kn; 
-add element # 19420 type BondedContact with nodes (518, 22740) penalty_stiffness = Kn; 
-add element # 19421 type BondedContact with nodes (705, 22713) penalty_stiffness = Kn; 
-add element # 19422 type BondedContact with nodes (1368, 22784) penalty_stiffness = Kn; 
-add element # 19423 type BondedContact with nodes (1458, 22735) penalty_stiffness = Kn; 
-add element # 19424 type BondedContact with nodes (1484, 22817) penalty_stiffness = Kn; 
-add element # 19425 type BondedContact with nodes (8190, 22801) penalty_stiffness = Kn; 
+add element # 19417 type ForceBasedHardContact with nodes (483, 22703) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (1, 0, 0 ); 
+add element # 19418 type ForceBasedHardContact with nodes (487, 22723) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (1, 0, 0 ); 
+add element # 19419 type ForceBasedHardContact with nodes (512, 22728) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (1, 0, 0 ); 
+add element # 19420 type ForceBasedHardContact with nodes (518, 22740) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (1, 0, 0 ); 
+add element # 19421 type ForceBasedHardContact with nodes (705, 22713) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (1, 0, 0 ); 
+add element # 19422 type ForceBasedHardContact with nodes (1368, 22784) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (1, 0, 0 ); 
+add element # 19423 type ForceBasedHardContact with nodes (1458, 22735) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (1, 0, 0 ); 
+add element # 19424 type ForceBasedHardContact with nodes (1484, 22817) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (1, 0, 0 ); 
+add element # 19425 type ForceBasedHardContact with nodes (8190, 22801) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (1, 0, 0 ); 
 
 //*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_x_minus, Penalty_Stiffness:= Kn }Ends
-//*************************************************************************************************************************
-
-
-//*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_x_plus, Penalty_Stiffness:= Kn }Starts
-//*************************************************************************************************************************
-
-add element # 19426 type BondedContact with nodes (484, 22707) penalty_stiffness = Kn; 
-add element # 19427 type BondedContact with nodes (488, 22727) penalty_stiffness = Kn; 
-add element # 19428 type BondedContact with nodes (515, 22733) penalty_stiffness = Kn; 
-add element # 19429 type BondedContact with nodes (521, 22743) penalty_stiffness = Kn; 
-add element # 19430 type BondedContact with nodes (715, 22717) penalty_stiffness = Kn; 
-add element # 19431 type BondedContact with nodes (1399, 22796) penalty_stiffness = Kn; 
-add element # 19432 type BondedContact with nodes (1511, 22736) penalty_stiffness = Kn; 
-add element # 19433 type BondedContact with nodes (1515, 22824) penalty_stiffness = Kn; 
-add element # 19434 type BondedContact with nodes (8331, 22806) penalty_stiffness = Kn; 
-
-//*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_x_plus, Penalty_Stiffness:= Kn }Ends
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_x_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 1, NormVect_y:= 0, NormVect_z:= 0}Ends
 //*************************************************************************************************************************
 
 
 //*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_y_minus, Penalty_Stiffness:= Kn }Starts
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_x_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= -1, NormVect_y:= 0, NormVect_z:= 0}Starts
 //*************************************************************************************************************************
 
-add element # 19435 type BondedContact with nodes (483, 22703) penalty_stiffness = Kn; 
-add element # 19436 type BondedContact with nodes (484, 22707) penalty_stiffness = Kn; 
-add element # 19437 type BondedContact with nodes (512, 22728) penalty_stiffness = Kn; 
-add element # 19438 type BondedContact with nodes (515, 22733) penalty_stiffness = Kn; 
-add element # 19439 type BondedContact with nodes (623, 22705) penalty_stiffness = Kn; 
-add element # 19440 type BondedContact with nodes (1368, 22784) penalty_stiffness = Kn; 
-add element # 19441 type BondedContact with nodes (1395, 22731) penalty_stiffness = Kn; 
-add element # 19442 type BondedContact with nodes (1399, 22796) penalty_stiffness = Kn; 
-add element # 19443 type BondedContact with nodes (7717, 22790) penalty_stiffness = Kn; 
+add element # 19426 type ForceBasedHardContact with nodes (484, 22707) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (-1, 0, 0 ); 
+add element # 19427 type ForceBasedHardContact with nodes (488, 22727) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (-1, 0, 0 ); 
+add element # 19428 type ForceBasedHardContact with nodes (515, 22733) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (-1, 0, 0 ); 
+add element # 19429 type ForceBasedHardContact with nodes (521, 22743) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (-1, 0, 0 ); 
+add element # 19430 type ForceBasedHardContact with nodes (715, 22717) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (-1, 0, 0 ); 
+add element # 19431 type ForceBasedHardContact with nodes (1399, 22796) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (-1, 0, 0 ); 
+add element # 19432 type ForceBasedHardContact with nodes (1511, 22736) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (-1, 0, 0 ); 
+add element # 19433 type ForceBasedHardContact with nodes (1515, 22824) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (-1, 0, 0 ); 
+add element # 19434 type ForceBasedHardContact with nodes (8331, 22806) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (-1, 0, 0 ); 
 
 //*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_y_minus, Penalty_Stiffness:= Kn }Ends
-//*************************************************************************************************************************
-
-
-//*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_y_plus, Penalty_Stiffness:= Kn }Starts
-//*************************************************************************************************************************
-
-add element # 19444 type BondedContact with nodes (487, 22723) penalty_stiffness = Kn; 
-add element # 19445 type BondedContact with nodes (488, 22727) penalty_stiffness = Kn; 
-add element # 19446 type BondedContact with nodes (518, 22740) penalty_stiffness = Kn; 
-add element # 19447 type BondedContact with nodes (521, 22743) penalty_stiffness = Kn; 
-add element # 19448 type BondedContact with nodes (710, 22725) penalty_stiffness = Kn; 
-add element # 19449 type BondedContact with nodes (1484, 22817) penalty_stiffness = Kn; 
-add element # 19450 type BondedContact with nodes (1515, 22824) penalty_stiffness = Kn; 
-add element # 19451 type BondedContact with nodes (1574, 22741) penalty_stiffness = Kn; 
-add element # 19452 type BondedContact with nodes (8804, 22820) penalty_stiffness = Kn; 
-
-//*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_y_plus, Penalty_Stiffness:= Kn }Ends
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_x_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= -1, NormVect_y:= 0, NormVect_z:= 0}Ends
 //*************************************************************************************************************************
 
 
 //*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_z, Penalty_Stiffness:= Kn }Starts
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_y_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 1, NormVect_z:= 0}Starts
 //*************************************************************************************************************************
 
-add element # 19453 type BondedContact with nodes (483, 22703) penalty_stiffness = Kn; 
-add element # 19454 type BondedContact with nodes (484, 22707) penalty_stiffness = Kn; 
-add element # 19455 type BondedContact with nodes (487, 22723) penalty_stiffness = Kn; 
-add element # 19456 type BondedContact with nodes (488, 22727) penalty_stiffness = Kn; 
-add element # 19457 type BondedContact with nodes (623, 22705) penalty_stiffness = Kn; 
-add element # 19458 type BondedContact with nodes (705, 22713) penalty_stiffness = Kn; 
-add element # 19459 type BondedContact with nodes (710, 22725) penalty_stiffness = Kn; 
-add element # 19460 type BondedContact with nodes (715, 22717) penalty_stiffness = Kn; 
-add element # 19461 type BondedContact with nodes (2478, 22715) penalty_stiffness = Kn; 
+add element # 19435 type ForceBasedHardContact with nodes (483, 22703) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 1, 0 ); 
+add element # 19436 type ForceBasedHardContact with nodes (484, 22707) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 1, 0 ); 
+add element # 19437 type ForceBasedHardContact with nodes (512, 22728) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 1, 0 ); 
+add element # 19438 type ForceBasedHardContact with nodes (515, 22733) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 1, 0 ); 
+add element # 19439 type ForceBasedHardContact with nodes (623, 22705) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 1, 0 ); 
+add element # 19440 type ForceBasedHardContact with nodes (1368, 22784) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 1, 0 ); 
+add element # 19441 type ForceBasedHardContact with nodes (1395, 22731) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 1, 0 ); 
+add element # 19442 type ForceBasedHardContact with nodes (1399, 22796) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 1, 0 ); 
+add element # 19443 type ForceBasedHardContact with nodes (7717, 22790) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 1, 0 ); 
 
 //*************************************************************************************************************************
-//							Add_BondedContact{Physical_Group#soil_contact_z, Penalty_Stiffness:= Kn }Ends
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_y_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 1, NormVect_z:= 0}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_y_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= -1, NormVect_z:= 0}Starts
+//*************************************************************************************************************************
+
+add element # 19444 type ForceBasedHardContact with nodes (487, 22723) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, -1, 0 ); 
+add element # 19445 type ForceBasedHardContact with nodes (488, 22727) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, -1, 0 ); 
+add element # 19446 type ForceBasedHardContact with nodes (518, 22740) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, -1, 0 ); 
+add element # 19447 type ForceBasedHardContact with nodes (521, 22743) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, -1, 0 ); 
+add element # 19448 type ForceBasedHardContact with nodes (710, 22725) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, -1, 0 ); 
+add element # 19449 type ForceBasedHardContact with nodes (1484, 22817) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, -1, 0 ); 
+add element # 19450 type ForceBasedHardContact with nodes (1515, 22824) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, -1, 0 ); 
+add element # 19451 type ForceBasedHardContact with nodes (1574, 22741) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, -1, 0 ); 
+add element # 19452 type ForceBasedHardContact with nodes (8804, 22820) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, -1, 0 ); 
+
+//*************************************************************************************************************************
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_y_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= -1, NormVect_z:= 0}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_z, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}Starts
+//*************************************************************************************************************************
+
+add element # 19453 type ForceBasedHardContact with nodes (483, 22703) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 0, 1 ); 
+add element # 19454 type ForceBasedHardContact with nodes (484, 22707) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 0, 1 ); 
+add element # 19455 type ForceBasedHardContact with nodes (487, 22723) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 0, 1 ); 
+add element # 19456 type ForceBasedHardContact with nodes (488, 22727) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 0, 1 ); 
+add element # 19457 type ForceBasedHardContact with nodes (623, 22705) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 0, 1 ); 
+add element # 19458 type ForceBasedHardContact with nodes (705, 22713) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 0, 1 ); 
+add element # 19459 type ForceBasedHardContact with nodes (710, 22725) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 0, 1 ); 
+add element # 19460 type ForceBasedHardContact with nodes (715, 22717) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 0, 1 ); 
+add element # 19461 type ForceBasedHardContact with nodes (2478, 22715) axial_stiffness = Kn shear_stiffness = Kt axial_viscous_damping = Cn shear_viscous_damping = Ct friction_ratio = Fr contact_plane_vector = (0, 0, 1 ); 
+
+//*************************************************************************************************************************
+//							Add_ForceBasedHardContact{Physical_Group#soil_contact_z, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}Ends
 //*************************************************************************************************************************
 
 
