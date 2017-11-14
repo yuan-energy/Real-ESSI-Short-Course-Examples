@@ -4,37 +4,34 @@ model name "shell_structure" ;
 
 Elastic = 2e8*N/m^2; 
 nu    = 0.1;        
-rho   = 1500*kg/m^3;     
+rho   = 2000*kg/m^3;     
 
+// Soil layers
 add material # 1 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
   poisson_ratio = nu;
- 
+
+// DRM layers
 add material # 2 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
   poisson_ratio = nu;
 
+// Damping layers
 add material # 3 type linear_elastic_isotropic_3d
   mass_density = rho
   elastic_modulus = Elastic
   poisson_ratio = nu;
 
-shell_Elastic = 2.48e11*N/m^2; 
-shell_v    = 0.1;        
-shell_rho   = 2000*kg/m^3;    
-
+// Foudnation
 add material # 4 type linear_elastic_isotropic_3d
-  mass_density = 3000*kg/m^3
-  elastic_modulus = shell_Elastic
-  poisson_ratio = shell_v;
+  mass_density = 2500*kg/m^3
+  elastic_modulus = 3e10*N/m^2
+  poisson_ratio =  0.2 ;
 
-add material # 5 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
-// bonded Contact penalty_stiffness. 
+
+// Contact paramters
 Kn = 1e11 * kg /s^2 ; 
 Kt = 1e7*N/m;
 Cn = 0*N/m*s;
@@ -145,7 +142,7 @@ else
 define dynamic integrator Newmark with 
    gamma = 0.50
    beta = 0.25;
-simulate 200 steps using transient algorithm 
+simulate 300 steps using transient algorithm 
     time_step = 0.01*s ;
 
 bye;

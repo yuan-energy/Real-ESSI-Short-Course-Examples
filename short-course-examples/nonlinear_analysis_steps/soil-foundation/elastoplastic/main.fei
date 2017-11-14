@@ -2,15 +2,11 @@
 
 model name "shell_structure" ;
 
-Elastic = 2e8*N/m^2; 
-nu    = 0.1;        
-rho   = 1500*kg/m^3;     
-
 Soil_Elastic_Modulus = 1.3e9*Pa;
 Soil_Density = 2140*kg/m^3;
 Soil_Poisons_ratio = 0.25;
 
-// Soil
+// Soil layers
 add material # 1  type VonMisesArmstrongFrederick 
   mass_density =  Soil_Density
   elastic_modulus = Soil_Elastic_Modulus
@@ -19,27 +15,27 @@ add material # 1  type VonMisesArmstrongFrederick
   armstrong_frederick_ha =  3e7*Pa
   armstrong_frederick_cr =  25
   isotropic_hardening_rate =  0*Pa;
- 
-// DRM
+  
+// DRM layers
 add material # 2 type linear_elastic_isotropic_3d
   mass_density =  Soil_Density
   elastic_modulus = Soil_Elastic_Modulus
   poisson_ratio =  Soil_Poisons_ratio;
 
-// damping
+// Damping layers
 add material # 3 type linear_elastic_isotropic_3d
   mass_density =  Soil_Density
   elastic_modulus = Soil_Elastic_Modulus
   poisson_ratio =  Soil_Poisons_ratio;
 
-// foundation
+// Foudnation
 add material # 4 type linear_elastic_isotropic_3d
-  mass_density = 3000*kg/m^3
+  mass_density = 2500*kg/m^3
   elastic_modulus = 3e10*N/m^2
-  poisson_ratio = 0.1;
+  poisson_ratio =  0.2 ;
 
 
-// bonded Contact penalty_stiffness. 
+// Contact paramters
 Kn = 1e11 * kg /s^2 ; 
 
 include "node.fei";
