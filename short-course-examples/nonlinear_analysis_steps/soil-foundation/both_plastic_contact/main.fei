@@ -38,6 +38,10 @@ add material # 4 type linear_elastic_isotropic_3d
 
 // bonded Contact penalty_stiffness. 
 Kn = 1e11 * kg /s^2 ; 
+Kt = 1e7*N/m;
+Cn = 0*N/m*s;
+Ct = 0*N/m*s;
+Fr = 0.3;
 
 include "node.fei";
 include "element.fei";
