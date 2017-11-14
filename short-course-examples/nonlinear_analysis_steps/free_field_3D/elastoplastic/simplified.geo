@@ -13,7 +13,7 @@ total_width = 210 ;
 
 Ox = 0;
 Oy = 0;
-Oz = -40;
+Oz = -total_height;
 
 epsilon =0.001 ;
 //epsilon = 2 ;
