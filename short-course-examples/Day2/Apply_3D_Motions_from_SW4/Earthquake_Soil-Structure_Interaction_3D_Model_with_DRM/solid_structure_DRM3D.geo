@@ -8,15 +8,15 @@
 // Predefined Parameters
 //****************************************************************
 
-height_of_structure = 70 ;
-depth_of_foundation = 10 ;
+height_of_structure = 60 ;
+depth_of_foundation = 5 ;
 width_of_structure = 30  ;
 depth_of_soil = 40;
 width_of_field = width_of_structure * 3 ;
 
 Ox = 0;
 Oy = 0;
-Oz = -10;
+Oz = -depth_of_foundation;
 
 epsilon =0.001 ;
 //epsilon = 2 ;
