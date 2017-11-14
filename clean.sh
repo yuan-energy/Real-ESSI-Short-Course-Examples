@@ -1,3 +1,7 @@
+# ##########################################################
+# This script is used to clean the output of ESSI Simulation
+# ##########################################################
+
 find ./ -name "*.h5.feioutput" -delete
 find ./ -name "*.h5.*.feioutput" -delete
 find ./ -name "essi_*.log" -delete
