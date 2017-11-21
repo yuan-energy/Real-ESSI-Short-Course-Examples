@@ -62,11 +62,17 @@ add acceleration field # 1
   az =  -g ;
 add load # 1 to all elements type self_weight use acceleration field # 1;
 
-// define algorithm With_no_convergence_check ;
-define convergence test Relative_Norm_Displacement_Increment 
-  tolerance =  1E-3
-  minimum_absolute_tolerance = 0.05
-  maximum_iterations = 20 ;
+define NDMaterial constitutive integration algorithm Backward_Euler
+  yield_function_relative_tolerance =  1e-6
+  stress_relative_tolerance =  1e-6
+  maximum_iterations = 10 ;
+  
+define convergence test Relative_Norm_Unbalanced_Force
+  tolerance =  1E-2
+  minimum_absolute_tolerance = 1e-4
+  maximum_iterations = 80
+  ;
+
 define algorithm Newton;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
@@ -130,25 +136,23 @@ add load # 2 type DRM from wave field
     # 3 in direction uz
     soil_surface at z = 10 * m 
     hdf5_file = "DRMinput.hdf5" ; 
-// add load # 2 type DRM from wave field # 1 
-//     in direction ux 
-//     soil_surface at z = 10 * m 
-//     hdf5_file = "DRMinput.hdf5" ; 
-// define algorithm With_no_convergence_check ;
-define convergence test Relative_Norm_Displacement_Increment 
-  tolerance =  1E-3
-  minimum_absolute_tolerance = 0.05
-  maximum_iterations = 20 ;
+define NDMaterial constitutive integration algorithm Backward_Euler
+  yield_function_relative_tolerance =  1e-6
+  stress_relative_tolerance =  1e-6
+  maximum_iterations = 10 ;
+  
+define convergence test Relative_Norm_Unbalanced_Force
+  tolerance =  1E-2
+  minimum_absolute_tolerance = 1e-4
+  maximum_iterations = 80
+  ;
 
-// define convergence test Norm_Unbalance tolerance = 1E-2 maximum_iterations = 20 verbose_level = 1; 
-define algorithm Newton; 
+define algorithm Newton;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
 {define solver parallel;}
-// define dynamic integrator Newmark with 
-   // gamma = 0.5050 
-   // beta = 0.2525;
+
 
 define dynamic integrator Newmark with 
    gamma = 0.50

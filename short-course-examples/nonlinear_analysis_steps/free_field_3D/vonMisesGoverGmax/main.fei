@@ -1,0 +1,153 @@
+model name "DRM3D" ;
+Elastic = 2e8*N/m^2; 
+nu    = 0.1;        
+rho   = 2000*kg/m^3;  
+
+Soil_Elastic_Modulus = 1.3e9*Pa;
+Soil_Density = 2140*kg/m^3;
+Soil_Poisons_ratio = 0.25;
+//  Soil
+add material # 1 type vonMisesMultipleYieldSurfaceGoverGmax
+    mass_density = Soil_Density  
+    initial_shear_modulus = Soil_Elastic_Modulus 
+    poisson_ratio = Soil_Poisons_ratio  
+    total_number_of_shear_modulus = 9
+    GoverGmax = 
+    "1,0.99563892,0.96674888,0.87318337,0.78735192,0.46719464,0.32043423,0.10940113,0.06347752"  
+    ShearStrainGamma = 
+    "0,1E-6,1E-5,5E-5,1E-4, 0.0005, 0.001, 0.005, 0.01"
+    ;
+
+// DRM layer
+add material # 2 type linear_elastic_isotropic_3d
+  mass_density =  Soil_Density
+  elastic_modulus = Soil_Elastic_Modulus
+  poisson_ratio =  Soil_Poisons_ratio;
+
+// Damping Layers
+add material # 3 type linear_elastic_isotropic_3d
+  mass_density =  Soil_Density
+  elastic_modulus = Soil_Elastic_Modulus
+  poisson_ratio =  Soil_Poisons_ratio;
+
+
+include "node.fei";
+include "element.fei";
+include "load.fei";
+
+add wave field # 1 with
+  acceleration_filename = "scaled_NORTHR_x_A.txt"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "scaled_NORTHR_x_D.txt"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.5 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
+  
+add wave field # 2 with
+  acceleration_filename = "scaled_NORTHR_y_A.txt"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "scaled_NORTHR_y_D.txt"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.5 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
+
+add wave field # 3 with
+  acceleration_filename = "scaled_NORTHR_z_A.txt"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "scaled_NORTHR_z_D.txt"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.5 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile_Vp.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
+
+// check model;
+new loading stage "Self_weight";
+add acceleration field # 1 
+  ax =  0*g
+  ay =  0*g
+  az =  -g ;
+add load # 1 to all elements type self_weight use acceleration field # 1;
+
+define NDMaterial constitutive integration algorithm Backward_Euler
+  yield_function_relative_tolerance =  1e-17
+  stress_relative_tolerance =  1e-17
+  maximum_iterations = 10 ;
+  
+define convergence test Relative_Norm_Unbalanced_Force
+  tolerance =  1E-2
+  minimum_absolute_tolerance = 1e-4
+  maximum_iterations = 80
+  ;
+define algorithm Newton; 
+if(IS_PARALLEL==0)
+{define solver UMFPack;}
+else
+{define solver parallel;}
+define load factor increment 1;
+simulate 1 steps using static algorithm;
+
+new loading stage "motion";
+
+
+enable acceleration output; 
+add load # 2 type DRM from wave field 
+    # 1 in direction ux 
+    # 2 in direction uy
+    # 3 in direction uz
+    soil_surface at z = 30 * m 
+    hdf5_file = "DRMinput.hdf5" ; 
+define NDMaterial constitutive integration algorithm Backward_Euler
+  yield_function_relative_tolerance =  1e-17
+  stress_relative_tolerance =  1e-17
+  maximum_iterations = 10 ;
+  
+define convergence test Relative_Norm_Unbalanced_Force
+  tolerance =  5E-2
+  minimum_absolute_tolerance = 1e-4
+  maximum_iterations = 80
+  ;
+
+define algorithm Newton; 
+if(IS_PARALLEL==0)
+{define solver UMFPack;}
+else
+{define solver parallel;}
+
+define dynamic integrator Newmark with 
+   gamma = 0.50
+   beta = 0.25;
+simulate 3000 steps using transient algorithm 
+    time_step = 0.01*s ;
+
+bye;
+
+
+
+
+
+
+
+
+
+
+
