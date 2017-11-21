@@ -113,7 +113,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
 define convergence test Relative_Norm_Unbalanced_Force
   tolerance =  1E-2
   minimum_absolute_tolerance = 1e-4
-  maximum_iterations = 80
+  maximum_iterations = 200
   ;
 define algorithm Newton; 
 if(IS_PARALLEL==0)
@@ -141,7 +141,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
 define convergence test Relative_Norm_Unbalanced_Force
   tolerance =  5E-2
   minimum_absolute_tolerance = 1e-4
-  maximum_iterations = 80
+  maximum_iterations = 200
   ;
 
 define algorithm Newton; 
@@ -153,7 +153,7 @@ else
 define dynamic integrator Newmark with 
    gamma = 0.50
    beta = 0.25;
-simulate 3000 steps using transient algorithm 
+simulate 3500 steps using transient algorithm 
     time_step = 0.01*s ;
 
 bye;

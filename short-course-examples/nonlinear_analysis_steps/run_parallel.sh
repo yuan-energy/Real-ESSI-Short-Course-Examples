@@ -1,3 +1,3 @@
-script -c "time mpirun -np 4 essi_parallel -f main.fei" benchmark.txt
+script -c "time mpirun -np $(nproc) essi_parallel -f main.fei" benchmark.txt
 
 
