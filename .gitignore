@@ -7,7 +7,7 @@
 **/gmon.out
 
 **/*.h5.*.feioutput 
-**/*.hdf5
+
 **/essi_*.log 
 **/log 
 **/*.pyc 
