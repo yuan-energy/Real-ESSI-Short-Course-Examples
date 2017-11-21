@@ -142,7 +142,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
   maximum_iterations = 10 ;
   
 define convergence test Relative_Norm_Unbalanced_Force
-  tolerance =  1E-2
+  tolerance =  5E-2
   minimum_absolute_tolerance = 1e-4
   maximum_iterations = 200
   ;
