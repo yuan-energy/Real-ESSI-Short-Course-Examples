@@ -46,9 +46,49 @@ add material # 5 type linear_elastic_isotropic_3d
 // Contact paramters
 Kn = 1e11 * kg /s^2 ; 
 
+
+// check model;
+
+// Damping paramters
+Gamma = 0.55; 
+Beta = 0.25*(0.5+Gamma)*(0.5+Gamma); 
+
+T1 = 2*s; 
+T2 = 0.2*s; 
+w1 = 2*pi/T1; 
+w2 = 2*pi/T2; 
+
+// Structure Damping 
+xi_1 = 0.03; 
+rayl_1_a1 = 2*xi_1/(w1+w2); 
+rayl_1_a0 = rayl_1_a1*w1*w2; 
+
+// Soil Damping 
+xi_2 = 0.06; 
+rayl_2_a1 = 2*xi_2/(w1+w2); 
+rayl_2_a0 = rayl_2_a1*w1*w2; 
+
+// DRM layer Damping 
+xi_3 = 0.06; 
+rayl_3_a1 = 2*xi_3/(w1+w2); 
+rayl_3_a0 = rayl_3_a1*w1*w2; 
+
+// Damping layer Damping 
+xi_4 = 0.4 ; 
+rayl_4_a1 = 2*xi_4/(w1+w2); 
+rayl_4_a0 = rayl_4_a1*w1*w2; 
+
+add damping # 1 type Rayleigh with a0 = rayl_1_a0 a1 = rayl_1_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 2 type Rayleigh with a0 = rayl_2_a0 a1 = rayl_2_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 3 type Rayleigh with a0 = rayl_3_a0 a1 = rayl_3_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 4 type Rayleigh with a0 = rayl_4_a0 a1 = rayl_4_a1 stiffness_to_use = Initial_Stiffness; 
+
 include "node.fei";
 include "element.fei";
 include "load.fei";
+include "damping.fei";
+
+
 
 
 // check model;
@@ -66,7 +106,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
   
 define convergence test Relative_Norm_Unbalanced_Force
   tolerance =  1E-2
-  minimum_absolute_tolerance = 1e-4
+  minimum_absolute_tolerance = 1e2
   maximum_iterations = 200
   ;
 
@@ -125,8 +165,6 @@ add wave field # 3 with
   unit_of_thickness = 1*m 
   ;
 enable acceleration output; 
-//add load # 2 type domain reduction method 
-  //  hdf5_file = "DRM_Input.hdf5" ; 
 add load # 2 type DRM from wave field 
     # 1 in direction ux 
     # 2 in direction uy
@@ -140,7 +178,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
   
 define convergence test Relative_Norm_Unbalanced_Force
   tolerance =  1E-2
-  minimum_absolute_tolerance = 1e-4
+  minimum_absolute_tolerance = 1e2
   maximum_iterations = 200
   ;
 
@@ -149,13 +187,9 @@ if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
 {define solver parallel;}
-// define dynamic integrator Newmark with 
-   // gamma = 0.5050 
-   // beta = 0.2525;
-
 define dynamic integrator Newmark with 
-   gamma = 0.50
-   beta = 0.25;
+  gamma = Gamma
+  beta = Beta;
 simulate 3500 steps using transient algorithm 
     time_step = 0.01*s ;
 

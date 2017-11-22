@@ -67,10 +67,10 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 ! Kn = 1e10*N/m;
 #! Sr = 1000/m;
 #! Kn_max = 1e12*N/m;
-#! Kt = 1e7*N/m;
-#! Cn = 0*N/m*s;
-#! Ct = 0*N/m*s;
-#! Fr = 0.3;
+! Kt = 1e7*N/m;
+! Cn = 0*N/m*s;
+! Ct = 0*N/m*s;
+! Fr = 0.3;
 
 [Add_ForceBasedHardContact{Physical_Group#soil_contact_x_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 1, NormVect_y:= 0, NormVect_z:= 0}]
 [Add_ForceBasedHardContact{Physical_Group#soil_contact_x_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= -1, NormVect_y:= 0, NormVect_z:= 0}]
@@ -92,4 +92,15 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 ### Box
 ### ======================================================
 [Add_4NodeShell_Andes{Physical_Group#shell_all_surfaces, MaterialNo:= 5, Thickness:= 2*m}]
+
+
+
+### ======================================================
+### Damping
+### ======================================================
+
+[Add_Damping_To_Element{Physical_Group#shell_all_surfaces, DampingNo:= 1}]
+[Add_Damping_To_Element{Physical_Group#Inside_Soil, DampingNo:= 2}]
+[Add_Damping_To_Element{Physical_Group#DRM, DampingNo:= 3}]
+[Add_Damping_To_Element{Physical_Group#Damping, DampingNo:= 4}]
 

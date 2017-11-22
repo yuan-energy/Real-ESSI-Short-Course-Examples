@@ -42,16 +42,76 @@ add material # 5 type linear_elastic_isotropic_3d
   elastic_modulus = shell_Elastic
   poisson_ratio = shell_v;
 
+
 // Contact paramters
 Kn = 1e11 * kg /s^2 ; 
 Kt = 1e7*N/m;
-Cn = 0*N/m*s;
-Ct = 0*N/m*s;
+Cn = 100*N/m*s;
+Ct = 100*N/m*s;
 Fr = 0.3;
+
+// //Contact Parameters (ForceBased)
+// Kn = 1e9*N/m; 
+// Sr = 1000/m; 
+// Kn_max = 1e12*N/m; 
+// Kt = 1e7*N/m; 
+// Cn = 100*N/m*s; 
+// Ct = 100*N/m*s; 
+// Fr = 0.25; 
+
+// //Contact Parameters (StressBased)
+// Kn = 100*MPa; 
+// Sr = 100; 
+// Kn_max = 500*MPa; 
+// Kt = 40*kPa; 
+// Cn = 100*Pa*s; 
+// Ct = 100*Pa*s; 
+// Fr = 0.8; 
+
+
+// check model;
+
+
+// Damping paramters
+Gamma = 0.55; 
+Beta = 0.25*(0.5+Gamma)*(0.5+Gamma); 
+
+T1 = 2*s; 
+T2 = 0.2*s; 
+w1 = 2*pi/T1; 
+w2 = 2*pi/T2; 
+
+// Structure Damping 
+xi_1 = 0.03; 
+rayl_1_a1 = 2*xi_1/(w1+w2); 
+rayl_1_a0 = rayl_1_a1*w1*w2; 
+
+// Soil Damping 
+xi_2 = 0.06; 
+rayl_2_a1 = 2*xi_2/(w1+w2); 
+rayl_2_a0 = rayl_2_a1*w1*w2; 
+
+// DRM layer Damping 
+xi_3 = 0.06; 
+rayl_3_a1 = 2*xi_3/(w1+w2); 
+rayl_3_a0 = rayl_3_a1*w1*w2; 
+
+// Damping layer Damping 
+xi_4 = 0.4 ; 
+rayl_4_a1 = 2*xi_4/(w1+w2); 
+rayl_4_a0 = rayl_4_a1*w1*w2; 
+
+add damping # 1 type Rayleigh with a0 = rayl_1_a0 a1 = rayl_1_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 2 type Rayleigh with a0 = rayl_2_a0 a1 = rayl_2_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 3 type Rayleigh with a0 = rayl_3_a0 a1 = rayl_3_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 4 type Rayleigh with a0 = rayl_4_a0 a1 = rayl_4_a1 stiffness_to_use = Initial_Stiffness; 
 
 include "node.fei";
 include "element.fei";
 include "load.fei";
+include "damping.fei";
+
+
 
 
 // check model;
@@ -69,7 +129,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
   
 define convergence test Relative_Norm_Unbalanced_Force
   tolerance =  1E-2
-  minimum_absolute_tolerance = 1e-4
+  minimum_absolute_tolerance = 1e2
   maximum_iterations = 200
   ;
 
@@ -143,7 +203,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
   
 define convergence test Relative_Norm_Unbalanced_Force
   tolerance =  5E-2
-  minimum_absolute_tolerance = 1e-4
+  minimum_absolute_tolerance = 1e2
   maximum_iterations = 200
   ;
 
@@ -155,8 +215,8 @@ else
 
 
 define dynamic integrator Newmark with 
-   gamma = 0.50
-   beta = 0.25;
+  gamma = Gamma
+  beta = Beta;
 simulate 3500 steps using transient algorithm 
     time_step = 0.01*s ;
 
