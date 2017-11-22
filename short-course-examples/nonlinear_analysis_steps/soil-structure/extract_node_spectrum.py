@@ -4,7 +4,7 @@ import h5py as h5
 import sys
 import os
 # *************************************************************************************
-# Plot Freq Parameters
+# Custom of Plot Parameters
 # *************************************************************************************
 period_lower_limit = 0.1
 period_upper_limit = 5.0
@@ -28,16 +28,16 @@ def response_spectrum(dt, acc_in, damping, period_lower_limit, period_upper_limi
 	# **************************************************************************************
 	# Input
 	# **************************************************************************************
-	# * dt            := the time step
-	# * acc_in        := the np.array of acceleration in g
-	# * damping       := the absolute value of damping ratio. e.g. 0.05
-	# * period limits := the limit for the analysis and plot.
+	#   * dt            := the time step
+	#   * acc_in        := the np.array of acceleration in g
+	#   * damping       := the absolute value of damping ratio. e.g. 0.05
+	#   * period limits := the limit for the analysis and plot.
 	# **************************************************************************************
 	# Output
 	# **************************************************************************************
-	# period          := the array of natural period. e.g.(0.01, 0.02, 0.03, ... 5.00).
-	# pseudo_acc_spec := the array of pseudo acceleration spectrum  in g.
-	# dis_spec        := the array of displacement spectrum in meter.
+	#   * period          := the array of natural period. e.g.(0.01, 0.02, 0.03, ... 5.00).
+	#   * pseudo_acc_spec := the array of pseudo acceleration spectrum  in g.
+	#   * dis_spec        := the array of displacement spectrum in meter.
 	# **************************************************************************************
 	period_interval = 0.05 #  interval of period 
 	M = 9.8   #%%% Mass, unit N. 
@@ -130,7 +130,7 @@ if argc == 5 :
 
 
 # *************************************************************************************
-# Read the HDF5 File 
+# Read the HDF5 File (accept both sequential and parallel)
 # *************************************************************************************
 h5fileID0 = h5.File(filename, "r")
 N_proc = h5fileID0['/Number_of_Processes_Used'][()]
@@ -155,12 +155,14 @@ target_acc = acc[target_acc_loc]
 
 
 
+
 # *************************************************************************************
 # Calculate the response spectrum
 # *************************************************************************************
 dt = time[1] - time[0]
 acc_in_g = [item/9.8 for item in target_acc]
 [ period, pseudo_acc_spec, dis_spec ] = response_spectrum(dt, np.array(acc_in_g), damping, period_lower_limit, period_upper_limit)
+
 
 
 
@@ -177,6 +179,7 @@ ax2.set(xlabel = 'Period [s]', ylabel = 'Spectral Displacement [m]')
 ax2.grid()
 plt.savefig( out_filename + ".pdf" )
 plt.show()
+
 
 
 
