@@ -16,8 +16,18 @@ deepest_dir_array=( $(find . -type d -links 2 ) )
 
 for element in $(seq 0 $((${#deepest_dir_array[@]} - 1)))
 do
-	# cp damping.fei ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp run_sequential_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp run_parallel_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp run_plot_results.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp extract_node_acce.py ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp extract_node_disp.py ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp extract_node_spectrum.py ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp README.md ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp README.html ${current_dir}/"${deepest_dir_array[$element]}"
+
+
 	cd ${current_dir}/"${deepest_dir_array[$element]}"
+	echo $PWD
 	rm -f *.tgz
 	tar -czvf ${PWD##*/}.tgz *
 done
