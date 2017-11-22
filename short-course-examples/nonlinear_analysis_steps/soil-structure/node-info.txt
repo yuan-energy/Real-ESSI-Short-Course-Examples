@@ -1,0 +1,67 @@
+
+Center of Topmost Structure.
+node 38 at (135.000000*m,135.000000*m,60.001000*m) with 6 dofs; 
+
+Center of Foundation bottom. 
+node 3195 at (135.000000*m,135.000000*m,-5.000000*m) with 3 dofs; 
+
+Center of middle soil 
+node 21607 at (135.000000*m,135.000000*m,-20.000000*m) with 3 dofs;  
+
+Center of bottom soil (DRM exterior node)
+node 21610 at (135.000000*m,135.000000*m,-35.000000*m) with 3 dofs; 
+
+
+
+
+
+
+
+
+
+
+
+Near structure of surface soil
+add node  11078 at (110.000000*m,135.000000*m,0.000000*m) with 3 dofs; 
+
+Near structure of shallow soil
+add node  3167 at (110.000000*m,135.000000*m,-5.000000*m) with 3 dofs; 
+
+Near structure of middle soil
+add node  21411 at (110.000000*m,135.000000*m,-20.000000*m) with 3 dofs; 
+
+Near structure of bottom soil (DRM exterior node)
+add node  21414 at (110.000000*m,135.000000*m,-35.000000*m) with 3 dofs; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Near DRM of surface soil
+add node  11204 at (20.000000*m,135.000000*m,0.000000*m) with 3 dofs; 
+
+Near DRM of shallow soil
+add node  3041 at (20.000000*m,135.000000*m,-5.000000*m) with 3 dofs; 
+
+Near DRM of middle soil
+add node  20529 at (20.000000*m,135.000000*m,-20.000000*m) with 3 dofs; 
+
+Near DRM of bottom soil (DRM exterior node)
+add node  20532 at (20.000000*m,135.000000*m,-35.000000*m) with 3 dofs; 
+
+
+
+
+
+
+
+
