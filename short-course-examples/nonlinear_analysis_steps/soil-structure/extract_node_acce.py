@@ -144,29 +144,6 @@ with open(out_filename + '.txt', 'w') as f :
 	for i in range(len(time)) :
 		f.write( str(time[i]) + " \t " + str(target_acc[i]) + "\n")
 
-
-
-
-
-
-# dis[42]
-# dis[72]
-# dis[102]
-
-
-
-# acc=h5fileID['/Model/Nodes/Generalized_Accelerations'][()]
-# target_acc = acc[1398]
-# plt.plot(time, target_acc)
-# plt.xlabel("Time/(s)")
-# plt.ylabel("Acceleration/(m/s^2)")
-# plt.grid()
-# plt.savefig("top_acc.jpg")
-# plt.show()
-
-
-# with open('top_acc.txt', 'w') as f : 
-# 	for i in range(len(time)) :
-# 		f.write( str(time[i]) + " \t " + str(target_acc[i]) + "\n")
+print(" Data is written to " + out_filename + '.txt')
 
 
