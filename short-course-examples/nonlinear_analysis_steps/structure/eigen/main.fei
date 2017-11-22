@@ -2,24 +2,21 @@
 
 model name "shell_structure" ;
 
-Elastic = 2e8*N/m^2; 
-nu    = 0.1;        
-rho   = 1800*kg/m^3;     
-
-
-shell_Elastic = 2.48e11*N/m^2; 
-shell_v    = 0.1;        
-shell_rho   = 3000*kg/m^3;    
-
+foundation_Elastic = 3e10*N/m^2; 
+foundation_nu    = 0.2;        
+foundation_rho   = 2500*kg/m^3;     
 add material # 4 type linear_elastic_isotropic_3d
+	mass_density = foundation_rho
+	elastic_modulus = foundation_Elastic
+	poisson_ratio = foundation_nu;
+
+shell_Elastic = 3e10*N/m^2; 
+shell_v    = 0.2;        
+shell_rho   = 2500*kg/m^3;    
+add material # 5 type linear_elastic_isotropic_3d
   mass_density = shell_rho
   elastic_modulus = shell_Elastic
   poisson_ratio = shell_v;
-
-add material # 5 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
 
 include "node.fei";
 include "element.fei";
