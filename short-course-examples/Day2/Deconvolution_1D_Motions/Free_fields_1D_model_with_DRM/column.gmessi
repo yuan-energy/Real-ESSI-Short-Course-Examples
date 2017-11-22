@@ -33,3 +33,18 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 
 
 
+
+
+### ======================================================
+### Damping
+### ======================================================
+
+#[Add_Damping_To_Element{Physical_Group#shell_all_surfaces, DampingNo:= 1}]
+#[Add_Damping_To_Element{Physical_Group#foundation_volume, DampingNo:= 2}]
+[Add_Damping_To_Element{Physical_Group#Inside, DampingNo:= 3}]
+[Add_Damping_To_Element{Physical_Group#DRM, DampingNo:= 4}]
+[Add_Damping_To_Element{Physical_Group#Damping, DampingNo:= 5}]
+
+
+
+
