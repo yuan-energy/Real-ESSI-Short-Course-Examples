@@ -149,7 +149,7 @@ add load # 2 type DRM from wave field
     # 1 in direction ux 
     # 2 in direction uy
     # 3 in direction uz
-    soil_surface at z = 30 * m 
+    soil_surface at z = 50 * m 
     hdf5_file = "DRMinput.hdf5" ; 
 
 // add load # 2 type DRM from wave field # 1 
