@@ -75,9 +75,26 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 #[Add_HardContact{Physical_Group#soil_contact_y_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= -1, NormVect_z:= 0}]
 #[Add_HardContact{Physical_Group#soil_contact_z, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}]
 
-[Add_BondedContact{Physical_Group#soil_contact_x_minus, penalty_stiff:= Kn}]
-[Add_BondedContact{Physical_Group#soil_contact_x_plus, penalty_stiff:= Kn}]
-[Add_BondedContact{Physical_Group#soil_contact_y_minus, penalty_stiff:= Kn}]
-[Add_BondedContact{Physical_Group#soil_contact_y_plus, penalty_stiff:= Kn}]
-[Add_BondedContact{Physical_Group#soil_contact_z, penalty_stiff:= Kn}]
+[Add_BondedContact{Physical_Group#soil_contact_x_minus, axial_Stiffness:= Kn}]
+[Add_BondedContact{Physical_Group#soil_contact_x_plus, axial_Stiffness:= Kn}]
+[Add_BondedContact{Physical_Group#soil_contact_y_minus, axial_Stiffness:= Kn}]
+[Add_BondedContact{Physical_Group#soil_contact_y_plus, axial_Stiffness:= Kn}]
+[Add_BondedContact{Physical_Group#soil_contact_z, axial_Stiffness:= Kn}]
+
+
+
+
+
+### ======================================================
+### Damping
+### ======================================================
+
+[Add_Damping_To_Element{Physical_Group#structure_volume, DampingNo:= 1}]
+[Add_Damping_To_Element{Physical_Group#foundation_volume, DampingNo:= 2}]
+[Add_Damping_To_Element{Physical_Group#Inside_Soil, DampingNo:= 3}]
+[Add_Damping_To_Element{Physical_Group#DRM, DampingNo:= 4}]
+[Add_Damping_To_Element{Physical_Group#Damping, DampingNo:= 5}]
+
+
+
 
