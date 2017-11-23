@@ -1,9 +1,9 @@
 
-python extract_node_disp.py shell_structure_motion.h5.feioutput 4417 x
+python extract_node_disp.py soil_foundation_motion.h5.feioutput 30239 x
 
-python extract_node_acce.py shell_structure_motion.h5.feioutput 4417 x
+python extract_node_acce.py soil_foundation_motion.h5.feioutput 30239 x
 
-python extract_node_spectrum.py shell_structure_motion.h5.feioutput 4417 x
+python extract_node_spectrum.py soil_foundation_motion.h5.feioutput 2685 x
 
 
 

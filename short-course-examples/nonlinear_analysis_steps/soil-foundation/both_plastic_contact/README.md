@@ -36,7 +36,7 @@ python extract_node_spectrum.py your_output.h5.feioutput your_nodetag your_dof
 python extract_node_spectrum.py soil_foundation_motion.h5.feioutput 2685 x
 ```
 
-#### Critical Points for Postprocessing
+#### Other Critical Points for Postprocessing
 You can also use the python scripts to plot other points.
 
 ```
