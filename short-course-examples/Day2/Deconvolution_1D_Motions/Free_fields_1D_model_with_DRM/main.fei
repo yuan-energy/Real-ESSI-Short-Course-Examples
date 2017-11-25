@@ -131,7 +131,7 @@ define dynamic integrator Newmark with
    gamma = Gamma
    beta = Beta;
 simulate 4000 steps using transient algorithm 
-    time_step = 0.01*s ;
+    time_step = 0.0419384905125*s ;
 
 bye;
 

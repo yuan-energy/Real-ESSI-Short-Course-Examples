@@ -78,9 +78,9 @@ include "damping.fei";
 
 
 add wave field # 1 with
-  acceleration_filename = "scaled_NORTHR_x_A.txt"
+  acceleration_filename = "sw4_free_field_center_ax.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "scaled_NORTHR_x_D.txt"
+  displacement_filename = "sw4_free_field_center_ux.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
@@ -93,9 +93,9 @@ add wave field # 1 with
   ;
   
 add wave field # 2 with
-  acceleration_filename = "scaled_NORTHR_y_A.txt"
+  acceleration_filename = "sw4_free_field_center_ay.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "scaled_NORTHR_y_D.txt"
+  displacement_filename = "sw4_free_field_center_uy.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
@@ -108,9 +108,9 @@ add wave field # 2 with
   ;
 
 add wave field # 3 with
-  acceleration_filename = "scaled_NORTHR_z_A.txt"
+  acceleration_filename = "sw4_free_field_center_az.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "scaled_NORTHR_z_D.txt"
+  displacement_filename = "sw4_free_field_center_uz.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
@@ -170,7 +170,7 @@ define dynamic integrator Newmark with
    gamma = Gamma
    beta = Beta;
 simulate 4000 steps using transient algorithm 
-    time_step = 0.01*s ;
+    time_step = 0.0419384905125*s ;
 
 bye;
 
