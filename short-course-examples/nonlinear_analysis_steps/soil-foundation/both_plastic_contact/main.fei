@@ -34,11 +34,30 @@ add material # 4 type linear_elastic_isotropic_3d
   poisson_ratio =  0.2 ;
 
 // Contact parameters
-Kn = 1e11 * kg /s^2 ; 
-Kt = 1e7*N/m;
-Cn = 0*N/m*s;
-Ct = 0*N/m*s;
-Fr = 0.3;
+//Contact Parameters (StressBased)
+// Kn = 100*MPa; 
+// Sr = 100; 
+// Kn_max = 500*MPa; 
+// Kt = 40*kPa; 
+// Cn = 100*Pa*s; 
+// Ct = 100*Pa*s; 
+// Fr = 0.8; 
+
+// Kp = 1e12*N/m;
+// Shear_Zone  = 5e-3*m;
+// mu_p_no = 0.9;
+// mu_p_k  = 0.1;
+// Softening_rate = 40;
+// Pleateau_Size = 8;
+
+Kni = 100*MPa;
+Krate = 100  ; 
+Kmax = 500*MPa; 
+Kt = 40*kPa; 
+Cn = 100*Pa*s; 
+Ct = 100*Pa*s; 
+Fr = 0.8  ; 
+Shear_depth = 5e-3*m;
 
 
 // Damping paramters
