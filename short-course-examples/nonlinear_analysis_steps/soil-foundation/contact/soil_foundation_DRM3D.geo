@@ -24,7 +24,7 @@ Ox = 0;
 Oy = 0;
 Oz = -depth_of_foundation;
 
-epsilon =0.001 ;
+epsilon = 0 ;
 //epsilon = 2 ;
 
 

@@ -118,7 +118,7 @@ if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
 {define solver parallel;}
-Nsteps = 100 ; 
+Nsteps = 10 ; 
 define load factor increment 1./Nsteps;
 simulate Nsteps steps using static algorithm;
 
@@ -198,7 +198,7 @@ else
 define dynamic integrator Newmark with 
    gamma = Gamma
    beta = Beta;
-simulate 240 steps using transient algorithm 
+simulate 210 steps using transient algorithm 
     time_step = 0.0419384905125*s ;
 
 bye;
