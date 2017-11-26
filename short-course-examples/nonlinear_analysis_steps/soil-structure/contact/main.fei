@@ -39,23 +39,10 @@ add material # 5 type linear_elastic_isotropic_3d
   elastic_modulus = shell_Elastic
   poisson_ratio = shell_v;
 
+
+
 // Contact paramters
-Kn = 1e11 * kg /s^2 ; 
-Kt = 1e7*N/m;
-Cn = 100*N/m*s;
-Ct = 100*N/m*s;
-Fr = 0.3;
-
-// //Contact Parameters (ForceBased)
-// Kn = 1e9*N/m; 
-// Sr = 1000/m; 
-// Kn_max = 1e12*N/m; 
-// Kt = 1e7*N/m; 
-// Cn = 100*N/m*s; 
-// Ct = 100*N/m*s; 
-// Fr = 0.25; 
-
-// //Contact Parameters (StressBased)
+//Contact Parameters (StressBased)
 // Kn = 100*MPa; 
 // Sr = 100; 
 // Kn_max = 500*MPa; 
@@ -63,6 +50,22 @@ Fr = 0.3;
 // Cn = 100*Pa*s; 
 // Ct = 100*Pa*s; 
 // Fr = 0.8; 
+
+// Kp = 1e12*N/m;
+// Shear_Zone  = 5e-3*m;
+// mu_p_no = 0.9;
+// mu_p_k  = 0.1;
+// Softening_rate = 40;
+// Pleateau_Size = 8;
+
+Kni = 100*MPa;
+Krate = 100  ; 
+Kmax = 500*MPa; 
+Kt = 40*kPa; 
+Cn = 100*Pa*s; 
+Ct = 100*Pa*s; 
+Fr = 0.8  ; 
+Shear_depth = 5e-3*m;
 
 
 // check model;
@@ -125,11 +128,11 @@ add acceleration field # 1
 add load # 1 to all elements type self_weight use acceleration field # 1;
 
 // define algorithm With_no_convergence_check ;
-define convergence test Relative_Norm_Displacement_Increment 
-  tolerance =  1E-3
-  minimum_absolute_tolerance = 0.05
+define convergence test Relative_Norm_Unbalanced_Force 
+  tolerance =  1E-2
+  minimum_absolute_tolerance = 1e3
   maximum_iterations = 20 ;
-define algorithm Newton;
+define algorithm NewtonLineSearch;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
@@ -197,13 +200,13 @@ add load # 2 type DRM from wave field
 //     soil_surface at z = 10 * m 
 //     hdf5_file = "DRMinput.hdf5" ; 
 // define algorithm With_no_convergence_check ;
-define convergence test Relative_Norm_Displacement_Increment 
-  tolerance =  1E-3
-  minimum_absolute_tolerance = 1e2
+define convergence test Relative_Norm_Unbalanced_Force 
+  tolerance =  1E-2
+  minimum_absolute_tolerance =1e3
   maximum_iterations = 20 ;
 
 // define convergence test Norm_Unbalance tolerance = 1E-2 maximum_iterations = 20 verbose_level = 1; 
-define algorithm Newton; 
+define algorithm NewtonLineSearch; 
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
