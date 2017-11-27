@@ -23,21 +23,31 @@ include "geometry.fei";
 
 
 
-//Contact Element Parameters variables
-	Kn = 500*MPa;	// normal stiffness
-	Kt = 400*kPa;	// tangential stiffness
-	Cn = 100*Pa*s;	// normal damping 
-	Ct = 100*Pa*s;	// tangential damping
-	Fr = 0.68;		// residual friction coefficient
-	ShearZoneThickness = 5e-3*m; // Shear Zone Thickness
+// //Contact Element Parameters variables
+// 	Kn = 500*MPa;	// normal stiffness
+// 	Kt = 400*kPa;	// tangential stiffness
+// 	Cn = 100*Pa*s;	// normal damping 
+// 	Ct = 100*Pa*s;	// tangential damping
+// 	Fr = 0.68;		// residual friction coefficient
+// 	ShearZoneThickness = 5e-3*m; // Shear Zone Thickness
 
-	// Nonlinear Hardening Softening Contact Shear Model Additional Parameters 
-	Softening_rate = 40;
-	Pleateau_Size = 8;
-	mu_p0 = 0.9;
-	mu_k  = 0.1;
+// 	// Nonlinear Hardening Softening Contact Shear Model Additional Parameters 
+// 	Softening_rate = 40;
+// 	Pleateau_Size = 8;
+// 	mu_p0 = 0.9;
+// 	mu_k  = 0.1;
 
-include "Contact_EPPSM.fei"; // Including Perfectly Plastic Contact Shear Model
+//Contact Parameters (ForceBased)
+Kn = 1e9*N/m; 
+Sr = 1000/m; 
+Kn_max = 1e12*N/m; 
+Kt = 1e7*N/m; 
+Cn = 100*N/m*s; 
+Ct = 100*N/m*s; 
+Fr = 0.25; 
+
+// include "Contact_EPPSM.fei"; // Including Perfectly Plastic Contact Shear Model
+include "Contact_force_based.fei"; // Including Perfectly Plastic Contact Shear Model
 // include "Contact_NLHSM.fei"; // Including Nonlinear Hardening Contact Shear Model 
 // include "Contact_NLHSSM.fei"; // Including Nonlinear Hardening Contact Shear Model 
 

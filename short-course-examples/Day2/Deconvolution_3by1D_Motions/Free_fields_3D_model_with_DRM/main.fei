@@ -30,7 +30,7 @@ add material # 5 type linear_elastic_isotropic_3d
   poisson_ratio = nu;
 
 
-// Damping paramters
+// Damping parameters
 Gamma = 0.55; 
 Beta = 0.25*(0.5+Gamma)*(0.5+Gamma); 
 
