@@ -5,17 +5,44 @@
 // 
 
 model name "FiberBeam_PushOver" ;
-add node #      1 at (          0.000000*m,          0.000000*m,          0.000000*m) with 6 dofs;
-add node #      2 at (          0.000000*m,          0.000000*m,          6.000000*m) with 6 dofs;
-add node #      3 at (          6.000000*m,          0.000000*m,          6.000000*m) with 6 dofs;
-add node #      4 at (          6.000000*m,          0.000000*m,          0.000000*m) with 6 dofs;
+add node # 1 at (          0.000000*m,          0.000000*m,          0.000000*m) with 6 dofs;
+add node # 2 at (          0.000000*m,          0.000000*m,          1.000000*m) with 6 dofs;
+add node # 3 at (          0.000000*m,          0.000000*m,          2.000000*m) with 6 dofs;
+add node # 4 at (          0.000000*m,          0.000000*m,          3.000000*m) with 6 dofs;
+add node # 5 at (          0.000000*m,          0.000000*m,          4.000000*m) with 6 dofs;
+add node # 6 at (          0.000000*m,          0.000000*m,          5.000000*m) with 6 dofs;
+add node # 7 at (          0.000000*m,          0.000000*m,          6.000000*m) with 6 dofs;
+add node # 8 at (          0.000000*m,          0.000000*m,          7.000000*m) with 6 dofs;
+add node # 9 at (          0.000000*m,          0.000000*m,          8.000000*m) with 6 dofs;
+add node # 10 at (          0.000000*m,          0.000000*m,          9.000000*m) with 6 dofs;
+add node # 11 at (          0.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 12 at (          1.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 13 at (          2.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 14 at (          3.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 15 at (          4.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 16 at (          5.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 17 at (          6.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 18 at (          7.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 19 at (          8.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 20 at (          9.000000*m,          0.000000*m,          10.000000*m) with 6 dofs;
+add node # 21 at (          10.000000*m,          0.000000*m,         10.000000*m) with 6 dofs;
+add node # 22 at (         10.000000*m,          0.000000*m,         9.000000*m) with 6 dofs;
+add node # 23 at (         10.000000*m,          0.000000*m,         8.000000*m) with 6 dofs;
+add node # 24 at (         10.000000*m,          0.000000*m,         7.000000*m) with 6 dofs;
+add node # 25 at (         10.000000*m,          0.000000*m,         6.000000*m) with 6 dofs;
+add node # 26 at (         10.000000*m,          0.000000*m,         5.000000*m) with 6 dofs;
+add node # 27 at (         10.000000*m,          0.000000*m,         4.000000*m) with 6 dofs;
+add node # 28 at (         10.000000*m,          0.000000*m,         3.000000*m) with 6 dofs;
+add node # 29 at (         10.000000*m,          0.000000*m,         2.000000*m) with 6 dofs;
+add node # 30 at (         10.000000*m,          0.000000*m,         1.000000*m) with 6 dofs;
+add node # 31 at (         10.000000*m,          0.000000*m,         0.000000*m) with 6 dofs;
 elastic_constant  = 1e8*N/m^2; 
 b=1*m;
 h=1*m;
 rho   = 0*kg/m^3;     
 
 fix node #      1 dofs all    ;
-fix node #      4 dofs all    ;
+fix node #      31 dofs all    ;
 
 //UNCONFINED CONCRETE//
 add material # 1 type uniaxial_concrete02
@@ -41,7 +68,7 @@ include "Rectangle_RC_Section_1.fei";
 
 // Elements
 i = 0 ;
-while(i<3){
+while(i<30){
 	add element # i+1 type BeamColumnDispFiber3d with nodes (i+1,i+2)
         number_of_integration_points = 4
         section_number  =  1
@@ -54,7 +81,7 @@ while(i<3){
 
 
 new loading stage "Pushover";
-add load # 1 to node # 2 type linear Fx=50*kN;
+add load # 1 to node # 11 type linear Fx=50*kN;
 define algorithm With_no_convergence_check ;
 define solver UMFPack;
 define load factor increment 0.1;
