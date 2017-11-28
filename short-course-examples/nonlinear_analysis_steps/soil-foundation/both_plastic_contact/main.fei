@@ -1,9 +1,9 @@
 
 model name "shell_structure" ;
 
-Soil_Elastic_Modulus = 1.3e9*Pa;
-Soil_Density = 2140*kg/m^3;
-Soil_Poisons_ratio = 0.25;
+Soil_Elastic_Modulus = 2e8*Pa;
+Soil_Density = 2000*kg/m^3;
+Soil_Poisons_ratio = 0.1;
 
 // Soil layers
 add material # 1  type VonMisesArmstrongFrederick 

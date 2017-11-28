@@ -3,9 +3,9 @@ Elastic = 2e8*N/m^2;
 nu    = 0.1;        
 rho   = 2000*kg/m^3;  
 
-Soil_Elastic_Modulus = 1.3e9*Pa;
-Soil_Density = 2140*kg/m^3;
-Soil_Poisons_ratio = 0.25;
+Soil_Elastic_Modulus = 2e8*Pa;
+Soil_Density = 2000*kg/m^3;
+Soil_Poisons_ratio = 0.1;
 //  Soil
 add material # 1 type DruckerPragerMultipleYieldSurfaceGoverGmax
  mass_density = Soil_Density  //0.0*kg/m^3 
