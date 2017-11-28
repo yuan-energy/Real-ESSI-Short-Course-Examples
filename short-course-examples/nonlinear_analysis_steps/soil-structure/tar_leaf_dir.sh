@@ -24,8 +24,8 @@ do
 	# cp extract_node_acce.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_disp.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_spectrum.py ${current_dir}/"${deepest_dir_array[$element]}"
-	# cp README.md ${current_dir}/"${deepest_dir_array[$element]}"
-	# cp README.html ${current_dir}/"${deepest_dir_array[$element]}"
+	cp README.md ${current_dir}/"${deepest_dir_array[$element]}"
+	cp README.html ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp geometry_slice.png ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp sw4_free_field_center*.txt ${current_dir}/"${deepest_dir_array[$element]}"
 	
@@ -44,6 +44,8 @@ do
 	# sed -i 's/simulate\ 3500\ steps\ using\ transient\ algorithm\ /simulate\ 240\ steps\ using\ transient\ algorithm\ /' main.fei
 
 	# sed -i 's/simulate\ 240\ steps\ using\ transient\ algorithm\ /simulate\ 210\ steps\ using\ transient\ algorithm\ /' main.fei
+	# rm -f damping.fei
+	# sed -i 's/include\ \"damping\.fei\";//' main.fei
 	
 	echo $PWD
 	rm -f *.tgz

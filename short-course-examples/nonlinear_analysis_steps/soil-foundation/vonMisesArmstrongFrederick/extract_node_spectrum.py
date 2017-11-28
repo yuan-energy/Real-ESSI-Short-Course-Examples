@@ -118,7 +118,7 @@ elif sys.argv[3] == 'rz':
 	the_dof = 5 
 
 prefix = filename.split('.h5.feioutput')[0]
-out_filename = prefix + "_node_" + str(nodetag) + "_" + sys.argv[3] + "_acce"
+out_filename = prefix + "_node_" + str(nodetag) + "_" + sys.argv[3] + "_spectrum"
 
 if argc == 5 :
 	out_filename = sys.argv[4]
@@ -141,7 +141,10 @@ else:
 	PartitionInfo = h5fileID0['Model/Nodes/Partition'][()]
 	PartitionId = PartitionInfo[(int)(nodetag)]
 	if (PartitionId > 0) :
-		h5DataFilename = filename.split('.feioutput')[0]+'.'+str(PartitionId)+'.feioutput'
+		if (PartitionId > 9) :
+			h5DataFilename = filename.split('.feioutput')[0]+'.'+str(PartitionId)+'.feioutput'
+		else:
+			h5DataFilename = filename.split('.feioutput')[0]+'.0'+str(PartitionId)+'.feioutput'
 	else:
 		"\n ERROR!!! :: ESSI Node tag " + str(nodetag) +" does not exist! \n"
 h5fileID0.close()
@@ -170,12 +173,13 @@ acc_in_g = [item/9.8 for item in target_acc]
 # Plot the data 
 # *************************************************************************************
 f, (ax1, ax2) = plt.subplots(1, 2)
-ax1.plot(period, pseudo_acc_spec, 'k-', linewidth=3)  
-ax1.set(xlabel = 'Period [s]', ylabel = 'Pseudo-Spectral Acceleration Sa [g]')
+freqs = [1./item for item in period]
+ax1.plot(freqs, pseudo_acc_spec, 'k-', linewidth=3)  
+ax1.set(xlabel = 'Frequency [Hz]', ylabel = 'Pseudo-Spectral Acceleration Sa [g]', title = 'Pseudo-Spectral Acceleration')
 ax1.grid()
 
-ax2.plot(period, dis_spec, 'k-', linewidth=3)  
-ax2.set(xlabel = 'Period [s]', ylabel = 'Spectral Displacement [m]')
+ax2.plot(freqs, dis_spec, 'k-', linewidth=3)  
+ax2.set(xlabel = 'Frequency [Hz]', ylabel = 'Spectral Displacement [m]', title = 'Spectral Displacement')
 ax2.grid()
 plt.savefig( out_filename + ".pdf" )
 plt.show()

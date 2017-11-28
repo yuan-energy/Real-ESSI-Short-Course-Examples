@@ -96,7 +96,10 @@ else:
 	PartitionInfo = h5fileID0['Model/Nodes/Partition'][()]
 	PartitionId = PartitionInfo[(int)(nodetag)]
 	if (PartitionId > 0) :
-		h5DataFilename = filename.split('.feioutput')[0]+'.'+str(PartitionId)+'.feioutput'
+		if (PartitionId > 9) :
+			h5DataFilename = filename.split('.feioutput')[0]+'.'+str(PartitionId)+'.feioutput'
+		else:
+			h5DataFilename = filename.split('.feioutput')[0]+'.0'+str(PartitionId)+'.feioutput'
 	else:
 		"\n ERROR!!! :: ESSI Node tag " + str(nodetag) +" does not exist! \n"
 h5fileID0.close()
@@ -119,7 +122,7 @@ target_dis = dis[target_dis_loc]
 # *************************************************************************************
 f, (ax1, ax2) = plt.subplots(1, 2)
 ax1.plot(time, target_dis, '-k', linewidth=3)
-ax1.set( xlabel = "Time [s]", ylabel = "Displacement [m]")
+ax1.set( xlabel = "Time [s]", ylabel = "Displacement [m]", title = "Time Series of Displacement")
 ax1.grid()
 
 # *************************************************************************************
@@ -127,7 +130,7 @@ ax1.grid()
 # *************************************************************************************
 freq, ampl = FFT( target_dis, time[1]-time[0] )
 ax2.semilogx(freq, ampl, '-k', linewidth=3)
-ax2.set( xlabel = "Frequency [Hz] ", ylabel = "Displacement [m] ", xlim = [plotFreq_min, plotFreq_max] )
+ax2.set( xlabel = "Frequency [Hz] ", ylabel = "Displacement [m] ", xlim = [plotFreq_min, plotFreq_max], title = "FFT of Displacement")
 ax2.grid()
 plt.savefig( out_filename + ".pdf" )
 plt.show()

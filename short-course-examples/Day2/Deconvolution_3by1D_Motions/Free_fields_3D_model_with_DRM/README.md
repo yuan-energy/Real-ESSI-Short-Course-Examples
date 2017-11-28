@@ -1,7 +1,7 @@
 ### Run Sequential or parallel simulation
 ```bash
-./run_sequential_simulation.sh main.fei
-./run_parallel_simulation.sh main.fei
+./run_sequential_simulation.sh
+./run_parallel_simulation.sh 
 ```
 
 ### Execution the Paraview for Postprocessing

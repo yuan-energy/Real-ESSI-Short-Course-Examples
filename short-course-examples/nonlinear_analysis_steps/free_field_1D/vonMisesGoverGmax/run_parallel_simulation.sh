@@ -1,3 +1,3 @@
 #!/bin/bash
-time mpirun -np 8 essi_parallel -f $1
+script -c "time mpirun -np $(nproc) essi_parallel -f main.fei" benchmark.txt
 

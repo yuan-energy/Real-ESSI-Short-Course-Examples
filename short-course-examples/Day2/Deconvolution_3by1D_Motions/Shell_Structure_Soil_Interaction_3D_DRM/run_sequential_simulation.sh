@@ -1,3 +1,2 @@
 #!/bin/bash
-essi -f $1
-
+script -c "essi -f main.fei" benchmark.txt

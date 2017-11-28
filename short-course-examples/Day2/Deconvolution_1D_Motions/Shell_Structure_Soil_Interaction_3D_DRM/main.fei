@@ -27,7 +27,7 @@ add material # 3 type linear_elastic_isotropic_3d
 // Foundation.
 add material # 4 type linear_elastic_isotropic_3d
     mass_density = 2500*kg/m^3
-    elastic_modulus = Elastic
+    elastic_modulus = 3e10 * Pa
     poisson_ratio = nu ;
 
 shell_Elastic = 3e10*N/m^2; 

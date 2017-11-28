@@ -19,14 +19,16 @@ add material # 3 type linear_elastic_isotropic_3d
   elastic_modulus = Elastic
   poisson_ratio = nu;
 
+// foundation 
 add material # 4 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
+  mass_density = 2500 * kg/m^2
+  elastic_modulus = 2e10 * Pa
   poisson_ratio = nu;
 
+// structure
 add material # 5 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
+  mass_density = 2500 * kg/m^2
+  elastic_modulus = 2e10 * Pa
   poisson_ratio = nu;
 
 // bonded Contact penalty_stiffness. 

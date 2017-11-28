@@ -66,7 +66,7 @@ rayl_3_a1 = 2*xi_3/(w1+w2);
 rayl_3_a0 = rayl_3_a1*w1*w2; 
 
 // DRM layer Damping 
-xi_4 = 0.09 ; 
+xi_4 = 0.0 ; 
 rayl_4_a1 = 2*xi_4/(w1+w2); 
 rayl_4_a0 = rayl_4_a1*w1*w2; 
 
@@ -84,7 +84,7 @@ add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_us
 include "node.fei";
 include "element.fei";
 include "load.fei";
-include "damping.fei";
+
 
 add wave field # 1 with
   acceleration_filename = "sw4_free_field_center_ax.txt"

@@ -173,3 +173,8 @@ EndFor
 
 Physical Line(472) = {449, 469, 448, 450, 465, 464, 466, 456, 468, 453, 452, 460, 470, 454};
 
+Physical Surface("box_x_min_surface") = {192, 368, 324, 126, 60, 258};
+Physical Surface("box_x_max_surface") = {96, 162, 228, 404, 338, 294};
+Physical Surface("box_y_min_surface") = {246, 48, 70, 268, 290, 92};
+Physical Surface("box_y_max_surface") = {408, 232, 210, 386, 364, 188};
+

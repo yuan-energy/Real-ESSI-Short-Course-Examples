@@ -21,7 +21,7 @@ add material # 5 type linear_elastic_isotropic_3d
 
 
 // Damping paramters
-Gamma = 0.55; 
+Gamma = 0.7; 
 Beta = 0.25*(0.5+Gamma)*(0.5+Gamma); 
 
 T1 = 2*s; 
@@ -47,7 +47,8 @@ add damping # 2 type Rayleigh with a0 = rayl_2_a0 a1 = rayl_2_a1 stiffness_to_us
 
 include "node.fei";
 include "element.fei";
-// include "damping.fei";
+// include "damping_structure.fei";
+// 
 
 
 
@@ -69,13 +70,14 @@ simulate 1 steps using static algorithm;
 
 
 new loading stage "imposed_motion" ;
+enable acceleration output;
 include "imposed_motion.fei";
 define algorithm With_no_convergence_check ;
 define solver UMFPack;
 define dynamic integrator Newmark with 
    gamma = Gamma
    beta = Beta;
-simulate 3500 steps using transient algorithm 
+simulate 500 steps using transient algorithm 
     time_step = 0.01*s
     ;
 

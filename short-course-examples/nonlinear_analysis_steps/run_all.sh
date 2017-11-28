@@ -16,8 +16,8 @@ deepest_dir_array=( $(find . -type d -links 2 ) )
 
 for element in $(seq 0 $((${#deepest_dir_array[@]} - 1)))
 do
-	cp run_parallel.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	cp run_all_parallel.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	cd ${current_dir}/"${deepest_dir_array[$element]}"
-	./run_parallel.sh
+	./run_all_parallel.sh
 
 done

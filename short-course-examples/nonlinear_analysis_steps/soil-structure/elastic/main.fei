@@ -23,7 +23,7 @@ add material # 3 type linear_elastic_isotropic_3d
   elastic_modulus = Elastic
   poisson_ratio = nu;
 
-// Foudnation
+// Foundation
 add material # 4 type linear_elastic_isotropic_3d
   mass_density = 2500*kg/m^3
   elastic_modulus = 3e10*N/m^2
@@ -68,7 +68,7 @@ rayl_3_a1 = 2*xi_3/(w1+w2);
 rayl_3_a0 = rayl_3_a1*w1*w2; 
 
 // DRM layer Damping 
-xi_4 = 0.09 ; 
+xi_4 = 0.0 ; 
 rayl_4_a1 = 2*xi_4/(w1+w2); 
 rayl_4_a0 = rayl_4_a1*w1*w2; 
 
@@ -86,8 +86,6 @@ add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_us
 include "node.fei";
 include "element.fei";
 include "load.fei";
-include "damping.fei";
-
 
 new loading stage "Self_weight";
 add acceleration field # 1 

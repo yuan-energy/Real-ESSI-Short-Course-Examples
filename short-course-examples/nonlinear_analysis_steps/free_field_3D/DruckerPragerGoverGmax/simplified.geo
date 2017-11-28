@@ -38,6 +38,12 @@ Physical Volume("all_soil") = {1} ;
 Physical Surface("soil_bottom") = {5} ;
 
 
+Physical Surface("box_x_min_surface") = {26};
+Physical Surface("box_x_max_surface") = {18};
+Physical Surface("box_y_min_surface") = {14};
+Physical Surface("box_y_max_surface") = {22};
+
+
 ////********************************************************************
 //// Recombine
 ////********************************************************************

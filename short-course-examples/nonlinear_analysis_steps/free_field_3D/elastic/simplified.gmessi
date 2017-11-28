@@ -17,6 +17,11 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 ## Soil 
 [Fix_All_Dofs{Physical_Group#soil_bottom}]
 
+[Fix_Dofs{Physical_Group#box_x_min_surface, DofTypes:= ux}]
+[Fix_Dofs{Physical_Group#box_x_max_surface, DofTypes:= ux}]
+[Fix_Dofs{Physical_Group#box_y_min_surface, DofTypes:= uy}]
+[Fix_Dofs{Physical_Group#box_y_max_surface, DofTypes:= uy}]
+
 [Generate_DRM_Physical_Group_3D{Physical_Group#all_soil, surface_normal:= z, Node_Coordinate_Tol:= 0.01 , Number_of_layers:= 3 , PhysicalGroupName:= Inside_Soil, PhysicalGroupName:= DRM, PhysicalGroupName:= Damping }]
 
 [Add_8NodeBrick{Physical_Group#Inside_Soil, MaterialNo:= 1}]

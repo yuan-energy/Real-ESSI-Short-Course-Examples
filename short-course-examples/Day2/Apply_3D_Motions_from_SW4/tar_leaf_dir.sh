@@ -43,7 +43,7 @@ do
 	# sed -i 's/time_step\ =\ 0\.01\*s\ ;/time_step\ =\ 0\.0419384905125\*s\ ;/' main.fei
 	# sed -i 's/simulate\ 3500\ steps\ using\ transient\ algorithm\ /simulate\ 240\ steps\ using\ transient\ algorithm\ /' main.fei
 
-	sed -i 's/simulate\ 240\ steps\ using\ transient\ algorithm\ /simulate\ 210\ steps\ using\ transient\ algorithm\ /' main.fei
+	# sed -i 's/simulate\ 240\ steps\ using\ transient\ algorithm\ /simulate\ 210\ steps\ using\ transient\ algorithm\ /' main.fei
 	
 	echo $PWD
 	rm -f *.tgz

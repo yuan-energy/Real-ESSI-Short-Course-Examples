@@ -9,26 +9,28 @@ gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
 gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")
 gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 
+#25
 #2 3 "soil_x_minus_surface"
 #2 4 "soil_x_plus_surface"
 #2 5 "soil_y_plus_surface"
 #2 6 "soil_y_minus_surface"
 #2 7 "soil_z_top_surface"
 #2 9 "soils_bottom_most"
-#2 11 "foundation_top_surface"
-#2 12 "foundation_bottom_surface"
-#2 13 "foundation_x_minus_surface"
+#2 11 "shell_bottom_surface"
+#2 12 "foundation_bottom_surfaces"
+#2 13 "foundation_x_plus_surface"
 #2 14 "foundation_y_plus_surface"
-#2 15 "foundation_x_plus_surface"
+#2 15 "foundation_x_minus_surface"
 #2 16 "foundation_y_minus_surface"
-#2 17 "all_foundation_surfaces"
-#2 18 "shell_super_around_surfaces"
-#2 19 "shell_super_mid_surfaces"
-#2 20 "shell_super_all_surfaces"
-#2 21 "shell_embed_around_surfaces"
-#2 22 "shell_embed_mid_surfaces"
-#2 23 "shell_embed_all_surfaces"
-#2 24 "shell_all_surfaces"
+#2 17 "embed_around_surfaces"
+#2 18 "embed_mid_surfaces"
+#2 19 "embed_surfaces"
+#2 20 "shell_super_surfaces"
+#2 21 "shell_all_surfaces"
+#2 473 "box_x_min_surface"
+#2 474 "box_y_min_surface"
+#2 475 "box_y_max_surface"
+#2 476 "box_x_max_surface"
 #3 1 "soils_under_zero"
 #3 2 "soils_around_foundation"
 #3 8 "all_soils"
@@ -40,6 +42,11 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 
 ## Soil 
 [Fix_All_Dofs{Physical_Group#soils_bottom_most}]
+
+[Fix_Dofs{Physical_Group#box_x_min_surface, DofTypes:= ux}]
+[Fix_Dofs{Physical_Group#box_x_max_surface, DofTypes:= ux}]
+[Fix_Dofs{Physical_Group#box_y_min_surface, DofTypes:= uy}]
+[Fix_Dofs{Physical_Group#box_y_max_surface, DofTypes:= uy}]
 
 [Generate_DRM_Physical_Group_3D{Physical_Group#all_soils, surface_normal:= z, Node_Coordinate_Tol:= 0.00001 , Number_of_layers:= 3 , PhysicalGroupName:= Inside_Soil, PhysicalGroupName:= DRM, PhysicalGroupName:= Damping }]
 
