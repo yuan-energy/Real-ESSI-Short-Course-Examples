@@ -87,9 +87,9 @@ include "load.fei";
 
 
 add wave field # 1 with
-  acceleration_filename = "scaled_NORTHR_x_A.txt"
+  acceleration_filename = "base_correct_x_acc.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "scaled_NORTHR_x_D.txt"
+  displacement_filename = "base_correct_x_dis.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.0 * s
   acceleration_depth = 0 * m
@@ -102,9 +102,9 @@ add wave field # 1 with
   ;
   
 add wave field # 2 with
-  acceleration_filename = "scaled_NORTHR_y_A.txt"
+  acceleration_filename = "base_correct_y_acc.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "scaled_NORTHR_y_D.txt"
+  displacement_filename = "base_correct_y_dis.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.0 * s
   acceleration_depth = 0 * m
@@ -117,9 +117,9 @@ add wave field # 2 with
   ;
 
 add wave field # 3 with
-  acceleration_filename = "scaled_NORTHR_z_A.txt"
+  acceleration_filename = "base_correct_z_acc.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "scaled_NORTHR_z_D.txt"
+  displacement_filename = "base_correct_z_dis.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.0 * s
   acceleration_depth = 0 * m
@@ -187,8 +187,8 @@ else
 define dynamic integrator Newmark with 
    gamma = Gamma
    beta = Beta;
-simulate 3500 steps using transient algorithm 
-    time_step = 0.01*s ;
+simulate 210 steps using transient algorithm 
+    time_step = 0.0419384905125*s ;
 
 bye;
 

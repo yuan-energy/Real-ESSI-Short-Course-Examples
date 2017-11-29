@@ -1,4 +1,4 @@
-Script started on Tue 28 Nov 2017 01:21:22 PM PST
+Script started on Wed 29 Nov 2017 01:05:23 PM PST
                                                                
                                                                
   The Finite Element Interpreter                               
@@ -15,7 +15,7 @@ Compile User   : yuan
 Compile Sysinfo: w541 4.4.0-101-generic x86_64 GNU/Linux
 Runtime User   : yuan
 Runtime Sysinfo: cml01 4.10.0-40-generic x86_64 GNU/Linux
-Time Now       : Nov 28 2017 at 13:21:23
+Time Now       : Nov 29 2017 at 13:05:24
                                                                
 Static startup tips:                                           
  * Remember: Every command ends with a semicolon ';'.          
@@ -215,14 +215,6 @@ Simulation starts at time 0 * second
  Writing Initial Conditions and   (0) - Outputting mesh.
 
 Transient Analysis: [1    /210  ] 
-Writing Initial Conditions   (10) - Outputting mesh.
-Writing Initial Conditions   (10) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(10) : DRM initialization done!
 Writing Initial Conditions   (13) - Outputting mesh.
 Writing Initial Conditions   (13) - Outputting mesh.
    * Handling constraints
@@ -231,22 +223,6 @@ Writing Initial Conditions   (13) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(13) : DRM initialization done!
-Writing Initial Conditions   (7) - Outputting mesh.
-Writing Initial Conditions   (7) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(7) : DRM initialization done!
-Writing Initial Conditions   (22) - Outputting mesh.
-Writing Initial Conditions   (22) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(22) : DRM initialization done!
 Writing Initial Conditions   (12) - Outputting mesh.
 Writing Initial Conditions   (12) - Outputting mesh.
    * Handling constraints
@@ -255,6 +231,14 @@ Writing Initial Conditions   (12) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(12) : DRM initialization done!
+Writing Initial Conditions   (22) - Outputting mesh.
+Writing Initial Conditions   (22) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(22) : DRM initialization done!
 Writing Initial Conditions   (3) - Outputting mesh.
 Writing Initial Conditions   (3) - Outputting mesh.
    * Handling constraints
@@ -263,14 +247,22 @@ Writing Initial Conditions   (3) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(3) : DRM initialization done!
-Writing Initial Conditions   (30) - Outputting mesh.
-Writing Initial Conditions   (30) - Outputting mesh.
+Writing Initial Conditions   (7) - Outputting mesh.
+Writing Initial Conditions   (7) - Outputting mesh.
    * Handling constraints
    * Forming DOF Graph
    * Setting SOE Size
    * Setting up integrator
    * Setting up algorithm
-DRMwave(30) : DRM initialization done!
+DRMwave(7) : DRM initialization done!
+Writing Initial Conditions   (10) - Outputting mesh.
+Writing Initial Conditions   (10) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(10) : DRM initialization done!
 Writing Initial Conditions   (15) - Outputting mesh.
 Writing Initial Conditions   (15) - Outputting mesh.
    * Handling constraints
@@ -287,22 +279,6 @@ Writing Initial Conditions   (14) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(14) : DRM initialization done!
-Writing Initial Conditions   (4) - Outputting mesh.
-Writing Initial Conditions   (4) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(4) : DRM initialization done!
-Writing Initial Conditions   (9) - Outputting mesh.
-Writing Initial Conditions   (9) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(9) : DRM initialization done!
 Writing Initial Conditions   (17) - Outputting mesh.
 Writing Initial Conditions   (17) - Outputting mesh.
    * Handling constraints
@@ -311,14 +287,6 @@ Writing Initial Conditions   (17) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(17) : DRM initialization done!
-Writing Initial Conditions   (23) - Outputting mesh.
-Writing Initial Conditions   (23) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(23) : DRM initialization done!
 Writing Initial Conditions   (29) - Outputting mesh.
 Writing Initial Conditions   (29) - Outputting mesh.
    * Handling constraints
@@ -327,54 +295,6 @@ Writing Initial Conditions   (29) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(29) : DRM initialization done!
-Writing Initial Conditions   (20) - Outputting mesh.
-Writing Initial Conditions   (20) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(20) : DRM initialization done!
-Writing Initial Conditions   (11) - Outputting mesh.
-Writing Initial Conditions   (11) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(11) : DRM initialization done!
-Writing Initial Conditions   (21) - Outputting mesh.
-Writing Initial Conditions   (21) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(21) : DRM initialization done!
-Writing Initial Conditions   (6) - Outputting mesh.
-Writing Initial Conditions   (6) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(6) : DRM initialization done!
-Writing Initial Conditions   (8) - Outputting mesh.
-Writing Initial Conditions   (8) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(8) : DRM initialization done!
-Writing Initial Conditions   (1) - Outputting mesh.
-Writing Initial Conditions   (1) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(1) : DRM initialization done!
 Writing Initial Conditions   (5) - Outputting mesh.
 Writing Initial Conditions   (5) - Outputting mesh.
    * Handling constraints
@@ -383,14 +303,86 @@ Writing Initial Conditions   (5) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(5) : DRM initialization done!
-Writing Initial Conditions   (31) - Outputting mesh.
-Writing Initial Conditions   (31) - Outputting mesh.
+Writing Initial Conditions   (11) - Outputting mesh.
+Writing Initial Conditions   (11) - Outputting mesh.
    * Handling constraints
    * Forming DOF Graph
    * Setting SOE Size
    * Setting up integrator
    * Setting up algorithm
-DRMwave(31) : DRM initialization done!
+DRMwave(11) : DRM initialization done!
+Writing Initial Conditions   (1) - Outputting mesh.
+Writing Initial Conditions   (1) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(1) : DRM initialization done!
+Writing Initial Conditions   (23) - Outputting mesh.
+Writing Initial Conditions   (23) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(23) : DRM initialization done!
+Writing Initial Conditions   (21) - Outputting mesh.
+Writing Initial Conditions   (21) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(21) : DRM initialization done!
+Writing Initial Conditions   (20) - Outputting mesh.
+Writing Initial Conditions   (20) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(20) : DRM initialization done!
+Writing Initial Conditions   (4) - Outputting mesh.
+Writing Initial Conditions   (4) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(4) : DRM initialization done!
+Writing Initial Conditions   (8) - Outputting mesh.
+Writing Initial Conditions   (8) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(8) : DRM initialization done!
+Writing Initial Conditions   (9) - Outputting mesh.
+Writing Initial Conditions   (9) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(9) : DRM initialization done!
+Writing Initial Conditions   (6) - Outputting mesh.
+Writing Initial Conditions   (6) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(6) : DRM initialization done!
+Writing Initial Conditions   (30) - Outputting mesh.
+Writing Initial Conditions   (30) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(30) : DRM initialization done!
 Writing Initial Conditions   (26) - Outputting mesh.
 Writing Initial Conditions   (26) - Outputting mesh.
    * Handling constraints
@@ -399,14 +391,6 @@ Writing Initial Conditions   (26) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(26) : DRM initialization done!
-Writing Initial Conditions   (19) - Outputting mesh.
-Writing Initial Conditions   (19) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(19) : DRM initialization done!
 Writing Initial Conditions   (25) - Outputting mesh.
 Writing Initial Conditions   (25) - Outputting mesh.
    * Handling constraints
@@ -415,6 +399,14 @@ Writing Initial Conditions   (25) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(25) : DRM initialization done!
+Writing Initial Conditions   (19) - Outputting mesh.
+Writing Initial Conditions   (19) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(19) : DRM initialization done!
 Writing Initial Conditions   (27) - Outputting mesh.
 Writing Initial Conditions   (27) - Outputting mesh.
    * Handling constraints
@@ -423,22 +415,14 @@ Writing Initial Conditions   (27) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(27) : DRM initialization done!
-Writing Initial Conditions   (28) - Outputting mesh.
-Writing Initial Conditions   (28) - Outputting mesh.
+Writing Initial Conditions   (31) - Outputting mesh.
+Writing Initial Conditions   (31) - Outputting mesh.
    * Handling constraints
    * Forming DOF Graph
    * Setting SOE Size
    * Setting up integrator
    * Setting up algorithm
-DRMwave(28) : DRM initialization done!
-Writing Initial Conditions   (18) - Outputting mesh.
-Writing Initial Conditions   (18) - Outputting mesh.
-   * Handling constraints
-   * Forming DOF Graph
-   * Setting SOE Size
-   * Setting up integrator
-   * Setting up algorithm
-DRMwave(18) : DRM initialization done!
+DRMwave(31) : DRM initialization done!
 Writing Initial Conditions   (16) - Outputting mesh.
 Writing Initial Conditions   (16) - Outputting mesh.
    * Handling constraints
@@ -447,6 +431,14 @@ Writing Initial Conditions   (16) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(16) : DRM initialization done!
+Writing Initial Conditions   (28) - Outputting mesh.
+Writing Initial Conditions   (28) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(28) : DRM initialization done!
 Writing Initial Conditions   (24) - Outputting mesh.
 Writing Initial Conditions   (24) - Outputting mesh.
    * Handling constraints
@@ -455,6 +447,14 @@ Writing Initial Conditions   (24) - Outputting mesh.
    * Setting up integrator
    * Setting up algorithm
 DRMwave(24) : DRM initialization done!
+Writing Initial Conditions   (18) - Outputting mesh.
+Writing Initial Conditions   (18) - Outputting mesh.
+   * Handling constraints
+   * Forming DOF Graph
+   * Setting SOE Size
+   * Setting up integrator
+   * Setting up algorithm
+DRMwave(18) : DRM initialization done!
 
 Transient Analysis: [2    /210  ] 
 
@@ -890,39 +890,39 @@ Writing Initial Conditions   (2) - Outputting mesh.
    * Setting up algorithm
                                    - Closing 1 datasets.
     Finalizing current actor 
-    Finalizing current actor 
 Actor DONE! 
 Process # 2 ended with exitflag = 0
     Finalizing current actor 
 Actor DONE! 
-Process # 4 ended with exitflag = 0
-Actor DONE! 
 Process # 3 ended with exitflag = 0
     Finalizing current actor 
+Actor DONE! 
+Process # 4 ended with exitflag = 0
+    Finalizing current actor 
+    Finalizing current actor 
+Actor DONE! 
+Process # 5 ended with exitflag = 0
 Actor DONE! 
 Process # 6 ended with exitflag = 0
     Finalizing current actor 
 Actor DONE! 
-Process # 5 ended with exitflag = 0
-    Finalizing current actor 
-Actor DONE! 
 Process # 7 ended with exitflag = 0
     Finalizing current actor 
-Actor DONE! 
-Process # 8 ended with exitflag = 0
-    Finalizing current actor 
-Actor DONE! 
-Process # 10 ended with exitflag = 0
     Finalizing current actor 
 Actor DONE! 
 Process # 9 ended with exitflag = 0
     Finalizing current actor 
 Actor DONE! 
-Process # 11 ended with exitflag = 0
+Process # 10 ended with exitflag = 0
+    Finalizing current actor 
+    Finalizing current actor 
+Actor DONE! 
+Process # 8 ended with exitflag = 0
     Finalizing current actor 
 Actor DONE! 
 Process # 12 ended with exitflag = 0
-    Finalizing current actor 
+Actor DONE! 
+Process # 11 ended with exitflag = 0
 Actor DONE! 
 Process # 13 ended with exitflag = 0
     Finalizing current actor 
@@ -938,9 +938,9 @@ Process # 16 ended with exitflag = 0
 Actor DONE! 
 Process # 17 ended with exitflag = 0
     Finalizing current actor 
+    Finalizing current actor 
 Actor DONE! 
 Process # 18 ended with exitflag = 0
-    Finalizing current actor 
 Actor DONE! 
 Process # 19 ended with exitflag = 0
     Finalizing current actor 
@@ -949,19 +949,19 @@ Process # 20 ended with exitflag = 0
     Finalizing current actor 
     Finalizing current actor 
 Actor DONE! 
+Process # 22 ended with exitflag = 0
+Actor DONE! 
 Process # 21 ended with exitflag = 0
     Finalizing current actor 
 Actor DONE! 
 Process # 23 ended with exitflag = 0
-Actor DONE! 
-Process # 22 ended with exitflag = 0
+    Finalizing current actor 
+    Finalizing current actor 
     Finalizing current actor 
 Actor DONE! 
 Process # 25 ended with exitflag = 0
-    Finalizing current actor 
 Actor DONE! 
 Process # 24 ended with exitflag = 0
-    Finalizing current actor 
 Actor DONE! 
 Process # 26 ended with exitflag = 0
     Finalizing current actor 
@@ -971,18 +971,18 @@ Process # 27 ended with exitflag = 0
 Actor DONE! 
 Process # 28 ended with exitflag = 0
     Finalizing current actor 
-Actor DONE! 
-Process # 29 ended with exitflag = 0
     Finalizing current actor 
 Actor DONE! 
 Process # 30 ended with exitflag = 0
+Actor DONE! 
+Process # 29 ended with exitflag = 0
     Finalizing current actor 
 Actor DONE! 
 Process # 31 ended with exitflag = 0
 Process # 0 ended with exitflag = 0
 
-real	1m1.183s
-user	22m15.944s
-sys	9m22.584s
+real	1m3.577s
+user	23m35.664s
+sys	9m30.580s
 
-Script done on Tue 28 Nov 2017 01:22:23 PM PST
+Script done on Wed 29 Nov 2017 01:06:27 PM PST
