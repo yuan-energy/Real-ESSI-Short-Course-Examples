@@ -174,11 +174,11 @@ acc_in_g = [item/9.8 for item in target_acc]
 # *************************************************************************************
 f, (ax1, ax2) = plt.subplots(1, 2)
 freqs = [1./item for item in period]
-ax1.plot(freqs, pseudo_acc_spec, 'k-', linewidth=3)  
+ax1.semilogx(freqs, pseudo_acc_spec, 'k-', linewidth=3)  
 ax1.set(xlabel = 'Frequency [Hz]', ylabel = 'Pseudo-Spectral Acceleration Sa [g]', title = 'Pseudo-Spectral Acceleration')
 ax1.grid()
 
-ax2.plot(freqs, dis_spec, 'k-', linewidth=3)  
+ax2.semilogx(freqs, dis_spec, 'k-', linewidth=3)  
 ax2.set(xlabel = 'Frequency [Hz]', ylabel = 'Spectral Displacement [m]', title = 'Spectral Displacement')
 ax2.grid()
 plt.savefig( out_filename + ".pdf" )

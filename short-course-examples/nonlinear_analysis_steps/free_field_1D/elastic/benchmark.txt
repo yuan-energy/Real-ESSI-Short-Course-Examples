@@ -1,4 +1,4 @@
-Script started on Tue 28 Nov 2017 01:34:11 PM PST
+Script started on Tue 28 Nov 2017 05:40:58 PM PST
                                                                
                                                                
   The Finite Element Interpreter                               
@@ -15,7 +15,7 @@ Compile User   : yuan
 Compile Sysinfo: w541 4.4.0-101-generic x86_64 GNU/Linux
 Runtime User   : yuan
 Runtime Sysinfo: cml01 4.10.0-40-generic x86_64 GNU/Linux
-Time Now       : Nov 28 2017 at 13:34:11
+Time Now       : Nov 28 2017 at 17:40:58
                                                                
 Static startup tips:                                           
  * Remember: Every command ends with a semicolon ';'.          
@@ -7091,4 +7091,4 @@ Simulation ends at time 35 * second
 > Analysis End -------------------------------------------------------------------------------
 How polite! Bye, have a nice day!
 
-Script done on Tue 28 Nov 2017 01:34:16 PM PST
+Script done on Tue 28 Nov 2017 05:41:03 PM PST
