@@ -1,9 +1,9 @@
 model name "DRM3D" ;
-Elastic = 2e8*N/m^2; 
+Elastic = 1.1e9*N/m^2; 
 nu    = 0.1;        
 rho   = 2000*kg/m^3;  
 
-Soil_Elastic_Modulus = 2e8*Pa;
+Soil_Elastic_Modulus = 1.1e9*Pa;
 Soil_Density = 2000*kg/m^3;
 Soil_Poisons_ratio = 0.1;
 //  Soil
@@ -50,11 +50,11 @@ Kn = 1e11 * kg /s^2 ;
 
 
 add wave field # 1 with
-  acceleration_filename = "sw4_free_field_center_ax.txt"
+  acceleration_filename = "base_correct_x_acc.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "sw4_free_field_center_ux.txt"
+  displacement_filename = "base_correct_x_dis.txt"
   unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
+  add_compensation_time = 0.0 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile.txt"
@@ -65,11 +65,11 @@ add wave field # 1 with
   ;
   
 add wave field # 2 with
-  acceleration_filename = "sw4_free_field_center_ay.txt"
+  acceleration_filename = "base_correct_y_acc.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "sw4_free_field_center_uy.txt"
+  displacement_filename = "base_correct_y_dis.txt"
   unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
+  add_compensation_time = 0.0 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile.txt"
@@ -80,11 +80,11 @@ add wave field # 2 with
   ;
 
 add wave field # 3 with
-  acceleration_filename = "sw4_free_field_center_az.txt"
+  acceleration_filename = "base_correct_z_acc.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "sw4_free_field_center_uz.txt"
+  displacement_filename = "base_correct_z_dis.txt"
   unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
+  add_compensation_time = 0.0 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile_Vp.txt"

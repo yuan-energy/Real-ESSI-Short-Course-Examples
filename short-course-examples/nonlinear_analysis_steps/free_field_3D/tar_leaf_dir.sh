@@ -23,7 +23,7 @@ do
 	# cp run_plot_results.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_acce.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_disp.py ${current_dir}/"${deepest_dir_array[$element]}"
-	cp extract_node_spectrum.py ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp extract_node_spectrum.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp README.md ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp README.html ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp geometry_slice.png ${current_dir}/"${deepest_dir_array[$element]}"
@@ -32,13 +32,13 @@ do
 
 
 	cd ${current_dir}/"${deepest_dir_array[$element]}"
-	# sed -i 's/acceleration_filename\ =\ \"scaled_NORTHR_x_A\.txt\"/acceleration_filename\ =\ \"sw4_free_field_center_ax\.txt\"/' main.fei
-	# sed -i 's/acceleration_filename\ =\ \"scaled_NORTHR_y_A\.txt\"/acceleration_filename\ =\ \"sw4_free_field_center_ay\.txt\"/' main.fei
-	# sed -i 's/acceleration_filename\ =\ \"scaled_NORTHR_z_A\.txt\"/acceleration_filename\ =\ \"sw4_free_field_center_az\.txt\"/' main.fei
+	sed -i 's/acceleration_filename\ =\ \"sw4_free_field_center_ax\.txt\"/acceleration_filename\ =\ \"base_correct_x_acc\.txt\"/' main.fei
+	sed -i 's/acceleration_filename\ =\ \"sw4_free_field_center_ay\.txt\"/acceleration_filename\ =\ \"base_correct_y_acc\.txt\"/' main.fei
+	sed -i 's/acceleration_filename\ =\ \"sw4_free_field_center_az\.txt\"/acceleration_filename\ =\ \"base_correct_z_acc\.txt\"/' main.fei
 
-	# sed -i 's/displacement_filename\ =\ \"scaled_NORTHR_x_D\.txt\"/displacement_filename\ =\ \"sw4_free_field_center_ux\.txt\"/' main.fei
-	# sed -i 's/displacement_filename\ =\ \"scaled_NORTHR_y_D\.txt\"/displacement_filename\ =\ \"sw4_free_field_center_uy\.txt\"/' main.fei
-	# sed -i 's/displacement_filename\ =\ \"scaled_NORTHR_z_D\.txt\"/displacement_filename\ =\ \"sw4_free_field_center_uz\.txt\"/' main.fei
+	sed -i 's/displacement_filename\ =\ \"sw4_free_field_center_ux\.txt\"/displacement_filename\ =\ \"base_correct_x_dis\.txt\"/' main.fei
+	sed -i 's/displacement_filename\ =\ \"sw4_free_field_center_uy\.txt\"/displacement_filename\ =\ \"base_correct_y_dis\.txt\"/' main.fei
+	sed -i 's/displacement_filename\ =\ \"sw4_free_field_center_uz\.txt\"/displacement_filename\ =\ \"base_correct_z_dis\.txt\"/' main.fei
 
 	# sed -i 's/time_step\ =\ 0\.01\*s\ ;/time_step\ =\ 0\.0419384905125\*s\ ;/' main.fei
 	# sed -i 's/simulate\ 3500\ steps\ using\ transient\ algorithm\ /simulate\ 240\ steps\ using\ transient\ algorithm\ /' main.fei
@@ -47,7 +47,7 @@ do
 	# rm -f damping.fei
 	# sed -i 's/include\ \"damping\.fei\";//' main.fei
 	
-	echo $PWD
-	rm -f *.tgz
-	tar -czvf ${PWD##*/}.tgz *
+	# echo $PWD
+	# rm -f *.tgz
+	# tar -czvf ${PWD##*/}.tgz *
 done

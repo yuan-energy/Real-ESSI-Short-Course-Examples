@@ -1,7 +1,7 @@
 
 
 model name "Solid_structure_DRM3D" ;
-Elastic = 2e8*N/m^2; 
+Elastic = 1.1e9*N/m^2; 
 nu    = 0.1;        
 rho   = 2000*kg/m^3;     
 add material # 1 type linear_elastic_isotropic_3d
