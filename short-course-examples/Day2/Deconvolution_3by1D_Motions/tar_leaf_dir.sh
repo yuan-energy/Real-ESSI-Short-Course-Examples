@@ -18,7 +18,7 @@ for element in $(seq 0 $((${#deepest_dir_array[@]} - 1)))
 do
 	# cp run_parallel_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	cd ${current_dir}
-	cp run_sequential_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp run_sequential_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_acce.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_disp.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_spectrum.py ${current_dir}/"${deepest_dir_array[$element]}"
@@ -27,6 +27,11 @@ do
 	# rm -rf damping.fei
 	# sed -i "s/xi\_4\ =\ 0\.09\ ;/xi\_4\ =\ 0\.0\ ;/" main.fei
 	# sed -i 's/include\ \"damping\.fei\";//' main.fei
+	# sed -i 's/213\.200716355\ \ \ 2000\ \ \ \ \ 0\.00\ \ \ 100/213\.200716355\ \ \ 2000\ \ \ \ \ 0\.03\ \ \ 100/' soil_profile.txt
+	# sed -i 's/2000\ \ \ \ \ \ \ \ \ \ \ \ 2400\ \ \ \ \ 0\.00\ /2000\ \ \ \ \ \ \ \ \ \ \ \ 2400\ \ \ \ \ 0\.03\ /' soil_profile.txt
+	
+	sed -i 's/319\.801074533\ \ \ 2000\ \ \ \ \ 0\.00\ \ \ 100/319\.801074533\ \ \ 2000\ \ \ \ \ 0\.03\ \ \ 100/' soil_profile_Vp.txt
+	sed -i 's/2000\ \ \ \ \ \ \ \ \ \ \ \ 2400\ \ \ \ \ 0\.00\ /2000\ \ \ \ \ \ \ \ \ \ \ \ 2400\ \ \ \ \ 0\.03\ /' soil_profile_Vp.txt
 	
 	rm -f *.tgz
 	tar -czvf ${PWD##*/}.tgz *
