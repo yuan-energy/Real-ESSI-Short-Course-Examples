@@ -1,0 +1,81 @@
+\chapter{Postprocessing Examples with Python}
+\label{ch-post processing}
+
+% \section{Python}
+
+\section{Basic Operations on Output }
+
+Real-ESSI output are stored in HDF5 file format. 
+HDF5 file a binary file format, which has the internal directories of dataset.
+To open a dataset in HDF5 output, one can open the HDF5 file with the python interface $h5py$.
+Then, the dataset can be extracted by following the internal path in the HDF5 format.
+
+\begin{lstlisting}[frame=single, language=Python]
+import h5py
+h5file = h5py.File(filename,'r')
+time=h5file['/time'][()]
+Element_Outputs = h5file['/Model/Elements/Element_Outputs'][:,:]
+Gauss_Outputs = h5file['/Model/Elements/Gauss_Outputs'][:,:]
+Index_to_Coordinates = h5file['/Model/Nodes/Index_to_Coordinates'][:,:]
+Coordinates = h5file['/Model/Nodes/Coordinates'][:,:]
+Index_to_Generalized_Displacements = \
+h5file['/Model/Nodes/Index_to_Generalized_Displacements'][:,:]
+Generalized_Displacements = \
+h5file['/Model/Nodes/Generalized_Displacements'][:,:]
+\end{lstlisting}
+
+\section{Time Series Plotting}
+Following the basic options on HDF5 outptu, suppose one already extracted the dataset
+in the HDF5 output, then, the plot of the time series is illustrated below.
+\begin{lstlisting}[frame=single, language=Python]
+target_displacement = Generalized_Displacements[15]
+plt.plot(time, target_displacement)
+plt.xlabel("Time [s]")
+plt.ylabel("Displacement [m]")
+plt.grid()
+plt.savefig("target_displacement_time_series.pdf")
+plt.show()
+\end{lstlisting}
+Note that the output of Real-ESSI is always in the standard unit.
+
+\section{Spectrum Analysis}
+Furthermore, one can also extract the results and do spectrum analysis of 
+the output.
+\begin{lstlisting}[frame=single, language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.fftpack
+import math
+def FFT(x,dt,maxf,plot=True):
+	# Number of samplepoints
+	N = x.size;
+	# Total Time 
+	T = N*dt;
+	# sample dpacing is dt
+	# sampling frequency
+	Fs = 1/dt;
+	xfft  = scipy.fftpack.fft(x);
+	xfreq = np.linspace(0.0, Fs/2, N/2);
+	xfftHalf = 2.0/N * np.abs(xfft[:N//2]);
+	xfftHalf[0] = xfftHalf[0]/2;
+	if(plot):
+		fig, ax = plt.subplots()
+		ax.plot(xfreq, xfftHalf,'-k')
+		if(maxf is not None):
+			plt.xlim(0, maxf)
+		plt.ylabel('Fourier transform |FFT(x)|')
+		plt.xlabel('Frequency |Hz|')
+		plt.show()
+	return xfreq, xfftHalf
+\end{lstlisting}
+
+For advanced python scripts with Real-ESSI, please visit \url{https://github.com/SumeetSinha/Python-Scripts}.
+
+% \clearpage
+% \newpage
+% \section{Matlab}
+
+
+
+
+
