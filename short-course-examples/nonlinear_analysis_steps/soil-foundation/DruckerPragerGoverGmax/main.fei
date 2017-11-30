@@ -56,7 +56,7 @@ T2 = 0.2*s;
 w1 = 2*pi/T1; 
 w2 = 2*pi/T2; 
 
-// Structure Damping 
+// Structural Damping 
 xi_1 = 0.03; 
 rayl_1_a1 = 2*xi_1/(w1+w2); 
 rayl_1_a0 = rayl_1_a1*w1*w2; 
@@ -97,7 +97,7 @@ add wave field # 1 with
   unit_of_acceleration = 1 * m/s^2
   displacement_filename = "base_correct_x_dis.txt"
   unit_of_displacement = 1 * m
-  add_compensation_time = 0.0 * s
+  add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile.txt"
@@ -112,7 +112,7 @@ add wave field # 2 with
   unit_of_acceleration = 1 * m/s^2
   displacement_filename = "base_correct_y_dis.txt"
   unit_of_displacement = 1 * m
-  add_compensation_time = 0.0 * s
+  add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile.txt"
@@ -127,7 +127,7 @@ add wave field # 3 with
   unit_of_acceleration = 1 * m/s^2
   displacement_filename = "base_correct_z_dis.txt"
   unit_of_displacement = 1 * m
-  add_compensation_time = 0.0 * s
+  add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile_Vp.txt"

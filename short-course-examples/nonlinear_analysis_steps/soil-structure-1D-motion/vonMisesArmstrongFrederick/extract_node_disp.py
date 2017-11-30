@@ -96,10 +96,10 @@ else:
 	PartitionInfo = h5fileID0['Model/Nodes/Partition'][()]
 	PartitionId = PartitionInfo[(int)(nodetag)]
 	if (PartitionId > 0) :
-		if (PartitionId > 9) :
-			h5DataFilename = filename.split('.feioutput')[0]+'.'+str(PartitionId)+'.feioutput'
-		else:
+		if (N_proc > 9 and PartitionId < 10) :
 			h5DataFilename = filename.split('.feioutput')[0]+'.0'+str(PartitionId)+'.feioutput'
+		else:
+			h5DataFilename = filename.split('.feioutput')[0]+'.'+str(PartitionId)+'.feioutput'
 	else:
 		"\n ERROR!!! :: ESSI Node tag " + str(nodetag) +" does not exist! \n"
 h5fileID0.close()

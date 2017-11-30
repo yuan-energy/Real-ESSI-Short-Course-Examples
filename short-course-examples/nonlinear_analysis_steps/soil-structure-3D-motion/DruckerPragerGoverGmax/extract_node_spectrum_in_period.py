@@ -141,10 +141,10 @@ else:
 	PartitionInfo = h5fileID0['Model/Nodes/Partition'][()]
 	PartitionId = PartitionInfo[(int)(nodetag)]
 	if (PartitionId > 0) :
-		if (PartitionId > 9) :
-			h5DataFilename = filename.split('.feioutput')[0]+'.'+str(PartitionId)+'.feioutput'
-		else:
+		if (N_proc > 9 and PartitionId < 10) :
 			h5DataFilename = filename.split('.feioutput')[0]+'.0'+str(PartitionId)+'.feioutput'
+		else:
+			h5DataFilename = filename.split('.feioutput')[0]+'.'+str(PartitionId)+'.feioutput'
 	else:
 		"\n ERROR!!! :: ESSI Node tag " + str(nodetag) +" does not exist! \n"
 h5fileID0.close()
@@ -192,7 +192,7 @@ plt.show()
 # Write the data to a txt file
 # *************************************************************************************
 with open(out_filename + '.txt', 'w') as f : 
-	for i in range(len(time)) :
-		f.write( str(time[i]) + " \t " + str(target_acc[i]) + "\n")
+	for i in range(len(period)) :
+		f.write( str(period[i]) + " \t " + str(pseudo_acc_spec[i]) + "\n")
 
 print(" Data is written to " + out_filename + '.txt')

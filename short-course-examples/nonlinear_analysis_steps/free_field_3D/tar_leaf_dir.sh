@@ -20,8 +20,8 @@ do
 	
 	# cp run_sequential_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp run_parallel_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
-	cp run_plot_results.sh ${current_dir}/"${deepest_dir_array[$element]}"
-	# cp run_plot_compare.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp run_plot_results.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	cp run_plot_compare.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp compare_top_acc.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_acce.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_disp.py ${current_dir}/"${deepest_dir_array[$element]}"

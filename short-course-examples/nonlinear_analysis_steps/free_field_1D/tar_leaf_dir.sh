@@ -20,10 +20,11 @@ do
 	
 	# cp run_sequential_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp run_parallel_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
-	cp run_plot_results.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp node.fei ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp run_plot_results.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_acce.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_disp.py ${current_dir}/"${deepest_dir_array[$element]}"
-	cp extract_node_spectrum*.py ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp extract_node_spectrum*.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp README.md ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp README.html ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp geometry_slice.png ${current_dir}/"${deepest_dir_array[$element]}"
@@ -31,7 +32,7 @@ do
 	# cp base_correct_*.txt ${current_dir}/"${deepest_dir_array[$element]}"
 
 	# cp compare_top_acc.py ${current_dir}/"${deepest_dir_array[$element]}"
-	# cp run_plot_compare.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	cp run_plot_compare.sh ${current_dir}/"${deepest_dir_array[$element]}"
 
 	cd ${current_dir}/"${deepest_dir_array[$element]}"
 	# sed -i 's/acceleration_filename\ =\ \"scaled_NORTHR_x_A\.txt\"/acceleration_filename\ =\ \"base_correct_x_acc\.txt\"/' main.fei

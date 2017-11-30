@@ -1,4 +1,4 @@
-Script started on Wed 29 Nov 2017 03:09:10 PM PST
+Script started on Thu 30 Nov 2017 11:29:15 AM PST
                                                                
                                                                
   The Finite Element Interpreter                               
@@ -10,12 +10,12 @@ Script started on Wed 29 Nov 2017 03:09:10 PM PST
                                                              
 Version Name   : Academic Version. Release date: Nov 21 2017 at 00:31:09. Tag: 0d86479c15
 Version Branch : yuan
-Compile Date   : Nov 25 2017 at 09:03:34
+Compile Date   : Nov 25 2017 at 00:07:50
 Compile User   : yuan
 Compile Sysinfo: w541 4.4.0-101-generic x86_64 GNU/Linux
 Runtime User   : yuan
-Runtime Sysinfo: cml01 4.10.0-40-generic x86_64 GNU/Linux
-Time Now       : Nov 29 2017 at 15:09:10
+Runtime Sysinfo: w541 4.4.0-101-generic x86_64 GNU/Linux
+Time Now       : Nov 30 2017 at 11:29:15
                                                                
 Static startup tips:                                           
  * Remember: Every command ends with a semicolon ';'.          
@@ -26,20 +26,25 @@ Including: "main.fei"
 
 
 Model name is being set to "DRM1D"
+Including: "material.fei"
+
+Done including: "material.fei" (50 lines included).
+Continuing with "main.fei" at line 8.
+
 Including: "node.fei"
 
 Done including: "node.fei" (55 lines included).
-Continuing with "main.fei" at line 75.
+Continuing with "main.fei" at line 10.
 
 Including: "element.fei"
 
 Done including: "element.fei" (41 lines included).
-Continuing with "main.fei" at line 77.
+Continuing with "main.fei" at line 12.
 
 Including: "load.fei"
 
 Done including: "load.fei" (109 lines included).
-Continuing with "main.fei" at line 79.
+Continuing with "main.fei" at line 55.
 
 
 
@@ -480,6 +485,150 @@ Transient Analysis: [195  /210  ]
 Transient Analysis: [196  /210  ] 
 
 Transient Analysis: [197  /210  ] 
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
+ERROR!!! in WaveField::get_dis_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_dis[0].size() = 237
+ERROR!!! in WaveField::get_acc_by_depth exceed vector boundary 
+ pos + len = 246
+  _soil_acc[0].size() = 237
 
 Transient Analysis: [198  /210  ] 
 
@@ -511,8 +660,8 @@ Simulation ends at time 8.80708 * second
 > Analysis End -------------------------------------------------------------------------------
 How polite! Bye, have a nice day!
 
-real	0m0.422s
-user	0m0.380s
-sys	0m0.024s
+real	0m0.262s
+user	0m0.232s
+sys	0m0.020s
 
-Script done on Wed 29 Nov 2017 03:09:10 PM PST
+Script done on Thu 30 Nov 2017 11:29:15 AM PST

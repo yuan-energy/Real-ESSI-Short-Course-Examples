@@ -63,8 +63,8 @@ out_acc = out_data[:,1]
 # Plot the data in time domain.
 # *************************************************************************************
 f, (ax1, ax2) = plt.subplots(1, 2)
-ax1.plot(refer_time, refer_acc, '-k', linewidth=3, label='Reference Motion')
-ax1.plot(out_time, out_acc, '--k', linewidth=3, label='Output Motion')
+ax1.plot(refer_time, refer_acc, '--k', linewidth=3, label='Soil Bottom Motion')
+ax1.plot(out_time, out_acc, '-k', linewidth=3, label='Soil Top Motion')
 ax1.legend()
 ax1.set( xlabel = "Time [s]", ylabel = "Acceleration [m/s^2]", title = "Time Series of Acceleration")
 ax1.grid()
@@ -75,8 +75,8 @@ ax1.grid()
 # *************************************************************************************
 refer_freq, refer_ampl = FFT( refer_acc, refer_time[1]-refer_time[0] )
 out_freq, out_ampl = FFT( out_acc, refer_time[1]-refer_time[0] )
-ax2.semilogx(refer_freq, refer_ampl, '-k', linewidth=3, label='Reference Motion')
-ax2.semilogx(out_freq, out_ampl, '--k', linewidth=3, label='Output Motion')
+ax2.semilogx(refer_freq, refer_ampl, '--k', linewidth=3, label='Soil Bottom Motion')
+ax2.semilogx(out_freq, out_ampl, '-k', linewidth=3, label='Soil Top Motion')
 ax2.legend(loc=2)
 ax2.set( xlabel = "Frequency [Hz] ", ylabel = "Acceleration [m/s^2] ", xlim = [plotFreq_min, plotFreq_max] , title = "FFT of Acceleration")
 ax2.grid()

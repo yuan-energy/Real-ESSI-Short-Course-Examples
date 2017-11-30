@@ -1,0 +1,64 @@
+// ***************************************************************
+// Support Variable Definition and Calculation with Units
+// ***************************************************************
+// rho = 2000*kg/m^3
+// Vs = 500 * m/s ;
+// G = Vs^2 * rho ;
+// nu = 0.1 ;        
+// E = 2 * ( 1 + nu )  * G ; 
+// ***************************************************************
+
+// ***************************************************************
+// Soil layers material properties
+// ***************************************************************
+add material # 1  type vonmisesArmstrongFrederick 
+  mass_density = 2000*kg/m^3 
+  elastic_modulus = 1.1e9*N/m^2
+  poisson_ratio = 0.1
+  von_mises_radius = 60*kPa  
+  armstrong_frederick_ha =  3e7*Pa
+  armstrong_frederick_cr =  25
+  isotropic_hardening_rate =  0*Pa;
+define NDMaterial constitutive integration algorithm Backward_Euler
+  yield_function_relative_tolerance =  1e-6
+  stress_relative_tolerance =  1e-6
+  maximum_iterations = 10 ;
+
+// ***************************************************************
+// DRM layers material properties
+// ***************************************************************
+add material # 2 type linear_elastic_isotropic_3d
+  mass_density = 2000*kg/m^3 
+  elastic_modulus = 1.1e9*N/m^2
+  poisson_ratio = 0.1;
+
+// ***************************************************************
+// Damping layers material properties
+// ***************************************************************
+add material # 3 type linear_elastic_isotropic_3d
+  mass_density = 2000*kg/m^3 
+  elastic_modulus = 1.1e9*N/m^2
+  poisson_ratio = 0.1;
+
+// ***************************************************************
+// Foundation material properties
+// ***************************************************************
+add material # 4 type linear_elastic_isotropic_3d
+  mass_density = 2500*kg/m^3
+  elastic_modulus = 3e10*N/m^2
+  poisson_ratio =  0.2 ;
+
+// ***************************************************************
+// Structure material properties
+// ***************************************************************
+add material # 5 type linear_elastic_isotropic_3d
+  mass_density = 2500*kg/m^3 
+  elastic_modulus = 3e10*N/m^2
+  poisson_ratio = 0.2 ;
+  
+// ***************************************************************
+// Contact parameters
+// ***************************************************************
+Kn = 1e11 * kg /s^2 ;  // Penalty Stiffness for Bonded Contact 
+
+

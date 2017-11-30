@@ -1,6 +1,6 @@
 
 # Open the leaf folder
-cd soil-structure-3D-motion/elastic
+cd soil-structure-3by1D-motion/elastic
 
 # Run the simulation 
 # ./run_parallel_simulation.sh 

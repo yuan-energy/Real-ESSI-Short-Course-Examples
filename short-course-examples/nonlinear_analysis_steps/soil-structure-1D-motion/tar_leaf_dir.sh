@@ -20,7 +20,8 @@ do
 	
 	# cp run_sequential_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp run_parallel_simulation.sh ${current_dir}/"${deepest_dir_array[$element]}"
-	cp run_plot_results.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp run_plot_results.sh ${current_dir}/"${deepest_dir_array[$element]}"
+	# cp main.fei ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp run_plot_compare.sh ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_acce.py ${current_dir}/"${deepest_dir_array[$element]}"
 	# cp extract_node_disp.py ${current_dir}/"${deepest_dir_array[$element]}"
@@ -47,7 +48,7 @@ do
 	# sed -i 's/simulate\ 240\ steps\ using\ transient\ algorithm\ /simulate\ 210\ steps\ using\ transient\ algorithm\ /' main.fei
 	# rm -f damping.fei
 	# sed -i 's/include\ \"damping\.fei\";//' main.fei
-	
+	sed -i 's/^python\ compare\_top\_acc\.py\ base\_correct\_x\_acc\.txt/python\ compare\_top\_acc\.py\ sw4\_free\_field\_center\_ax\.txt/' run_plot_compare.sh
 	echo $PWD
 	# rm -f *.tgz
 	# tar -czvf ${PWD##*/}.tgz *

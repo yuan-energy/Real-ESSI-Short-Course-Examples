@@ -1,0 +1,112 @@
+
+// ***************************************************************
+// Support Variable Definition and Calculation with Units
+// ***************************************************************
+// rho = 2000*kg/m^3
+// Vs = 500 * m/s ;
+// G = Vs^2 * rho ;
+// nu = 0.1 ;        
+// E = 2 * ( 1 + nu )  * G ; 
+// ***************************************************************
+
+// ***************************************************************
+// Soil layers material properties
+// ***************************************************************
+add material # 1 type linear_elastic_isotropic_3d
+  mass_density = 2000*kg/m^3 
+  elastic_modulus = 1.1e9*N/m^2
+  poisson_ratio = 0.1;
+
+// ***************************************************************
+// DRM layers material properties
+// ***************************************************************
+add material # 2 type linear_elastic_isotropic_3d
+  mass_density = 2000*kg/m^3 
+  elastic_modulus = 1.1e9*N/m^2
+  poisson_ratio = 0.1;
+
+// ***************************************************************
+// Damping layers material properties
+// ***************************************************************
+add material # 3 type linear_elastic_isotropic_3d
+  mass_density = 2000*kg/m^3 
+  elastic_modulus = 1.1e9*N/m^2
+  poisson_ratio = 0.1;
+
+// ***************************************************************
+// Foundation material properties
+// ***************************************************************
+add material # 4 type linear_elastic_isotropic_3d
+  mass_density = 2500*kg/m^3
+  elastic_modulus = 3e10*N/m^2
+  poisson_ratio =  0.2 ;
+
+// ***************************************************************
+// Structure material properties
+// ***************************************************************
+add material # 5 type linear_elastic_isotropic_3d
+  mass_density = 2500*kg/m^3 
+  elastic_modulus = 3e10*N/m^2
+  poisson_ratio = 0.2 ;
+
+
+// ***************************************************************
+// Contact parameters
+// ***************************************************************
+Kni = 100*MPa;       // Initial axial stiffness
+Krate = 100  ;       // Stiffening rate
+Kmax = 500*MPa;      // Max axial stiffness
+Kt = 40*kPa;         // Shear stiffness
+Cn = 100*Pa*s;       // Axial viscous damping
+Ct = 100*Pa*s;       // Shear viscous damping
+Fr = 0.8  ;          // Friction rate
+Shear_depth = 5e-3*m;// Shear depth thickness
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Contact Parameters (StressBased)
+// Kn = 100*MPa; 
+// Sr = 100; 
+// Kn_max = 500*MPa; 
+// Kt = 40*kPa; 
+// Cn = 100*Pa*s; 
+// Ct = 100*Pa*s; 
+// Fr = 0.8; 
+
+// Kp = 1e12*N/m;
+// Shear_Zone  = 5e-3*m;
+// mu_p_no = 0.9;
+// mu_p_k  = 0.1;
+// Softening_rate = 40;
+// Pleateau_Size = 8;
+

@@ -1,53 +1,23 @@
 model name "DRM3D" ;
-Elastic = 1.1e9*N/m^2; 
-nu    = 0.1;        
-rho   = 2000*kg/m^3;  
 
-Soil_Elastic_Modulus = 1.1e9*Pa;
-Soil_Density = 2000*kg/m^3;
-Soil_Poisons_ratio = 0.1;
-//  Soil
-add material # 1 type DruckerPragerMultipleYieldSurfaceGoverGmax
- mass_density = Soil_Density  //0.0*kg/m^3 
- initial_shear_modulus = Soil_Elastic_Modulus //3E8 * Pa 
- poisson_ratio = Soil_Poisons_ratio //0.0 
- initial_confining_stress = 1E5 * Pa
- reference_pressure = 1E5 * Pa
- pressure_exponential_n = 0.5
- cohesion = 1. * kPa
- dilation_angle_eta =1.0 
- dilation_scale = 0.0
- total_number_of_shear_modulus = 9
- GoverGmax = 
- "1,0.995,0.966,0.873,0.787,0.467,0.320,0.109,0.063"  
- ShearStrainGamma = 
- "0,1E-6,1E-5,5E-5,1E-4, 0.0005, 0.001, 0.005, 0.01"
- ;
-
-// DRM layer
-add material # 2 type linear_elastic_isotropic_3d
-  mass_density =  Soil_Density
-  elastic_modulus = Soil_Elastic_Modulus
-  poisson_ratio =  Soil_Poisons_ratio;
-
-// Damping Layers
-add material # 3 type linear_elastic_isotropic_3d
-  mass_density =  Soil_Density
-  elastic_modulus = Soil_Elastic_Modulus
-  poisson_ratio =  Soil_Poisons_ratio;
+// ***************************************************************
+// Define Material and Geometry
+// ***************************************************************
+include "material.fei" ; 
+include "node.fei";
+include "element.fei";
 
 
-
-// Damping paramters
-Gamma = 0.55; 
-Beta = 0.25*(0.5+Gamma)*(0.5+Gamma); 
-
+// ***************************************************************
+// Define damping, load, and boundary condition
+// ***************************************************************
+// Damping
 T1 = 2*s; 
 T2 = 0.2*s; 
 w1 = 2*pi/T1; 
 w2 = 2*pi/T2; 
 
-// Structure Damping 
+// Structural Damping 
 xi_1 = 0.03; 
 rayl_1_a1 = 2*xi_1/(w1+w2); 
 rayl_1_a0 = rayl_1_a1*w1*w2; 
@@ -78,19 +48,56 @@ add damping # 3 type Rayleigh with a0 = rayl_3_a0 a1 = rayl_3_a1 stiffness_to_us
 add damping # 4 type Rayleigh with a0 = rayl_4_a0 a1 = rayl_4_a1 stiffness_to_use = Initial_Stiffness; 
 add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_use = Initial_Stiffness; 
 
-include "node.fei";
-include "element.fei";
 include "load.fei";
 
 
+// ***************************************************************
+// It is recommended to run check model before any simulation.
+// The hdf5 output can be visualized to check the boundary conditions.
+// ***************************************************************
+// check model;
 
 
+// ***************************************************************
+// Simulate Loading Stage 1: Self Weight
+// ***************************************************************
+new loading stage "Self_weight";
+add acceleration field # 1 
+  ax =  0*g
+  ay =  0*g
+  az =  -g ;
+add load # 1 to all elements type self_weight use acceleration field # 1;
+
+// Simulation Options:
+define convergence test Relative_Norm_Unbalanced_Force
+  tolerance =  1E-2
+  minimum_absolute_tolerance = 1
+  maximum_iterations = 200
+  ;
+define algorithm Newton;
+if(IS_PARALLEL==0)
+{define solver UMFPack;}
+else
+{define solver parallel;}
+
+// Static loading increments:
+define load factor increment 1;
+simulate 1 steps using static algorithm;
+
+
+// ***************************************************************
+// Simulate Loading Stage 2: DRM Motion
+// ***************************************************************
+new loading stage "motion";
+enable acceleration output; 
+
+// Wave propagation with wave fields:
 add wave field # 1 with
-  acceleration_filename = "base_correct_x_acc.txt"
+  acceleration_filename = "sw4_free_field_center_ax.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "base_correct_x_dis.txt"
+  displacement_filename = "sw4_free_field_center_ux.txt"
   unit_of_displacement = 1 * m
-  add_compensation_time = 0.0 * s
+  add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile.txt"
@@ -101,11 +108,11 @@ add wave field # 1 with
   ;
   
 add wave field # 2 with
-  acceleration_filename = "base_correct_y_acc.txt"
+  acceleration_filename = "sw4_free_field_center_ay.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "base_correct_y_dis.txt"
+  displacement_filename = "sw4_free_field_center_uy.txt"
   unit_of_displacement = 1 * m
-  add_compensation_time = 0.0 * s
+  add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile.txt"
@@ -116,11 +123,11 @@ add wave field # 2 with
   ;
 
 add wave field # 3 with
-  acceleration_filename = "base_correct_z_acc.txt"
+  acceleration_filename = "sw4_free_field_center_az.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "base_correct_z_dis.txt"
+  displacement_filename = "sw4_free_field_center_uz.txt"
   unit_of_displacement = 1 * m
-  add_compensation_time = 0.0 * s
+  add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile_Vp.txt"
@@ -130,66 +137,44 @@ add wave field # 3 with
   unit_of_thickness = 1*m 
   ;
 
-// check model;
-new loading stage "Self_weight";
-add acceleration field # 1 
-  ax =  0*g
-  ay =  0*g
-  az =  -g ;
-add load # 1 to all elements type self_weight use acceleration field # 1;
-
-define NDMaterial constitutive integration algorithm Backward_Euler
-  yield_function_relative_tolerance =  1e-17
-  stress_relative_tolerance =  1e-17
-  maximum_iterations = 10 ;
-  
-define convergence test Relative_Norm_Unbalanced_Force
-  tolerance =  1E-2
-  minimum_absolute_tolerance = 1e-4
-  maximum_iterations = 200
-  ;
-define algorithm Newton; 
-if(IS_PARALLEL==0)
-{define solver UMFPack;}
-else
-{define solver parallel;}
-define load factor increment 1;
-simulate 1 steps using static algorithm;
-
-new loading stage "motion";
-
-
-enable acceleration output; 
+// Dynamic Domain-Reduction-Method Loading with the wave field:
 add load # 2 type DRM from wave field 
     # 1 in direction ux 
     # 2 in direction uy
     # 3 in direction uz
-    soil_surface at z = 30 * m 
+    soil_surface at z = 0 * m 
     hdf5_file = "DRMinput.hdf5" ; 
-define NDMaterial constitutive integration algorithm Backward_Euler
-  yield_function_relative_tolerance =  1e-17
-  stress_relative_tolerance =  1e-17
-  maximum_iterations = 10 ;
-  
+
+// Simulation Options:
 define convergence test Relative_Norm_Unbalanced_Force
-  tolerance =  5E-2
-  minimum_absolute_tolerance = 1e-4
+  tolerance =  1E-2
+  minimum_absolute_tolerance = 1
   maximum_iterations = 200
   ;
-
-define algorithm Newton; 
+define algorithm Newton;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
 {define solver parallel;}
 
+// Dynamic loading steps:
 define dynamic integrator Newmark with 
-   gamma = Gamma
-   beta = Beta;
+  gamma = 0.55
+  beta = 0.275625 ;
 simulate 210 steps using transient algorithm 
     time_step = 0.0419384905125*s ;
 
+// No more loading stages. Stop the program politely:
 bye;
+
+
+
+
+
+
+
+
+
 
 
 

@@ -47,6 +47,7 @@ do
 	# sed -i 's/simulate\ 240\ steps\ using\ transient\ algorithm\ /simulate\ 210\ steps\ using\ transient\ algorithm\ /' main.fei
 	# rm -f damping.fei
 	# sed -i 's/include\ \"damping\.fei\";//' main.fei
+	sed -i 's/model\ name\ \"DRM3D\"\ ;/model\ name\ \"shell\_structure\"\ ;/' main.fei
 	
 	echo $PWD
 	# rm -f *.tgz
