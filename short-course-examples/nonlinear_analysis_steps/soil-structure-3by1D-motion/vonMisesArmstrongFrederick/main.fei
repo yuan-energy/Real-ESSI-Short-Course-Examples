@@ -1,16 +1,16 @@
 model name "shell_structure" ;
 
-// ***************************************************************
+
 // Define Material and Geometry
-// ***************************************************************
+
 include "material.fei" ; 
 include "node.fei";
 include "element.fei";
 
 
-// ***************************************************************
+
 // Define damping, load, and boundary condition
-// ***************************************************************
+
 // Damping
 T1 = 2*s; 
 T2 = 0.2*s; 
@@ -51,16 +51,16 @@ add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_us
 include "load.fei";
 
 
-// ***************************************************************
+
 // It is recommended to run check model before any simulation.
 // The hdf5 output can be visualized to check the boundary conditions.
-// ***************************************************************
+
 // check model;
 
 
-// ***************************************************************
+
 // Simulate Loading Stage 1: Self Weight
-// ***************************************************************
+
 new loading stage "Self_weight";
 add acceleration field # 1 
   ax =  0*g
@@ -85,9 +85,9 @@ define load factor increment 1;
 simulate 1 steps using static algorithm;
 
 
-// ***************************************************************
+
 // Simulate Loading Stage 2: DRM Motion
-// ***************************************************************
+
 new loading stage "motion";
 enable acceleration output; 
 

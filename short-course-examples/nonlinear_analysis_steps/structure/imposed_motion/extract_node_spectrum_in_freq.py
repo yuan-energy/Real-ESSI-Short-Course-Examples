@@ -181,7 +181,7 @@ ax1.grid()
 ax2.semilogx(freqs, dis_spec, 'k-', linewidth=3)  
 ax2.set(xlabel = 'Frequency [Hz]', ylabel = 'Spectral Displacement [m]', title = 'Spectral Displacement')
 ax2.grid()
-plt.savefig( out_filename + ".pdf" )
+plt.savefig( out_filename + "_freq.pdf" )
 plt.show()
 
 
