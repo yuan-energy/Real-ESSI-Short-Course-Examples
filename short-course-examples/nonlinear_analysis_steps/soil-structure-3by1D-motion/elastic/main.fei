@@ -1,0 +1,184 @@
+
+
+model name "shell_structure" ;
+Elastic = 1.1e9*N/m^2; 
+nu    = 0.1;        
+rho   = 2000*kg/m^3;     
+
+// Soil layers
+add material # 1 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Elastic
+  poisson_ratio = nu;
+
+// DRM layers
+add material # 2 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Elastic
+  poisson_ratio = nu;
+
+// Damping layers
+add material # 3 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Elastic
+  poisson_ratio = nu;
+
+// Foundation
+add material # 4 type linear_elastic_isotropic_3d
+  mass_density = 2500*kg/m^3
+  elastic_modulus = 3e10*N/m^2
+  poisson_ratio =  0.2 ;
+
+// Structure
+shell_Elastic = 3e10*N/m^2; 
+shell_v    = 0.2;        
+shell_rho   = 2500*kg/m^3;    
+add material # 5 type linear_elastic_isotropic_3d
+  mass_density = shell_rho
+  elastic_modulus = shell_Elastic
+  poisson_ratio = shell_v;
+
+// Contact paramters
+Kn = 1e11 * kg /s^2 ; 
+
+// check model;
+
+// Damping paramters
+Gamma = 0.55; 
+Beta = 0.25*(0.5+Gamma)*(0.5+Gamma); 
+
+T1 = 2*s; 
+T2 = 0.2*s; 
+w1 = 2*pi/T1; 
+w2 = 2*pi/T2; 
+
+// Structure Damping 
+xi_1 = 0.03; 
+rayl_1_a1 = 2*xi_1/(w1+w2); 
+rayl_1_a0 = rayl_1_a1*w1*w2; 
+
+// foundation Damping 
+xi_2 = 0.06; 
+rayl_2_a1 = 2*xi_2/(w1+w2); 
+rayl_2_a0 = rayl_2_a1*w1*w2; 
+
+// Soil layer Damping 
+xi_3 = 0.09; 
+rayl_3_a1 = 2*xi_3/(w1+w2); 
+rayl_3_a0 = rayl_3_a1*w1*w2; 
+
+// DRM layer Damping 
+xi_4 = 0.0 ; 
+rayl_4_a1 = 2*xi_4/(w1+w2); 
+rayl_4_a0 = rayl_4_a1*w1*w2; 
+
+// Damping layer Damping 
+xi_5 = 0.5 ; 
+rayl_5_a1 = 2*xi_5/(w1+w2); 
+rayl_5_a0 = rayl_5_a1*w1*w2; 
+
+add damping # 1 type Rayleigh with a0 = rayl_1_a0 a1 = rayl_1_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 2 type Rayleigh with a0 = rayl_2_a0 a1 = rayl_2_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 3 type Rayleigh with a0 = rayl_3_a0 a1 = rayl_3_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 4 type Rayleigh with a0 = rayl_4_a0 a1 = rayl_4_a1 stiffness_to_use = Initial_Stiffness; 
+add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_use = Initial_Stiffness; 
+
+include "node.fei";
+include "element.fei";
+include "load.fei";
+
+new loading stage "Self_weight";
+add acceleration field # 1 
+  ax =  0*g
+  ay =  0*g
+  az =  -g ;
+add load # 1 to all elements type self_weight use acceleration field # 1;
+
+define algorithm With_no_convergence_check ;
+
+if(IS_PARALLEL==0)
+{define solver UMFPack;}
+else
+{define solver parallel;}
+define load factor increment 0.1;
+simulate 10 steps using static algorithm;
+
+new loading stage "motion";
+
+add wave field # 1 with
+  acceleration_filename = "base_correct_x_acc.txt"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "base_correct_x_dis.txt"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.0 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
+  
+add wave field # 2 with
+  acceleration_filename = "base_correct_y_acc.txt"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "base_correct_y_dis.txt"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.0 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
+
+add wave field # 3 with
+  acceleration_filename = "base_correct_z_acc.txt"
+  unit_of_acceleration = 1 * m/s^2
+  displacement_filename = "base_correct_z_dis.txt"
+  unit_of_displacement = 1 * m
+  add_compensation_time = 0.0 * s
+  acceleration_depth = 0 * m
+  monitoring_location = within_soil_layer
+  soil_profile_filename = "soil_profile_Vp.txt"
+  unit_of_Vs = 1 * m/s
+  unit_of_rho = 1 * kg/m^3
+  unit_of_damping = absolute
+  unit_of_thickness = 1*m 
+  ;
+enable acceleration output; 
+add load # 2 type DRM from wave field 
+    # 1 in direction ux 
+    # 2 in direction uy
+    # 3 in direction uz
+    soil_surface at z = 10 * m 
+    hdf5_file = "DRMinput.hdf5" ; 
+
+define algorithm With_no_convergence_check ;
+
+if(IS_PARALLEL==0)
+{define solver UMFPack;}
+else
+{define solver parallel;}
+
+define dynamic integrator Newmark with 
+   gamma = Gamma
+   beta = Beta;
+simulate 210 steps using transient algorithm 
+    time_step = 0.0419384905125*s ;
+
+bye;
+
+
+
+
+
+
+
+
+
+
+
