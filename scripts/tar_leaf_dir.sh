@@ -51,7 +51,15 @@ do
 	# sed -i 's/add\_compensation\_time\ =\ 0\.0\ \*\ s/add\_compensation\_time\ =\ 0\.5\ \*\ s/' main.fei
 	# sed -i 's/\/\/\ Structure\ Damping\ /\/\/\ Structural\ Damping\ /' main.fei
 	# sed -i 's/^python\ compare\_top\_acc\.py\ base\_correct\_x\_acc\.txt/python\ compare\_top\_acc\.py\ sw4\_free\_field\_center\_ax\.txt/' run_plot_compare.sh
-	sed -i 's/^\/\/\ \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*//' main.fei
+	# sed -i 's/^\/\/\ \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*//' main.fei
+	# sed -i 's/^\/\/\ Structural\ Damping\ $/\/\/\ Structural\ Rayleigh\ Damping\ Ratio\ /' main.fei
+	# sed -i 's/^\/\/\ foundation\ Damping\ $/\/\/\ Foundation\ Rayleigh\ Damping\ Ratio\ /' main.fei
+	# sed -i 's/^\/\/\ Soil\ layer\ Damping\ $/\/\/\ Soil\ Layer\ Rayleigh\ Damping\ Ratio\ /' main.fei
+	# sed -i 's/^\/\/\ DRM\ layer\ Damping\ $/\/\/\ DRM\ Layer\ Rayleigh\ Damping\ Ratio\ /' main.fei
+	# sed -i 's/^\/\/\ Damping\ layer\ Damping\ $/\/\/\ External Damping\ Layers\ Rayleigh\ Damping\ Ratio\ /' main.fei
+
+	# sed -i 's/^\/\/\ Damping$/\/\/\ Damping Period/' main.fei
+
 	echo $PWD
 	# rm -f \*.tgz
 	# tar -czvf ${PWD##*/}.tgz *
