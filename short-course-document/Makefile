@@ -27,4 +27,4 @@ clean:
 
 
 extract:
-	pdftk short_courses_examples.pdf cat 63-84 output nonlinear_steps.pdf
+	pdftk short_courses_examples.pdf cat 63-86 output nonlinear_steps.pdf

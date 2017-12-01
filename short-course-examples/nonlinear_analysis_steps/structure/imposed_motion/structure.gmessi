@@ -59,7 +59,7 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 #### ======================================================
 #### Imposed Motion
 #### ======================================================
-[Add_Node_Load_Imposed_Motion_Series{Physical_Group#foundation_bottom_surfaces, DofType:= ux, DispScale:= 1*cm, DispFile:= "dis.txt" , VelScale:= 1*cm/s , VelFile:= "vel.txt", AccScale:= 1*g, AccFile:= "acc.txt"}]
+[Add_Node_Load_Imposed_Motion_Series{Physical_Group#foundation_bottom_surfaces, DofType:= ux, DispScale:= 1*cm, DispFile:= "sw4_free_field_center_ux.txt" , VelScale:= 1*cm/s , VelFile:= "sw4_free_field_center_vx.txt", AccScale:= 1*g, AccFile:= "sw4_free_field_center_ax.txt"}]
 
 ### ======================================================
 ### Damping
