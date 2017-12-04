@@ -1,7 +1,7 @@
 ####### This file contains meta infomation about SW42ESSI conversion ####
 DRM input:: DRMinput_shell.hdf5
 
-SW4 motion directory:: ../Free_fields_3D_model_with_DRM/SW4_motion/3D_motion
+SW4 motion directory:: ./SW4_motion/3D_motion
 
 origin coordinates of ESSI box (x, y, z)::  (2100,2300,0)  
 

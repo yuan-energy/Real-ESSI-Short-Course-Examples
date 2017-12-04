@@ -7,15 +7,9 @@ rm -rf *.hdf5
 rm -rf *.feioutput
 
 ## Generate DRM input  
-gmessy simplified.gmessi
+gmessy shell_structure_DRM3D.gmessi
 
-mv ./simplified_fei/element.fei  ./element.fei
-
-mv ./simplified_fei/node.fei     ./node.fei
-
-mv ./simplified_fei/load.fei     ./load.fei
-
-rm -rf ./simplified_fei
+rm -rf ./shell_structure_DRM3D_fei
 
 echo "<========== Finish writing DRM inut files ==============>"
 
