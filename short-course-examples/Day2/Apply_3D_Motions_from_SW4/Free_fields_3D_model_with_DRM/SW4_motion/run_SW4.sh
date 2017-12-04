@@ -12,5 +12,5 @@ mpirun -np 4 sw4 3D_motion.in
 
 ## show result of 3D motion 
 
-python sac_reader.py
+# python sac_reader.py
 
