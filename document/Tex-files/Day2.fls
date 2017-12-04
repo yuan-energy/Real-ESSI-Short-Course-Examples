@@ -1,0 +1,11 @@
+PWD /home/hexiang/git/Real-ESSI-Short-Course-Examples/document/Tex-files
+INPUT /etc/texmf/web2c/texmf.cnf
+INPUT /usr/share/texmf/web2c/texmf.cnf
+INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT /home/hexiang/git/Real-ESSI-Short-Course-Examples/document/Tex-files/Day2.tex
+OUTPUT /home/hexiang/git/Real-ESSI-Short-Course-Examples/document/Tex-files/Day2.log
+OUTPUT /home/hexiang/git/Real-ESSI-Short-Course-Examples/document/Tex-files/Day2.pdf
+INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map

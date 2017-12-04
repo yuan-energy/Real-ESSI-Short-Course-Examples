@@ -8,7 +8,7 @@
 // Predefined Parameters
 //****************************************************************
 
-total_height = 50 ;
+total_height = 45 ;
 total_width = 210 ;
 
 Ox = 0;

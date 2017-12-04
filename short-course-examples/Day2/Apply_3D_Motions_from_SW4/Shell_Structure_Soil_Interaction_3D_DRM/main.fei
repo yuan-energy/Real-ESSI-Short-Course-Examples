@@ -76,7 +76,8 @@ add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_us
 include "node.fei";
 include "element.fei";
 include "load.fei";
-include "damping.fei";
+
+// include "damping.fei";
 
 
 
@@ -99,7 +100,7 @@ simulate 1 steps using static algorithm;
 new loading stage "motion";
 
 add load # 2 type domain reduction method 
-   hdf5_file = "DRM3Dmotion_fromSW4.hdf5" ;
+   hdf5_file = "DRMinput_shell.hdf5" ;
 
 define convergence test Norm_Unbalance tolerance = 10 maximum_iterations = 20 verbose_level = 1; 
 

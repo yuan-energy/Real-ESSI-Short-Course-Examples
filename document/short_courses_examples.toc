@@ -1,0 +1,103 @@
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Install x2go client}{3}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Install the client-side of x2go}{3}{subsection.1.1.1}
+\contentsline {paragraph}{Install x2go client on Ubuntu}{3}{section*.2}
+\contentsline {paragraph}{Install x2go client on Mac}{3}{section*.3}
+\contentsline {paragraph}{Install x2go client on Windows}{3}{section*.4}
+\contentsline {paragraph}{Install x2go client on other operating systems}{3}{section*.5}
+\contentsline {subsection}{\numberline {1.1.2}Configure the client-side of x2go}{3}{subsection.1.1.2}
+\contentsline {section}{\numberline {1.2}AWS Regions}{4}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}AWS Price by Regions}{4}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}AWS Latency by Regions}{5}{subsection.1.2.2}
+\contentsline {chapter}{\numberline {2}Day 1 Overview}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Nuclear Power Plant with 3D motions from SW4}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}Nuclear Power Plant with 1D motions from Deconvolution}{8}{section.2.2}
+\contentsline {section}{\numberline {2.3}Nuclear Power Plant with 3$\times $1D motions from Deconvolution}{10}{section.2.3}
+\contentsline {section}{\numberline {2.4}Single element Models: illustrate the elastic-plastic behavior}{12}{section.2.4}
+\contentsline {section}{\numberline {2.5}Pushover for Nonlinear Frame}{14}{section.2.5}
+\contentsline {section}{\numberline {2.6}Preprocess examples with Gmsh}{16}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Cantilever Example}{16}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Brick-shell-beam Example}{17}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}DRM 2D Example}{18}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.4}DRM 3D Example}{19}{subsection.2.6.4}
+\contentsline {section}{\numberline {2.7}Postprocess examples with Paraview}{20}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}Slice Visualization}{20}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Stress Visualization}{21}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}Eigen Visualization}{22}{subsection.2.7.3}
+\contentsline {section}{\numberline {2.8}Check Model and Visualization of Boundary Conditions}{23}{section.2.8}
+\contentsline {section}{\numberline {2.9}Restart Simulation}{24}{section.2.9}
+\contentsline {subsection}{\numberline {2.9.1} Restart in the next stage }{24}{subsection.2.9.1}
+\contentsline {subsection}{\numberline {2.9.2} Restart inside the stage }{25}{subsection.2.9.2}
+\contentsline {chapter}{\numberline {3}Day 2 Motions}{26}{chapter.3}
+\contentsline {section}{\numberline {3.1}Deconvolution 1D Motions}{27}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Free field 1D model, deconvolution 1D motion, model with DRM}{27}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Free field 3D model, deconvolution 1D motion, model with DRM}{29}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}ESSI 3D building model, deconvolution 1D model, solid model with DRM}{30}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}ESSI 3D building model, deconvolution 1D model, shell model with DRM}{32}{subsection.3.1.4}
+\contentsline {section}{\numberline {3.2}Deconvolution 3$\times $1D Motions}{33}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Free field 1D model, deconvolution 3$\times $1D motion, model with DRM}{33}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Free field 3D model, deconvolution 3$\times $1D motion, model with DRM}{35}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Free field 3D model, deconvolution 3$\times $1D motion, solid model with DRM}{36}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}ESSI 3D building model, deconvolution 3$\times $1D motion, shell model with DRM}{38}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Mesh Dependence of Wave Propagation Frequencies}{39}{section.3.3}
+\contentsline {section}{\numberline {3.4}Apply 3D Motions from SW4}{41}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}3D seismic motion by SW4}{41}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Free field 3D model, 3D motion, model with DRM}{43}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}ESSI 3D building model, 3D motion, solid model with DRM}{45}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}ESSI 3D building model, 3D motion, shell model with DRM}{46}{subsection.3.4.4}
+\contentsline {chapter}{\numberline {4}Day 3 Nonlinearities}{47}{chapter.4}
+\contentsline {section}{\numberline {4.1}Single element Models: illustrate the elastic-plastic behavior}{48}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}von-Mises material model}{48}{subsection.4.1.1}
+\contentsline {paragraph}{von-Mises perfectly plastic material model}{48}{section*.61}
+\contentsline {paragraph}{von-Mises Armstrong-Frederick material model}{48}{section*.62}
+\contentsline {subsection}{\numberline {4.1.2}von-Mises G/Gmax material model}{50}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Drucker-Prager perfectly plastic material model}{52}{subsection.4.1.3}
+\contentsline {paragraph}{Drucker-Prager perfectly plastic material model}{52}{section*.67}
+\contentsline {paragraph}{Drucker-Prager Armstrong-Frederick Non-associate material model}{52}{section*.68}
+\contentsline {subsection}{\numberline {4.1.4}Drucker-Prager G/Gmax Non-associate material model}{53}{subsection.4.1.4}
+\contentsline {section}{\numberline {4.2}Wave Propagation through elastoplastic Soil}{54}{section.4.2}
+\contentsline {section}{\numberline {4.3}Contact Examples}{55}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1} Axial behavior: Stress Based Contact Element}{55}{subsection.4.3.1}
+\contentsline {paragraph}{Stress-Based Hard Contact Example}{55}{section*.75}
+\contentsline {paragraph}{Stress-Based Soft Contact Example}{55}{section*.76}
+\contentsline {subsection}{\numberline {4.3.2} Shear behavior: Stress Based Contact }{56}{subsection.4.3.2}
+\contentsline {paragraph}{Stress-Based Elastic-perfectly plastic contact}{56}{section*.78}
+\contentsline {paragraph}{Stress-Based Elastic-hardening contact}{56}{section*.79}
+\contentsline {paragraph}{Stress-Based Elastic-hardening-softening contact}{56}{section*.80}
+\contentsline {subsection}{\numberline {4.3.3} Force Based Contact Example: Base Isolator}{57}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4} Frame Pushover}{58}{section.4.4}
+\contentsline {section}{\numberline {4.5} Wall Pushover}{60}{section.4.5}
+\contentsline {section}{\numberline {4.6} Viscous nonlinear behavior }{61}{section.4.6}
+\contentsline {section}{\numberline {4.7} Numerical Damping Example }{62}{section.4.7}
+\contentsline {section}{\numberline {4.8} Realistic Nuclear Power Plant Example with Nonlinearities}{63}{section.4.8}
+\contentsline {chapter}{\numberline {5}Nonlinear Analysis Steps}{65}{chapter.5}
+\contentsline {section}{\numberline {5.1}Free Field 1D}{66}{section.5.1}
+\contentsline {paragraph}{Elastic Material}{66}{section*.94}
+\contentsline {paragraph}{Elastoplastic Material}{66}{section*.95}
+\contentsline {section}{\numberline {5.2}Free Field 3D}{68}{section.5.2}
+\contentsline {paragraph}{Elastic Material}{68}{section*.98}
+\contentsline {paragraph}{von-Mises Armstrong-Frederick Material}{68}{section*.99}
+\contentsline {paragraph}{von-Mises G/Gmax Material}{68}{section*.100}
+\contentsline {paragraph}{Drucker-Prager G/Gmax Material}{69}{section*.101}
+\contentsline {section}{\numberline {5.3}Soil-Foundation Interaction 3D}{71}{section.5.3}
+\contentsline {paragraph}{Elastic Material}{71}{section*.105}
+\contentsline {paragraph}{von-Mises Armstrong-Frederick Material}{71}{section*.106}
+\contentsline {paragraph}{von-Mises G/Gmax Material}{71}{section*.107}
+\contentsline {paragraph}{Drucker-Prager G/Gmax Material}{72}{section*.108}
+\contentsline {paragraph}{Contact Elements}{72}{section*.109}
+\contentsline {paragraph}{Both Elastoplastic Material and Contact Elements}{72}{section*.110}
+\contentsline {section}{\numberline {5.4}Soil-Structure Interaction 3D}{74}{section.5.4}
+\contentsline {paragraph}{Elastic Material}{74}{section*.114}
+\contentsline {paragraph}{von-Mises Armstrong-Frederick Material}{74}{section*.115}
+\contentsline {paragraph}{von-Mises G/Gmax Material}{74}{section*.116}
+\contentsline {paragraph}{Drucker-Prager G/Gmax Material}{75}{section*.117}
+\contentsline {paragraph}{Contact Elements}{75}{section*.118}
+\contentsline {paragraph}{Both Elastoplastic Material and Contact Elements}{75}{section*.119}
+\contentsline {section}{\numberline {5.5}Structure Analysis without Soil}{78}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Eigen Analysis}{78}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Imposed Motion}{80}{subsection.5.5.2}
+\contentsline {chapter}{\numberline {6}Postprocessing Examples with Python}{81}{chapter.6}
+\contentsline {section}{\numberline {6.1}Basic Operations on Output }{81}{section.6.1}
+\contentsline {section}{\numberline {6.2}Time Series Plotting}{81}{section.6.2}
+\contentsline {section}{\numberline {6.3}Spectrum Analysis}{81}{section.6.3}
+\contentsline {chapter}{\numberline {7}Summary}{83}{chapter.7}

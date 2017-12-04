@@ -1,0 +1,21 @@
+%%% This file contains meta data for ESSI box (i.e. motion recording station) %%%%
+%%% By Hexiang, Nov, 2017
+
+
+origin_x = 2100; 
+
+origin_y = 2300;
+
+origin_z = 0;
+
+station_spacing_x = 10;
+
+station_spacing_y = 10; 
+
+station_spacing_z = 10;
+
+box_length = 300; 
+
+box_width = 300; 
+
+box_height = 100; 

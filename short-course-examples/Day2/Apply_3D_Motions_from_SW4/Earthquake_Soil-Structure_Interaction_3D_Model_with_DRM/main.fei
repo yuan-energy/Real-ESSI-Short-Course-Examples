@@ -58,7 +58,7 @@ rayl_3_a1 = 2*xi_3/(w1+w2);
 rayl_3_a0 = rayl_3_a1*w1*w2; 
 
 // DRM layer Damping 
-xi_4 = 0.09 ; 
+xi_4 = 0.00 ; 
 rayl_4_a1 = 2*xi_4/(w1+w2); 
 rayl_4_a0 = rayl_4_a1*w1*w2; 
 
@@ -99,7 +99,7 @@ simulate 1 steps using static algorithm;
 new loading stage "motion";
 
 add load # 2 type domain reduction method 
-   hdf5_file = "DRM3Dmotion_fromSW4.hdf5" ;
+   hdf5_file = "DRMinput_Solid.hdf5" ;
 
 define convergence test Norm_Unbalance tolerance = 10 maximum_iterations = 20 verbose_level = 1; 
 
