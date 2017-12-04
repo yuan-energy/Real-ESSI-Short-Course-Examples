@@ -8,4 +8,4 @@ rm -rf *.feioutput
 
 rm -rf *.log
 
-rm RealESSI_VERSION_INFO.txt
+rm -rf RealESSI_VERSION_INFO.txt
