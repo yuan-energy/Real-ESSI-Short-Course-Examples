@@ -83,10 +83,10 @@ simulate 1 steps using static algorithm;
 // Simulate Loading Stage 2: DRM Motion
 
 new loading stage "motion";
- 
+
 
 // Wave propagation with wave fields:
-add wave field # 1 with
+add wave field # 11 with
   acceleration_filename = "sw4_free_field_center_ax.txt"
   unit_of_acceleration = 1 * m/s^2
   displacement_filename = "sw4_free_field_center_ux.txt"
@@ -101,7 +101,7 @@ add wave field # 1 with
   unit_of_thickness = 1*m 
   ;
   
-add wave field # 2 with
+add wave field # 12 with
   acceleration_filename = "sw4_free_field_center_ay.txt"
   unit_of_acceleration = 1 * m/s^2
   displacement_filename = "sw4_free_field_center_uy.txt"
@@ -116,7 +116,7 @@ add wave field # 2 with
   unit_of_thickness = 1*m 
   ;
 
-add wave field # 3 with
+add wave field # 13 with
   acceleration_filename = "sw4_free_field_center_az.txt"
   unit_of_acceleration = 1 * m/s^2
   displacement_filename = "sw4_free_field_center_uz.txt"
@@ -132,10 +132,10 @@ add wave field # 3 with
   ;
 
 // Dynamic Domain-Reduction-Method Loading with the wave field:
-add load # 2 type DRM from wave field 
-    # 1 in direction ux 
-    # 2 in direction uy
-    # 3 in direction uz
+add load # 11 type DRM from wave field 
+    # 11 in direction ux 
+    # 12 in direction uy
+    # 13 in direction uz
     soil_surface at z = 0 * m 
     hdf5_file = "DRMinput.hdf5" ; 
 

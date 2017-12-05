@@ -15,7 +15,8 @@ echo $local_DIR
 
 # Copy the examples.
 echo "Copying Examples to local Directory ... "
-cp -r short-course-examples/* $local_DIR
+rm -rf $local_DIR/*
+cp -r ./Real-ESSI-Short-Course-Examples/short-course-examples/* $local_DIR
 echo "Done Copying Examples!"
 
 echo "Cleaning Downloaded Examples ... "

@@ -46,7 +46,7 @@ add node # 40 at (0*m,5*m,-25*m) with 3 dofs;
 add node # 41 at (0*m,5*m,-20*m) with 3 dofs; 
 add node # 42 at (0*m,5*m,-15*m) with 3 dofs; 
 add node # 43 at (0*m,5*m,-10*m) with 3 dofs; 
-add node # 44 at (0*m,5*m,-5*m) with 3 dofs; 
+add node # 10044 at (0*m,5*m,-5*m) with 3 dofs; 
 
 //*************************************************************************************************************************
 //							Add_All_Node{ unit:= m, nof_dofs:= 3}Ends
