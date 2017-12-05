@@ -45,9 +45,10 @@ pylab.rcParams.update(params)
 fig = plt.figure()
 ax = plt.subplot(111)
 
-ax.plot(in_time, in_acc, 'r-' , linewidth=3, label="input")
-ax.plot(times, acc2, 'k-' , linewidth=3, label="element size = 1m")
-ax.plot(times, acc4, 'k--' , linewidth=3, label="element size = 10m")
+ax.plot(in_time, in_acc, 'k-' , linewidth=3, label="input")
+# ax.plot(times, acc2, 'b-' , linewidth=3, label="element size = 1m")
+ax.plot(times, acc3, 'r-' , linewidth=3, label="element size = 5m")
+ax.plot(times, acc4, 'g-' , linewidth=3, label="element size = 10m")
 ax.plot(times, acc5, 'b-' , linewidth=3, label="element size = 20m")
 
 box = ax.get_position()

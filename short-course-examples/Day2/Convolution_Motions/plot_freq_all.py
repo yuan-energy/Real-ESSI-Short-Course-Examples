@@ -45,6 +45,7 @@ def FFT(x,dt,maxf,plot=True):
 
 
 in_filename = 'ormsby_acc.dat'
+# in_filename = 'ricker_acc.txt'
 filename2 = 'elemLen1m/top_acc.txt'
 filename3 = 'elemLen5m/top_acc.txt'
 filename4 = 'elemLen10m/top_acc.txt'
@@ -57,6 +58,10 @@ data3 = np.loadtxt(filename3)
 data4 = np.loadtxt(filename4)
 data5 = np.loadtxt(filename5)
 
+wave_data = np.loadtxt('convolution/top_at_depth_0_acc.txt')
+wave_time = wave_data[:,0]
+wave_acc = wave_data[:,1]
+
 times = data2[:,0]
 dt = times[1] - times[0]
 
@@ -68,10 +73,13 @@ acc3 = data3[:,1]
 acc4 = data4[:,1]
 acc5 = data5[:,1]
 
-[f_in_time, f_in_acc] = FFT( in_acc, dt, 20, plot=False)
+[f_in_time, f_in_acc] = FFT( in_acc, in_time[1]-in_time[0] , 20, plot=False)
 [f_times, f_acc2] = FFT( acc2, dt, 20, plot=False)
+[f_times, f_acc3] = FFT( acc3, dt, 20, plot=False)
 [f_times, f_acc4] = FFT( acc4, dt, 20, plot=False)
 [f_times, f_acc5] = FFT( acc5, dt, 20, plot=False)
+
+[f_wave_times, f_wave_acc] = FFT( wave_acc, dt, 20, plot=False)
 
 
 # #############################
@@ -89,10 +97,14 @@ pylab.rcParams.update(params)
 fig = plt.figure()
 ax = plt.subplot(111)
 
-ax.semilogx(f_in_time, f_in_acc, 'r-' , linewidth=3, label="input")
-ax.semilogx(f_times, f_acc2, 'k-' , linewidth=3, label="element size = 1m")
-ax.semilogx(f_times, f_acc4, 'k--' , linewidth=3, label="element size = 10m")
+ax.semilogx(f_in_time, f_in_acc, 'k-' , linewidth=3, label="input")
+# ax.semilogx(f_times, f_acc2, 'b-' , linewidth=3, label="element size = 1m")
+ax.semilogx(f_times, f_acc3, 'r-' , linewidth=3, label="element size = 5m")
+ax.semilogx(f_times, f_acc4, 'g-' , linewidth=3, label="element size = 10m")
 ax.semilogx(f_times, f_acc5, 'b-' , linewidth=3, label="element size = 20m")
+
+# ax.semilogx(f_wave_times, f_wave_acc, 'g-' , linewidth=3, label="wave field")
+
 box = ax.get_position()
 ax.set_position([box.x0, box.y0, box.width * 0.7, box.height])
 

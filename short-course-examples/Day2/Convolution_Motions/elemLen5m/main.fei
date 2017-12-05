@@ -23,8 +23,8 @@ define dynamic integrator Newmark with
 //    gamma = 0.5050 
 //    beta = 0.2525;
 // plot node # 6 in direction ux to file "top";
-simulate 4000 steps using transient algorithm 
-    time_step = 0.001*s
+simulate 1000 steps using transient algorithm 
+    time_step = 0.01*s
     ;
 
 bye;

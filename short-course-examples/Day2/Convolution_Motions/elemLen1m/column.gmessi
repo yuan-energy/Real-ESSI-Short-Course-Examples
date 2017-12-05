@@ -16,6 +16,7 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 
 ## Soil 
 [Fix_Dofs{Physical_Group#all_volume, DofTypes:= uy}]
+[Fix_Dofs{Physical_Group#all_volume, DofTypes:= uz}]
 [Add_8NodeBrick{Physical_Group#all_volume, MaterialNo:= 1}]
 [Add_Node_Load_Imposed_Motion_Series{Physical_Group#bottom_surface, DofType:= ux, DispScale:= 1*m, DispFile:= "../ormsby_dis.dat" , VelScale:= 1*m/s , VelFile:= "../ormsby_vel.dat", AccScale:= 1*m/s^2, AccFile:= "../ormsby_acc.dat"}]
 

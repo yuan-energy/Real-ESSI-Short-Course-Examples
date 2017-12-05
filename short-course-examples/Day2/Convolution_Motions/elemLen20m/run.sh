@@ -1,5 +1,5 @@
 gmsh -3 column.geo
-
+rm -rf column_fei
 gmessy column.gmessi
 
 
