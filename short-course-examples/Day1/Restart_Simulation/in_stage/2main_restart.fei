@@ -35,7 +35,7 @@ model name "t" ;
 
 restart model using file "t_1_at_load_factor_0.5_RESTART.essi"; 
 new loading stage "1_restart";
-include "load2.fei";
+// include "load2.fei";
     
 // define convergence test <Norm_Displacement_Increment|Energy_Increment|Norm_Unbalance|Relative_Norm_Displacement_Increment|Relative_Energy_Increment|Relative_Norm_Unbalance> tolerance = <.> maximum_iterations = <.> verbose_level = <0|1|2>;
 define convergence test Relative_Norm_Unbalanced_Force
