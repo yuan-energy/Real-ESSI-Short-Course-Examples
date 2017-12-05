@@ -1,11 +1,12 @@
 
 // Support Variable Definition and Calculation with Units
 
-// rho = 2000*kg/m^3
+// rho = 2000*kg/m^3 ;
 // Vs = 500 * m/s ;
 // G = Vs^2 * rho ;
-// nu = 0.1 ;        
+// nu = 0.1 ;
 // E = 2 * ( 1 + nu )  * G ; 
+// print E ; 
 
 
 
@@ -21,7 +22,7 @@ add material # 1 type linear_elastic_isotropic_3d
 
 add material # 2 type linear_elastic_isotropic_3d
   mass_density = 2000*kg/m^3 
-  elastic_modulus = 1.1e9*N/m^2
+  elastic_modulus = 1.1* GPa
   poisson_ratio = 0.1;
 
 

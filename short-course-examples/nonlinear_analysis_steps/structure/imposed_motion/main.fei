@@ -82,7 +82,7 @@ simulate 1 steps using static algorithm;
 // Simulate Loading Stage 2: DRM Motion
 
 new loading stage "imposed_motion" ;
-enable acceleration output;
+
 include "imposed_motion.fei";
 
 define algorithm With_no_convergence_check ;

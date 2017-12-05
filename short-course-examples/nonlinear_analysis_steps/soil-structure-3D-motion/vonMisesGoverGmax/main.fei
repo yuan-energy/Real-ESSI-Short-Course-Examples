@@ -171,7 +171,7 @@ simulate 1 steps using static algorithm;
 new loading stage "motion";
 
 
-enable acceleration output; 
+ 
 add load # 2 type DRM from wave field 
     # 1 in direction ux 
     # 2 in direction uy

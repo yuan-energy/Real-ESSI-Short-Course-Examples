@@ -3,7 +3,7 @@
 //							Add_All_Node{ unit:= m, nof_dofs:= 3}Starts
 //*************************************************************************************************************************
 
-add node # 1 at (0*m,0*m,-50*m) with 3 dofs; 
+add node # 1 at (0*m,0*m,-5e4*mm) with 3 dofs; 
 add node # 2 at (5*m,0*m,-50*m) with 3 dofs; 
 add node # 3 at (0*m,5*m,-50*m) with 3 dofs; 
 add node # 4 at (5*m,5*m,-50*m) with 3 dofs; 

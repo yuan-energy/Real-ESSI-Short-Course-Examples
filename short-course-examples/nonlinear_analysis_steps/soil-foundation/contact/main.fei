@@ -168,7 +168,7 @@ add wave field # 3 with
   unit_of_damping = absolute
   unit_of_thickness = 1*m 
   ;
-enable acceleration output; 
+ 
 //add load # 2 type domain reduction method 
   //  hdf5_file = "DRM_Input.hdf5" ; 
 add load # 2 type DRM from wave field 

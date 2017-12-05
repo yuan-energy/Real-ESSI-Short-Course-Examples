@@ -83,7 +83,7 @@ simulate 10 steps using static algorithm;
 // Simulate Loading Stage 2: DRM Motion
 
 new loading stage "motion";
-enable acceleration output; 
+ 
 
 // Wave propagation with wave fields:
 add wave field # 1 with
