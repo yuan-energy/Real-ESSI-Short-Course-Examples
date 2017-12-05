@@ -35,9 +35,10 @@
 
 
 
-restart parallel model 
-	number_of_files = 4
-	restart_files = "t_1_at_load_factor_0.3_Master_RESTART.essi t_1_at_load_factor_0.3_subdomain_1_RESTART.essi t_1_at_load_factor_0.3_subdomain_2_RESTART.essi  t_1_at_load_factor_0.3_subdomain_3_RESTART.essi" ;
+// restart parallel model 
+	// number_of_files = 4
+	// restart_files = "t_1_at_load_factor_0.3_Master_RESTART.essi t_1_at_load_factor_0.3_subdomain_1_RESTART.essi t_1_at_load_factor_0.3_subdomain_2_RESTART.essi  t_1_at_load_factor_0.3_subdomain_3_RESTART.essi" ;
+restart model using file "t_1_at_load_factor_0.3_RESTART.essi" ; 
 model name "t" ;
 new loading stage "2_restart";
 
