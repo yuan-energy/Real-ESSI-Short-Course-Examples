@@ -19,7 +19,7 @@ do
 	cd ${current_dir}/"${deepest_dir_array[$element]}"
 	echo $PWD
 	sed -i 's/unit\_of\_Vs\ =\ 1/unit\_of\_Vs\_or\_Vp\ =\ 1/' main.fei
-	# rm -f *.tgz
-	# tar -czvf ${PWD##*/}.tgz *
+	rm -f *.tgz
+	tar -czvf ${PWD##*/}.tgz *
 
 done

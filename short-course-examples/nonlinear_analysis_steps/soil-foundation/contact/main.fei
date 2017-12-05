@@ -133,7 +133,7 @@ add wave field # 1 with
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile.txt"
-  unit_of_Vs = 1 * m/s
+  unit_of_Vs_or_Vp = 1 * m/s
   unit_of_rho = 1 * kg/m^3
   unit_of_damping = absolute
   unit_of_thickness = 1*m 
@@ -148,7 +148,7 @@ add wave field # 2 with
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile.txt"
-  unit_of_Vs = 1 * m/s
+  unit_of_Vs_or_Vp = 1 * m/s
   unit_of_rho = 1 * kg/m^3
   unit_of_damping = absolute
   unit_of_thickness = 1*m 
@@ -163,7 +163,7 @@ add wave field # 3 with
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile_Vp.txt"
-  unit_of_Vs = 1 * m/s
+  unit_of_Vs_or_Vp = 1 * m/s
   unit_of_rho = 1 * kg/m^3
   unit_of_damping = absolute
   unit_of_thickness = 1*m 
