@@ -47,13 +47,12 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 [Add_8NodeBrick{Physical_Group#DRM, MaterialNo:= 2}]
 [Add_8NodeBrick{Physical_Group#Damping, MaterialNo:= 3}]
 
-[Generate_DRM_HDF5_3D{Physical_Group#DRM, Surface_Normal:= z, Node_Coordinate_Tol:= 0.00001 , FileName:= DRMinput.hdf5}]
+[Generate_DRM_HDF5_3D{Physical_Group#DRM, Surface_Normal:= z, Node_Coordinate_Tol:= 0.00001 , FileName:= DRMinput_shell.hdf5}]
 
 
 #### ======================================================
 #### Foudantion
 #### ======================================================
-
 [Add_8NodeBrick{Physical_Group#foundation_volume, MaterialNo:= 4}]
 
 ### Connect Foundation to Soil

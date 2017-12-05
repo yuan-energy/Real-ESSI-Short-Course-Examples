@@ -487,6 +487,8 @@ The illustration results of mesh dependence is shown in Fig.~\ref{fig_day2_convo
 
 
 
+
+
 % ******************************************************************
 % ******************************************************************
 % ******************************************************************
@@ -494,6 +496,77 @@ The illustration results of mesh dependence is shown in Fig.~\ref{fig_day2_convo
 \newpage
 \section{Apply 3D Motions from SW4}
 \label{Apply_3D_Motions_from_SW4}
+
+\subsection{3D seismic motion by SW4}
+\label{3D seismic motion by SW4}
+
+A 3D seismic motion field has been developed by SW4. The characteristic parameters of the seismic motion are given below: 
+
+\begin{itemize}
+  \item Geological model:  length $3km$, width 3$km$, height $1.7km$, grid size $50m$, width of super grid damping layer $30m$.  
+  \item Material model: Elastic material, First $1km$: $V_p= 4630.76m/s$, $V_s=2437.56m/s$, $\rho = 2600kg/m^3$.  $1km\sim1.7km$: $V_p=6000m/s$, $V_s=3464m/s$, $\rho = 2700kg/m^3$ 
+  \item Source type: point moment source, moment seismic moment $M_{xy} = 5e^{15} N \cdot m$, moment magnitude 4.5. 
+  \item Time function: Gaussian function, with dominant frequency $2.5Hz$ and maximum frequency $6.5Hz$. 
+\end{itemize}  
+
+The time series displacement and acceleration response at the center of the model is shown below in figure \ref{3D_motion_time_response}. 
+%
+And figure \ref{3D_motion_fft_response} gives corresponding FFT response. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width = 8cm]{./Figure-files/Day2/Apply_3D_Motions_from_SW4/3D_seismic_motion_by_SW4/time_response.pdf}
+  \caption{Time series response of 3D motion}
+  \label{3D_motion_time_response}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width = 8cm]{./Figure-files/Day2/Apply_3D_Motions_from_SW4/3D_seismic_motion_by_SW4/frequency_response.pdf}
+  \caption{FFT response of 3D motion}
+  \label{3D_motion_fft_response}
+\end{figure}
+
+During the simulation of SW4, the time series motions at many ESSI nodes (basically are some pre-defined record stations) of an ESSI box ($300m\times300m\times100m$) are recorded and written into \textbf{SAC} files. 
+%
+Then an transition program SW42ESSI has been developed to interpolate these motions to DRM nodes of localized ESSI model by specifying some geometric translational and rotational transformation, as shown in figure \ref{Transition from SW4 to Real ESSI}. 
+%
+
+To launch SW42ESSI, following parameters are needed: 
+
+\begin{itemize}
+
+  \item DRM input: specify the name of DRM input files. This DRM file just contains the geometric information of DRM layer in ESSI model (e.g. DRM node IDs, nodal coordinates, etc). 
+
+  \item SW4 motion directory: specify the output directory of SW4, that contains SAC files. 
+
+  \item origin coordinates of ESSI box (x, y, z): the SW4 coordinates of the origin of ESSI box, i.e. the coordinates of ESSI nodes, whose station ID is (0, 0, 0). 
+
+  \item dimensions of ESSI Box (length, width, height): specify the dimension (length, width and height) of ESSI box. 
+
+  \item spacing of ESSI nodes: specify the grid spacing of ESSI nodes (i.e. motion recording stations)
+
+  \item interval of time steps for sampling: specify the sampling frequency, if 1 is used here, ESSI simulation time step is the same as the simulation time step of SW4.   
+
+  \item reference point in ESSI model for translational transformation (x, y, z): specify the coordinate of reference point for translational transformation in ESSI model. 
+
+  \item reference point in SW4 model for translational transformation (x, y, z): specify the coordinate of reference point for translational transformation in SW4 model. 
+
+  \item conduct rotational transformation (yes/no): input yes and provide more rotational transformation parameters to enable rotational transformation. If input no, no more parameters are required.  
+
+  \item reference point in SW4 model for rotational transformation (x, y, z): specify the coordinate of reference point for rotational transformation in SW4 model. 
+
+  \item degrees of rotation along three axes (x, y, z): specify the degrees of rotation along three axes. The sign of rotation degrees follows right hand rule. 
+
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width = \textwidth]{./Figure-files/Day2/Apply_3D_Motions_from_SW4/3D_seismic_motion_by_SW4/SW42DRM.pdf}
+  \caption{Illustration of transition from SW4 to Real ESSI}
+  \label{Transition from SW4 to Real ESSI}
+\end{figure}
+
 
 \subsection{Free field 3D model, 3D motion, model with DRM}
 \label{Free_fields_3D_model_with_DRM3}
@@ -513,15 +586,14 @@ The compressed package of Real-ESSI input files for this example is available
 \end{figure}
 
 
-% The illustration results of free field DRM 3D Model under 1D motion is shown 
-% in Fig.~\ref{fig_day2_DRM3D_results}. 
+The illustration results of free field DRM 3D Model under 3D motion is shown in figure \ref{3D_free_field_model_under_3D_motion}. 
 
-% \begin{figure}[H]
-%   \centering
-%   \includegraphics[width = 10cm]{./Figure-files/Day1/Preprocess_examples_with_Gmsh/example4/DRM3D_results.png}
-%   \caption{Simulation Model DRM 2D}
-%   \label{fig_day2_DRM3D_results}
-% \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width = 10cm]{./Figure-files/Day2/Apply_3D_Motions_from_SW4/Free_fields_3D_model_with_DRM/Free_field_model_3D_motion.pdf}
+  \caption{Simulation of 3D free field model under 3D seismic motion}
+  \label{3D_free_field_model_under_3D_motion}
+\end{figure}
 
 
 
@@ -547,15 +619,14 @@ The compressed package of Real-ESSI input files for this example is available
 \end{figure}
 
 
-% The illustration results of DRM 3D Solid Structure Model  under 1D motion is shown 
-% in Fig.~\ref{fig_decon_1D_motion_3D_model_solid_structure}. 
+The illustration results of DRM 3D Solid Structure Model  under 3D motion is shown in figure \ref{3D_solid_model_3D_seismic_motion}. 
 
-% \begin{figure}[H]
-%   \centering
-%   \includegraphics[width = 10cm]{./Figure-files/Day2/Apply_3D_Motions_from_SW4/Earthquake_Soil-Structure_Interaction_3D_Model_with_DRM/DRM3D_results_1Dmotion.png}
-%   \caption{Simulation Model}
-%   \label{fig_decon_1D_motion_3D_model_solid_structure}
-% \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width = 10cm]{./Figure-files/Day2/Apply_3D_Motions_from_SW4/Earthquake_Soil-Structure_Interaction_3D_Model_with_DRM/3D_solid_model_3D_motion.pdf}
+  \caption{Simulation of 3D solid model under 3D seismic motions}
+  \label{3D_solid_model_3D_seismic_motion}
+\end{figure}
 
 
 
@@ -582,13 +653,12 @@ The compressed package of Real-ESSI input files for this example is available
 \end{figure}
 
 
-% The illustration results of DRM 3D shell Structure Model under 1D motion is shown 
-% in Fig.~\ref{fig_decon_1D_motion_3D_model_solid_shell_structure}. 
+The illustration results of DRM 3D shell Structure Model under 3D seismic motion is shown in figure \ref{3D shell model under 3D seismic motion}. 
 
-% \begin{figure}[H]
-%   \centering
-%   \includegraphics[width = 10cm]{./Figure-files/Day2/Apply_3D_Motions_from_SW4/Shell_Structure_Soil_Interaction_3D_DRM/shell_DRM3D.png}
-%   \caption{Simulation Model}
-%   \label{fig_decon_1D_motion_3D_model_solid_shell_structure}
-% \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width = 10cm]{./Figure-files/Day2/Apply_3D_Motions_from_SW4/Shell_Structure_Soil_Interaction_3D_DRM/3D_shell_3D_motion.pdf}
+  \caption{Simulation of 3D shell model under 3D motions}
+  \label{3D shell model under 3D seismic motion}
+\end{figure}
 
