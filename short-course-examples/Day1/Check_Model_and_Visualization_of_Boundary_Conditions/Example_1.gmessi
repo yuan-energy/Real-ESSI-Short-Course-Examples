@@ -26,75 +26,18 @@ gmESSI.loadGmshFile("Example_1.msh")
 
 ### Defining the Simulation Directory and node, element, load and main file
 ### Its important to define the directory and these files at the beginning of any gmESSI command conversion
-### 1 refers as overwrite mode ( will overwrite the directory if present) --- 0 would not overwrite
 gmESSI.setSimulationDir("./Example_1_ESSI_Simulation",1)
 gmESSI.setMainFile(gmESSI.SimulationDir+ "main.fei")
 gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
 gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")
 gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
 
-#### // is used to provide commands and gets translated in the main.fei file
-#### Also, the commands followed by exclamation '!' get directly copied to the main.fei file
-#### Usually, the user would write Real ESSI DSL against the exclamation mark.
-
-// My new model
-! model name "Soil_Block"; 
-
 [Add_All_Node{ unit:= m, nof_dofs:= 3}]
 
-// Adding Material also assigning it to elements 
-! add material #1 type linear_elastic_isotropic_3d_LT 	mass_density = 2000*kg/m^3 	elastic_modulus = 200*MPa 	poisson_ratio = 0.3;
 [Add_8NodeBrick{Physical_Group#Soil, MaterialNo:= 1}]
-
-! include "node.fei"; 
-! include "element.fei"; 
-! new loading stage "Stage1_Self_Weight"; 
 
 # Applying Fixities
 [Fix_Dofs{Physical_Group#Base_Surface, all}]
 [Fix_Dofs{Physical_Group#Lateral_Surface, ux uy}]
-
-#### For applying Self-Weight Load to the soil elements
-! add acceleration field # 1	ax =  0*g	ay = 0*g 	az = -1*g ;
-! add load #1 to all elements type self_weight use acceleration field # 1;
-
- #Updating the tag inside gmESSI as user entered by himself load tag 
-gmESSI.setESSITag("load",2)
-
-
-! include "load.fei"; 
-!	NumStep = 10;
-!	
-! 	define algorithm With_no_convergence_check; 
-! 	define solver UMFPack; 
-! 	define load factor increment 1/NumStep; 
-! 	simulate NumStep steps using static algorithm; 
-
-
-#### updating the new load file before new loading stage
-gmESSI.setLoadFile(gmESSI.SimulationDir+ "Surface_Load.fei")
-! new loading stage "Stage2_Surface_Loading"; 
-
-### For applying Surface load on the Top Surface of the Soil Block
-[Add_8NodeBrick_SurfaceLoad{Physical_Group#Soil,Physical_Group#Top_Surface,10*Pa}]
-
-##### For applying Nodal loads to all the nodes of the top surface
-#[Add_Node_Load_Linear{Physical_Group#Top_Surface, ForceType:= Fx, Mag:= 10*kN}]
-
-
-! include "Surface_Load.fei"; 
-!	NumStep = 10;
-!	
-! 	define algorithm With_no_convergence_check; 
-! 	define solver UMFPack; 
-! 	define load factor increment 1/NumStep; 
-! 	simulate NumStep steps using static algorithm; 
-
-! bye;
-
-
-### To write the physical group data to .txt file 
-#[Write_Data{ Physical_Group#Top_Surface,filename:= SurfaceLoad}]
-
 
 

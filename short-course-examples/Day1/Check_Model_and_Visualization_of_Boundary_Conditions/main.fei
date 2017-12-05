@@ -34,13 +34,7 @@ include "element.fei";
 include "load.fei";
 
 check model;
-// new loading stage "Fz";
 
-
-// define algorithm With_no_convergence_check ;
-// define solver UMFPack;
-// define load factor increment 1;
-// simulate 1 steps using static algorithm;
 bye;
 
 

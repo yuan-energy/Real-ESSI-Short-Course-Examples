@@ -1,0 +1,176 @@
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Base_Surface, all}Starts
+//*************************************************************************************************************************
+
+fix node # 1 dofs all; 
+fix node # 2 dofs all; 
+fix node # 3 dofs all; 
+fix node # 4 dofs all; 
+fix node # 9 dofs all; 
+fix node # 10 dofs all; 
+fix node # 11 dofs all; 
+fix node # 12 dofs all; 
+fix node # 13 dofs all; 
+fix node # 14 dofs all; 
+fix node # 15 dofs all; 
+fix node # 16 dofs all; 
+fix node # 17 dofs all; 
+fix node # 18 dofs all; 
+fix node # 19 dofs all; 
+fix node # 20 dofs all; 
+fix node # 21 dofs all; 
+fix node # 22 dofs all; 
+fix node # 23 dofs all; 
+fix node # 24 dofs all; 
+fix node # 57 dofs all; 
+fix node # 58 dofs all; 
+fix node # 59 dofs all; 
+fix node # 60 dofs all; 
+fix node # 61 dofs all; 
+fix node # 62 dofs all; 
+fix node # 63 dofs all; 
+fix node # 64 dofs all; 
+fix node # 65 dofs all; 
+fix node # 66 dofs all; 
+fix node # 67 dofs all; 
+fix node # 68 dofs all; 
+fix node # 69 dofs all; 
+fix node # 70 dofs all; 
+fix node # 71 dofs all; 
+fix node # 72 dofs all; 
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Base_Surface, all}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Lateral_Surface, ux uy}Starts
+//*************************************************************************************************************************
+
+fix node # 1 dofs ux uy; 
+fix node # 2 dofs ux uy; 
+fix node # 3 dofs ux uy; 
+fix node # 4 dofs ux uy; 
+fix node # 5 dofs ux uy; 
+fix node # 6 dofs ux uy; 
+fix node # 7 dofs ux uy; 
+fix node # 8 dofs ux uy; 
+fix node # 9 dofs ux uy; 
+fix node # 10 dofs ux uy; 
+fix node # 11 dofs ux uy; 
+fix node # 12 dofs ux uy; 
+fix node # 13 dofs ux uy; 
+fix node # 14 dofs ux uy; 
+fix node # 15 dofs ux uy; 
+fix node # 16 dofs ux uy; 
+fix node # 17 dofs ux uy; 
+fix node # 18 dofs ux uy; 
+fix node # 19 dofs ux uy; 
+fix node # 20 dofs ux uy; 
+fix node # 21 dofs ux uy; 
+fix node # 22 dofs ux uy; 
+fix node # 23 dofs ux uy; 
+fix node # 24 dofs ux uy; 
+fix node # 25 dofs ux uy; 
+fix node # 26 dofs ux uy; 
+fix node # 27 dofs ux uy; 
+fix node # 28 dofs ux uy; 
+fix node # 29 dofs ux uy; 
+fix node # 30 dofs ux uy; 
+fix node # 31 dofs ux uy; 
+fix node # 32 dofs ux uy; 
+fix node # 33 dofs ux uy; 
+fix node # 34 dofs ux uy; 
+fix node # 35 dofs ux uy; 
+fix node # 36 dofs ux uy; 
+fix node # 37 dofs ux uy; 
+fix node # 38 dofs ux uy; 
+fix node # 39 dofs ux uy; 
+fix node # 40 dofs ux uy; 
+fix node # 41 dofs ux uy; 
+fix node # 42 dofs ux uy; 
+fix node # 43 dofs ux uy; 
+fix node # 44 dofs ux uy; 
+fix node # 45 dofs ux uy; 
+fix node # 46 dofs ux uy; 
+fix node # 47 dofs ux uy; 
+fix node # 48 dofs ux uy; 
+fix node # 49 dofs ux uy; 
+fix node # 50 dofs ux uy; 
+fix node # 51 dofs ux uy; 
+fix node # 52 dofs ux uy; 
+fix node # 53 dofs ux uy; 
+fix node # 54 dofs ux uy; 
+fix node # 55 dofs ux uy; 
+fix node # 56 dofs ux uy; 
+fix node # 73 dofs ux uy; 
+fix node # 74 dofs ux uy; 
+fix node # 75 dofs ux uy; 
+fix node # 76 dofs ux uy; 
+fix node # 77 dofs ux uy; 
+fix node # 78 dofs ux uy; 
+fix node # 79 dofs ux uy; 
+fix node # 80 dofs ux uy; 
+fix node # 81 dofs ux uy; 
+fix node # 82 dofs ux uy; 
+fix node # 83 dofs ux uy; 
+fix node # 84 dofs ux uy; 
+fix node # 85 dofs ux uy; 
+fix node # 86 dofs ux uy; 
+fix node # 87 dofs ux uy; 
+fix node # 88 dofs ux uy; 
+fix node # 89 dofs ux uy; 
+fix node # 90 dofs ux uy; 
+fix node # 91 dofs ux uy; 
+fix node # 92 dofs ux uy; 
+fix node # 93 dofs ux uy; 
+fix node # 94 dofs ux uy; 
+fix node # 95 dofs ux uy; 
+fix node # 96 dofs ux uy; 
+fix node # 97 dofs ux uy; 
+fix node # 98 dofs ux uy; 
+fix node # 99 dofs ux uy; 
+fix node # 100 dofs ux uy; 
+fix node # 101 dofs ux uy; 
+fix node # 102 dofs ux uy; 
+fix node # 103 dofs ux uy; 
+fix node # 104 dofs ux uy; 
+fix node # 105 dofs ux uy; 
+fix node # 106 dofs ux uy; 
+fix node # 107 dofs ux uy; 
+fix node # 108 dofs ux uy; 
+fix node # 109 dofs ux uy; 
+fix node # 110 dofs ux uy; 
+fix node # 111 dofs ux uy; 
+fix node # 112 dofs ux uy; 
+fix node # 113 dofs ux uy; 
+fix node # 114 dofs ux uy; 
+fix node # 115 dofs ux uy; 
+fix node # 116 dofs ux uy; 
+fix node # 117 dofs ux uy; 
+fix node # 118 dofs ux uy; 
+fix node # 119 dofs ux uy; 
+fix node # 120 dofs ux uy; 
+fix node # 121 dofs ux uy; 
+fix node # 122 dofs ux uy; 
+fix node # 123 dofs ux uy; 
+fix node # 124 dofs ux uy; 
+fix node # 125 dofs ux uy; 
+fix node # 126 dofs ux uy; 
+fix node # 127 dofs ux uy; 
+fix node # 128 dofs ux uy; 
+fix node # 129 dofs ux uy; 
+fix node # 130 dofs ux uy; 
+fix node # 131 dofs ux uy; 
+fix node # 132 dofs ux uy; 
+fix node # 133 dofs ux uy; 
+fix node # 134 dofs ux uy; 
+fix node # 135 dofs ux uy; 
+fix node # 136 dofs ux uy; 
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Lateral_Surface, ux uy}Ends
+//*************************************************************************************************************************
+
