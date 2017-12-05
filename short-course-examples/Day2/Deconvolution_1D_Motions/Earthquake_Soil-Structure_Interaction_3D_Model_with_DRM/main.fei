@@ -109,12 +109,12 @@ add wave field # 1 with
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
   soil_profile_filename = "soil_profile.txt"
-  unit_of_Vs = 1 * m/s
+  unit_of_Vs_or_Vp = 1 * m/s
   unit_of_rho = 1 * kg/m^3
   unit_of_damping = absolute
   unit_of_thickness = 1*m 
   ;
-enable acceleration output; 
+ 
 //add load # 2 type domain reduction method 
   //  hdf5_file = "DRM_Input.hdf5" ; 
 add load # 2 type DRM from wave field # 1 
