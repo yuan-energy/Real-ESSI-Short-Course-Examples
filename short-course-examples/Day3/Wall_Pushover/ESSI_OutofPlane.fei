@@ -1,3 +1,8 @@
+// 
+// Real ESSI Simulator
+// Modeling and Simulation Examples
+// http://real-essi.info
+//
 fix node # 1 dofs uz;
 fix node # 2 dofs uz;
 fix node # 3 dofs uz;

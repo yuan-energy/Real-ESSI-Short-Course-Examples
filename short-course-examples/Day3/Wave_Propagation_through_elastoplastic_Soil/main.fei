@@ -1,3 +1,8 @@
+// 
+// Real ESSI Simulator
+// Modeling and Simulation Examples
+// http://real-essi.info
+//
 model name "von_Mises";
 
 vs = 1000*m/s;

@@ -1,3 +1,8 @@
+// 
+// Real ESSI Simulator
+// Modeling and Simulation Examples
+// http://real-essi.info
+//
 add element # 1 type FourNodeQuad with nodes (1, 2, 18, 17)
 									use material # 1
 									thickness = 1.0*m;

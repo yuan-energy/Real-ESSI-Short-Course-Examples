@@ -1,3 +1,8 @@
+// 
+// Real ESSI Simulator
+// Modeling and Simulation Examples
+// http://real-essi.info
+//
 //*************************************************************************************************************************
 //							Add_ForceBasedHardContact{Physical_Group#Contact_plus_Z, NormalStiffness:= Kn, TangentialStiffness:= Kt, Normalviscous_Damping:= Cn, Tangentialviscous_Damping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}Starts
 //*************************************************************************************************************************

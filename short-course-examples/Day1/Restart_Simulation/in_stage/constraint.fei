@@ -1,3 +1,8 @@
+// 
+// Real ESSI Simulator
+// Modeling and Simulation Examples
+// http://real-essi.info
+//
 fix node #    244 dofs ux    ;
 fix node #    244 dofs uy    ;
 fix node #    244 dofs uz    ;

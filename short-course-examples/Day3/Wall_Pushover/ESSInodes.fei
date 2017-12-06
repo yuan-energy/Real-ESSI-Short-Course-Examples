@@ -1,3 +1,8 @@
+// 
+// Real ESSI Simulator
+// Modeling and Simulation Examples
+// http://real-essi.info
+//
 add node # 1 at (0.*m, 0.*m, 0.0*m)  with 3 dofs;
 add node # 2 at (0.08128*m, 0.*m, 0.0*m)  with 3 dofs;
 add node # 3 at (0.16256*m, 0.*m, 0.0*m)  with 3 dofs;

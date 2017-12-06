@@ -1,3 +1,8 @@
+// 
+// Real ESSI Simulator
+// Modeling and Simulation Examples
+// http://real-essi.info
+//
 //*************************************************************************************************************************
 //							Add_BondedContact{Physical_Group#Contact_plupenaltyffness:= Kn, TpngentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}Starts
 //*************************************************************************************************************************

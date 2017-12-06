@@ -18,8 +18,24 @@ for element in $(seq 0 $((${#deepest_dir_array[@]} - 1)))
 do
 	cd ${current_dir}/"${deepest_dir_array[$element]}"
 	echo $PWD
-	sed -i 's/unit\_of\_Vs\ =\ 1/unit\_of\_Vs\_or\_Vp\ =\ 1/' main.fei
-	# rm -f *.tgz
-	# tar -czvf ${PWD##*/}.tgz *
+
+	sed  -i '/^\/\/$/d' *.fei
+	sed  -i '/^\/\/\ $/d' *.fei
+	sed  -i '/^\/\/\ http\:\/\/real\-essi\.info$/d' *.fei
+	sed  -i '/^\/\/\ Modeling\ and\ Simulation\ Examples$/d' *.fei
+	sed  -i '/^\/\/\ Real\ ESSI\ Simulator$/d' *.fei
+
+
+	sed  -i '1i \/\/' *.fei
+	sed  -i '1i \/\/\ http\:\/\/real\-essi\.info' *.fei
+	sed  -i '1i \/\/\ Modeling\ and\ Simulation\ Examples' *.fei
+	sed  -i '1i \/\/\ Real\ ESSI\ Simulator' *.fei
+	sed  -i '1i \/\/\ ' *.fei
+
+
+
+	rm -f *.tgz
+	rm -f *.tar.gz
+	tar -czvf _all_files_packaged_for_${PWD##*/}.tar.gz *
 
 done

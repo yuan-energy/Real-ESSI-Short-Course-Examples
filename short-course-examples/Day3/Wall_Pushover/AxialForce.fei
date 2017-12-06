@@ -1,3 +1,8 @@
+// 
+// Real ESSI Simulator
+// Modeling and Simulation Examples
+// http://real-essi.info
+//
 add load # 209 to node # 209 type linear Fy = -41620.56192*N;
 add load # 210 to node # 210 type linear Fy = -41620.56192*N;
 add load # 211 to node # 211 type linear Fy = -41620.56192*N;

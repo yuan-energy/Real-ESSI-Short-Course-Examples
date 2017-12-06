@@ -12,10 +12,11 @@
 
 
 find . -name *tgz -delete
+find . -name *tar.gz -delete
 
-find . -type d -maxdepth 1 -mindepth 1 -exec tar zcvf {}.tgz {} \;
+find . -type d -maxdepth 1 -mindepth 1 -exec tar zcvf {}.tar.gz {} \;
 
-mv Earthquake_Soil-Structure_Interaction_3D_Model_with_DRM.tgz Earthquake_Soil-Structure_Interaction_3D_Model_with_DRM
-mv Free_fields_3D_model_with_DRM.tgz Free_fields_3D_model_with_DRM
-mv Shell_Structure_Soil_Interaction_3D_DRM.tgz Shell_Structure_Soil_Interaction_3D_DRM
+mv Earthquake_Soil-Structure_Interaction_3D_Model_with_DRM.tar.gz Earthquake_Soil-Structure_Interaction_3D_Model_with_DRM/_all_files_packaged_for_Earthquake_Soil-Structure_Interaction_3D_Model_with_DRM.tar.gz
+mv Free_fields_3D_model_with_DRM.tar.gz Free_fields_3D_model_with_DRM/_all_files_packaged_for_Free_fields_3D_model_with_DRM.tar.gz
+mv Shell_Structure_Soil_Interaction_3D_DRM.tar.gz Shell_Structure_Soil_Interaction_3D_DRM/_all_files_packaged_for_Shell_Structure_Soil_Interaction_3D_DRM.tar.gz
 
