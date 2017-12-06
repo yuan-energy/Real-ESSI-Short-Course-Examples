@@ -52,7 +52,7 @@ add damping # 3 type Rayleigh with a0 = rayl_3_a0 a1 = rayl_3_a1 stiffness_to_us
 add damping # 4 type Rayleigh with a0 = rayl_4_a0 a1 = rayl_4_a1 stiffness_to_use = Initial_Stiffness; 
 add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_use = Initial_Stiffness; 
 
-// include "load.fei";
+include "damping_structure.fei";
 
 
 
