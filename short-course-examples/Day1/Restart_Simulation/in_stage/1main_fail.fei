@@ -6,13 +6,8 @@
 model name "t" ;
 
 Eshell  = 1e8*N/m^2; 
-nu    = 0.3;        // Poisson's ratio
-rho   = 1e2*kg/m^3;     // Mass density
-
-// add material # 1 type linear_elastic_isotropic_3d
-//   mass_density = rho
-//   elastic_modulus = Eshell
-//   poisson_ratio = nu;
+nu    = 0.3;        
+rho   = 1e2*kg/m^3;     
 
 
 add material # 1 type VonMisesArmstrongFrederick 
@@ -42,15 +37,15 @@ define NDMaterial constitutive integration algorithm Backward_Euler
 new loading stage "1";
 include "load.fei";
 	
-// define convergence test <Norm_Displacement_Increment|Energy_Increment|Norm_Unbalance|Relative_Norm_Displacement_Increment|Relative_Energy_Increment|Relative_Norm_Unbalance> tolerance = <.> maximum_iterations = <.> verbose_level = <0|1|2>;
+
 define convergence test Relative_Norm_Unbalanced_Force
     tolerance =  1E-7
     maximum_iterations =  10 ; 
 
-// define algorithm <With_no_convergence_check|Newton|Modified_Newton>;
+
 define algorithm Newton;
 
-// define algorithm With_no_convergence_check ;
+
 
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
@@ -61,20 +56,5 @@ define load factor increment 0.5;
 simulate 2 steps using static algorithm;
 
 
-
-// new loading stage "2";
-// // define algorithm With_no_convergence_check ;
-// define convergence test Relative_Norm_Unbalanced_Force
-//     tolerance =  0.01
-//     maximum_iterations =  10 ; 
-// // define algorithm modified_newton;
-// define algorithm Newton;
-
-// if(IS_PARALLEL==0)
-// {define solver UMFPack;}
-// else
-// {define solver parallel;}
-// define load factor increment 1;
-// simulate 1 steps using static algorithm;
 
 bye;
