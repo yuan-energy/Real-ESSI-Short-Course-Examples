@@ -1,0 +1,113 @@
+#****************************************************************
+# DRM 3D Example 
+#****************************************************************
+
+gmESSI.loadGmshFile("soil_foundation_DRM3D.msh")
+gmESSI.setSimulationDir("./soil_foundation_DRM3D_fei",1)
+gmESSI.setMainFile(gmESSI.SimulationDir+ "main.fei")
+gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
+gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")
+gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
+
+#2 3 "soil_x_minus_surface"
+#2 4 "soil_x_plus_surface"
+#2 5 "soil_y_plus_surface"
+#2 6 "soil_y_minus_surface"
+#2 7 "soil_z_top_surface"
+#2 9 "soils_bottom_most"
+#2 11 "foundation_top_surface"
+#2 12 "foundation_bottom_surface"
+#2 13 "foundation_x_minus_surface"
+#2 14 "foundation_y_plus_surface"
+#2 15 "foundation_x_plus_surface"
+#2 16 "foundation_y_minus_surface"
+#2 17 "all_foundation_surfaces"
+#2 18 "shell_super_around_surfaces"
+#2 19 "shell_super_mid_surfaces"
+#2 20 "shell_super_all_surfaces"
+#2 21 "shell_embed_around_surfaces"
+#2 22 "shell_embed_mid_surfaces"
+#2 23 "shell_embed_all_surfaces"
+#2 24 "shell_all_surfaces"
+#3 1 "soils_under_zero"
+#3 2 "soils_around_foundation"
+#3 8 "all_soils"
+#3 10 "foundation_volume"
+
+#[Add_Node{Physical_Group#shell_all_surfaces, Unit:= m, NumDofs:= 6}]
+[Add_Node{Physical_Group#all_soils, Unit:= m, NumDofs:= 3}]
+[Add_Node{Physical_Group#foundation_volume, Unit:= m, NumDofs:= 3}]
+
+## Soil 
+[Fix_All_Dofs{Physical_Group#soils_bottom_most}]
+
+[Fix_Dofs{Physical_Group#box_x_min_surface, DofTypes:= ux}]
+[Fix_Dofs{Physical_Group#box_x_max_surface, DofTypes:= ux}]
+[Fix_Dofs{Physical_Group#box_y_min_surface, DofTypes:= uy}]
+[Fix_Dofs{Physical_Group#box_y_max_surface, DofTypes:= uy}]
+
+[Generate_DRM_Physical_Group_3D{Physical_Group#all_soils, surface_normal:= z, Node_Coordinate_Tol:= 0.00001 , Number_of_layers:= 3 , PhysicalGroupName:= Inside_Soil, PhysicalGroupName:= DRM, PhysicalGroupName:= Damping }]
+
+[Add_8NodeBrick{Physical_Group#Inside_Soil, MaterialNo:= 1}]
+[Add_8NodeBrick{Physical_Group#DRM, MaterialNo:= 2}]
+[Add_8NodeBrick{Physical_Group#Damping, MaterialNo:= 3}]
+
+[Generate_DRM_HDF5_3D{Physical_Group#DRM, Surface_Normal:= z, Node_Coordinate_Tol:= 0.00001 , FileName:= DRMinput.hdf5}]
+
+
+#### ======================================================
+#### Foudantion
+#### ======================================================
+
+[Add_8NodeBrick{Physical_Group#foundation_volume, MaterialNo:= 4}]
+
+### Connect Foundation to Soil
+[Connect{Physical_Group#soil_x_minus_surface, Physical_Group#foundation_x_minus_surface, Physical_Group#foundation_x_minus_surface, dv1:= 1 \ 0 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_x_minus"}]
+[Connect{Physical_Group#soil_x_plus_surface, Physical_Group#foundation_x_plus_surface, Physical_Group#foundation_x_plus_surface, dv1:= -1 \ 0 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_x_plus"}]
+[Connect{Physical_Group#soil_y_minus_surface, Physical_Group#foundation_y_minus_surface, Physical_Group#foundation_y_minus_surface, dv1:= 0 \ 1 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_y_minus"}]
+[Connect{Physical_Group#soil_y_plus_surface, Physical_Group#foundation_y_plus_surface, Physical_Group#foundation_y_plus_surface, dv1:= 0 \ -1 \0, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_y_plus"}]
+[Connect{Physical_Group#soil_z_top_surface, Physical_Group#foundation_bottom_surfaces, Physical_Group#foundation_bottom_surfaces, dv1:= 0 \ 0 \ 1, mag:= 1e-2, Tolerence:= 1e-2, algo:= find, noT:= 1, PhysicalGroupName:= "soil_contact_z"}]
+
+#//Contact Parameters 
+! Kn = 1e10*N/m;
+#! Sr = 1000/m;
+#! Kn_max = 1e12*N/m;
+#! Kt = 1e7*N/m;
+#! Cn = 0*N/m*s;
+#! Ct = 0*N/m*s;
+#! Fr = 0.3;
+
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_x_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 1, NormVect_y:= 0, NormVect_z:= 0}]
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_x_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= -1, NormVect_y:= 0, NormVect_z:= 0}]
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_y_minus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 1, NormVect_z:= 0}]
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_y_plus, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= -1, NormVect_z:= 0}]
+#[Add_ForceBasedHardContact{Physical_Group#soil_contact_z, NormalStiffness:= Kn, TangentialStiffness:= Kt, NormalDamping:= Cn, TangentialDamping:= Ct, FrictionRatio:= Fr, NormVect_x:= 0, NormVect_y:= 0, NormVect_z:= 1}]
+
+[Add_BondedContact{Physical_Group#soil_contact_x_minus, Penalty_Stiffness:= Kn }]
+[Add_BondedContact{Physical_Group#soil_contact_x_plus, Penalty_Stiffness:= Kn }]
+[Add_BondedContact{Physical_Group#soil_contact_y_minus, Penalty_Stiffness:= Kn }]
+[Add_BondedContact{Physical_Group#soil_contact_y_plus, Penalty_Stiffness:= Kn }]
+[Add_BondedContact{Physical_Group#soil_contact_z, Penalty_Stiffness:= Kn }]
+
+
+
+
+
+#### ======================================================
+#### Box
+#### ======================================================
+#[Add_4NodeShell_Andes{Physical_Group#shell_all_surfaces, MaterialNo:= 5, Thickness:= 2*m}]
+
+
+
+### ======================================================
+### Damping
+### ======================================================
+
+#[Add_Damping_To_Element{Physical_Group#shell_all_surfaces, DampingNo:= 1}]
+[Add_Damping_To_Element{Physical_Group#foundation_volume, DampingNo:= 2}]
+[Add_Damping_To_Element{Physical_Group#Inside_Soil, DampingNo:= 3}]
+[Add_Damping_To_Element{Physical_Group#DRM, DampingNo:= 4}]
+[Add_Damping_To_Element{Physical_Group#Damping, DampingNo:= 5}]
+
+

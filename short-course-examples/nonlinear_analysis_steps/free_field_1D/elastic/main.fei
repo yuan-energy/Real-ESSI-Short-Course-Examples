@@ -92,9 +92,9 @@ new loading stage "motion";
 
 // Wave propagation with wave fields:
 add wave field # 11 with
-  acceleration_filename = "sw4_free_field_center_ax.txt"
+  acceleration_filename = "./motion/sw4_free_field_center_ax.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "sw4_free_field_center_ux.txt"
+  displacement_filename = "./motion/sw4_free_field_center_ux.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
@@ -107,9 +107,9 @@ add wave field # 11 with
   ;
   
 add wave field # 12 with
-  acceleration_filename = "sw4_free_field_center_ay.txt"
+  acceleration_filename = "./motion/sw4_free_field_center_ay.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "sw4_free_field_center_uy.txt"
+  displacement_filename = "./motion/sw4_free_field_center_uy.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
@@ -122,9 +122,9 @@ add wave field # 12 with
   ;
 
 add wave field # 13 with
-  acceleration_filename = "sw4_free_field_center_az.txt"
+  acceleration_filename = "./motion/sw4_free_field_center_az.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "sw4_free_field_center_uz.txt"
+  displacement_filename = "./motion/sw4_free_field_center_uz.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
