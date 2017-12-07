@@ -14,29 +14,29 @@ do
 	    then
 	    	echo $PWD
 
-	    	mkdir -p sample_results
-	    	mv *_node_*_x_*.txt sample_results
-	    	mv *_node_*_x_*.pdf sample_results
+	    	# mkdir -p sample_results
+	    	# mv *_node_*_x_*.txt sample_results
+	    	# mv *_node_*_x_*.pdf sample_results
 
-	    	mkdir -p motion
-	    	mv base_correct*.txt motion
-	    	mv scaled_NORTHR_*.txt motion
-	    	mv scaled_northridge*.dat motion
-	    	mv sw4_free_field_center*.txt motion
+	    	# mkdir -p motion
+	    	# mv base_correct*.txt motion
+	    	# mv scaled_NORTHR_*.txt motion
+	    	# mv scaled_northridge*.dat motion
+	    	# mv sw4_free_field_center*.txt motion
 
-	    	mkdir -p preprocess
-	    	mv *.geo preprocess
-	    	mv *.gmessi preprocess
-	    	mv *.msh preprocess
+	    	# mkdir -p preprocess
+	    	# mv *.geo preprocess
+	    	# mv *.gmessi preprocess
+	    	# mv *.msh preprocess
 
-	    	mkdir -p postprocess
-	    	mv extract_node_* postprocess
-	    	mv compare_top_acc.py postprocess
+	    	# mkdir -p postprocess
+	    	# mv extract_node_* postprocess
+	    	# mv compare_top_acc.py postprocess
 	    	
-	    	sed -i 's/acceleration\_filename\ =\ \"sw4/acceleration\_filename\ =\ \"\.\/motion\/sw4/' main.fei
-	    	sed -i 's/displacement\_filename\ =\ \"sw4/displacement\_filename\ =\ \"\.\/motion\/sw4/' main.fei
+	    	# sed -i 's/acceleration\_filename\ =\ \"sw4/acceleration\_filename\ =\ \"\.\/motion\/sw4/' main.fei
+	    	# sed -i 's/displacement\_filename\ =\ \"sw4/displacement\_filename\ =\ \"\.\/motion\/sw4/' main.fei
 
-	    	sed -i 's/python\ extract_node_/python\ postprocess\/extract_node_/' run_plot_results.sh
+	    	# sed -i 's/python\ extract_node_/python\ postprocess\/extract_node_/' run_plot_results.sh
 
 	    	# echo $PWD
 	    	rm -f *.tgz
