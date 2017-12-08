@@ -1,6 +1,97 @@
 
 //*************************************************************************************************************************
-//							Add_Node_Load_Imposed_Motion_Series{Physical_Group#foundation_bottom_surfaces, DofType:= ux, DispScale:= 1*cm, DispFile:= "sw4_free_field_center_ux.txt" , VelScale:= 1*cm/s , VelFile:= "sw4_free_field_center_vx.txt", AccScale:= 1*g, AccFile:= "sw4_free_field_center_ax.txt"}Starts
+//							Free_Dofs{Physical_Group#foundation_bottom_surfaces, DofTypes:= ux}Starts
+//*************************************************************************************************************************
+
+free node # 643 dofs ux; 
+free node # 644 dofs ux; 
+free node # 645 dofs ux; 
+free node # 646 dofs ux; 
+free node # 647 dofs ux; 
+free node # 648 dofs ux; 
+free node # 1 dofs ux; 
+free node # 2 dofs ux; 
+free node # 3 dofs ux; 
+free node # 649 dofs ux; 
+free node # 650 dofs ux; 
+free node # 4 dofs ux; 
+free node # 5 dofs ux; 
+free node # 6 dofs ux; 
+free node # 651 dofs ux; 
+free node # 652 dofs ux; 
+free node # 7 dofs ux; 
+free node # 8 dofs ux; 
+free node # 9 dofs ux; 
+free node # 653 dofs ux; 
+free node # 654 dofs ux; 
+free node # 655 dofs ux; 
+free node # 656 dofs ux; 
+free node # 657 dofs ux; 
+free node # 658 dofs ux; 
+free node # 675 dofs ux; 
+free node # 676 dofs ux; 
+free node # 677 dofs ux; 
+free node # 678 dofs ux; 
+free node # 46 dofs ux; 
+free node # 47 dofs ux; 
+free node # 48 dofs ux; 
+free node # 49 dofs ux; 
+free node # 679 dofs ux; 
+free node # 680 dofs ux; 
+free node # 50 dofs ux; 
+free node # 51 dofs ux; 
+free node # 52 dofs ux; 
+free node # 53 dofs ux; 
+free node # 54 dofs ux; 
+free node # 55 dofs ux; 
+free node # 56 dofs ux; 
+free node # 57 dofs ux; 
+free node # 58 dofs ux; 
+free node # 59 dofs ux; 
+free node # 681 dofs ux; 
+free node # 682 dofs ux; 
+free node # 683 dofs ux; 
+free node # 684 dofs ux; 
+free node # 60 dofs ux; 
+free node # 61 dofs ux; 
+free node # 62 dofs ux; 
+free node # 63 dofs ux; 
+free node # 64 dofs ux; 
+free node # 65 dofs ux; 
+free node # 66 dofs ux; 
+free node # 67 dofs ux; 
+free node # 68 dofs ux; 
+free node # 69 dofs ux; 
+free node # 685 dofs ux; 
+free node # 686 dofs ux; 
+free node # 687 dofs ux; 
+free node # 688 dofs ux; 
+free node # 689 dofs ux; 
+free node # 690 dofs ux; 
+free node # 771 dofs ux; 
+free node # 772 dofs ux; 
+free node # 773 dofs ux; 
+free node # 774 dofs ux; 
+free node # 775 dofs ux; 
+free node # 776 dofs ux; 
+free node # 777 dofs ux; 
+free node # 778 dofs ux; 
+free node # 779 dofs ux; 
+free node # 780 dofs ux; 
+free node # 781 dofs ux; 
+free node # 782 dofs ux; 
+free node # 783 dofs ux; 
+free node # 784 dofs ux; 
+free node # 785 dofs ux; 
+free node # 786 dofs ux; 
+
+//*************************************************************************************************************************
+//							Free_Dofs{Physical_Group#foundation_bottom_surfaces, DofTypes:= ux}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Add_Node_Load_Imposed_Motion_Series{Physical_Group#foundation_bottom_surfaces, DofType:= ux, DispScale:= 1*cm, DispFile:= "./motion/sw4_free_field_center_ux.txt" , VelScale:= 1*cm/s , VelFile:= "./motion/sw4_free_field_center_vx.txt", AccScale:= 1*g, AccFile:= "./motion/sw4_free_field_center_ax.txt"}Starts
 //*************************************************************************************************************************
 
 add imposed motion # 1 to node # 643 dof ux displacement_scale_unit = 1*cm displacement_file = "./motion/sw4_free_field_center_ux.txt" velocity_scale_unit = 1*cm/s velocity_file = "./motion/sw4_free_field_center_vx.txt" acceleration_scale_unit = 1*g acceleration_file = "./motion/sw4_free_field_center_ax.txt"; 
@@ -86,6 +177,6 @@ add imposed motion # 80 to node # 785 dof ux displacement_scale_unit = 1*cm disp
 add imposed motion # 81 to node # 786 dof ux displacement_scale_unit = 1*cm displacement_file = "./motion/sw4_free_field_center_ux.txt" velocity_scale_unit = 1*cm/s velocity_file = "./motion/sw4_free_field_center_vx.txt" acceleration_scale_unit = 1*g acceleration_file = "./motion/sw4_free_field_center_ax.txt"; 
 
 //*************************************************************************************************************************
-//							Add_Node_Load_Imposed_Motion_Series{Physical_Group#foundation_bottom_surfaces, DofType:= ux, DispScale:= 1*cm, DispFile:= "sw4_free_field_center_ux.txt" , VelScale:= 1*cm/s , VelFile:= "sw4_free_field_center_vx.txt", AccScale:= 1*g, AccFile:= "sw4_free_field_center_ax.txt"}Ends
+//							Add_Node_Load_Imposed_Motion_Series{Physical_Group#foundation_bottom_surfaces, DofType:= ux, DispScale:= 1*cm, DispFile:= "./motion/sw4_free_field_center_ux.txt" , VelScale:= 1*cm/s , VelFile:= "./motion/sw4_free_field_center_vx.txt", AccScale:= 1*g, AccFile:= "./motion/sw4_free_field_center_ax.txt"}Ends
 //*************************************************************************************************************************
 

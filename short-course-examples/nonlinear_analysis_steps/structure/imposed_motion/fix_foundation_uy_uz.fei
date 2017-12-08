@@ -992,6 +992,97 @@ fix node # 930 dofs uz;
 
 
 //*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#foundation_bottom_surfaces, DofTypes:= ux}Starts
+//*************************************************************************************************************************
+
+fix node # 643 dofs ux; 
+fix node # 644 dofs ux; 
+fix node # 645 dofs ux; 
+fix node # 646 dofs ux; 
+fix node # 647 dofs ux; 
+fix node # 648 dofs ux; 
+fix node # 1 dofs ux; 
+fix node # 2 dofs ux; 
+fix node # 3 dofs ux; 
+fix node # 649 dofs ux; 
+fix node # 650 dofs ux; 
+fix node # 4 dofs ux; 
+fix node # 5 dofs ux; 
+fix node # 6 dofs ux; 
+fix node # 651 dofs ux; 
+fix node # 652 dofs ux; 
+fix node # 7 dofs ux; 
+fix node # 8 dofs ux; 
+fix node # 9 dofs ux; 
+fix node # 653 dofs ux; 
+fix node # 654 dofs ux; 
+fix node # 655 dofs ux; 
+fix node # 656 dofs ux; 
+fix node # 657 dofs ux; 
+fix node # 658 dofs ux; 
+fix node # 675 dofs ux; 
+fix node # 676 dofs ux; 
+fix node # 677 dofs ux; 
+fix node # 678 dofs ux; 
+fix node # 46 dofs ux; 
+fix node # 47 dofs ux; 
+fix node # 48 dofs ux; 
+fix node # 49 dofs ux; 
+fix node # 679 dofs ux; 
+fix node # 680 dofs ux; 
+fix node # 50 dofs ux; 
+fix node # 51 dofs ux; 
+fix node # 52 dofs ux; 
+fix node # 53 dofs ux; 
+fix node # 54 dofs ux; 
+fix node # 55 dofs ux; 
+fix node # 56 dofs ux; 
+fix node # 57 dofs ux; 
+fix node # 58 dofs ux; 
+fix node # 59 dofs ux; 
+fix node # 681 dofs ux; 
+fix node # 682 dofs ux; 
+fix node # 683 dofs ux; 
+fix node # 684 dofs ux; 
+fix node # 60 dofs ux; 
+fix node # 61 dofs ux; 
+fix node # 62 dofs ux; 
+fix node # 63 dofs ux; 
+fix node # 64 dofs ux; 
+fix node # 65 dofs ux; 
+fix node # 66 dofs ux; 
+fix node # 67 dofs ux; 
+fix node # 68 dofs ux; 
+fix node # 69 dofs ux; 
+fix node # 685 dofs ux; 
+fix node # 686 dofs ux; 
+fix node # 687 dofs ux; 
+fix node # 688 dofs ux; 
+fix node # 689 dofs ux; 
+fix node # 690 dofs ux; 
+fix node # 771 dofs ux; 
+fix node # 772 dofs ux; 
+fix node # 773 dofs ux; 
+fix node # 774 dofs ux; 
+fix node # 775 dofs ux; 
+fix node # 776 dofs ux; 
+fix node # 777 dofs ux; 
+fix node # 778 dofs ux; 
+fix node # 779 dofs ux; 
+fix node # 780 dofs ux; 
+fix node # 781 dofs ux; 
+fix node # 782 dofs ux; 
+fix node # 783 dofs ux; 
+fix node # 784 dofs ux; 
+fix node # 785 dofs ux; 
+fix node # 786 dofs ux; 
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#foundation_bottom_surfaces, DofTypes:= ux}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
 //							Fix_Dofs{Physical_Group#shell_all_surfaces, DofTypes:= uy}Starts
 //*************************************************************************************************************************
 
