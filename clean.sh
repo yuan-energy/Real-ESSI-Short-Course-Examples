@@ -15,4 +15,8 @@ find ./ -name "*_RESTART.essi" -delete
 find ./ -name "*.swp" -delete
 find ./ -name "*.csv" -delete
 find ./ -name "benchmark.txt" -delete
+find ./ -name "*.txt.jpg" -delete
+find ./ -name "run_parallel.sh" -delete
+
+
 

@@ -5,7 +5,7 @@
 //
 
 //*************************************************************************************************************************
-//							Add_8NodeBrick{Physical_Group#Inside, MaterialNo:= 1}Starts
+//							Add_8NodeBrick{Physical_Group#Inside_Soil, MaterialNo:= 1}Starts
 //*************************************************************************************************************************
 
 add element # 1 type 8NodeBrick with nodes (6348, 5979, 5970, 6339, 6347, 5978, 5969, 6338) use material # 1; 
@@ -9082,7 +9082,7 @@ add element # 9071 type 8NodeBrick with nodes (19583, 19214, 19205, 19574, 19582
 add element # 9072 type 8NodeBrick with nodes (5126, 5085, 5084, 5125, 19583, 19214, 19205, 19574) use material # 1; 
 
 //*************************************************************************************************************************
-//							Add_8NodeBrick{Physical_Group#Inside, MaterialNo:= 1}Ends
+//							Add_8NodeBrick{Physical_Group#Inside_Soil, MaterialNo:= 1}Ends
 //*************************************************************************************************************************
 
 
