@@ -1,3 +1,9 @@
 #!/bin/bash
-time mpirun -np 8 essi_parallel -f $1
+
+
+# Execute parallel essi with the file main.fei
+
+# Meanwhile, measure the time and script the terminal logs.
+
+script -c "time mpirun -np $(nproc) essi_parallel -f main.fei" benchmark.txt
 

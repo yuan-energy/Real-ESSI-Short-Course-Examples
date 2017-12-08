@@ -13,7 +13,6 @@ include "node.fei";
 include "element.fei";
 
 
-
 // Define damping, load, and boundary condition
 
 // Damping Period
@@ -42,7 +41,7 @@ xi_4 = 0.0 ;
 rayl_4_a1 = 2*xi_4/(w1+w2); 
 rayl_4_a0 = rayl_4_a1*w1*w2; 
 
-// External Damping Layers Rayleigh Damping Ratio 
+// Damping Period layer Damping 
 xi_5 = 0.5 ; 
 rayl_5_a1 = 2*xi_5/(w1+w2); 
 rayl_5_a0 = rayl_5_a1*w1*w2; 
@@ -74,12 +73,7 @@ add acceleration field # 1
 add load # 1 to all elements type self_weight use acceleration field # 1;
 
 // Simulation Options:
-define convergence test Relative_Norm_Unbalanced_Force
-  tolerance =  1E-2
-  minimum_absolute_tolerance = 1
-  maximum_iterations = 200
-  ;
-define algorithm Newton;
+define algorithm With_no_convergence_check ;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
@@ -97,7 +91,7 @@ new loading stage "motion";
 include "fix_all_uz.fei" ;
 
 // Wave propagation with wave fields:
-add wave field # 1 with
+add wave field # 11 with
   acceleration_filename = "./motion/sw4_free_field_center_ax.txt"
   unit_of_acceleration = 1 * m/s^2
   displacement_filename = "./motion/sw4_free_field_center_ux.txt"
@@ -112,7 +106,7 @@ add wave field # 1 with
   unit_of_thickness = 1*m 
   ;
   
-add wave field # 2 with
+add wave field # 12 with
   acceleration_filename = "./motion/sw4_free_field_center_ay.txt"
   unit_of_acceleration = 1 * m/s^2
   displacement_filename = "./motion/sw4_free_field_center_uy.txt"
@@ -127,7 +121,7 @@ add wave field # 2 with
   unit_of_thickness = 1*m 
   ;
 
-add wave field # 3 with
+add wave field # 13 with
   acceleration_filename = "./motion/sw4_free_field_center_az.txt"
   unit_of_acceleration = 1 * m/s^2
   displacement_filename = "./motion/sw4_free_field_center_uz.txt"
@@ -143,20 +137,15 @@ add wave field # 3 with
   ;
 
 // Dynamic Domain-Reduction-Method Loading with the wave field:
-add load # 2 type DRM from wave field 
-    # 1 in direction ux 
-    # 2 in direction uy
-    # 3 in direction uz
+add load # 11 type DRM from wave field 
+    # 11 in direction ux 
+    # 12 in direction uy
+    # 13 in direction uz
     soil_surface at z = 0 * m 
     hdf5_file = "DRMinput.hdf5" ; 
 
 // Simulation Options:
-define convergence test Relative_Norm_Unbalanced_Force
-  tolerance =  1E-2
-  minimum_absolute_tolerance = 1
-  maximum_iterations = 200
-  ;
-define algorithm Newton;
+define algorithm With_no_convergence_check ;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
@@ -171,15 +160,6 @@ simulate 210 steps using transient algorithm
 
 // No more loading stages. Stop the program politely:
 bye;
-
-
-
-
-
-
-
-
-
 
 
 

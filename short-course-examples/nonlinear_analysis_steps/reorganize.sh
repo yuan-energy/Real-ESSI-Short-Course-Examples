@@ -14,7 +14,7 @@ do
 	    then
 	    	echo $PWD
 	    	
-	    	cp ${current_dir}/*.py ${current_dir}/"${deepest_dir_array[$element]}"/postprocess
+	    	# cp ${current_dir}/*.py ${current_dir}/"${deepest_dir_array[$element]}"/postprocess
 	    	# cd motion
 	    	# pyplot_acc base_correct_x_acc.txt
 	    	# pyplot_acc base_correct_y_acc.txt

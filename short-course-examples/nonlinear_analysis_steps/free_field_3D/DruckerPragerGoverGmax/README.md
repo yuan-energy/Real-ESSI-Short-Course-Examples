@@ -41,24 +41,24 @@ You can also use the python scripts to plot other points.
 
 ```
 * Center of surface soil
-add node  4417 at (110.000*m,135.000*m,0.000*m) with 3 dofs; 
+ node # 4417 at (110.000*m,135.000*m,0.000*m) with 3 dofs; 
 * Center of shallow soil
-add node  13202 at (110.000*m,135.000*m,-5.000*m) with 3 dofs; 
+ node # 13202 at (110.000*m,135.000*m,-5.000*m) with 3 dofs; 
 * Center of middle soil
-add node  13199 at (110.000*m,135.000*m,-20.000*m) with 3 dofs; 
+ node # 13199 at (110.000*m,135.000*m,-20.000*m) with 3 dofs; 
 * Center of bottom soil (DRM exterior node)
-add node  13196 at (110.000*m,135.000*m,-35.000*m) with 3 dofs; 
+ node # 13196 at (110.000*m,135.000*m,-35.000*m) with 3 dofs; 
 ```
 
 ```
 * Near DRM of surface soil
-add node  3679 at (20.000*m,135.000*m,0.000*m) with 3 dofs; 
+ node # 3679 at (20.000*m,135.000*m,0.000*m) with 3 dofs; 
 * Near DRM of shallow soil
-add node  6560 at (20.000*m,135.000*m,-5.000*m) with 3 dofs; 
+ node # 6560 at (20.000*m,135.000*m,-5.000*m) with 3 dofs; 
 * Near DRM of middle soil
-add node  6557 at (20.000*m,135.000*m,-20.000*m) with 3 dofs; 
+ node # 6557 at (20.000*m,135.000*m,-20.000*m) with 3 dofs; 
 * Near DRM of bottom soil (DRM exterior node)
-add node  6554 at (20.000*m,135.000*m,-35.000*m) with 3 dofs; 
+ node # 6554 at (20.000*m,135.000*m,-35.000*m) with 3 dofs; 
 ```
 
 

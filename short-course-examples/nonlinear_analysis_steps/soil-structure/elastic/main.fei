@@ -13,6 +13,7 @@ include "node.fei";
 include "element.fei";
 
 
+
 // Define damping, load, and boundary condition
 
 // Damping Period
@@ -55,7 +56,6 @@ add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_us
 include "load.fei";
 
 
-
 // It is recommended to run check model before any simulation.
 // The hdf5 output can be visualized to check the boundary conditions.
 
@@ -73,15 +73,15 @@ add acceleration field # 1
 add load # 1 to all elements type self_weight use acceleration field # 1;
 
 // Simulation Options:
-define algorithm With_no_convergence_check ;
+define algorithm With_no_convergence_check;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
 {define solver parallel;}
 
 // Static loading increments:
-define load factor increment 1;
-simulate 1 steps using static algorithm;
+define load factor increment 0.1;
+simulate 10 steps using static algorithm;
 
 
 
@@ -105,47 +105,15 @@ add wave field # 1 with
   unit_of_damping = absolute
   unit_of_thickness = 1*m 
   ;
-  
-add wave field # 2 with
-  acceleration_filename = "./motion/sw4_free_field_center_ay.txt"
-  unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "./motion/sw4_free_field_center_uy.txt"
-  unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
-  acceleration_depth = 0 * m
-  monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile.txt"
-  unit_of_Vs_or_Vp = 1 * m/s
-  unit_of_rho = 1 * kg/m^3
-  unit_of_damping = absolute
-  unit_of_thickness = 1*m 
-  ;
-
-add wave field # 3 with
-  acceleration_filename = "./motion/sw4_free_field_center_az.txt"
-  unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "./motion/sw4_free_field_center_uz.txt"
-  unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
-  acceleration_depth = 0 * m
-  monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile_Vp.txt"
-  unit_of_Vs_or_Vp = 1 * m/s
-  unit_of_rho = 1 * kg/m^3
-  unit_of_damping = absolute
-  unit_of_thickness = 1*m 
-  ;
 
 // Dynamic Domain-Reduction-Method Loading with the wave field:
 add load # 2 type DRM from wave field 
     # 1 in direction ux 
-    # 2 in direction uy
-    # 3 in direction uz
     soil_surface at z = 0 * m 
     hdf5_file = "DRMinput.hdf5" ; 
 
 // Simulation Options:
-define algorithm With_no_convergence_check ;
+define algorithm With_no_convergence_check;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
