@@ -3,7 +3,6 @@
 **/RealESSI_VERSION_INFO.txt
 **/*.feioutput
 **/vtk_errors.txt
-**/*.jpg
 **/gmon.out
 
 **/*.h5.*.feioutput 

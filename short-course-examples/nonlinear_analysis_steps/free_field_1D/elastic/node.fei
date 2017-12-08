@@ -9,10 +9,10 @@
 //*************************************************************************************************************************
 
 add node # 1 at (0*m,0*m,-5e4*mm) with 3 dofs; 
-add node # 2 at (5*m,0*m,-50*m) with 3 dofs; 
+add node # 2 at (5*m,0*m,-164.042*feet) with 3 dofs; 
 add node # 3 at (0*m,5*m,-50*m) with 3 dofs; 
 add node # 4 at (5*m,5*m,-50*m) with 3 dofs; 
-add node # 5 at (0*m,0*m,0*m) with 3 dofs; 
+add node # 100005 at (0*m,0*m,0*m) with 3 dofs; 
 add node # 6 at (5*m,0*m,0*m) with 3 dofs; 
 add node # 7 at (5*m,5*m,0*m) with 3 dofs; 
 add node # 8 at (0*m,5*m,0*m) with 3 dofs; 
@@ -51,7 +51,7 @@ add node # 40 at (0*m,5*m,-25*m) with 3 dofs;
 add node # 41 at (0*m,5*m,-20*m) with 3 dofs; 
 add node # 42 at (0*m,5*m,-15*m) with 3 dofs; 
 add node # 43 at (0*m,5*m,-10*m) with 3 dofs; 
-add node # 10044 at (0*m,5*m,-5*m) with 3 dofs; 
+add node # 44 at (0*m,5*m,-5*m) with 3 dofs; 
 
 //*************************************************************************************************************************
 //							Add_All_Node{ unit:= m, nof_dofs:= 3}Ends

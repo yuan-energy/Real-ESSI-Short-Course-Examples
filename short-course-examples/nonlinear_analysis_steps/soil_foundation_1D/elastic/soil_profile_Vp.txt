@@ -3,6 +3,10 @@
 750             2000     0.03   100
 2000            2400     0.03 
 
+// 1500            2000     0.03   100   // for E = 4.4e9*N/m^2
+// 300             2000     0.03   100   // for E = 1.76e8*N/m^2
+
+
 
 // Last layer is the bedrock. 
 // User should NOT give thickness for the last layer.

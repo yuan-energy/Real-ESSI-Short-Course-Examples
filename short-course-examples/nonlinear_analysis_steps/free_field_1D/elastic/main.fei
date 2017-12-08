@@ -88,7 +88,7 @@ simulate 1 steps using static algorithm;
 // Simulate Loading Stage 2: DRM Motion
 
 new loading stage "motion";
-
+include "fix_all_uz.fei" ;
 
 // Wave propagation with wave fields:
 add wave field # 11 with

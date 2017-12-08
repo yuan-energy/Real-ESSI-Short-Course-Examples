@@ -13,8 +13,8 @@ add element # 2 type 8NodeBrick with nodes (31, 40, 13, 22, 30, 39, 12, 21) use 
 add element # 3 type 8NodeBrick with nodes (32, 41, 14, 23, 31, 40, 13, 22) use material # 1; 
 add element # 4 type 8NodeBrick with nodes (33, 42, 15, 24, 32, 41, 14, 23) use material # 1; 
 add element # 5 type 8NodeBrick with nodes (34, 43, 16, 25, 33, 42, 15, 24) use material # 1; 
-add element # 6 type 8NodeBrick with nodes (35, 10044, 17, 26, 34, 43, 16, 25) use material # 1; 
-add element # 7 type 8NodeBrick with nodes (7, 8, 5, 6, 35, 10044, 17, 26) use material # 1; 
+add element # 6 type 8NodeBrick with nodes (35, 44, 17, 26, 34, 43, 16, 25) use material # 1; 
+add element # 7 type 8NodeBrick with nodes (7, 8, 100005, 6, 35, 44, 17, 26) use material # 1; 
 
 //*************************************************************************************************************************
 //							Add_8NodeBrick{Physical_Group#Inside, MaterialNo:= 1}Ends

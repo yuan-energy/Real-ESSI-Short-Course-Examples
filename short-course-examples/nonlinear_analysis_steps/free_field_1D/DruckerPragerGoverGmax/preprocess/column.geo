@@ -12,7 +12,7 @@ width_of_column = 5  ;
 
 Ox = 0;
 Oy = 0;
-Oz = 0;
+Oz = -height_of_column ;
 
 mesh_size = 5 ;
 

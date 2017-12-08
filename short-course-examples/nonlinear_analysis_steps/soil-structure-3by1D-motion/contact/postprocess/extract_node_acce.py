@@ -131,6 +131,12 @@ ax1.grid()
 freq, ampl = FFT( target_acc, time[1]-time[0] )
 ax2.semilogx(freq, ampl, '-k', linewidth=3)
 ax2.set( xlabel = "Frequency [Hz] ", ylabel = "Acceleration [m/s^2] ", xlim = [plotFreq_min, plotFreq_max] , title = "FFT of Acceleration")
+# *****************************
+a = np.linspace(0.1,1,10)
+b = np.linspace(2,10,9) 
+c = np.concatenate((a,b))
+plt.xticks(c)
+# *****************************
 ax2.grid()
 plt.savefig( out_filename + ".pdf" )
 plt.show()

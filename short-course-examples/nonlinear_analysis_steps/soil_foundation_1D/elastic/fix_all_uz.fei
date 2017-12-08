@@ -1,0 +1,69 @@
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#all_volume, DofTypes:= uy}Starts
+//*************************************************************************************************************************
+
+// fix node # 1 dofs uz; 
+// fix node # 2 dofs uz; 
+// fix node # 3 dofs uz; 
+// fix node # 4 dofs uz; 
+fix node # 5 dofs uz; 
+fix node # 6 dofs uz; 
+fix node # 7 dofs uz; 
+fix node # 8 dofs uz; 
+fix node # 9 dofs uz; 
+fix node # 10 dofs uz; 
+fix node # 11 dofs uz; 
+fix node # 12 dofs uz; 
+fix node # 13 dofs uz; 
+fix node # 14 dofs uz; 
+fix node # 15 dofs uz; 
+fix node # 16 dofs uz; 
+fix node # 17 dofs uz; 
+fix node # 18 dofs uz; 
+fix node # 19 dofs uz; 
+fix node # 20 dofs uz; 
+fix node # 21 dofs uz; 
+fix node # 22 dofs uz; 
+fix node # 23 dofs uz; 
+fix node # 24 dofs uz; 
+fix node # 25 dofs uz; 
+fix node # 26 dofs uz; 
+fix node # 27 dofs uz; 
+fix node # 28 dofs uz; 
+fix node # 29 dofs uz; 
+fix node # 30 dofs uz; 
+fix node # 31 dofs uz; 
+fix node # 32 dofs uz; 
+fix node # 33 dofs uz; 
+fix node # 34 dofs uz; 
+fix node # 35 dofs uz; 
+fix node # 36 dofs uz; 
+fix node # 37 dofs uz; 
+fix node # 38 dofs uz; 
+fix node # 39 dofs uz; 
+fix node # 40 dofs uz; 
+fix node # 41 dofs uz; 
+fix node # 42 dofs uz; 
+fix node # 43 dofs uz; 
+fix node # 44 dofs uz; 
+fix node # 45 dofs uz; 
+fix node # 46 dofs uz; 
+fix node # 47 dofs uz; 
+fix node # 48 dofs uz; 
+fix node # 49 dofs uz; 
+fix node # 50 dofs uz; 
+fix node # 51 dofs uz; 
+fix node # 52 dofs uz; 
+fix node # 53 dofs uz; 
+fix node # 54 dofs uz; 
+fix node # 55 dofs uz; 
+fix node # 56 dofs uz; 
+fix node # 57 dofs uz; 
+fix node # 58 dofs uz; 
+fix node # 59 dofs uz; 
+fix node # 60 dofs uz; 
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#all_volume, DofTypes:= uy}Ends
+//*************************************************************************************************************************
+

@@ -3,47 +3,19 @@
 // Modeling and Simulation Examples
 // http://real-essi.info
 //
+model name "DRM1D" ;
 
 
-model name "soil_foundation" ;
+// Define Material and Geometry
 
-Elastic = 1.1e9*N/m^2; 
-nu    = 0.1;        
-rho   = 2000*kg/m^3;     
-
-// Soil layers
-add material # 1 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
-
-// DRM layers
-add material # 2 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
-
-// Damping layers
-add material # 3 type linear_elastic_isotropic_3d
-  mass_density = rho
-  elastic_modulus = Elastic
-  poisson_ratio = nu;
-
-// Foudnation
-add material # 4 type linear_elastic_isotropic_3d
-  mass_density = 2500*kg/m^3
-  elastic_modulus = 3e10*N/m^2
-  poisson_ratio =  0.2 ;
+include "material.fei" ; 
+include "node.fei";
+include "element.fei";
 
 
-// Contact paramters
-Kn = 1e11 * kg /s^2 ; 
+// Define damping, load, and boundary condition
 
-
-// Damping paramters
-Gamma = 0.55; 
-Beta = 0.25*(0.5+Gamma)*(0.5+Gamma); 
-
+// Damping Period
 T1 = 2*s; 
 T2 = 0.2*s; 
 w1 = 2*pi/T1; 
@@ -69,7 +41,7 @@ xi_4 = 0.0 ;
 rayl_4_a1 = 2*xi_4/(w1+w2); 
 rayl_4_a0 = rayl_4_a1*w1*w2; 
 
-// External Damping Layers Rayleigh Damping Ratio 
+// Damping Period layer Damping 
 xi_5 = 0.5 ; 
 rayl_5_a1 = 2*xi_5/(w1+w2); 
 rayl_5_a0 = rayl_5_a1*w1*w2; 
@@ -80,11 +52,18 @@ add damping # 3 type Rayleigh with a0 = rayl_3_a0 a1 = rayl_3_a1 stiffness_to_us
 add damping # 4 type Rayleigh with a0 = rayl_4_a0 a1 = rayl_4_a1 stiffness_to_use = Initial_Stiffness; 
 add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_use = Initial_Stiffness; 
 
-include "node.fei";
-include "element.fei";
 include "load.fei";
 
 
+
+// It is recommended to run check model before any simulation.
+// The hdf5 output can be visualized to check the boundary conditions.
+
+// check model;
+
+
+
+// Simulate Loading Stage 1: Self Weight
 
 new loading stage "Self_weight";
 add acceleration field # 1 
@@ -93,25 +72,29 @@ add acceleration field # 1
   az =  -g ;
 add load # 1 to all elements type self_weight use acceleration field # 1;
 
-// define algorithm With_no_convergence_check ;
-define convergence test Relative_Norm_Displacement_Increment 
-  tolerance =  1E-3
-  minimum_absolute_tolerance = 0.05
-  maximum_iterations = 20 ;
-define algorithm Newton;
+// Simulation Options:
+define algorithm With_no_convergence_check ;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
 {define solver parallel;}
+
+// Static loading increments:
 define load factor increment 1;
 simulate 1 steps using static algorithm;
 
-new loading stage "motion";
 
-add wave field # 1 with
-  acceleration_filename = "base_correct_x_acc.txt"
+
+// Simulate Loading Stage 2: DRM Motion
+
+new loading stage "motion";
+include "fix_all_uz.fei";
+
+// Wave propagation with wave fields:
+add wave field # 11 with
+  acceleration_filename = "./motion/sw4_free_field_center_ax.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "base_correct_x_dis.txt"
+  displacement_filename = "./motion/sw4_free_field_center_ux.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
@@ -123,10 +106,10 @@ add wave field # 1 with
   unit_of_thickness = 1*m 
   ;
   
-add wave field # 2 with
-  acceleration_filename = "base_correct_y_acc.txt"
+add wave field # 12 with
+  acceleration_filename = "./motion/sw4_free_field_center_ay.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "base_correct_y_dis.txt"
+  displacement_filename = "./motion/sw4_free_field_center_uy.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
@@ -138,10 +121,10 @@ add wave field # 2 with
   unit_of_thickness = 1*m 
   ;
 
-add wave field # 3 with
-  acceleration_filename = "base_correct_z_acc.txt"
+add wave field # 13 with
+  acceleration_filename = "./motion/sw4_free_field_center_az.txt"
   unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "base_correct_z_dis.txt"
+  displacement_filename = "./motion/sw4_free_field_center_uz.txt"
   unit_of_displacement = 1 * m
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
@@ -152,41 +135,30 @@ add wave field # 3 with
   unit_of_damping = absolute
   unit_of_thickness = 1*m 
   ;
- 
-//add load # 2 type domain reduction method 
-  //  hdf5_file = "DRM_Input.hdf5" ; 
-add load # 2 type DRM from wave field 
-    # 1 in direction ux 
-    # 2 in direction uy
-    # 3 in direction uz
-    soil_surface at z = 10 * m 
-    hdf5_file = "DRMinput.hdf5" ; 
-// add load # 2 type DRM from wave field # 1 
-//     in direction ux 
-//     soil_surface at z = 10 * m 
-//     hdf5_file = "DRMinput.hdf5" ; 
-// define algorithm With_no_convergence_check ;
-define convergence test Relative_Norm_Displacement_Increment 
-  tolerance =  1E-3
-  minimum_absolute_tolerance = 0.05
-  maximum_iterations = 20 ;
 
-// define convergence test Norm_Unbalance tolerance = 1E-2 maximum_iterations = 20 verbose_level = 1; 
-define algorithm Newton; 
+// Dynamic Domain-Reduction-Method Loading with the wave field:
+add load # 11 type DRM from wave field 
+    # 11 in direction ux 
+    # 12 in direction uy
+    # 13 in direction uz
+    soil_surface at z = 0 * m 
+    hdf5_file = "DRMinput.hdf5" ; 
+
+// Simulation Options:
+define algorithm With_no_convergence_check ;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
 {define solver parallel;}
-// define dynamic integrator Newmark with 
-   // gamma = 0.5050 
-   // beta = 0.2525;
 
+// Dynamic loading steps:
 define dynamic integrator Newmark with 
-   gamma = Gamma
-   beta = Beta;
+  gamma = 0.55
+  beta = 0.275625 ;
 simulate 210 steps using transient algorithm 
     time_step = 0.0419384905125*s ;
 
+// No more loading stages. Stop the program politely:
 bye;
 
 

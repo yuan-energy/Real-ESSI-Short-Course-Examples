@@ -13,6 +13,35 @@ do
 	if [ -f $PWD/main.fei ]
 	    then
 	    	echo $PWD
+	    	
+	    	cp ${current_dir}/*.py ${current_dir}/"${deepest_dir_array[$element]}"/postprocess
+	    	# cd motion
+	    	# pyplot_acc base_correct_x_acc.txt
+	    	# pyplot_acc base_correct_y_acc.txt
+	    	# pyplot_acc base_correct_z_acc.txt
+
+	    	# pyplot_acc scaled_NORTHR_x_A.txt
+	    	# pyplot_acc scaled_NORTHR_y_A.txt
+	    	# pyplot_acc scaled_NORTHR_z_A.txt
+
+	    	# pyplot_acc sw4_free_field_center_ax.txt
+	    	# pyplot_acc sw4_free_field_center_ay.txt
+	    	# pyplot_acc sw4_free_field_center_az.txt
+
+
+	    	# pyplot_dis base_correct_x_dis.txt
+	    	# pyplot_dis base_correct_y_dis.txt
+	    	# pyplot_dis base_correct_z_dis.txt
+
+	    	# pyplot_dis scaled_NORTHR_x_D.txt
+	    	# pyplot_dis scaled_NORTHR_y_D.txt
+	    	# pyplot_dis scaled_NORTHR_z_D.txt
+
+	    	# pyplot_dis sw4_free_field_center_ux.txt
+	    	# pyplot_dis sw4_free_field_center_uy.txt
+	    	# pyplot_dis sw4_free_field_center_uz.txt
+
+
 
 	    	# mkdir -p sample_results
 	    	# mv *_node_*_x_*.txt sample_results
@@ -38,7 +67,7 @@ do
 
 	    	# sed -i 's/python\ extract_node_/python\ postprocess\/extract_node_/' run_plot_results.sh
 
-	    	# echo $PWD
+	    	echo $PWD
 	    	rm -f *.tgz
 	    	rm -f *.tar.gz
 	    	tar -czvf _all_files_packaged_for_${PWD##*/}.tar.gz *
