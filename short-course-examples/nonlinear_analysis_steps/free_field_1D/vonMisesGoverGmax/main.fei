@@ -8,7 +8,9 @@ model name "DRM1D" ;
 
 // Define Material and Geometry
 
-include "material.fei" ; 
+include "material_set1.fei";
+// include "material_set2.fei";
+// include "material_set3.fei";
 include "node.fei";
 include "element.fei";
 
@@ -99,7 +101,9 @@ add wave field # 11 with
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile.txt"
+  soil_profile_filename = "soil_profile_set1_Vs.txt"
+  // soil_profile_filename = "soil_profile_set2_Vs.txt"/
+  // soil_profile_filename = "soil_profile_set3_Vs.txt"/
   unit_of_Vs_or_Vp = 1 * m/s
   unit_of_rho = 1 * kg/m^3
   unit_of_damping = absolute
@@ -114,7 +118,9 @@ add wave field # 12 with
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile.txt"
+  soil_profile_filename = "soil_profile_set1_Vs.txt"
+  // soil_profile_filename = "soil_profile_set2_Vs.txt"/
+  // soil_profile_filename = "soil_profile_set3_Vs.txt"/
   unit_of_Vs_or_Vp = 1 * m/s
   unit_of_rho = 1 * kg/m^3
   unit_of_damping = absolute
@@ -129,7 +135,9 @@ add wave field # 13 with
   add_compensation_time = 0.5 * s
   acceleration_depth = 0 * m
   monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile_Vp.txt"
+  soil_profile_filename = "soil_profile_set1_Vp.txt"
+  // soil_profile_filename = "soil_profile_set2_Vp.txt"/
+  // soil_profile_filename = "soil_profile_set3_Vp.txt"/
   unit_of_Vs_or_Vp = 1 * m/s
   unit_of_rho = 1 * kg/m^3
   unit_of_damping = absolute

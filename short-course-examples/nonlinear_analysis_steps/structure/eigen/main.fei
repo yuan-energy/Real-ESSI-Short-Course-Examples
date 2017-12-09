@@ -23,6 +23,9 @@ add material # 5 type linear_elastic_isotropic_3d
   elastic_modulus = shell_Elastic
   poisson_ratio = shell_v;
 
+include "material_set1.fei";
+// include "material_set2.fei";
+// include "material_set3.fei";
 include "node.fei";
 include "element.fei";
 include "load.fei";

@@ -8,7 +8,9 @@ model name "shell_structure" ;
 
 // Define Material and Geometry
 
-include "material.fei" ; 
+include "material_set1.fei";
+// include "material_set2.fei";
+// include "material_set3.fei";
 include "node.fei";
 include "element.fei";
 

@@ -13,7 +13,9 @@ do
 	if [ -f $PWD/main.fei ]
 	    then
 	    	echo $PWD
-	    	
+	    	# cp ${current_dir}/edit_multiple_material.sh ${current_dir}/"${deepest_dir_array[$element]}"/
+	    	rm -f edit_multiple_material.sh
+
 	    	# cp ${current_dir}/*.py ${current_dir}/"${deepest_dir_array[$element]}"/postprocess
 	    	# cd motion
 	    	# pyplot_acc base_correct_x_acc.txt

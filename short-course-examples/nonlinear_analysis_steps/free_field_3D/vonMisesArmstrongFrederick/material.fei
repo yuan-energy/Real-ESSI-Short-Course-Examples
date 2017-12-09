@@ -60,3 +60,7 @@ add material # 5 type linear_elastic_isotropic_3d
   mass_density = 2500*kg/m^3 
   elastic_modulus = 3e10*N/m^2
   poisson_ratio = 0.2 ;
+
+
+
+

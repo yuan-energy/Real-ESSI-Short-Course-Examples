@@ -6,36 +6,28 @@
 
 // Support Variable Definition and Calculation with Units
 
-// rho = 2000*kg/m^3
+// rho = 2000*kg/m^3 ;
 // Vs = 500 * m/s ;
 // G = Vs^2 * rho ;
-// nu = 0.1 ;        
+// nu = 0.1 ;
 // E = 2 * ( 1 + nu )  * G ; 
+// print E ; 
 
 
 
 // Soil layers material properties
 
-add material # 1 type vonMisesMultipleYieldSurfaceGoverGmax
-    mass_density = 2000*kg/m^3 
-    elastic_modulus = 1.1e9*N/m^2
-    poisson_ratio = 0.1
-    total_number_of_shear_modulus = 9
-    GoverGmax = 
-    "1,0.99563892,0.96674888,0.87318337,0.78735192,0.46719464,0.32043423,0.10940113,0.06347752"  
-    ShearStrainGamma = 
-    "0,1E-6,1E-5,5E-5,1E-4, 0.0005, 0.001, 0.005, 0.01"
-    ;
-define NDMaterial constitutive integration algorithm Backward_Euler
-  yield_function_relative_tolerance =  1e-17
-  stress_relative_tolerance =  1e-17
-  maximum_iterations = 10 ;
+add material # 1 type linear_elastic_isotropic_3d
+  mass_density = 2000*kg/m^3 
+  elastic_modulus = 1.1e9*N/m^2 
+  poisson_ratio = 0.1;
+
 
 // DRM layers material properties
 
 add material # 2 type linear_elastic_isotropic_3d
   mass_density = 2000*kg/m^3 
-  elastic_modulus = 1.1e9*N/m^2
+  elastic_modulus = 1.1e9*N/m^2 
   poisson_ratio = 0.1;
 
 
@@ -61,3 +53,7 @@ add material # 5 type linear_elastic_isotropic_3d
   mass_density = 2500*kg/m^3 
   elastic_modulus = 3e10*N/m^2
   poisson_ratio = 0.2 ;
+
+
+
+

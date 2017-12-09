@@ -1,0 +1,14 @@
+// Format of Soil Profile:
+// Vs_or_Vp     rho     damp   thickness  
+450             2000     0.03   100
+2000            2400     0.03 
+
+
+// Last layer is the bedrock. 
+// User should NOT give thickness for the last layer.
+
+// in documentation, from surface to bottom
+// E = 2e8 
+// v = 0.1 
+// M = E*(1 - v)/((1 + v)*(1 - 2 * v))
+// Vp = sqrt(M/rho)
