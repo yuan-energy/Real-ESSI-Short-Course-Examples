@@ -1,22 +1,30 @@
 
 current_dir=${PWD}
-deepest_dir_array=( $(find . -type d  ) )
+all_dir_array=( $(find . -type d  ) )
 
-for element in $(seq 0 $((${#deepest_dir_array[@]} - 1)))
+for element in $(seq 0 $((${#all_dir_array[@]} - 1)))
 do
 
 	cd ${current_dir}
 	
 	
-	cd ${current_dir}/"${deepest_dir_array[$element]}"
+	cd ${current_dir}/"${all_dir_array[$element]}"
 
 	if [ -f $PWD/main.fei ]
 	    then
 	    	echo $PWD
+	    	# cp ${current_dir}/edit_multiple_material.sh ${current_dir}/"${all_dir_array[$element]}"/
+	    	cp ${current_dir}/README.* ${current_dir}/"${all_dir_array[$element]}"/
 	    	
-	    	cp -f ${current_dir}/*.sh ${current_dir}/"${deepest_dir_array[$element]}"/
-	    	cp -f ${current_dir}/*.md ${current_dir}/"${deepest_dir_array[$element]}"/
-	    	cp -f ${current_dir}/*.html ${current_dir}/"${deepest_dir_array[$element]}"/
+	    	# rm -f edit_multiple_material.sh
+	    	# bash edit_multiple_material.sh
+	    	# sed -i 's/include\ \"fix_all_uz\.fei\"\ ;/include\ \"change_boundary_condition_to_fix_all_uz\.fei\"\ ;/' main.fei
+	    	# mv fix_all_uz.fei change_boundary_condition_to_fix_all_uz.fei
+
+	    	# cp ${current_dir}/wave_field*fei ${current_dir}/"${all_dir_array[$element]}"
+	    	# cp ${current_dir}/damping_parameters.fei ${current_dir}/"${all_dir_array[$element]}"
+
+	    	# cp ${current_dir}/*.py ${current_dir}/"${all_dir_array[$element]}"/postprocess
 	    	# cd motion
 	    	# pyplot_acc base_correct_x_acc.txt
 	    	# pyplot_acc base_correct_y_acc.txt
@@ -69,7 +77,7 @@ do
 
 	    	# sed -i 's/python\ extract_node_/python\ postprocess\/extract_node_/' run_plot_results.sh
 
-	    	# echo $PWD
+	    	echo $PWD
 	    	# rm -f *.tgz
 	    	# rm -f *.tar.gz
 	    	# tar -czvf _all_files_packaged_for_${PWD##*/}.tar.gz *

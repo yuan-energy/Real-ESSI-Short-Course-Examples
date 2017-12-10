@@ -1,49 +1,59 @@
 
 current_dir=${PWD}
-deepest_dir_array=( $(find . -type d  ) )
+all_dir_array=( $(find . -type d  ) )
 
-for element in $(seq 0 $((${#deepest_dir_array[@]} - 1)))
+for element in $(seq 0 $((${#all_dir_array[@]} - 1)))
 do
 
 	cd ${current_dir}
 	
 	
-	cd ${current_dir}/"${deepest_dir_array[$element]}"
+	cd ${current_dir}/"${all_dir_array[$element]}"
 
 	if [ -f $PWD/main.fei ]
 	    then
 	    	echo $PWD
-	    	# cp ${current_dir}/edit_multiple_material.sh ${current_dir}/"${deepest_dir_array[$element]}"/
-	    	rm -f edit_multiple_material.sh
+	    	# cp ${current_dir}/edit_multiple_material.sh ${current_dir}/"${all_dir_array[$element]}"/
+	    	# rm -f edit_multiple_material.sh
+	    	# bash edit_multiple_material.sh
+	    	# cp ${current_dir}/wave_field*fei ${current_dir}/"${all_dir_array[$element]}"
+	    	# cp ${current_dir}/damping_parameters.fei ${current_dir}/"${all_dir_array[$element]}"
 
-	    	# cp ${current_dir}/*.py ${current_dir}/"${deepest_dir_array[$element]}"/postprocess
+	    	# cp ${current_dir}/*.py ${current_dir}/"${all_dir_array[$element]}"/postprocess
 	    	# cd motion
-	    	# pyplot_acc base_correct_x_acc.txt
-	    	# pyplot_acc base_correct_y_acc.txt
-	    	# pyplot_acc base_correct_z_acc.txt
+	    	# git checkout README.md
 
-	    	# pyplot_acc scaled_NORTHR_x_A.txt
-	    	# pyplot_acc scaled_NORTHR_y_A.txt
-	    	# pyplot_acc scaled_NORTHR_z_A.txt
+	    	# sed -i 's/your_results\.h5\.feioutput/model_name_loading_stage\.h5\.feioutput/' README.md
+	    	# sed -i 's/your_output\.h5\.feioutput/model_name_loading_stage\.h5\.feioutput/' README.md
 
-	    	# pyplot_acc sw4_free_field_center_ax.txt
-	    	# pyplot_acc sw4_free_field_center_ay.txt
-	    	# pyplot_acc sw4_free_field_center_az.txt
+	    	# sed -i 's/Execution\ the\ Paraview\ for\ Postprocessing/Postprocessing\ with\ ParaView/' README.md
 
+	    	# sed -i 's/Execution\ the\ Python\ Scripts\ for\ Postprocessing/Postprocessing\ with\ Python Scripts/' README.md
 
-	    	# pyplot_dis base_correct_x_dis.txt
-	    	# pyplot_dis base_correct_y_dis.txt
-	    	# pyplot_dis base_correct_z_dis.txt
+	    	# sed -i 's/Extract\ the\ acceleration\ of\ the\ DOF/Plot\ the\ acceleration\ of\ the\ DOF/' README.md
 
-	    	# pyplot_dis scaled_NORTHR_x_D.txt
-	    	# pyplot_dis scaled_NORTHR_y_D.txt
-	    	# pyplot_dis scaled_NORTHR_z_D.txt
+	    	# sed -i 's/Extract\ the\ displacement\ of\ the\ DOF/Plot\ the\ displacement\ of\ the\ DOF/' README.md
 
-	    	# pyplot_dis sw4_free_field_center_ux.txt
-	    	# pyplot_dis sw4_free_field_center_uy.txt
-	    	# pyplot_dis sw4_free_field_center_uz.txt
+	    	# sed -i 's/Extract\ the\ response\ spectrum\ of\ the\ DOF/Plot\ the\ response\ spectrum\ of\ the\ DOF/' README.md
+
+	    	# sed -i 's/Other\ Critical\ Points\ /Other\ Points\ /' README.md
 
 
+	    	# sed -i 's/extract_node_acce\.py/plot_node_acce.py/' README.md
+	    	# sed -i 's/extract_node_disp\.py/plot_node_acce.py/' README.md
+	    	# sed -i 's/extract_node_spectrum\.py/plot_node_acce.py/' README.md
+
+
+	    	# sed -i 's/^python\ plot_node_acce.py\ model_name_loading_stage/#\ python\ plot_node_acce.py\ model_name_loading_stage/' README.md
+
+	    	# sed -i 's/^python\ plot_node_disp.py\ model_name_loading_stage/#\ python\ plot_node_disp.py\ model_name_loading_stage/' README.md
+
+	    	# sed -i 's/^python\ plot_node_spectrum_in_period.py\ model_name_loading_stage/#\ python\ plot_node_spectrum_in_period.py\ model_name_loading_stage/' README.md
+
+	    	# cat -s main.fei > main2.fei
+	    	# mv main2.fei main.fei
+	    	
+	    	# grip --export
 
 	    	# mkdir -p sample_results
 	    	# mv *_node_*_x_*.txt sample_results

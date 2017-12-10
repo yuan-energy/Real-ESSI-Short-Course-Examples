@@ -4,36 +4,36 @@
 ./run_parallel_simulation.sh main.fei
 ```
 
-### Execution the Paraview for Postprocessing
+### Postprocessing with ParaView
 ```bash
-paraview your_results.h5.feioutput
+paraview model_name_loading_stage.h5.feioutput
 ```
 
-### Execution the Python Scripts for Postprocessing
+### Postprocessing with Python Scripts
 ```bash
 ./run_plot_results.sh
 ```
-which actually executes 3 python scripts for three different results as follow.s
+which actually executes 3 python scripts for three different results as follows.
 
-###### Extract the acceleration of the DOF of the node in both time and frequency domain.
+###### Plot the acceleration of the DOF of the node in both time and frequency domain.
 ```bash
-python extract_node_acce.py your_output.h5.feioutput your_nodetag your_dof
+# python plot_node_acce.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. : 
-python extract_node_acce.py shell_structure_motion.h5.feioutput 38 x
+python plot_node_acce.py shell_structure_motion.h5.feioutput 38 x
 ```
 
-###### Extract the displacement of the DOF of the node in both time and frequency domain.
+###### Plot the displacement of the DOF of the node in both time and frequency domain.
 ```bash
-python extract_node_disp.py your_output.h5.feioutput your_nodetag your_dof
+# python plot_node_acce.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. : 
-python extract_node_disp.py shell_structure_motion.h5.feioutput 38 x
+python plot_node_acce.py shell_structure_motion.h5.feioutput 38 x
 ```
 
-###### Extract the response spectrum of the DOF of the node.
+###### Plot the response spectrum of the DOF of the node.
 ```bash
-python extract_node_spectrum.py your_output.h5.feioutput your_nodetag your_dof
+# python plot_node_acce.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. : 
-python extract_node_spectrum.py shell_structure_motion.h5.feioutput 38 x
+python plot_node_acce.py shell_structure_motion.h5.feioutput 38 x
 ```
 
 #### Critical Points for Postprocessing

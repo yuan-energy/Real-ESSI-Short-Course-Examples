@@ -4,7 +4,6 @@
 // http://real-essi.info
 //
 
-
 model name "shell_structure" ;
 
 foundation_Elastic = 3e10*N/m^2; 
@@ -23,27 +22,15 @@ add material # 5 type linear_elastic_isotropic_3d
   elastic_modulus = shell_Elastic
   poisson_ratio = shell_v;
 
-include "material_set1.fei";
-// include "material_set2.fei";
-// include "material_set3.fei";
 include "node.fei";
 include "element.fei";
-include "load.fei";
-
+include "boundary_condition.fei";
+include "damping_parameters.fei";
+include "damping.fei";
 
 new loading stage "eigen";
 simulate using eigen algorithm 
   number_of_modes = 10;
 
 bye;
-
-
-
-
-
-
-
-
-
-
 

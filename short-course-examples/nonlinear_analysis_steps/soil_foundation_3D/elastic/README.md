@@ -3,39 +3,39 @@
 ./run_parallel_simulation.sh
 ```
 
-### Execution the Paraview for Postprocessing
+### Postprocessing with ParaView
 ```bash
-paraview your_results.h5.feioutput
+paraview model_name_loading_stage.h5.feioutput
 ```
 
-### Execution the Python Scripts for Postprocessing
+### Postprocessing with Python Scripts
 ```bash
 ./run_plot_results.sh
 ```
 which actually executes 3 python scripts for three different results as follow.s
 
-###### Extract the acceleration of the DOF of the node in both time and frequency domain.
+###### Plot the acceleration of the DOF of the node in both time and frequency domain.
 ```bash
-python extract_node_acce.py your_output.h5.feioutput your_nodetag your_dof
+# python plot_node_acce.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. node-tag 42143 is the center of foundation surface, to plot the acceleration series in x direction of node 42143 : 
-python extract_node_acce.py soil_foundation_motion.h5.feioutput 42143 x
+python plot_node_acce.py soil_foundation_motion.h5.feioutput 42143 x
 ```
 
-###### Extract the displacement of the DOF of the node in both time and frequency domain.
+###### Plot the displacement of the DOF of the node in both time and frequency domain.
 ```bash
-python extract_node_disp.py your_output.h5.feioutput your_nodetag your_dof
+# python plot_node_disp.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. node-tag 42143 is the center of foundation surface, to plot the displacement series in x direction of node 42143 : 
-python extract_node_disp.py soil_foundation_motion.h5.feioutput 42143 x
+python plot_node_disp.py soil_foundation_motion.h5.feioutput 42143 x
 ```
 
-###### Extract the response spectrum of the DOF of the node.
+###### Plot the response spectrum of the DOF of the node.
 ```bash
-python extract_node_spectrum.py your_output.h5.feioutput your_nodetag your_dof
+# python plot_node_spectrum_in_period.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. node-tag 42143 is the center of foundation bottom, to plot the response spectrum in x direction of node 42143 : 
-python extract_node_spectrum.py soil_foundation_motion.h5.feioutput 42143 x
+python plot_node_spectrum_in_period.py soil_foundation_motion.h5.feioutput 42143 x
 ```
 
-#### Other Critical Points for Postprocessing
+#### Other Points for Postprocessing
 You can also use the python scripts to plot other points.
 
 ```

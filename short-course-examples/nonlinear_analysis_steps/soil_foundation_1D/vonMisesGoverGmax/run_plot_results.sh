@@ -5,19 +5,19 @@
 # Example:
 
 # plot displacment in time and frequency domain at node # 9 in x direction.
-python postprocess/extract_node_disp.py DRM1D_motion.h5.feioutput 9 x
+python postprocess/plot_node_disp.py DRM1D_motion.h5.feioutput 9 x
 
 # plot acceleration in time and frequency domain at node # 9 in x direction.
-python postprocess/extract_node_acce.py DRM1D_motion.h5.feioutput 9 x
+python postprocess/plot_node_acce.py DRM1D_motion.h5.feioutput 9 x
 
 # plot acceleration in time and frequency domain at node # 16 in x direction.
-python postprocess/extract_node_acce.py DRM1D_motion.h5.feioutput 16 x
+python postprocess/plot_node_acce.py DRM1D_motion.h5.feioutput 16 x
 
 # plot response spectrum (pseudo acceleration/displacement) in frequencies at node # 9 in x direction.
-python postprocess/extract_node_spectrum_in_freq.py DRM1D_motion.h5.feioutput 9 x
+python postprocess/plot_node_spectrum_in_freq.py DRM1D_motion.h5.feioutput 9 x
 
 # plot response spectrum (pseudo acceleration/displacement) in periods at node # 9 in x direction.
-python postprocess/extract_node_spectrum_in_period.py DRM1D_motion.h5.feioutput 9 x
+python postprocess/plot_node_spectrum_in_period.py DRM1D_motion.h5.feioutput 9 x
 
 
 

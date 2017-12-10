@@ -1018,33 +1018,33 @@ body .markdown-body
 <pre><code class="bash">./run_sequential_simulation.sh
 </code></pre>
 
-<h3 id="execution-the-paraview-for-postprocessing"><a name="user-content-execution-the-paraview-for-postprocessing" href="#execution-the-paraview-for-postprocessing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Execution the Paraview for Postprocessing</h3>
-<pre><code class="bash">paraview your_results.h5.feioutput
+<h3 id="postprocessing-with-paraview"><a name="user-content-postprocessing-with-paraview" href="#postprocessing-with-paraview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Postprocessing with ParaView</h3>
+<pre><code class="bash">paraview model_name_loading_stage.h5.feioutput
 </code></pre>
 
-<h3 id="execution-the-python-scripts-for-postprocessing"><a name="user-content-execution-the-python-scripts-for-postprocessing" href="#execution-the-python-scripts-for-postprocessing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Execution the Python Scripts for Postprocessing</h3>
+<h3 id="postprocessing-with-python-scripts"><a name="user-content-postprocessing-with-python-scripts" href="#postprocessing-with-python-scripts" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Postprocessing with Python Scripts</h3>
 <p><pre><code class="bash">./run_plot_results.sh
 </code></pre><br />
-which actually executes 3 python scripts for three different results as follow.s</p>
-<h6 id="extract-the-acceleration-of-the-dof-of-the-node-in-both-time-and-frequency-domain"><a name="user-content-extract-the-acceleration-of-the-dof-of-the-node-in-both-time-and-frequency-domain" href="#extract-the-acceleration-of-the-dof-of-the-node-in-both-time-and-frequency-domain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extract the acceleration of the DOF of the node in both time and frequency domain.</h6>
-<pre><code class="bash">python extract_node_acce.py your_output.h5.feioutput your_nodetag your_dof
+which actually executes 3 python scripts for three different results as follows.</p>
+<h6 id="plot-the-acceleration-of-the-dof-of-the-node-in-both-time-and-frequency-domain"><a name="user-content-plot-the-acceleration-of-the-dof-of-the-node-in-both-time-and-frequency-domain" href="#plot-the-acceleration-of-the-dof-of-the-node-in-both-time-and-frequency-domain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Plot the acceleration of the DOF of the node in both time and frequency domain.</h6>
+<pre><code class="bash"># python plot_node_acce.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. node-tag 6 is the center of soil surface, to plot the acceleration series in x direction of node 6 : 
-python extract_node_acce.py shell_structure_motion.h5.feioutput 6 x
+python plot_node_acce.py shell_structure_motion.h5.feioutput 6 x
 </code></pre>
 
-<h6 id="extract-the-displacement-of-the-dof-of-the-node-in-both-time-and-frequency-domain"><a name="user-content-extract-the-displacement-of-the-dof-of-the-node-in-both-time-and-frequency-domain" href="#extract-the-displacement-of-the-dof-of-the-node-in-both-time-and-frequency-domain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extract the displacement of the DOF of the node in both time and frequency domain.</h6>
-<pre><code class="bash">python extract_node_disp.py your_output.h5.feioutput your_nodetag your_dof
+<h6 id="plot-the-displacement-of-the-dof-of-the-node-in-both-time-and-frequency-domain"><a name="user-content-plot-the-displacement-of-the-dof-of-the-node-in-both-time-and-frequency-domain" href="#plot-the-displacement-of-the-dof-of-the-node-in-both-time-and-frequency-domain" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Plot the displacement of the DOF of the node in both time and frequency domain.</h6>
+<pre><code class="bash"># python plot_node_disp.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. node-tag 6 is the center of soil surface, to plot the displacement series in x direction of node 6 : 
-python extract_node_disp.py shell_structure_motion.h5.feioutput 6 x
+python plot_node_disp.py shell_structure_motion.h5.feioutput 6 x
 </code></pre>
 
-<h6 id="extract-the-response-spectrum-of-the-dof-of-the-node"><a name="user-content-extract-the-response-spectrum-of-the-dof-of-the-node" href="#extract-the-response-spectrum-of-the-dof-of-the-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extract the response spectrum of the DOF of the node.</h6>
-<pre><code class="bash">python extract_node_spectrum.py your_output.h5.feioutput your_nodetag your_dof
+<h6 id="plot-the-response-spectrum-of-the-dof-of-the-node"><a name="user-content-plot-the-response-spectrum-of-the-dof-of-the-node" href="#plot-the-response-spectrum-of-the-dof-of-the-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Plot the response spectrum of the DOF of the node.</h6>
+<pre><code class="bash"># python extract_node_spectrum_in_period.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. node-tag 6 is the center of soil surface, to plot the response spectrum in x direction of node 6 : 
-python extract_node_spectrum.py shell_structure_motion.h5.feioutput 6 x
+python extract_node_spectrum_in_period.py shell_structure_motion.h5.feioutput 6 x
 </code></pre>
 
-<h4 id="other-critical-points-for-postprocessing"><a name="user-content-other-critical-points-for-postprocessing" href="#other-critical-points-for-postprocessing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Other Critical Points for Postprocessing</h4>
+<h4 id="other-points-for-postprocessing"><a name="user-content-other-points-for-postprocessing" href="#other-points-for-postprocessing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Other Points for Postprocessing</h4>
 <p>You can also use the python scripts to plot other points.</p>
 <pre><code>* Surface soil
  Node # 6 

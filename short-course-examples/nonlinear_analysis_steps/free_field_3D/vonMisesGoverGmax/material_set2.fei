@@ -18,7 +18,7 @@
 
 add material # 1 type vonMisesMultipleYieldSurfaceGoverGmax
     mass_density = 2000*kg/m^3 
-    elastic_modulus = 4.4*GPa
+    elastic_modulus = 4.4*GPa   // for shear wave velocity Vs = 1000 m/s
     poisson_ratio = 0.1
     total_number_of_shear_modulus = 9
     GoverGmax = 
@@ -35,7 +35,7 @@ define NDMaterial constitutive integration algorithm Backward_Euler
 
 add material # 2 type linear_elastic_isotropic_3d
   mass_density = 2000*kg/m^3 
-  elastic_modulus = 4.4*GPa
+  elastic_modulus = 4.4*GPa   // for shear wave velocity Vs = 1000 m/s
   poisson_ratio = 0.1;
 
 
@@ -43,7 +43,7 @@ add material # 2 type linear_elastic_isotropic_3d
 
 add material # 3 type linear_elastic_isotropic_3d
   mass_density = 2000*kg/m^3 
-  elastic_modulus = 4.4*GPa
+  elastic_modulus = 4.4*GPa   // for shear wave velocity Vs = 1000 m/s
   poisson_ratio = 0.1;
 
 

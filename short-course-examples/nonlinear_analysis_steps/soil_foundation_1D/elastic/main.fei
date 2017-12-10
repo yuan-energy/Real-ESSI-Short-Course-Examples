@@ -5,65 +5,29 @@
 //
 model name "DRM1D" ;
 
-
 // Define Material and Geometry
-
+// Choice of materials, comment or uncomment lines below
+// If you change material here, you have to change
+// wave field too!
 include "material_set1.fei";
-// include "material_set2.fei";
-// include "material_set3.fei";
+include "wave_field1.fei";
+
+/// include "material_set2.fei";
+/// include "wave_field2.fei";
+
+/// include "material_set3.fei";
+/// include "wave_field3.fei";
+
 include "node.fei";
 include "element.fei";
-
-
-// Define damping, load, and boundary condition
-
-// Damping Period
-T1 = 2*s; 
-T2 = 0.2*s; 
-w1 = 2*pi/T1; 
-w2 = 2*pi/T2; 
-
-// Structural Rayleigh Damping Ratio 
-xi_1 = 0.03; 
-rayl_1_a1 = 2*xi_1/(w1+w2); 
-rayl_1_a0 = rayl_1_a1*w1*w2; 
-
-// Foundation Rayleigh Damping Ratio 
-xi_2 = 0.06; 
-rayl_2_a1 = 2*xi_2/(w1+w2); 
-rayl_2_a0 = rayl_2_a1*w1*w2; 
-
-// Soil Layer Rayleigh Damping Ratio 
-xi_3 = 0.09; 
-rayl_3_a1 = 2*xi_3/(w1+w2); 
-rayl_3_a0 = rayl_3_a1*w1*w2; 
-
-// DRM Layer Rayleigh Damping Ratio 
-xi_4 = 0.0 ; 
-rayl_4_a1 = 2*xi_4/(w1+w2); 
-rayl_4_a0 = rayl_4_a1*w1*w2; 
-
-// Damping Period layer Damping 
-xi_5 = 0.5 ; 
-rayl_5_a1 = 2*xi_5/(w1+w2); 
-rayl_5_a0 = rayl_5_a1*w1*w2; 
-
-add damping # 1 type Rayleigh with a0 = rayl_1_a0 a1 = rayl_1_a1 stiffness_to_use = Initial_Stiffness; 
-add damping # 2 type Rayleigh with a0 = rayl_2_a0 a1 = rayl_2_a1 stiffness_to_use = Initial_Stiffness; 
-add damping # 3 type Rayleigh with a0 = rayl_3_a0 a1 = rayl_3_a1 stiffness_to_use = Initial_Stiffness; 
-add damping # 4 type Rayleigh with a0 = rayl_4_a0 a1 = rayl_4_a1 stiffness_to_use = Initial_Stiffness; 
-add damping # 5 type Rayleigh with a0 = rayl_5_a0 a1 = rayl_5_a1 stiffness_to_use = Initial_Stiffness; 
-
-include "load.fei";
-
-
+include "boundary_condition.fei";
+include "damping_parameters.fei";
+include "damping.fei";
 
 // It is recommended to run check model before any simulation.
 // The hdf5 output can be visualized to check the boundary conditions.
 
 // check model;
-
-
 
 // Simulate Loading Stage 1: Self Weight
 
@@ -85,66 +49,11 @@ else
 define load factor increment 1;
 simulate 1 steps using static algorithm;
 
-
-
 // Simulate Loading Stage 2: DRM Motion
 
 new loading stage "motion";
 include "fix_all_uz.fei";
 
-// Wave propagation with wave fields:
-add wave field # 11 with
-  acceleration_filename = "./motion/sw4_free_field_center_ax.txt"
-  unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "./motion/sw4_free_field_center_ux.txt"
-  unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
-  acceleration_depth = 0 * m
-  monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile_set1_Vs.txt"
-  // soil_profile_filename = "soil_profile_set2_Vs.txt"/
-  // soil_profile_filename = "soil_profile_set3_Vs.txt"/
-  unit_of_Vs_or_Vp = 1 * m/s
-  unit_of_rho = 1 * kg/m^3
-  unit_of_damping = absolute
-  unit_of_thickness = 1*m 
-  ;
-  
-add wave field # 12 with
-  acceleration_filename = "./motion/sw4_free_field_center_ay.txt"
-  unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "./motion/sw4_free_field_center_uy.txt"
-  unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
-  acceleration_depth = 0 * m
-  monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile_set1_Vs.txt"
-  // soil_profile_filename = "soil_profile_set2_Vs.txt"/
-  // soil_profile_filename = "soil_profile_set3_Vs.txt"/
-  unit_of_Vs_or_Vp = 1 * m/s
-  unit_of_rho = 1 * kg/m^3
-  unit_of_damping = absolute
-  unit_of_thickness = 1*m 
-  ;
-
-add wave field # 13 with
-  acceleration_filename = "./motion/sw4_free_field_center_az.txt"
-  unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "./motion/sw4_free_field_center_uz.txt"
-  unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
-  acceleration_depth = 0 * m
-  monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile_set1_Vp.txt"
-  // soil_profile_filename = "soil_profile_set2_Vp.txt"/
-  // soil_profile_filename = "soil_profile_set3_Vp.txt"/
-  unit_of_Vs_or_Vp = 1 * m/s
-  unit_of_rho = 1 * kg/m^3
-  unit_of_damping = absolute
-  unit_of_thickness = 1*m 
-  ;
-
-// Dynamic Domain-Reduction-Method Loading with the wave field:
 add load # 11 type DRM from wave field 
     # 11 in direction ux 
     # 12 in direction uy
@@ -168,14 +77,4 @@ simulate 210 steps using transient algorithm
 
 // No more loading stages. Stop the program politely:
 bye;
-
-
-
-
-
-
-
-
-
-
 
