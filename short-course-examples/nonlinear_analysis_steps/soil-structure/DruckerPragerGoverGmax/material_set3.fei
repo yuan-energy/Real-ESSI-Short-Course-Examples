@@ -4,7 +4,6 @@
 // http://real-essi.info
 //
 
-
 // Support Variable Definition and Calculation with Units
 
 // rho = 2000*kg/m^3
@@ -33,6 +32,7 @@ add material # 1 type DruckerPragerMultipleYieldSurfaceGoverGmax
   ShearStrainGamma = 
   "0,1E-6,1E-5,5E-5,1E-4, 0.0005, 0.001, 0.005, 0.01"
   ;
+
 define NDMaterial constitutive integration algorithm Backward_Euler
   yield_function_relative_tolerance =  1e-17
   stress_relative_tolerance =  1e-17

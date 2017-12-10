@@ -22,8 +22,9 @@ add material # 1  type vonmisesArmstrongFrederick
   poisson_ratio = 0.1
   von_mises_radius = 60*kPa  
   armstrong_frederick_ha =  3e7*Pa
-  armstrong_frederick_cr =  25
+  armstrong_frederick_cr =  60
   isotropic_hardening_rate =  0*Pa;
+
 define NDMaterial constitutive integration algorithm Backward_Euler
   yield_function_relative_tolerance =  1e-6
   stress_relative_tolerance =  1e-6
@@ -60,6 +61,61 @@ add material # 5 type linear_elastic_isotropic_3d
   mass_density = 2500*kg/m^3 
   elastic_modulus = 3e10*N/m^2
   poisson_ratio = 0.2 ;
+
+
+
+// Contact parameters
+
+Kn = 1e11 * kg /s^2 ;  // Penalty Stiffness for Bonded Contact 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Contact Parameters (StressBased)
+// Kn = 100*MPa; 
+// Sr = 100; 
+// Kn_max = 500*MPa; 
+// Kt = 40*kPa; 
+// Cn = 100*Pa*s; 
+// Ct = 100*Pa*s; 
+// Fr = 0.8; 
+
+// Kp = 1e12*N/m;
+// Shear_Zone  = 5e-3*m;
+// mu_p_no = 0.9;
+// mu_p_k  = 0.1;
+// Softening_rate = 40;
+// Pleateau_Size = 8;
+
 
 
 
