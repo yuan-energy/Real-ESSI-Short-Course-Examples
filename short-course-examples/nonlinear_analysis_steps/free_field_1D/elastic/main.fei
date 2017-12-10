@@ -7,10 +7,18 @@ model name "DRM1D" ;
 
 
 // Define Material and Geometry
-
+// Choice of materials, comment or uncomment lines below
+// If you change material here, you have to change
+// wave field too!
 include "material_set1.fei";
+include "wave_field1.fei";
+
 // include "material_set2.fei";
+// include "wave_field2.fei";
+
 // include "material_set3.fei";
+// include "wave_field3.fei";
+
 include "node.fei";
 include "element.fei";
 
@@ -61,7 +69,7 @@ include "load.fei";
 // It is recommended to run check model before any simulation.
 // The hdf5 output can be visualized to check the boundary conditions.
 
-// check model;
+check model;
 
 
 
@@ -92,57 +100,6 @@ simulate 1 steps using static algorithm;
 new loading stage "motion";
 include "fix_all_uz.fei" ;
 
-// Wave propagation with wave fields:
-add wave field # 11 with
-  acceleration_filename = "./motion/sw4_free_field_center_ax.txt"
-  unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "./motion/sw4_free_field_center_ux.txt"
-  unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
-  acceleration_depth = 0 * m
-  monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile_set1_Vs.txt"
-  // soil_profile_filename = "soil_profile_set2_Vs.txt"/
-  // soil_profile_filename = "soil_profile_set3_Vs.txt"/
-  unit_of_Vs_or_Vp = 1 * m/s
-  unit_of_rho = 1 * kg/m^3
-  unit_of_damping = absolute
-  unit_of_thickness = 1*m 
-  ;
-  
-add wave field # 12 with
-  acceleration_filename = "./motion/sw4_free_field_center_ay.txt"
-  unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "./motion/sw4_free_field_center_uy.txt"
-  unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
-  acceleration_depth = 0 * m
-  monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile_set1_Vs.txt"
-  // soil_profile_filename = "soil_profile_set2_Vs.txt"/
-  // soil_profile_filename = "soil_profile_set3_Vs.txt"/
-  unit_of_Vs_or_Vp = 1 * m/s
-  unit_of_rho = 1 * kg/m^3
-  unit_of_damping = absolute
-  unit_of_thickness = 1*m 
-  ;
-
-add wave field # 13 with
-  acceleration_filename = "./motion/sw4_free_field_center_az.txt"
-  unit_of_acceleration = 1 * m/s^2
-  displacement_filename = "./motion/sw4_free_field_center_uz.txt"
-  unit_of_displacement = 1 * m
-  add_compensation_time = 0.5 * s
-  acceleration_depth = 0 * m
-  monitoring_location = within_soil_layer
-  soil_profile_filename = "soil_profile_set1_Vp.txt"
-  // soil_profile_filename = "soil_profile_set2_Vp.txt"/
-  // soil_profile_filename = "soil_profile_set3_Vp.txt"/
-  unit_of_Vs_or_Vp = 1 * m/s
-  unit_of_rho = 1 * kg/m^3
-  unit_of_damping = absolute
-  unit_of_thickness = 1*m 
-  ;
 
 // Dynamic Domain-Reduction-Method Loading with the wave field:
 add load # 11 type DRM from wave field 
