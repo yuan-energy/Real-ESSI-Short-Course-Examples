@@ -121,7 +121,7 @@ NumSteps = 30;
 // Carrying out the simulation
 // define convergence test Norm_Unbalance tolerance = 100 maximum_iterations = 300 verbose_level = 1; 
 
-enable sub-stepping with minimum_time_step = 0.0001;
+enable subincrement using minimum_time_step = 0.0001;
 
 tol = 5e-3;
 
@@ -135,7 +135,7 @@ simulate NumSteps steps using static algorithm;
 // new loading stage <string>;
 new loading stage "DRM_Motion";
 
-add domain reduction method loading # 2 hdf5_file = "../M5.5_ESSI_Earthquake.drminput" scale_factor = 1;
+add domain reduction method loading # 2 hdf5_file = "./M5.5_ESSI_Earthquake.drminput" scale_factor = 1;
 
 TotalTime= 40*s;
 TimeStep = 10*0.001938*s;

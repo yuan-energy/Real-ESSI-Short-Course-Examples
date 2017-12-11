@@ -1,0 +1,53 @@
+ model name "Solids_With_Beam_And_Shells" ;
+ add acceleration field # 1 ax =  0*g ay =  0*g 	az =  - g;
+
+
+ h     = 1*m;
+ Eshell  = 1e8*N/m^2;
+ nu    = 0.0;
+ rho   = 10*kg/m^3;
+
+add material # 1 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Eshell
+  poisson_ratio = nu;
+
+add material # 2 type linear_elastic_isotropic_3d
+  mass_density = rho
+  elastic_modulus = Eshell
+  poisson_ratio = nu;
+
+
+
+
+//Contact Parameters
+ Kn = 1e9*N/m;
+ Sr = 1000/m;
+ Kn_max = 1e12*N/m;
+ Kt = 1e7*N/m;
+ Cn = 0*N/m*s;
+ Ct = 0*N/m*s;
+ Fr = 0.3;
+
+// Adding Soft Contacts
+
+
+ include "node.fei";
+ include "element.fei";
+
+ new loading stage "Nodal_Load";
+
+ P = 10*kN;
+
+
+
+ include "load.fei";
+
+ define algorithm With_no_convergence_check ;
+ define solver UMFPack;
+ define load factor increment 0.1;
+ simulate 10 steps using static algorithm;
+ bye;
+
+
+

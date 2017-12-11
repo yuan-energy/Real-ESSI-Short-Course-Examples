@@ -1,0 +1,45 @@
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#SurfaceToBeFixed, all}Starts
+//*************************************************************************************************************************
+
+fix node # 1 dofs all; 
+fix node # 3 dofs all; 
+fix node # 5 dofs all; 
+fix node # 8 dofs all; 
+fix node # 23 dofs all; 
+fix node # 40 dofs all; 
+fix node # 41 dofs all; 
+fix node # 44 dofs all; 
+fix node # 67 dofs all; 
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#SurfaceToBeFixed, all}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Add_8NodeBrick_SurfaceLoad{Physical_Group#All_Volumes,Physical_Group#ApplySurfaceLoad,-10*Pa}Starts
+//*************************************************************************************************************************
+
+add load # 1 to element # 2 type surface at nodes (5 , 25 , 68 , 40) with magnitude -10*Pa; 
+add load # 2 to element # 4 type surface at nodes (40 , 68 , 39 , 8) with magnitude -10*Pa; 
+add load # 3 to element # 6 type surface at nodes (25 , 26 , 69 , 68) with magnitude -10*Pa; 
+add load # 4 to element # 8 type surface at nodes (68 , 69 , 38 , 39) with magnitude -10*Pa; 
+add load # 5 to element # 10 type surface at nodes (26 , 27 , 70 , 69) with magnitude -10*Pa; 
+add load # 6 to element # 12 type surface at nodes (69 , 70 , 37 , 38) with magnitude -10*Pa; 
+add load # 7 to element # 14 type surface at nodes (27 , 28 , 71 , 70) with magnitude -10*Pa; 
+add load # 8 to element # 16 type surface at nodes (70 , 71 , 36 , 37) with magnitude -10*Pa; 
+add load # 9 to element # 18 type surface at nodes (28 , 29 , 72 , 71) with magnitude -10*Pa; 
+add load # 10 to element # 20 type surface at nodes (71 , 72 , 35 , 36) with magnitude -10*Pa; 
+add load # 11 to element # 22 type surface at nodes (29 , 30 , 73 , 72) with magnitude -10*Pa; 
+add load # 12 to element # 24 type surface at nodes (72 , 73 , 34 , 35) with magnitude -10*Pa; 
+add load # 13 to element # 26 type surface at nodes (30 , 31 , 74 , 73) with magnitude -10*Pa; 
+add load # 14 to element # 28 type surface at nodes (73 , 74 , 33 , 34) with magnitude -10*Pa; 
+add load # 15 to element # 30 type surface at nodes (31 , 6 , 32 , 74) with magnitude -10*Pa; 
+add load # 16 to element # 32 type surface at nodes (74 , 32 , 7 , 33) with magnitude -10*Pa; 
+
+//*************************************************************************************************************************
+//							Add_8NodeBrick_SurfaceLoad{Physical_Group#All_Volumes,Physical_Group#ApplySurfaceLoad,-10*Pa}Ends
+//*************************************************************************************************************************
+

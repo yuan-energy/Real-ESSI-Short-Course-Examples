@@ -156,20 +156,20 @@ new loading stage "Loading";
 
 scale = 1.0;
 add imposed motion # 101 to node # 1 dof ux
-displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
-velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
-acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+displacement_scale_unit = scale*m displacement_file = "./Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "./Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "./Ormsby_Accel.dat";
 add imposed motion # 102 to node # 2 dof ux
-displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
-velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
-acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+displacement_scale_unit = scale*m displacement_file = "./Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "./Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "./Ormsby_Accel.dat";
 add imposed motion # 103 to node # 3 dof ux
-displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
-velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
-acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
+displacement_scale_unit = scale*m displacement_file = "./Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "./Ormsby_Vel.dat"
+acceleration_scale_unit = scale*m/s^2 acceleration_file = "./Ormsby_Accel.dat";
 add imposed motion # 104 to node # 4 dof ux
-displacement_scale_unit = scale*m displacement_file = "../Ormsby_Disp.dat"
-velocity_scale_unit = scale*m/s velocity_file = "../Ormsby_Vel.dat"
+displacement_scale_unit = scale*m displacement_file = "./Ormsby_Disp.dat"
+velocity_scale_unit = scale*m/s velocity_file = "./Ormsby_Vel.dat"
 acceleration_scale_unit = scale*m/s^2 acceleration_file = "../Ormsby_Accel.dat";
 
 

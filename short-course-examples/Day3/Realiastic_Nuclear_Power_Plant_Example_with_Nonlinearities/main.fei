@@ -28,7 +28,6 @@ add material # 8 type linear_elastic_isotropic_3d mass_density = Soil_Density el
 add material # 9 type linear_elastic_isotropic_3d mass_density = Soil_Density elastic_modulus = Soil_Elastic_Modulus poisson_ratio = Soil_Poisons_ratio; //Damping_Layer_Volum; 
 
 
-// add material # <.> type VonMisesArmstrongFrederick mass_density = <M/L^3> elastic_modulus = <F/L^2> poisson_ratio = <.> von_mises_radius = <> armstrong_frederick_ha = <F/L^2> armstrong_frederick_cr = <F/L^2> isotropic_hardening_rate = <F/L^2> ;
 add material #7  type VonMisesArmstrongFrederick 
 	mass_density =  2140*kg/m^3
 	elastic_modulus = Soil_Elastic_Modulus
@@ -38,18 +37,10 @@ add material #7  type VonMisesArmstrongFrederick
 	armstrong_frederick_cr =  25
 	isotropic_hardening_rate =  0*Pa;
 
-
-	
-
-
-
-// define NDMaterial constitutive integration algorithm < Forward_Euler | Forward_Euler_Subincrement | Backward_Euler | Backward_Euler_ddlambda | Backward_Euler_ddlambda_Subincrement > yield_function_relative_tolerance  = <.> stress_relative_tolerance = <.> maximum_iterations = <.>;
 define NDMaterial constitutive integration algorithm  Backward_Euler 
 	yield_function_relative_tolerance =  1e-6
 	stress_relative_tolerance =  1e-6
 	maximum_iterations = 100;
-
-
 	
 //Thickness of Auxiliary and Containment Building Walls
  Containment_Building_Thickness = 1.6*m; 
@@ -105,8 +96,6 @@ add damping # 3 type Rayleigh with a0 = a_0*Concrete_Damping a1 = a_1*Concrete_D
 
 
 // Including the files
- // Including The files; 
-
 include "geometry.fei"; 
 include "StressBasedSoftContact_ElPPlShear.fei";
 // include "StressBasedHardContact_ElPPlShear.fei";
@@ -121,9 +110,8 @@ include "load.fei";
 NumSteps = 100; 
 
 // Carrying out the simulation
-// define convergence test Norm_Unbalance tolerance = 100 maximum_iterations = 300 verbose_level = 1; 
 
-enable sub-stepping with minimum_time_step = 0.0001;
+enable subincrement using minimum_time_step = 0.0001;
 
 tol = 5e-3;
 
@@ -134,7 +122,6 @@ define solver parallel petsc "-pc_type lu -pc_factor_mat_solver_package mumps" ;
 
 simulate NumSteps steps using static algorithm; 
 
-// new loading stage <string>;
 new loading stage "DRM_Motion";
 
 add domain reduction method loading # 2 hdf5_file = "../M5.5_ESSI_Earthquake.drminput" scale_factor = 1;
@@ -145,13 +132,10 @@ NumSteps = TotalTime/TimeStep;
 
 
 // Carrying out the simulation
-// define convergence test Norm_Unbalance tolerance = 100 maximum_iterations = 300 verbose_level = 1; 
 enable sub-stepping with minimum_time_step = 0.0001;
 tol = 5e-3;
 define convergence test Relative_Norm_Unbalanced_Force tolerance = tol minimum_absolute_tolerance = 5e5 maximum_iterations = 50 ;
-// define load factor increment 1/NumSteps; 
 
-// define algorithm <With_no_convergence_check|Newton|Modified_Newton>;
 define algorithm NewtonLineSearch ;
 define solver parallel petsc "-pc_type lu -pc_factor_mat_solver_package mumps" ;
 

@@ -101,5 +101,5 @@ while ( e < NBricks)
 e = e -1;
 new loading stage "eigen";
 simulate using eigen algorithm 
- number_of_modes = 4;
+ number_of_modes = 10;
 bye;

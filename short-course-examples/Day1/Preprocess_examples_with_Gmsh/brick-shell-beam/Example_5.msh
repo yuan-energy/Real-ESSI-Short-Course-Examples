@@ -3,20 +3,20 @@ $MeshFormat
 $EndMeshFormat
 $PhysicalNames
 14
-3 1 "Soil"
+0 7 "Top_Of_Beam"
+0 8 "Bottom_Of_Beam"
+1 5 "Embedded_Beam"
+1 6 "Exposed_Beam"
+1 9 "Beam"
+1 12 "Top_Of_Shell"
+1 13 "Bottom_Of_Shell"
 2 2 "Base"
 2 3 "Lateral_X"
 2 4 "Lateral_Y"
-1 5 "Embedded_Beam"
-1 6 "Exposed_Beam"
-0 7 "Top_Of_Beam"
-0 8 "Bottom_Of_Beam"
-1 9 "Beam"
 2 10 "Embedded_Shell"
 2 11 "Exposed_Shell"
-1 12 "Top_Of_Shell"
-1 13 "Bottom_Of_Shell"
 2 14 "Shell"
+3 1 "Soil"
 $EndPhysicalNames
 $Nodes
 649

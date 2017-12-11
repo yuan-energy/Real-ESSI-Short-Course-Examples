@@ -1,0 +1,42 @@
+
+//*************************************************************************************************************************
+//							Add_8NodeBrick{Physical_Group#All_Volumes, material_no:= 1}Starts
+//*************************************************************************************************************************
+
+add element # 1 type 8NodeBrick with nodes (75, 67, 41, 52, 45, 23, 1, 9) use material # 1; 
+add element # 2 type 8NodeBrick with nodes (68, 40, 5, 25, 75, 67, 41, 52) use material # 1; 
+add element # 3 type 8NodeBrick with nodes (60, 44, 67, 75, 16, 3, 23, 45) use material # 1; 
+add element # 4 type 8NodeBrick with nodes (39, 8, 40, 68, 60, 44, 67, 75) use material # 1; 
+add element # 5 type 8NodeBrick with nodes (76, 75, 52, 53, 46, 45, 9, 10) use material # 1; 
+add element # 6 type 8NodeBrick with nodes (69, 68, 25, 26, 76, 75, 52, 53) use material # 1; 
+add element # 7 type 8NodeBrick with nodes (61, 60, 75, 76, 17, 16, 45, 46) use material # 1; 
+add element # 8 type 8NodeBrick with nodes (38, 39, 68, 69, 61, 60, 75, 76) use material # 1; 
+add element # 9 type 8NodeBrick with nodes (77, 76, 53, 54, 47, 46, 10, 11) use material # 1; 
+add element # 10 type 8NodeBrick with nodes (70, 69, 26, 27, 77, 76, 53, 54) use material # 1; 
+add element # 11 type 8NodeBrick with nodes (62, 61, 76, 77, 18, 17, 46, 47) use material # 1; 
+add element # 12 type 8NodeBrick with nodes (37, 38, 69, 70, 62, 61, 76, 77) use material # 1; 
+add element # 13 type 8NodeBrick with nodes (78, 77, 54, 55, 48, 47, 11, 12) use material # 1; 
+add element # 14 type 8NodeBrick with nodes (71, 70, 27, 28, 78, 77, 54, 55) use material # 1; 
+add element # 15 type 8NodeBrick with nodes (63, 62, 77, 78, 19, 18, 47, 48) use material # 1; 
+add element # 16 type 8NodeBrick with nodes (36, 37, 70, 71, 63, 62, 77, 78) use material # 1; 
+add element # 17 type 8NodeBrick with nodes (79, 78, 55, 56, 49, 48, 12, 13) use material # 1; 
+add element # 18 type 8NodeBrick with nodes (72, 71, 28, 29, 79, 78, 55, 56) use material # 1; 
+add element # 19 type 8NodeBrick with nodes (64, 63, 78, 79, 20, 19, 48, 49) use material # 1; 
+add element # 20 type 8NodeBrick with nodes (35, 36, 71, 72, 64, 63, 78, 79) use material # 1; 
+add element # 21 type 8NodeBrick with nodes (80, 79, 56, 57, 50, 49, 13, 14) use material # 1; 
+add element # 22 type 8NodeBrick with nodes (73, 72, 29, 30, 80, 79, 56, 57) use material # 1; 
+add element # 23 type 8NodeBrick with nodes (65, 64, 79, 80, 21, 20, 49, 50) use material # 1; 
+add element # 24 type 8NodeBrick with nodes (34, 35, 72, 73, 65, 64, 79, 80) use material # 1; 
+add element # 25 type 8NodeBrick with nodes (81, 80, 57, 58, 51, 50, 14, 15) use material # 1; 
+add element # 26 type 8NodeBrick with nodes (74, 73, 30, 31, 81, 80, 57, 58) use material # 1; 
+add element # 27 type 8NodeBrick with nodes (66, 65, 80, 81, 22, 21, 50, 51) use material # 1; 
+add element # 28 type 8NodeBrick with nodes (33, 34, 73, 74, 66, 65, 80, 81) use material # 1; 
+add element # 29 type 8NodeBrick with nodes (59, 81, 58, 42, 24, 51, 15, 2) use material # 1; 
+add element # 30 type 8NodeBrick with nodes (32, 74, 31, 6, 59, 81, 58, 42) use material # 1; 
+add element # 31 type 8NodeBrick with nodes (43, 66, 81, 59, 4, 22, 51, 24) use material # 1; 
+add element # 32 type 8NodeBrick with nodes (7, 33, 74, 32, 43, 66, 81, 59) use material # 1; 
+
+//*************************************************************************************************************************
+//							Add_8NodeBrick{Physical_Group#All_Volumes, material_no:= 1}Ends
+//*************************************************************************************************************************
+

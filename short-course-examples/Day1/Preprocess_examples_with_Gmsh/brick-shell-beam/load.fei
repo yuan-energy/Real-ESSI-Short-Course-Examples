@@ -1,0 +1,113 @@
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Base, DofTypes:= all}Starts
+//*************************************************************************************************************************
+
+fix node # 5 dofs all; 
+fix node # 6 dofs all; 
+fix node # 7 dofs all; 
+fix node # 8 dofs all; 
+fix node # 33 dofs all; 
+fix node # 34 dofs all; 
+fix node # 35 dofs all; 
+fix node # 36 dofs all; 
+fix node # 37 dofs all; 
+fix node # 38 dofs all; 
+fix node # 39 dofs all; 
+fix node # 40 dofs all; 
+fix node # 41 dofs all; 
+fix node # 42 dofs all; 
+fix node # 43 dofs all; 
+fix node # 44 dofs all; 
+fix node # 45 dofs all; 
+fix node # 46 dofs all; 
+fix node # 47 dofs all; 
+fix node # 48 dofs all; 
+fix node # 49 dofs all; 
+fix node # 50 dofs all; 
+fix node # 51 dofs all; 
+fix node # 52 dofs all; 
+fix node # 53 dofs all; 
+fix node # 54 dofs all; 
+fix node # 55 dofs all; 
+fix node # 56 dofs all; 
+fix node # 336 dofs all; 
+fix node # 337 dofs all; 
+fix node # 338 dofs all; 
+fix node # 339 dofs all; 
+fix node # 340 dofs all; 
+fix node # 341 dofs all; 
+fix node # 342 dofs all; 
+fix node # 343 dofs all; 
+fix node # 344 dofs all; 
+fix node # 345 dofs all; 
+fix node # 346 dofs all; 
+fix node # 347 dofs all; 
+fix node # 348 dofs all; 
+fix node # 349 dofs all; 
+fix node # 350 dofs all; 
+fix node # 351 dofs all; 
+fix node # 352 dofs all; 
+fix node # 353 dofs all; 
+fix node # 354 dofs all; 
+fix node # 355 dofs all; 
+fix node # 356 dofs all; 
+fix node # 357 dofs all; 
+fix node # 358 dofs all; 
+fix node # 359 dofs all; 
+fix node # 360 dofs all; 
+fix node # 361 dofs all; 
+fix node # 362 dofs all; 
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Base, DofTypes:= all}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Bottom_Of_Beam, DofTypes:= all}Starts
+//*************************************************************************************************************************
+
+fix node # 606 dofs all; 
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Bottom_Of_Beam, DofTypes:= all}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Bottom_Of_Shell, DofTypes:= all}Starts
+//*************************************************************************************************************************
+
+fix node # 617 dofs all; 
+fix node # 618 dofs all; 
+fix node # 623 dofs all; 
+
+//*************************************************************************************************************************
+//							Fix_Dofs{Physical_Group#Bottom_Of_Shell, DofTypes:= all}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Add_Node_Load_Linear{Physical_Group#Top_Of_Beam, ForceType:= Fx, Mag:= 1000*P}Starts
+//*************************************************************************************************************************
+
+add load # 1 to node # 608 type linear Fx = 1000*P; 
+
+//*************************************************************************************************************************
+//							Add_Node_Load_Linear{Physical_Group#Top_Of_Beam, ForceType:= Fx, Mag:= 1000*P}Ends
+//*************************************************************************************************************************
+
+
+//*************************************************************************************************************************
+//							Add_Node_Load_Linear{Physical_Group#Top_Of_Shell, ForceType:= Fx, Mag:= P/100}Starts
+//*************************************************************************************************************************
+
+add load # 2 to node # 621 type linear Fx = P/100; 
+add load # 3 to node # 622 type linear Fx = P/100; 
+add load # 4 to node # 633 type linear Fx = P/100; 
+
+//*************************************************************************************************************************
+//							Add_Node_Load_Linear{Physical_Group#Top_Of_Shell, ForceType:= Fx, Mag:= P/100}Ends
+//*************************************************************************************************************************
+

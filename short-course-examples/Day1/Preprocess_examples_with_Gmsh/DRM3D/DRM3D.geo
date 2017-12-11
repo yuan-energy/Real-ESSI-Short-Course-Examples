@@ -1,48 +1,89 @@
 //****************************************************************
-// DRM 3D Example 
+// Real-ESSI Short Course 
+// 		Day 2: Motions
+// Model Component: Soil-Foundation
 //****************************************************************
 
 //****************************************************************
 // Predefined Parameters
 //****************************************************************
+
+total_height = 50 ;
+total_width = 210 ;
+
+Ox = 0;
+Oy = 0;
+Oz = -total_height;
+
+epsilon =0.001 ;
+//epsilon = 2 ;
+
 mesh_size = 5;
 
-total_width_of_field =  150 ; 
-total_height_of_soil = 30 ; 
 
 
 //**************************************************************************************************
-// Part A: Soil 
+// Part A: Soil
 //**************************************************************************************************
+// Soil: 
+p1 = newp; Point(p1) = {Ox, Oy, Oz};
 
-// 1. Create the point and extrude to line, and then to surface.
-p1 = newp; Point(p1) = {0, 0, 0};
-ans[] = Extrude{0,0,total_height_of_soil}{Point{p1};Layers{total_height_of_soil/mesh_size};Recombine;} ; 
-ans[] = Extrude{total_width_of_field,0,0}{Line{ans[1]}; Layers{total_width_of_field/mesh_size};Recombine;};
+ans[] = Extrude{total_width,0,0}{Point{p1};Layers{total_width/mesh_size};Recombine;} ; 
+l1 = ans[1];
+ans[] = Extrude{0,total_width,0}{Line{l1};Layers{total_width/mesh_size};Recombine;} ; 
+s1 = ans[1];
+ans[] = Extrude{0,0,total_height}{Surface{s1};Layers{total_height/mesh_size};Recombine;} ; 
+
+Physical Volume("all_soil") = {1} ;
+Physical Surface("soil_bottom") = {5} ;
 
 
+Physical Surface("box_x_min_surface") = {26};
+Physical Surface("box_x_max_surface") = {18};
+Physical Surface("box_y_min_surface") = {14};
+Physical Surface("box_y_max_surface") = {22};
 
-//********************************************************************
-// Part B: Extract 2D ==> 3D
-//********************************************************************
 
-ans[] =  Extrude{0,total_width_of_field,0}{Surface{5}; Layers{total_width_of_field/mesh_size}; Recombine;};
+////********************************************************************
+//// Recombine
+////********************************************************************
 
 
 Transfinite Surface "*";
 Recombine Surface "*";
 
-//********************************************************************
-// Part C: Define Physical Group
-//********************************************************************
 
-leftmost_soil_surface[] = {14};
-rightmost_soil_surface[] = {22};
-bottom_soil_surface[] = {26}; 
 
-Physical Surface("leftmost_soil_surface") = leftmost_soil_surface[];
-Physical Surface("rightmost_soil_surface") = rightmost_soil_surface[];
-Physical Surface("bottom_soil_surface") = bottom_soil_surface[];
 
-Physical Volume("soil") = {1} ; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n = #ans[];
+Printf("Extrude has returned %g elements", n);
+n -= 1;
+For i In {0 : n}
+    Printf("Extrusion value[%g] = %g.", i, ans[i]);
+EndFor
+
+
+
 
