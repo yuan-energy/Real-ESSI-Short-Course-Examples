@@ -52,7 +52,7 @@ simulate 1 steps using static algorithm;
 // Simulate Loading Stage 2: DRM Motion
 
 new loading stage "motion";
-include "fix_all_uz.fei";
+include "change_boundary_condition_to_fix_all_uz.fei";
 
 add load # 11 type DRM from wave field 
     # 11 in direction ux 

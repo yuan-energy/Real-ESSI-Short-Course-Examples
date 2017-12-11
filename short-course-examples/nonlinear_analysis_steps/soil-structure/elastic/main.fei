@@ -12,11 +12,11 @@ model name "shell_structure" ;
 include "material_set1.fei";
 include "wave_field1.fei";
 
-/// include "material_set2.fei";
-/// include "wave_field2.fei";
+// include "material_set2.fei";
+// include "wave_field2.fei";
 
-/// include "material_set3.fei";
-/// include "wave_field3.fei";
+// include "material_set3.fei";
+// include "wave_field3.fei";
 
 include "node.fei";
 include "element.fei";

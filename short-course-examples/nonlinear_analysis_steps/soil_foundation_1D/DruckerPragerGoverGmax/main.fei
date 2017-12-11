@@ -51,13 +51,13 @@ else
 {define solver parallel;}
 
 // Static loading increments:
-define load factor increment 1;
-simulate 1 steps using static algorithm;
+define load factor increment 10;
+simulate 0.1 steps using static algorithm;
 
 // Simulate Loading Stage 2: DRM Motion
 
 new loading stage "motion";
-include "fix_all_uz.fei";
+include "change_boundary_condition_to_fix_all_uz.fei";
 
 add load # 2 type DRM from wave field 
     # 1 in direction ux 

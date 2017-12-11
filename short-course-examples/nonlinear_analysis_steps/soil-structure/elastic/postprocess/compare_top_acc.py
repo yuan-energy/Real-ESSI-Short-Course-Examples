@@ -79,6 +79,12 @@ ax2.semilogx(refer_freq, refer_ampl, '--k', linewidth=3, label='Soil Surface Mot
 ax2.semilogx(out_freq, out_ampl, '-k', linewidth=3, label='Structural Top Motion')
 ax2.legend(loc=2)
 ax2.set( xlabel = "Frequency [Hz] ", ylabel = "Acceleration [m/s^2] ", xlim = [plotFreq_min, plotFreq_max] , title = "FFT of Acceleration")
+# *****************************
+a = np.linspace(0.1,1,10)
+b = np.linspace(2,10,9) 
+c = np.concatenate((a,b))
+plt.xticks(c)
+# *****************************
 ax2.grid()
 plt.savefig( out_filename + "_compare.pdf" )
 plt.show()
