@@ -1,7 +1,6 @@
-### Run Sequential or parallel simulation
+### Run Sequential Simulation
 ```bash
 ./run_sequential_simulation.sh
-./run_parallel_simulation.sh
 ```
 
 ### Postprocessing with ParaView
