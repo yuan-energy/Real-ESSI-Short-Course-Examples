@@ -7,16 +7,12 @@ model name "shell_structure" ;
 
 // Define Material and Geometry
 // Choice of materials, comment or uncomment lines below
-// If you change material here, you have to change
-// wave field too!
+
 include "material_set1.fei";
-include "wave_field1.fei";
 
 /// include "material_set2.fei";
-/// include "wave_field2.fei";
 
 /// include "material_set3.fei";
-/// include "wave_field3.fei";
 
 include "node.fei";
 include "element.fei";
@@ -32,7 +28,6 @@ include "damping.fei";
 // Simulate Loading Stage 1: Self Weight
 
 new loading stage "Self_weight";
-include "fix_foundation_uy_uz.fei";
 add acceleration field # 1 
   ax =  0*g
   ay =  0*g

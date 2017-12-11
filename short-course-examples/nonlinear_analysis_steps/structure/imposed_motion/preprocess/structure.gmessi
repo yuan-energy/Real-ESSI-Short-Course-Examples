@@ -7,7 +7,7 @@ gmESSI.setSimulationDir("./structure_fei",1)
 gmESSI.setMainFile(gmESSI.SimulationDir+ "main.fei")
 gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
 gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")
-gmESSI.setLoadFile(gmESSI.SimulationDir+ "fix_foundation_uy_uz.fei")
+gmESSI.setLoadFile(gmESSI.SimulationDir+ "boundary_condition.fei")
 
 
 #2 3 "soil_x_minus_surface"
@@ -68,13 +68,13 @@ gmESSI.setLoadFile(gmESSI.SimulationDir+ "fix_foundation_uy_uz.fei")
 gmESSI.setLoadFile(gmESSI.SimulationDir+ "imposed_motion.fei")
 
 [Free_Dofs{Physical_Group#foundation_bottom_surfaces, DofTypes:= ux}]
-[Add_Node_Load_Imposed_Motion_Series{Physical_Group#foundation_bottom_surfaces, DofType:= ux, DispScale:= 1*cm, DispFile:= "./motion/sw4_free_field_center_ux.txt" , VelScale:= 1*cm/s , VelFile:= "./motion/sw4_free_field_center_vx.txt", AccScale:= 1*g, AccFile:= "./motion/sw4_free_field_center_ax.txt"}]
+[Add_Node_Load_Imposed_Motion_Series{Physical_Group#foundation_bottom_surfaces, DofType:= ux, DispScale:= 1*m, DispFile:= "./motion/sw4_free_field_center_ux.txt" , VelScale:= 1*m/s , VelFile:= "./motion/sw4_free_field_center_vx.txt", AccScale:= 1*m/s^2, AccFile:= "./motion/sw4_free_field_center_ax.txt"}]
 
 ### ======================================================
 ### Damping
 ### ======================================================
 
-gmESSI.setLoadFile(gmESSI.SimulationDir+ "damping_structure.fei")
+gmESSI.setLoadFile(gmESSI.SimulationDir+ "damping.fei")
 
 [Add_Damping_To_Element{Physical_Group#shell_all_surfaces, DampingNo:= 1}]
 [Add_Damping_To_Element{Physical_Group#foundation_volume, DampingNo:= 2}]
