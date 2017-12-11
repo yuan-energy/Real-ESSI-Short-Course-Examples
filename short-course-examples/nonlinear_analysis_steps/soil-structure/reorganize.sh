@@ -14,7 +14,7 @@ do
 	    then
 	    	echo $PWD
 	    	# cp ${current_dir}/edit_multiple_material.sh ${current_dir}/"${all_dir_array[$element]}"/
-	    	cp ${current_dir}/README.* ${current_dir}/"${all_dir_array[$element]}"/
+	    	# cp ${current_dir}/README.* ${current_dir}/"${all_dir_array[$element]}"/
 	    	
 	    	# rm -f edit_multiple_material.sh
 	    	# bash edit_multiple_material.sh
@@ -78,9 +78,9 @@ do
 	    	# sed -i 's/python\ extract_node_/python\ postprocess\/extract_node_/' run_plot_results.sh
 
 	    	echo $PWD
-	    	# rm -f *.tgz
-	    	# rm -f *.tar.gz
-	    	# tar -czvf _all_files_packaged_for_${PWD##*/}.tar.gz *
+	    	rm -f *.tgz
+	    	rm -f *.tar.gz
+	    	tar -czvf _all_files_packaged_for_${PWD##*/}.tar.gz *
 	else
 		:
 	fi

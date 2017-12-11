@@ -1014,9 +1014,8 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>README</title></head><body><article class="markdown-body"><h3 id="run-sequential-or-parallel-simulation"><a name="user-content-run-sequential-or-parallel-simulation" href="#run-sequential-or-parallel-simulation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Run Sequential or parallel simulation</h3>
-<pre><code class="bash">./run_sequential_simulation.sh
-./run_parallel_simulation.sh
+</style><title>README</title></head><body><article class="markdown-body"><h3 id="run-parallel-simulation"><a name="user-content-run-parallel-simulation" href="#run-parallel-simulation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Run Parallel simulation</h3>
+<pre><code class="bash">./run_parallel_simulation.sh
 </code></pre>
 
 <h3 id="postprocessing-with-paraview"><a name="user-content-postprocessing-with-paraview" href="#postprocessing-with-paraview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Postprocessing with ParaView</h3>
@@ -1040,9 +1039,9 @@ python plot_node_disp.py shell_structure_motion.h5.feioutput 38 x
 </code></pre>
 
 <h6 id="plot-the-response-spectrum-of-the-dof-of-the-node"><a name="user-content-plot-the-response-spectrum-of-the-dof-of-the-node" href="#plot-the-response-spectrum-of-the-dof-of-the-node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Plot the response spectrum of the DOF of the node.</h6>
-<pre><code class="bash"># python extract_node_spectrum_in_period.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
+<pre><code class="bash"># python plot_node_spectrum_in_period.py model_name_loading_stage.h5.feioutput your_nodetag your_dof
 # e.g. node-tag 3391 is the center of foundation bottom, to plot the response spectrum in x direction of node 3391 : 
-python extract_node_spectrum_in_period.py shell_structure_motion.h5.feioutput 3391 x
+python plot_node_spectrum_in_period.py shell_structure_motion.h5.feioutput 3391 x
 </code></pre>
 
 <h4 id="other-points-for-postprocessing"><a name="user-content-other-points-for-postprocessing" href="#other-points-for-postprocessing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Other Points for Postprocessing</h4>

@@ -52,7 +52,6 @@ simulate 10 steps using static algorithm;
 // Simulate Loading Stage 2: DRM Motion
 
 new loading stage "motion";
- 
 
 add load # 2 type DRM from wave field 
     # 1 in direction ux 

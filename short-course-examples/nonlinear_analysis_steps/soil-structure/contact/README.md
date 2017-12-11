@@ -1,6 +1,5 @@
-### Run Sequential or parallel simulation
+### Run Parallel simulation
 ```bash
-./run_sequential_simulation.sh
 ./run_parallel_simulation.sh
 ```
 
