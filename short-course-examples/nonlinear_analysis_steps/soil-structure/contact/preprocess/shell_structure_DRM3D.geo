@@ -8,7 +8,8 @@
 // Predefined Parameters
 //****************************************************************
 mesh_size = 5;
-width_of_out_foundation = mesh_size; 
+foundation_meshs_size = mesh_size/5 ; 
+width_of_out_foundation = mesh_size ; 
 
 height_of_structure = 60 ;
 sub_height = 20;
@@ -52,7 +53,7 @@ ans[] = Extrude{0,width_of_field,0}{Line{l7,l8,l9};Layers{width_of_field/mesh_si
 
 
 ans[] = Extrude{0, 0, -depth_of_soil}{Surface{7,11,15,19,23,27,31,35,39}; Layers{depth_of_soil/mesh_size};Recombine;};
-ans[] = Extrude{0, 0, depth_of_foundation}{Surface{7,11,15,19,27,31,35,39}; Layers{depth_of_foundation/mesh_size};Recombine;};
+ans[] = Extrude{0, 0, depth_of_foundation}{Surface{7,11,15,19,27,31,35,39}; Layers{depth_of_foundation/foundation_meshs_size};Recombine;};
 soils_under_zero[] = {1, 2, 3, 4, 5, 6, 7, 8, 9} ; 
 soils_around_foundation[] = {10, 11, 12, 13, 14, 15, 16, 17} ; 
 soil_x_minus_surface = 316;
@@ -134,7 +135,7 @@ foundation_bottom_surfaces[] = {foundation_bottom_surfaces[], ans[1], ans[5], an
 
 ////loop1 = newreg; Line Loop(loop1) = {x_minus_line,y_plus_line,x_plus_line,-y_minus_line} ;
 ////foundation_bottom_surface = news; Plane Surface(foundation_bottom_surface) = {loop1};
-ans[] = Extrude{0,0,depth_of_foundation}{Surface{foundation_bottom_surfaces[]} ;Layers{depth_of_foundation/mesh_size};Recombine;};
+ans[] = Extrude{0,0,depth_of_foundation}{Surface{foundation_bottom_surfaces[]} ;Layers{depth_of_foundation/foundation_meshs_size};Recombine;};
 
 ////foundation_top_surface                        = ans[0] ;
 //foundation_x_minus_vol[] = {ans[1], ans[19], ans[37] };

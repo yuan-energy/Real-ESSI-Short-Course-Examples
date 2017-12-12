@@ -73,6 +73,7 @@ define convergence test Relative_Norm_Unbalanced_Force
   maximum_iterations = 80
   ;
 define algorithm Newton;
+enable subincrement using minimum_time_step = 0.0001 ; 
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
