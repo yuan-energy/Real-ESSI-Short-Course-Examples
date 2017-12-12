@@ -25,8 +25,6 @@ add material # 5 type linear_elastic_isotropic_3d
 include "node.fei";
 include "element.fei";
 include "boundary_condition.fei";
-include "damping_parameters.fei";
-include "damping.fei";
 
 new loading stage "eigen";
 simulate using eigen algorithm 

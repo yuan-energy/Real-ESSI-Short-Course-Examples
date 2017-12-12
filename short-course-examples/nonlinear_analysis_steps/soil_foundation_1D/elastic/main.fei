@@ -12,11 +12,11 @@ model name "DRM1D" ;
 include "material_set1.fei";
 include "wave_field1.fei";
 
-/// include "material_set2.fei";
-/// include "wave_field2.fei";
+// include "material_set2.fei";
+// include "wave_field2.fei";
 
-/// include "material_set3.fei";
-/// include "wave_field3.fei";
+// include "material_set3.fei";
+// include "wave_field3.fei";
 
 include "node.fei";
 include "element.fei";
@@ -54,10 +54,10 @@ simulate 1 steps using static algorithm;
 new loading stage "motion";
 include "change_boundary_condition_to_fix_all_uz.fei";
 
-add load # 11 type DRM from wave field 
-    # 11 in direction ux 
-    # 12 in direction uy
-    # 13 in direction uz
+add load # 2 type DRM from wave field 
+    # 1 in direction ux 
+    # 2 in direction uy
+    # 3 in direction uz
     soil_surface at z = 0 * m 
     hdf5_file = "DRMinput.hdf5" ; 
 

@@ -12,11 +12,9 @@ model name "DRM1D" ;
 include "material_set1.fei";
 include "wave_field1.fei";
 
-/// include "material_set2.fei";
-/// include "wave_field2.fei";
+// include "material_set2.fei";
+// include "wave_field2.fei";
 
-/// include "material_set3.fei";
-/// include "wave_field3.fei";
 
 include "node.fei";
 include "element.fei";
@@ -40,7 +38,7 @@ add load # 1 to all elements type self_weight use acceleration field # 1;
 
 // Simulation Options:
 define convergence test Relative_Norm_Unbalanced_Force
-  tolerance =  1E-2
+  tolerance =  2E-2
   minimum_absolute_tolerance = 1
   maximum_iterations = 200
   ;
@@ -51,8 +49,8 @@ else
 {define solver parallel;}
 
 // Static loading increments:
-define load factor increment 0.001;
-simulate 1000 steps using static algorithm;
+define load factor increment 0.01;
+simulate 100 steps using static algorithm;
 
 // Simulate Loading Stage 2: DRM Motion
 
@@ -68,7 +66,7 @@ add load # 2 type DRM from wave field
 
 // Simulation Options:
 define convergence test Relative_Norm_Unbalanced_Force
-  tolerance =  1E-2
+  tolerance =  2E-2
   minimum_absolute_tolerance = 1
   maximum_iterations = 200
   ;

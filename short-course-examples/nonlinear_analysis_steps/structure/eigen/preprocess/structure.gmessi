@@ -7,7 +7,7 @@ gmESSI.setSimulationDir("./structure_fei",1)
 gmESSI.setMainFile(gmESSI.SimulationDir+ "main.fei")
 gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
 gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")
-gmESSI.setLoadFile(gmESSI.SimulationDir+ "load.fei")
+gmESSI.setLoadFile(gmESSI.SimulationDir+ "boundary_condition.fei")
 
 #2 3 "soil_x_minus_surface"
 #2 4 "soil_x_plus_surface"

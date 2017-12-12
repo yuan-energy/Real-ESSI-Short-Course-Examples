@@ -10,9 +10,9 @@ model name "shell_structure" ;
 
 include "material_set1.fei";
 
-/// include "material_set2.fei";
+// include "material_set2.fei";
 
-/// include "material_set3.fei";
+// include "material_set3.fei";
 
 include "node.fei";
 include "element.fei";
@@ -62,7 +62,5 @@ simulate 210 steps using transient algorithm
     time_step = 0.0419384905125*s ;
 
 // No more loading stages. Stop the program politely:
-bye;
-
 bye;
 
