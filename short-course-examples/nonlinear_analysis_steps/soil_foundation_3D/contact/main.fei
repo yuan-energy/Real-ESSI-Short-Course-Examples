@@ -52,6 +52,7 @@ else
 
 // Static loading increments:
 define load factor increment 0.1;
+enable subincrement using minimum_time_step = 0.0001 ;
 simulate 10 steps using static algorithm;
 
 // Simulate Loading Stage 2: DRM Motion
@@ -65,7 +66,7 @@ add load # 2 type DRM from wave field
     # 3 in direction uz 
     soil_surface at z = 0 * m 
     hdf5_file = "DRMinput.hdf5" 
-    scale_factor = 0.3
+    scale_factor = 0.1
     ; 
 
 // Simulation Options:
@@ -75,7 +76,6 @@ define convergence test Relative_Norm_Unbalanced_Force
   maximum_iterations = 50
   ;
 define algorithm NewtonLineSearch;
-enable subincrement using minimum_time_step = 0.0001 ;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
@@ -88,6 +88,7 @@ bet = 0.25*(gam + 0.5)^2;
 define dynamic integrator Newmark with 
   gamma = gam 
   beta = bet;
+enable subincrement using minimum_time_step = 0.0001 ;
 simulate 210 steps using transient algorithm 
     time_step = 0.0419384905125*s ;
 
