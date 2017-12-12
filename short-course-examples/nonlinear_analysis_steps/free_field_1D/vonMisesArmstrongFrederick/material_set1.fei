@@ -21,7 +21,7 @@ add material # 1  type vonMisesArmstrongFrederick
   elastic_modulus = 1.1e9*N/m^2   // for shear wave velocity Vs = 500 m/s
   poisson_ratio = 0.1
   von_mises_radius = 60*kPa  
-  armstrong_frederick_ha =  3e7*Pa
+  armstrong_frederick_ha =  3e8*Pa
   armstrong_frederick_cr =  60
   isotropic_hardening_rate =  0*Pa;
 

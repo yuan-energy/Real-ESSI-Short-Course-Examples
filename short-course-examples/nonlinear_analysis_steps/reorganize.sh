@@ -18,7 +18,15 @@ do
 	    	# bash edit_multiple_material.sh
 	    	# cp ${current_dir}/wave_field*fei ${current_dir}/"${all_dir_array[$element]}"
 	    	# cp ${current_dir}/damping_parameters.fei ${current_dir}/"${all_dir_array[$element]}"
-
+	    	rm -f *acce.pdf
+	    	rm -f *disp.pdf
+	    	rm -f *spectrum_freq.pdf
+	    	rm -f *spectrum_period.pdf
+	    	rm -f *acce_compare.pdf
+	    	
+	    	rm -f *acce.txt
+	    	rm -f *disp.txt
+	    	rm -f *spectrum.txt
 	    	# cp ${current_dir}/*.py ${current_dir}/"${all_dir_array[$element]}"/postprocess
 	    	# cd motion
 	    	# git checkout README.md

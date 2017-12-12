@@ -51,8 +51,8 @@ else
 {define solver parallel;}
 
 // Static loading increments:
-define load factor increment 1;
-simulate 1 steps using static algorithm;
+define load factor increment 0.01;
+simulate 100 steps using static algorithm;
 
 // Simulate Loading Stage 2: DRM Motion
 
