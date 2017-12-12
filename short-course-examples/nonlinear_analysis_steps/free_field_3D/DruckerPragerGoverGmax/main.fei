@@ -38,7 +38,8 @@ add load # 1 type DRM from wave field
     # 2 in direction uy
     # 3 in direction uz
     soil_surface at z = 0 * m 
-    hdf5_file = "DRMinput.hdf5" ; 
+    hdf5_file = "DRMinput.hdf5" 
+    scale_factor = 0.1; 
 
 // Simulation Options:
 define convergence test Relative_Norm_Unbalanced_Force

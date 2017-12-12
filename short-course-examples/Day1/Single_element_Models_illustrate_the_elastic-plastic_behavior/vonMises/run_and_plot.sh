@@ -1,4 +1,4 @@
-
+# clean 
 rm -f *.feioutput
 rm -f essi*.log
 

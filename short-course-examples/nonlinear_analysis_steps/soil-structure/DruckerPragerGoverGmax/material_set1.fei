@@ -23,7 +23,7 @@ add material # 1 type DruckerPragerMultipleYieldSurfaceGoverGmax
   initial_confining_stress = 1E5 * Pa
   reference_pressure = 1E5 * Pa
   pressure_exponential_n = 0.5
-  cohesion = 1. * kPa
+  cohesion = 10. * kPa
   dilation_angle_eta =1.0 
   dilation_scale = 0.0
   total_number_of_shear_modulus = 9

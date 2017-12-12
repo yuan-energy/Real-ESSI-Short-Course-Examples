@@ -11,6 +11,7 @@ new loading stage "1_restart";
 
 define convergence test Relative_Norm_Unbalanced_Force
     tolerance =  1E-4
+    minimum_absolute_tolerance = 10
     maximum_iterations =  10 ; 
 
 
