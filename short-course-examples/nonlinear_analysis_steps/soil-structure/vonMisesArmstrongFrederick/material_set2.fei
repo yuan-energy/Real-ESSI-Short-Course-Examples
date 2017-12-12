@@ -21,8 +21,8 @@ add material # 1  type vonMisesArmstrongFrederick
   elastic_modulus = 4.4*GPa   // for shear wave velocity Vs = 1000 m/s
   poisson_ratio = 0.1
   von_mises_radius = 60*kPa  
-  armstrong_frederick_ha =  3e7*Pa
-  armstrong_frederick_cr =  60
+  armstrong_frederick_ha =  3e8*Pa
+  armstrong_frederick_cr =  25
   isotropic_hardening_rate =  0*Pa;
 
 define NDMaterial constitutive integration algorithm Backward_Euler

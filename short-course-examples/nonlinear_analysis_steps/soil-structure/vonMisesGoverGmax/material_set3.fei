@@ -28,8 +28,8 @@ add material # 1 type vonMisesMultipleYieldSurfaceGoverGmax
     ;
 
 define NDMaterial constitutive integration algorithm Backward_Euler
-  yield_function_relative_tolerance =  1e-17
-  stress_relative_tolerance =  1e-17
+  yield_function_relative_tolerance =  1e-6
+  stress_relative_tolerance =  1e-6
   maximum_iterations = 10 ;
 
 // DRM layers material properties

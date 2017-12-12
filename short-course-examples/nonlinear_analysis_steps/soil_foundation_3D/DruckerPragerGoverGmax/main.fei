@@ -29,54 +29,30 @@ include "damping.fei";
 
 // check model;
 
-// Simulate Loading Stage 1: Self Weight
-
-new loading stage "Self_weight";
-add acceleration field # 1 
-  ax =  0*g
-  ay =  0*g
-  az =  -g ;
-add load # 1 to all elements type self_weight use acceleration field # 1;
-
-// Simulation Options:
-define convergence test Relative_Norm_Unbalanced_Force
-  tolerance =  1E-2
-  minimum_absolute_tolerance = 100
-  maximum_iterations = 80
-  ;
-define algorithm Newton;
-if(IS_PARALLEL==0)
-{define solver UMFPack;}
-else
-{define solver parallel;}
-
-// Static loading increments:
-define load factor increment 0.1;
-simulate 10 steps using static algorithm;
-
-// Simulate Loading Stage 2: DRM Motion
+// Simulate Loading Stage: DRM Motion
 
 new loading stage "motion";
- 
 
-add load # 2 type DRM from wave field 
+add load # 1 type DRM from wave field 
     # 1 in direction ux 
     # 2 in direction uy 
     # 3 in direction uz 
     soil_surface at z = 0 * m 
-    hdf5_file = "DRMinput.hdf5" ; 
+    hdf5_file = "DRMinput.hdf5" 
+    scale_factor = 0.3; 
 
 // Simulation Options:
 define convergence test Relative_Norm_Unbalanced_Force
   tolerance =  1E-2
-  minimum_absolute_tolerance = 100
-  maximum_iterations = 80
+  minimum_absolute_tolerance = 1e5
+  maximum_iterations = 50
   ;
-define algorithm Newton;
+define algorithm NewtonLineSearch;
+enable subincrement using minimum_time_step = 0.0001 ;
 if(IS_PARALLEL==0)
 {define solver UMFPack;}
 else
-{define solver parallel;}
+{define solver parallel petsc "-pc_type lu -pc_factor_mat_solver_package mumps" ;}
 
 // Dynamic loading steps:
 define dynamic integrator Newmark with 
