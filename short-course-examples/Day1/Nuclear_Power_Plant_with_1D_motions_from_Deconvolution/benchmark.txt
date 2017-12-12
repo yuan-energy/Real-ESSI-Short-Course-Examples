@@ -1,0 +1,157 @@
+Script started on Tue 12 Dec 2017 06:00:16 AM PST
+                                                               
+                                                               
+  The Finite Element Interpreter                               
+                                                               
+  Real ESSI Simulator                                          
+  Realistic Earthquake Soil Structure Interaction Simulator    
+                                                             
+ Parallel processing mode. Main machine!                     
+                                                             
+Version Name   : Real ESSI Short Course Version. Release date: Dec 11 2017 at 14:44:20. Tag: 3717e58fd6
+Version Branch : yuan
+Compile Date   : Dec 12 2017 at 03:47:37
+Compile User   : yuan
+Compile Sysinfo: w541 4.4.0-103-generic x86_64 GNU/Linux
+Runtime User   : yuan
+Runtime Sysinfo: w541 4.4.0-103-generic x86_64 GNU/Linux
+Time Now       : Dec 12 2017 at 06:00:16
+                                                               
+Static startup tips:                                           
+ * Remember: Every command ends with a semicolon ';'.          
+ * Type 'quit;' or 'exit;' to finish.                          
+ * Run 'essi -h' to see available command line options.        
+                                                               
+Including: "main.fei"
+
+
+Model name is being set to "NPPModel"
+Setting set_constitutive_integration_method = 2
+Including: "geometry.fei"
+
+Done including: "geometry.fei" (129580 lines included).
+Continuing with "main.fei" at line 106.
+
+Including: "StressBasedHardContact_ElPPlShear.fei"
+
+Done including: "StressBasedHardContact_ElPPlShear.fei" (565 lines included).
+Continuing with "main.fei" at line 109.
+
+
+
+Starting new stage: Self_Weight_Stress_Based
+
+changing previous_stage_name from  to Self_Weight_Stress_Based
+Including: "load.fei"
+
+Done including: "load.fei" (70701 lines included).
+Continuing with "main.fei" at line 117.
+
+
+Starting parallel static multistep analysis
+====================================================================================================
+Creating analysis model........................................................................Pass!
+Checking constraint handler....................................................................Pass!
+Checking numberer..............................................................................Pass!
+Checking analysis algorithm....................................................................Pass!
+Checking system of equation handler............................................................Pass!
+Checking static integration handler............................................................Pass!
+Setting domain decomposition analysis..........................................................Done!
+Creating subdomains............................................................................Done!
+Partitioning domain into subdomains............................................................Done!
+Sending data to ShadowActor Subdomains ...
+    Sending Nodes.
+       Total Number of Nodes          = 66317
+       Nodes on Partition 0          = 0
+       Nodes on Partition 1          = 9367
+       Nodes on Partition 2          = 8634
+       Nodes on Partition 3          = 9104
+       Nodes on Partition 4          = 9326
+       Nodes on Partition 5          = 6512
+       Nodes on Partition 6          = 8735
+       Nodes on Partition 7          = 8810
+       Total Number of External Nodes = 5829
+   Done Sending Nodes.
+   Sending Elements!
+       Total Number of Elements          = 63597
+       Total Number of Elemental Loads   = 0
+       Elements on Partition 0          = 0
+       Elements on Partition 1          = 9162
+       Elements on Partition 2          = 9122
+       Elements on Partition 3          = 9156
+       Elements on Partition 4          = 9219
+       Elements on Partition 5          = 8833
+       Elements on Partition 6          = 8886
+       Elements on Partition 7          = 9219
+   Done sending elements!
+   Sending Loads!
+       Sent 1 load patterns!
+       Sent 0 nodal loads!
+       Sent 0 SP constraints in nodal loads!
+       Sent 7 elemental loads!
+   Done sending Loads!
+   Sending Single Point (SP) constraints in Fixities!
+       Total Number of SP constraints = 16683
+       SP constraints on Partition 0          = 0
+       SP constraints on Partition 1          = 3257
+       SP constraints on Partition 2          = 1642
+       SP constraints on Partition 3          = 3628
+       SP constraints on Partition 4          = 3456
+       SP constraints on Partition 5          = 228
+       SP constraints on Partition 6          = 2040
+       SP constraints on Partition 7          = 3289
+   Done sending Single Point constraints in Fixities!
+   Sending Multi-Point (MP) constraints!
+      Sent 0 MP constraints. 
+   Done sending Multi-Point constraints!
+   Updating subdomains!
+   Done updating subdomains!
+Done!
+
+
+
+> Analysis Start -----------------------------------------------------------------------------
+
+ 
+ Writing Initial Conditions and   (0) - Outputting mesh.
+
+Static Analysis: [    1/30   ] 
+Writing Initial Conditions   (1) - Outputting mesh.
+PetscSOE is using options -pc_type lu -pc_factor_mat_solver_package mumps
+@
+	 [iteration 1    /50   ] Convergence Test: Relative Norm Unbalanced Force::(tol: 0.005)
+	 	                  Absolute Norm deltaF: 5.9469e+06
+	 	                  Absolute Norm deltaU: 0.68292
+	 	                  Average  Norm deltaF: 13570
+	 	                  Average  Norm deltaU: 0.0015583
+	 	                  Relative Norm deltaF: 0.28564
+	 	                  Relative Norm deltaU: 1
+	 [iteration 2    /50   ] Convergence Test: Relative Norm Unbalanced Force::(tol: 0.005)
+	 	                  Absolute Norm deltaF: 29064
+	 	                  Absolute Norm deltaU: 0.00016434
+	 	                  Average  Norm deltaF: 66.318
+	 	                  Average  Norm deltaU: 3.75e-07
+	 	                  Relative Norm deltaF: 0.001396
+	 	                  Relative Norm deltaU: 0.00024065
+
+Static Analysis: [2    /30   ] 
+^Zmpirun: Forwarding signal 20 to job
+^C(0) Caught SIGTERM! Program ending.
+![0]=================================================:
+![0]RealESSI Stack Trace:
+![0]=================================================:
+![0]ProcessID 0:
+![0]  /lib/x86_64-linux-gnu/libc.so.6 : +0x354b0
+![0]  /lib/x86_64-linux-gnu/libc.so.6 : __poll+0x2d
+![0]  /usr/lib/libopen-pal.so.13 : +0x60e58
+![0]  /usr/lib/libopen-pal.so.13 : opal_libevent2021_event_base_loop+0x1db
+![0]  /usr/lib/libopen-rte.so.12 : +0x35b8e
+![0]  /lib/x86_64-linux-gnu/libpthread.so.0 : +0x76ba
+![0]  /lib/x86_64-linux-gnu/libc.so.6 : clone+0x6d
+![0]==================================================:
+ 
+real	7m12.656s
+user	40m55.996s
+sys	12m33.140s
+
+Script done on Tue 12 Dec 2017 06:07:28 AM PST

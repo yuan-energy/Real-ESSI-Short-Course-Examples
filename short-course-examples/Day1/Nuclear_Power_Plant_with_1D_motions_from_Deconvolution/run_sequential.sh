@@ -1,1 +1,0 @@
-time script -c "time essi -f main.fei" aws_benchmark_sequential.txt

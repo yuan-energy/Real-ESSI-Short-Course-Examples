@@ -1,6 +1,9 @@
 
 # clean previous meshing
 rm -rf DRM2D_fei
+rm -f node.fei
+rm -f element.fei
+rm -f load.fei
 
 # Run gmsh to generate the mesh files
 gmsh -3 DRM2D.geo
