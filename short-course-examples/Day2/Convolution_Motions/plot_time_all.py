@@ -8,28 +8,25 @@ import math
 import sys
 # filename = sys.argv[1]
 
-in_filename = 'ormsby_acc.dat'
-filename2 = 'elemLen1m/top_acc.txt'
-filename3 = 'elemLen5m/top_acc.txt'
-filename4 = 'elemLen10m/top_acc.txt'
-filename5 = 'elemLen20m/top_acc.txt'
+in_filename = './element1m/motion/ormsby_acc.dat'
+filename1 = 'element1m/test_motion_node_6_x_acce.txt'
+filename2 = 'element5m/test_motion_node_6_x_acce.txt'
+filename3 = 'element20m/test_motion_node_6_x_acce.txt'
 
 in_data = np.loadtxt(in_filename)
 
+data1 = np.loadtxt(filename1)
 data2 = np.loadtxt(filename2)
 data3 = np.loadtxt(filename3)
-data4 = np.loadtxt(filename4)
-data5 = np.loadtxt(filename5)
 
-times = data2[:,0]
+times = data1[:,0]
 
 in_time = in_data[:,0]
 in_acc = in_data[:,1]
 
+acc1 = data1[:,1]
 acc2 = data2[:,1]
 acc3 = data3[:,1]
-acc4 = data4[:,1]
-acc5 = data5[:,1]
 
 # #############################
 import matplotlib.pylab as pylab
@@ -46,10 +43,9 @@ fig = plt.figure()
 ax = plt.subplot(111)
 
 ax.plot(in_time, in_acc, 'k-' , linewidth=3, label="input")
-# ax.plot(times, acc2, 'b-' , linewidth=3, label="element size = 1m")
-ax.plot(times, acc3, 'r-' , linewidth=3, label="element size = 5m")
-ax.plot(times, acc4, 'g-' , linewidth=3, label="element size = 10m")
-ax.plot(times, acc5, 'b-' , linewidth=3, label="element size = 20m")
+ax.plot(times, acc1, 'r-' , linewidth=3, label="element size = 1m")
+ax.plot(times, acc2, 'g-' , linewidth=3, label="element size = 5m")
+ax.plot(times, acc3, 'b-' , linewidth=3, label="element size = 20m")
 
 box = ax.get_position()
 ax.set_position([box.x0, box.y0, box.width * 0.75, box.height])

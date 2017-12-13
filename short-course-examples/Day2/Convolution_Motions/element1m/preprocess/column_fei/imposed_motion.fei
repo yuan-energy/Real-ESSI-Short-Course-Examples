@@ -1,0 +1,14 @@
+
+//*************************************************************************************************************************
+//							Add_Node_Load_Imposed_Motion_Series{Physical_Group#bottom_surface, DofType:= ux, DispScale:= 1*m, DispFile:= "../ormsby_dis.dat" , VelScale:= 1*m/s , VelFile:= "../ormsby_vel.dat", AccScale:= 1*m/s^2, AccFile:= "../ormsby_acc.dat"}Starts
+//*************************************************************************************************************************
+
+add imposed motion # 1 to node # 1 dof ux displacement_scale_unit = 1*m displacement_file = "../ormsby_dis.dat" velocity_scale_unit = 1*m/s velocity_file = "../ormsby_vel.dat" acceleration_scale_unit = 1*m/s^2 acceleration_file = "../ormsby_acc.dat"; 
+add imposed motion # 2 to node # 2 dof ux displacement_scale_unit = 1*m displacement_file = "../ormsby_dis.dat" velocity_scale_unit = 1*m/s velocity_file = "../ormsby_vel.dat" acceleration_scale_unit = 1*m/s^2 acceleration_file = "../ormsby_acc.dat"; 
+add imposed motion # 3 to node # 3 dof ux displacement_scale_unit = 1*m displacement_file = "../ormsby_dis.dat" velocity_scale_unit = 1*m/s velocity_file = "../ormsby_vel.dat" acceleration_scale_unit = 1*m/s^2 acceleration_file = "../ormsby_acc.dat"; 
+add imposed motion # 4 to node # 4 dof ux displacement_scale_unit = 1*m displacement_file = "../ormsby_dis.dat" velocity_scale_unit = 1*m/s velocity_file = "../ormsby_vel.dat" acceleration_scale_unit = 1*m/s^2 acceleration_file = "../ormsby_acc.dat"; 
+
+//*************************************************************************************************************************
+//							Add_Node_Load_Imposed_Motion_Series{Physical_Group#bottom_surface, DofType:= ux, DispScale:= 1*m, DispFile:= "../ormsby_dis.dat" , VelScale:= 1*m/s , VelFile:= "../ormsby_vel.dat", AccScale:= 1*m/s^2, AccFile:= "../ormsby_acc.dat"}Ends
+//*************************************************************************************************************************
+

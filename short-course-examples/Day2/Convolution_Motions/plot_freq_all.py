@@ -44,42 +44,31 @@ def FFT(x,dt,maxf,plot=True):
 
 
 
-in_filename = 'ormsby_acc.dat'
-# in_filename = 'ricker_acc.txt'
-filename2 = 'elemLen1m/top_acc.txt'
-filename3 = 'elemLen5m/top_acc.txt'
-filename4 = 'elemLen10m/top_acc.txt'
-filename5 = 'elemLen20m/top_acc.txt'
+in_filename = './element1m/motion/ormsby_acc.dat'
+filename1 = 'element1m/test_motion_node_6_x_acce.txt'
+filename2 = 'element5m/test_motion_node_6_x_acce.txt'
+filename3 = 'element20m/test_motion_node_6_x_acce.txt'
 
 in_data = np.loadtxt(in_filename)
 
+data1 = np.loadtxt(filename1)
 data2 = np.loadtxt(filename2)
 data3 = np.loadtxt(filename3)
-data4 = np.loadtxt(filename4)
-data5 = np.loadtxt(filename5)
 
-wave_data = np.loadtxt('convolution/top_at_depth_0_acc.txt')
-wave_time = wave_data[:,0]
-wave_acc = wave_data[:,1]
-
-times = data2[:,0]
+times = data1[:,0]
 dt = times[1] - times[0]
 
 in_time = in_data[:,0]
 in_acc = in_data[:,1]
 
+acc1 = data1[:,1]
 acc2 = data2[:,1]
 acc3 = data3[:,1]
-acc4 = data4[:,1]
-acc5 = data5[:,1]
 
 [f_in_time, f_in_acc] = FFT( in_acc, in_time[1]-in_time[0] , 20, plot=False)
+[f_times, f_acc1] = FFT( acc1, dt, 20, plot=False)
 [f_times, f_acc2] = FFT( acc2, dt, 20, plot=False)
 [f_times, f_acc3] = FFT( acc3, dt, 20, plot=False)
-[f_times, f_acc4] = FFT( acc4, dt, 20, plot=False)
-[f_times, f_acc5] = FFT( acc5, dt, 20, plot=False)
-
-[f_wave_times, f_wave_acc] = FFT( wave_acc, dt, 20, plot=False)
 
 
 # #############################
@@ -97,21 +86,25 @@ pylab.rcParams.update(params)
 fig = plt.figure()
 ax = plt.subplot(111)
 
-ax.semilogx(f_in_time, f_in_acc, 'k-' , linewidth=3, label="input")
-# ax.semilogx(f_times, f_acc2, 'b-' , linewidth=3, label="element size = 1m")
-ax.semilogx(f_times, f_acc3, 'r-' , linewidth=3, label="element size = 5m")
-ax.semilogx(f_times, f_acc4, 'g-' , linewidth=3, label="element size = 10m")
-ax.semilogx(f_times, f_acc5, 'b-' , linewidth=3, label="element size = 20m")
+ax.semilogx(f_in_time, f_in_acc, 'k-' , linewidth=2, label="input")
+ax.semilogx(f_times, f_acc1, 'r-' , linewidth=2, label="element size = 1m")
+ax.semilogx(f_times, f_acc2, 'g-' , linewidth=2, label="element size = 5m")
+ax.semilogx(f_times, f_acc3, 'b-' , linewidth=2, label="element size = 20m")
 
 # ax.semilogx(f_wave_times, f_wave_acc, 'g-' , linewidth=3, label="wave field")
 
 box = ax.get_position()
 ax.set_position([box.x0, box.y0, box.width * 0.7, box.height])
 
-plt.xlim([1,100])
+plt.xlim([1,10])
 ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 plt.ylabel(' Acceleration [m/s^2] ')
 plt.xlabel(' Frequency [Hz] ')
+# *****************************
+d = np.linspace(1,10,10) 
+plt.xticks(d)
+# *****************************
 ax.grid()
 plt.savefig("top_acc_feq_all.pdf")
 plt.show()
+

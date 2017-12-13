@@ -40,4 +40,4 @@ echo "<========== Finish transition from SW4 to RealESSI ==============>"
 
 ## run RealESSI
 
-mpirun -np 10 essi_parallel -f main.fei
+mpirun -np $(nproc) essi_parallel -f main.fei

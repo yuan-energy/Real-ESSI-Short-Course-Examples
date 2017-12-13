@@ -1,0 +1,25 @@
+#****************************************************************
+# DRM 3D Example 
+#****************************************************************
+
+gmESSI.loadGmshFile("column.msh")
+gmESSI.setSimulationDir("./column_fei",1)
+gmESSI.setMainFile(gmESSI.SimulationDir+ "main.fei")
+gmESSI.setNodeFile(gmESSI.SimulationDir+ "node.fei")
+gmESSI.setElementFile(gmESSI.SimulationDir+ "element.fei")
+gmESSI.setLoadFile(gmESSI.SimulationDir+ "boundary_condition.fei")
+
+#2 1 "bottom_surface"
+#3 2 "all_volume"
+
+[Add_All_Node{ unit:= m, nof_dofs:= 3}]
+
+## Soil 
+[Fix_Dofs{Physical_Group#all_volume, DofTypes:= uy}]
+[Fix_Dofs{Physical_Group#all_volume, DofTypes:= uz}]
+[Add_8NodeBrick{Physical_Group#all_volume, MaterialNo:= 1}]
+
+gmESSI.setLoadFile(gmESSI.SimulationDir+'imposed_motion.fei')
+[Add_Node_Load_Imposed_Motion_Series{Physical_Group#bottom_surface, DofType:= ux, DispScale:= 1*m, DispFile:= "./motion/ormsby_dis.dat" , VelScale:= 1*m/s , VelFile:= "./motion/ormsby_vel.dat", AccScale:= 1*m/s^2, AccFile:= "./motion/ormsby_acc.dat"}]
+
+

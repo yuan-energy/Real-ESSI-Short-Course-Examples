@@ -1,6 +1,6 @@
 
 
-model name "Solid_structure_DRM3D" ;
+model name "shell_structure" ;
 Elastic = 1.1e9*N/m^2; 
 nu    = 0.1;        
 rho   = 2000*kg/m^3;     

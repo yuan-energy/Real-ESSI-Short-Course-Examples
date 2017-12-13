@@ -1,0 +1,36 @@
+// 
+// Real ESSI Simulator
+// Modeling and Simulation Examples
+// http://real-essi.info
+//
+
+model name "test" ;
+
+// Material Definition
+add material # 1 type linear_elastic_isotropic_3d
+  mass_density = 2000 *kg/m^3
+  elastic_modulus = 4e7 * Pa // for Shear Wave Vs = 100*m/s
+  poisson_ratio = 0.0 ;
+
+// Mesh
+include "node.fei";
+include "element.fei";
+include "boundary_condition.fei";
+
+
+// Simulation Stage:
+new loading stage "motion";
+	
+include "imposed_motion.fei";
+
+// Simulation Options
+define algorithm With_no_convergence_check ;
+define solver UMFPack;
+define dynamic integrator Newmark with 
+   gamma = 0.50
+   beta = 0.25;
+simulate 1000 steps using transient algorithm 
+    time_step = 0.01*s
+    ;
+
+bye;

@@ -19,10 +19,3 @@ python SW42ESSI.py SW42ESSI_meta_info.txt
 
 echo "<========== Finish transition from SW4 to RealESSI ==============>"
 
-## run RealESSI
-
-mpirun -np 10 essi_parallel -f main.fei
-
-
-
-
