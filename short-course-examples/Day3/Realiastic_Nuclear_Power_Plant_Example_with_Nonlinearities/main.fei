@@ -117,14 +117,14 @@ tol = 5e-3;
 define convergence test Relative_Norm_Unbalanced_Force tolerance = tol minimum_absolute_tolerance = 5e5 maximum_iterations = 50 ;
 define load factor increment 1/NumSteps; 
 define algorithm NewtonLineSearch ;
-enable sub-stepping with minimum_time_step = 0.0001;
+enable subincrement using minimum_time_step = 0.0001;
 define solver parallel petsc "-pc_type lu -pc_factor_mat_solver_package mumps" ;
 
 simulate NumSteps steps using static algorithm; 
 
 new loading stage "DRM_Motion";
 
-add domain reduction method loading # 2 hdf5_file = "../M5.5_ESSI_Earthquake.drminput" scale_factor = 1;
+add domain reduction method loading # 2 hdf5_file = "./M5.5_ESSI_Earthquake.drminput" scale_factor = 1;
 
 TotalTime= 40*s;
 TimeStep = 10*0.001938*s;
