@@ -11,6 +11,10 @@ all:
 
 	$(MAKE) -s clean
 
+extract:
+	pdftk short_courses_examples.pdf cat 84-87 output QA-short-course.pdf
+
+
 clean:
 	find . -name "*.aux" -delete
 	find . -name "*.log" -delete
@@ -25,6 +29,3 @@ clean:
 
 # .SILENT:clean
 
-
-extract:
-	pdftk short_courses_examples.pdf cat 63-86 output nonlinear_steps.pdf
